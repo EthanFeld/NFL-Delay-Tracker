@@ -39,7 +39,7 @@ npm run web:dev
 
 `sync-schedules` fetches public NFL and FBS scoreboard data from the backend. `refresh-forecasts` writes individual forecasts, a game index, a manifest and compact daily forecast-issuance archives under `data/`. Pregame snapshots are archived hourly; active delays are archived on each refresh. Older daily files are compressed and retained across seasons, without storing raw weather grids. It refreshes HREF and HRRR by default; pass `--skip-href --skip-hrrr` to reuse cached inputs during frequent live updates. GOES GLM is sampled each refresh for games near kickoff or in progress. Weather outages are published as degraded or unavailable status; they do not silently become zero risk. `CFBD_API_KEY` may be set in the workflow environment for the authenticated CFBD adapter. Set `NWS_CONTACT_EMAIL` in the workflow secrets to include an identifying contact in NWS requests.
 
-The frontend reads `/data/manifest.json`, `/data/games/index.json`, and per-game JSON. `VITE_DATA_BASE_URL` can point it at a separate public data branch without rebuilding app source for each refresh.
+The frontend reads `/data/manifest.json`, `/data/games/index.json`, and per-game JSON from the same site. `VITE_DATA_BASE_URL` can point local builds at another data host when needed.
 
 ## Backtesting
 
@@ -67,7 +67,8 @@ npm run web:build
 - Optional `GAME_OVERRIDES_JSON` Actions secret can correct a game. Example: `{"nfl_2026_123":{"official_delay_active":true,"delay_started_at":"2026-09-20T20:15:00Z","source_note":"Team announcement"}}`. Overrides apply after sports-feed status and publish only the validated game state and source note.
 - GitHub Actions refresh HREF and HRRR forecasts hourly and live snapshots every five minutes. The frequent workflow reuses cached HREF and HRRR data while refreshing MRMS, GLM and NWS. The scoreboard polls published snapshots every 60 seconds.
 - `live-data` contains generated public JSON only. It must not contain weather grids, credentials, source archives, or build instructions.
-- GitHub Pages deployment builds only the static app; data updates publish separately.
+- GitHub Pages deployment bundles the latest `live-data` JSON with the static app and redeploys after each successful schedule, forecast, or live refresh.
+- Set repository **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. GitHub Pages requires a paid plan for a private repository; otherwise the source repository must be public.
 
 ## Attribution
 

@@ -14,6 +14,7 @@ import xml.etree.ElementTree as ET
 from collections.abc import Callable, Iterator
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
+from importlib import import_module
 from typing import Any
 from urllib.parse import urlencode
 
@@ -66,14 +67,14 @@ class _Granule:
 def _open_netcdf(data: bytes) -> Any:
     """Open an in-memory NetCDF-4 file; import the optional package lazily."""
     try:
-        import netCDF4
+        netcdf4: Any = import_module("netCDF4")
     except ImportError as exc:
         raise ProviderError(
             "GLM NetCDF support is optional; install NFL Delay Tracker with "
             "the 'glm' extra (python -m pip install 'nfl-delay-tracker[glm]')"
         ) from exc
     try:
-        return netCDF4.Dataset("glm-granule-in-memory.nc", mode="r", memory=data)
+        return netcdf4.Dataset("glm-granule-in-memory.nc", mode="r", memory=data)
     except (OSError, RuntimeError, ValueError) as exc:
         raise ProviderError(f"GLM NetCDF-4 decode failed: {exc}") from exc
 

@@ -9,6 +9,13 @@ on:
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/deploy-pages.yml'
+  workflow_run:
+    workflows:
+      - Refresh NFL Delay Tracker live scores
+      - Refresh NFL Delay Tracker weather model
+      - Sync NFL Delay Tracker schedules
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: read
@@ -21,12 +28,21 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Include latest published data
+        shell: bash
+        run: |
+          mkdir -p web/public/data
+          if git ls-remote --exit-code --heads origin live-data >/dev/null; then
+            git fetch --no-tags origin live-data:refs/remotes/origin/live-data
+            git archive refs/remotes/origin/live-data data | tar -x -C web/public
+          fi
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -36,7 +52,6 @@ jobs:
       - run: npm run web:build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-          VITE_DATA_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/live-data
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web/dist
