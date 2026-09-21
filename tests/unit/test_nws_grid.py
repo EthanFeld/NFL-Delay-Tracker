@@ -23,10 +23,11 @@ def test_nws_grid_uses_valid_times_when_update_time_is_missing(monkeypatch) -> N
     )
     provider = nws.NwsGridProvider()
     provider._grid_url_by_venue[venue.venue_id] = "https://example.test/grid"
-    monkeypatch.setattr(
-        nws,
-        "get_json",
-        lambda *_args, **_kwargs: {
+    calls: list[bool] = []
+
+    def fake_get_json(*_args: object, **_kwargs: object) -> dict[str, object]:
+        calls.append(True)
+        return {
             "properties": {
                 "validTimes": "2026-09-20T19:00:00+00:00/PT12H",
                 "probabilityOfThunder": {
@@ -38,8 +39,9 @@ def test_nws_grid_uses_valid_times_when_update_time_is_missing(monkeypatch) -> N
                     ]
                 },
             }
-        },
-    )
+        }
+
+    monkeypatch.setattr(nws, "get_json", fake_get_json)
 
     hazards, fetched_at, _ = provider.fetch_hazards(
         venue, kickoff=datetime(2026, 9, 20, 20, tzinfo=UTC)
@@ -51,3 +53,5 @@ def test_nws_grid_uses_valid_times_when_update_time_is_missing(monkeypatch) -> N
     assert min(point.offset_minutes for point in hazards) >= -90
     assert max(point.offset_minutes for point in hazards) <= 540
     assert valid_end > fetched_at
+    provider.fetch_hazards(venue, kickoff=datetime(2026, 9, 20, 21, tzinfo=UTC))
+    assert len(calls) == 1

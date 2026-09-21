@@ -204,6 +204,7 @@ export function normalizeGame(input: unknown, manifestSources: SourceHealth[] = 
     officialResumeAt: isoOrString(first(game, 'official_resume_at', 'officialResumeAt')) || undefined,
     generatedAt: isoOrString(first(root, 'generated_at', 'updated_at') ?? first(quality, 'generated_at')) || undefined,
     modelVersion: text(first(root, 'model_version', 'model_version_id')) || undefined,
+    forecastScope: text(first(quality, 'forecast_scope')) || undefined,
     delayProbability,
     kickoffDelayProbability: probability(first(pregame, 'kickoff_delay_probability', 'probability_kickoff_delay')),
     inGameDelayProbability: probability(first(pregame, 'in_game_delay_probability', 'probability_in_game_delay')),

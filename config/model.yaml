@@ -6,9 +6,9 @@ correlation_source: configurable bootstrap prior; archive fit required before pr
 temporal_blending:
   nowcast_weight_at_zero: 0.9
   nowcast_weight_at_60: 0.2
-  href_weight: 0.8
-  nws_weight: 0.2
-weather_forecast_horizon_hours: 48
+  href_weight: 1.0
+  nws_weight: 0.0
+weather_forecast_horizon_hours: 168
 active_delay_duration_prior:
   source: data/historical_delay_events.csv
   count: 28

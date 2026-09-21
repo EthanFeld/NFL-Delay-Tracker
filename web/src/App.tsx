@@ -108,14 +108,14 @@ function routeGameId(): string | undefined {
   return match ? decodeURIComponent(match[1]) : undefined;
 }
 
-function RiskRing({ probability, large = false }: { probability?: number; large?: boolean }) {
+function RiskRing({ probability, large = false, label = 'delay risk' }: { probability?: number; large?: boolean; label?: string }) {
   const known = probability !== undefined;
   const p = known ? Math.max(0, Math.min(1, probability)) : 0;
   const color = !known ? 'var(--muted)' : p >= 0.35 ? 'var(--risk-high)' : p >= 0.15 ? 'var(--risk-medium)' : 'var(--risk-low)';
   return (
-    <div className={`risk-ring ${large ? 'risk-ring-large' : ''}`} style={{ '--risk-value': `${p * 100}%`, '--ring-color': color } as CSSProperties & Record<`--${string}`, string>} aria-label={known ? `Weather delay risk ${formatPercent(probability)}` : 'Weather delay risk unavailable'}>
+    <div className={`risk-ring ${large ? 'risk-ring-large' : ''}`} style={{ '--risk-value': `${p * 100}%`, '--ring-color': color } as CSSProperties & Record<`--${string}`, string>} aria-label={known ? `${label} ${formatPercent(probability)}` : `${label} unavailable`}>
       <span>{known ? formatPercent(probability) : '—'}</span>
-      <small>delay risk</small>
+      <small>{label}</small>
     </div>
   );
 }
@@ -126,6 +126,8 @@ function GameCard({ game, generatedAt }: { game: Game; generatedAt?: string }) {
   const source = game.sources[0];
   const status = statusLabel(game);
   const scheduleTime = formatTime(game.kickoff, game.timezone);
+  const scope = game.forecastScope;
+  const riskLabel = scope === 'regional_outlook' || scope === 'regional_proxy' ? 'regional' : scope === 'forecast_pending' ? 'outlook pending' : scope === 'archive_missing' ? 'no archive' : scope === 'weather_unavailable' ? 'unavailable' : 'delay risk';
   return (
     <a className={`game-card ${live ? 'game-card-live' : ''}`} href={`#/game/${encodeURIComponent(game.id)}`} aria-label={`${game.awayTeam} at ${game.homeTeam}, ${status}`}>
       <div className="game-card-topline">
@@ -158,7 +160,7 @@ function GameCard({ game, generatedAt }: { game: Game; generatedAt?: string }) {
           ) : game.activeDelay ? (
             <div className="resume-card-metric"><span className="metric-eyebrow">EST. RESUME · P50</span><strong>{formatTime(game.resumeP50, game.timezone, false)}</strong><small>P75 {formatTime(game.resumeP75, game.timezone, false)} · P90 {formatTime(game.resumeP90, game.timezone, false)}</small></div>
           ) : (
-            <RiskRing probability={game.delayProbability} />
+            <RiskRing probability={game.delayProbability} label={riskLabel} />
           )}
         </div>
       </div>
@@ -169,7 +171,7 @@ function GameCard({ game, generatedAt }: { game: Game; generatedAt?: string }) {
         </div>
       ) : (
         <div className="card-bottom">
-          <span className="risk-breakdown">Kickoff <b>{dome ? '—' : formatPercent(game.kickoffDelayProbability)}</b><i /> In-game <b>{dome ? '—' : formatPercent(game.inGameDelayProbability)}</b></span>
+          <span className="risk-breakdown">{live ? <>New delay <b>{dome ? '—' : formatPercent(game.inGameDelayProbability ?? game.delayProbability)}</b></> : <>Kickoff <b>{dome ? '—' : formatPercent(game.kickoffDelayProbability)}</b><i /> In-game <b>{dome ? '—' : formatPercent(game.inGameDelayProbability)}</b></>}</span>
           <span className="updated-note"><span className={`fresh-dot ${freshnessTone(source, game.generatedAt || generatedAt)}`} />{formatAge(source, game.generatedAt || generatedAt)}</span>
         </div>
       )}
@@ -321,6 +323,8 @@ function PolicyRingView({ game }: { game: Game }) {
 
 function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; globalSources: SourceHealth[]; generatedAt?: string; onBack: () => void }) {
   const active = game.activeDelay;
+  const liveRisk = isLive(game) && !active;
+  const regionalRisk = game.forecastScope === 'regional_outlook' || game.forecastScope === 'regional_proxy';
   const sourceList = game.sources.length ? game.sources : globalSources;
   const dome = isDome(game);
   const dataWarnings = game.qualityWarnings;
@@ -395,13 +399,13 @@ function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; 
         </section>
       ) : (
         <section className="forecast-panel pregame-forecast">
-          <div className="panel-heading"><div><span className="section-kicker"><Activity size={14} /> PREGAME FORECAST</span><h2>Weather delay risk</h2></div><span className="forecast-asof">Forecast {formatAge(undefined, game.generatedAt || generatedAt).toLowerCase()}</span></div>
+          <div className="panel-heading"><div><span className="section-kicker"><Activity size={14} /> {liveRisk ? 'LIVE GAME RISK' : 'PREGAME FORECAST'}</span><h2>{liveRisk ? 'New weather delay' : 'Weather delay risk'}</h2></div><span className="forecast-asof">Forecast {formatAge(undefined, game.generatedAt || generatedAt).toLowerCase()}</span></div>
           <div className="risk-detail-top">
-            <div className="risk-primary"><RiskRing probability={game.delayProbability} large /><p>Chance of at least one lightning-related delay affecting this game.</p></div>
-            <div className="risk-splits"><div><span>Kickoff delay</span><b>{formatPercent(game.kickoffDelayProbability)}</b></div><div><span>In-game delay</span><b>{formatPercent(game.inGameDelayProbability)}</b></div><div><span>Expected total delay</span><b>{game.expectedDelayMinutes === undefined ? '—' : `${Math.round(game.expectedDelayMinutes)} min`}</b></div></div>
+            <div className="risk-primary"><RiskRing probability={game.delayProbability} large label={regionalRisk ? 'regional' : 'delay risk'} /><p>{regionalRisk ? 'Regional thunder inputs; this is an experimental scenario, not calibrated stadium delay odds.' : liveRisk ? 'Chance of a new lightning-related delay from now through game end.' : 'Chance of at least one lightning-related delay affecting this game.'}</p></div>
+            {liveRisk ? <div className="risk-splits"><div><span>New in-game delay</span><b>{formatPercent(game.inGameDelayProbability ?? game.delayProbability)}</b></div><div><span>Expected delay from now</span><b>{game.expectedDelayMinutes === undefined ? '—' : `${Math.round(game.expectedDelayMinutes)} min`}</b></div><div><span>Kickoff delay</span><b>Not applicable</b></div></div> : <div className="risk-splits"><div><span>Kickoff delay</span><b>{formatPercent(game.kickoffDelayProbability)}</b></div><div><span>In-game delay</span><b>{formatPercent(game.inGameDelayProbability)}</b></div><div><span>Expected total delay</span><b>{game.expectedDelayMinutes === undefined ? '—' : `${Math.round(game.expectedDelayMinutes)} min`}</b></div></div>}
           </div>
           {game.highestRiskWindow && <div className="highest-window"><span>Highest-risk window</span><b>{game.highestRiskWindow}</b></div>}
-          <div className="chart-heading"><b>Hourly weather delay hazard</b><span>Venue local time</span></div>
+          <div className="chart-heading"><b>{regionalRisk ? 'Regional thunder outlook' : 'Hourly weather delay hazard'}</b><span>Venue local time</span></div>
           <RiskTimeline game={game} />
         </section>
       )}

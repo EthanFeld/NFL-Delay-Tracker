@@ -74,6 +74,7 @@ export interface Game {
   officialResumeAt?: string;
   generatedAt?: string;
   modelVersion?: string;
+  forecastScope?: string;
   delayProbability?: number;
   kickoffDelayProbability?: number;
   inGameDelayProbability?: number;

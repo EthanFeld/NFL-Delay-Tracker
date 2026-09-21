@@ -67,7 +67,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     sync_parser = commands.add_parser("sync-schedules", help="Refresh NFL and NCAA scoreboards")
     sync_parser.add_argument("--days", type=int, default=14)
     refresh_parser = commands.add_parser("refresh-forecasts", help="Create forecast snapshots")
-    refresh_parser.add_argument("--horizon-hours", type=int, default=48)
+    refresh_parser.add_argument("--horizon-hours", type=int, default=168)
     refresh_parser.add_argument("--simulations", type=int, default=20_000)
     refresh_parser.add_argument(
         "--skip-href", action="store_true", help="Reuse cached HREF inputs without downloading"

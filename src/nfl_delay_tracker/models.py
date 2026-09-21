@@ -229,9 +229,11 @@ class ForecastQuality(StrictModel):
     sports_data_age_seconds: int | None = Field(default=None, ge=0)
     policy_verification: PolicyVerification
     forecast_lead_minutes: int | None = None
+    forecast_scope: str = "venue_delay_model"
     missing_sources: list[str] = Field(default_factory=list)
     degraded: bool = False
     status: str = "experimental"
+    message: str | None = None
 
 
 class DelayForecast(StrictModel):

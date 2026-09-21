@@ -29,6 +29,7 @@ class NwsGridProvider:
 
     def __init__(self) -> None:
         self._grid_url_by_venue: dict[str, str] = {}
+        self._grid_payload_by_venue: dict[str, tuple[dict[str, Any], datetime, str]] = {}
         self.contact_email = os.getenv("NWS_CONTACT_EMAIL")
 
     @property
@@ -41,33 +42,35 @@ class NwsGridProvider:
     def fetch_hazards(
         self, venue: Venue, *, kickoff: datetime
     ) -> tuple[list[HazardPoint], datetime, str]:
-        grid_url = self._grid_url_by_venue.get(venue.venue_id)
-        if grid_url is None:
-            point_url = f"https://api.weather.gov/points/{venue.latitude:.4f},{venue.longitude:.4f}"
-            point_result = get_json(
-                point_url,
-                headers=self._headers,
-            )
-            grid_url = point_result["properties"]["forecastGridData"]
-            self._grid_url_by_venue[venue.venue_id] = grid_url
-        payload: dict[str, Any] = get_json(
-            grid_url,
-            headers=self._headers,
-        )
+        cached = self._grid_payload_by_venue.get(venue.venue_id)
+        if cached is None:
+            grid_url = self._grid_url_by_venue.get(venue.venue_id)
+            if grid_url is None:
+                point_url = f"https://api.weather.gov/points/{venue.latitude:.4f},{venue.longitude:.4f}"
+                point_result = get_json(point_url, headers=self._headers)
+                grid_url = point_result["properties"]["forecastGridData"]
+                self._grid_url_by_venue[venue.venue_id] = grid_url
+            payload: dict[str, Any] = get_json(grid_url, headers=self._headers)
+            properties = payload.get("properties", {})
+            updated = properties.get("updateTime")
+            fetched_at = datetime.now(UTC)
+            if isinstance(updated, str):
+                try:
+                    fetched_at = datetime.fromisoformat(updated.replace("Z", "+00:00"))
+                    fetched_at = fetched_at.astimezone(UTC)
+                except ValueError:
+                    pass
+            elif isinstance(properties.get("validTimes"), str):
+                try:
+                    fetched_at = parse_valid_time(properties["validTimes"])[0]
+                except (ValueError, TypeError):
+                    pass
+            cached = (payload, fetched_at, grid_url)
+            self._grid_payload_by_venue[venue.venue_id] = cached
+
+        payload, fetched_at, grid_url = cached
         properties = payload.get("properties", {})
         thunder = properties.get("probabilityOfThunder", {}).get("values", [])
-        updated = properties.get("updateTime")
-        fetched_at = datetime.now(UTC)
-        if isinstance(updated, str):
-            try:
-                fetched_at = datetime.fromisoformat(updated.replace("Z", "+00:00")).astimezone(UTC)
-            except ValueError:
-                pass
-        elif isinstance(properties.get("validTimes"), str):
-            try:
-                fetched_at = parse_valid_time(properties["validTimes"])[0]
-            except (ValueError, TypeError):
-                pass
         hazards: list[HazardPoint] = []
         for entry in thunder:
             raw_value = entry.get("value")

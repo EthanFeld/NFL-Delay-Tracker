@@ -55,6 +55,20 @@ describe('scoreboard game normalization', () => {
     expect(game.timezone).toBe('America/Indiana/Indianapolis');
   });
 
+  it('keeps regional forecast scope visible to the game view', () => {
+    const game = normalizeGame({
+      id: 'week-ahead-game',
+      league: 'NFL',
+      home_team: 'Home Team',
+      away_team: 'Away Team',
+      kickoff_utc: '2026-09-27T17:00:00Z',
+      status: 'scheduled',
+      quality: { forecast_scope: 'regional_outlook' },
+    });
+
+    expect(game.forecastScope).toBe('regional_outlook');
+  });
+
   it('normalizes active-delay resume quantiles and additional-resume odds', () => {
     const game = normalizeGame({
       id: 'delayed-game',

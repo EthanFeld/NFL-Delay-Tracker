@@ -276,8 +276,8 @@ def _blend_weather_hazards(
     warmup_minutes: int,
     nowcast_weight_at_zero: float = 0.9,
     nowcast_weight_at_60: float = 0.2,
-    href_weight: float = 0.8,
-    nws_weight: float = 0.2,
+    href_weight: float = 1.0,
+    nws_weight: float = 0.0,
 ) -> list[HazardPoint]:
     """Blend MRMS nowcasts with HREF calibrated thunder and NWS forecast bins."""
     nws_by_offset = {point.offset_minutes: point.probability for point in nws_hazards}
@@ -335,7 +335,7 @@ def _blend_weather_hazards(
             point_sources.append("MRMS nowcast")
         if href_probability is not None:
             point_sources.append("SPC HREF CT")
-        if offset in nws_by_offset:
+        if offset in nws_by_offset and (href_probability is None or nws_weight > 0):
             point_sources.append("NWS regional thunder proxy")
         points.append(
             HazardPoint(
@@ -1409,7 +1409,21 @@ def _unavailable_forecast(
     *,
     generated_at: datetime,
     note: str,
+    forecast_scope: str = "weather_unavailable",
 ) -> dict[str, Any]:
+    missing_sources = {
+        "archive_missing": ["Archived pregame forecast"],
+        "forecast_pending": ["NWS regional weather outlook is outside the seven-day window"],
+        "venue_unresolved": ["Venue registry or weather policy"],
+        "game_unavailable": ["Active game schedule"],
+    }.get(
+        forecast_scope,
+        [
+            "SPC HREF CT thunder probabilities",
+            "NWS probability of thunder",
+            "MRMS lightning observations",
+        ],
+    )
     return {
         "generated_at": generated_at.isoformat(),
         "model_version": "engineering-baseline-0.1.0",
@@ -1429,11 +1443,8 @@ def _unavailable_forecast(
             "weather_data_age_seconds": None,
             "sports_data_age_seconds": 0,
             "policy_verification": policy.verification.value if policy else "unknown",
-            "missing_sources": [
-                "SPC HREF CT thunder probabilities",
-                "NWS probability of thunder",
-                "MRMS lightning observations",
-            ],
+            "forecast_scope": forecast_scope,
+            "missing_sources": missing_sources,
             "degraded": True,
             "status": "unavailable",
             "message": note,
@@ -1441,10 +1452,43 @@ def _unavailable_forecast(
     }
 
 
+def _carry_forward_week_ahead_forecast(
+    game_record: dict[str, Any], game: Game, *, now: datetime
+) -> dict[str, Any] | None:
+    """Keep a fresh 3–7 day outlook during short-interval live refreshes."""
+    pregame = game_record.get("pregame")
+    quality = game_record.get("quality")
+    generated_at = _timestamp(game_record.get("generated_at"))
+    if (
+        not isinstance(pregame, dict)
+        or not isinstance(quality, dict)
+        or quality.get("forecast_scope") != "regional_outlook"
+        or generated_at is None
+        or not timedelta(minutes=-5) <= now - generated_at <= timedelta(hours=24)
+        or game.kickoff_utc > now + timedelta(hours=168)
+    ):
+        return None
+
+    carried = dict(game_record)
+    carried["game"] = game.model_dump(mode="json")
+    weather = carried.get("weather")
+    if isinstance(weather, dict):
+        weather = dict(weather)
+        carried["weather"] = weather
+        features = weather.get("venue_features")
+        if isinstance(features, dict):
+            features = dict(features)
+            weather["venue_features"] = features
+            alerts = features.get("nws_alerts")
+            if isinstance(alerts, dict):
+                features["nws_alerts"] = {**alerts, "status": "stale", "alerts": []}
+    return carried
+
+
 def refresh_forecasts(
     *,
     root: Path = ROOT,
-    forecast_horizon_hours: int = 48,
+    forecast_horizon_hours: int = 168,
     simulation_count: int = 20_000,
     refresh_href: bool = True,
     refresh_hrrr: bool = True,
@@ -1466,6 +1510,7 @@ def refresh_forecasts(
         if isinstance(item, dict)
     ) or any(override.official_delay_active for override in manual_overrides.values())
     now = datetime.now(UTC)
+    forecast_horizon_hours = min(168, max(1, forecast_horizon_hours))
     limit = now + timedelta(hours=forecast_horizon_hours)
     provider = NwsGridProvider()
     try:
@@ -1635,6 +1680,7 @@ def refresh_forecasts(
                     "weather_data_age_seconds": None,
                     "sports_data_age_seconds": 0,
                     "policy_verification": policy.verification.value if policy else "unknown",
+                    "forecast_scope": "indoor",
                     "missing_sources": [],
                     "degraded": False,
                     "status": "indoor",
@@ -1649,22 +1695,48 @@ def refresh_forecasts(
                 policy,
                 generated_at=generated_at,
                 note="Venue or policy is unresolved.",
+                forecast_scope="venue_unresolved",
             )
-        elif game.kickoff_utc > limit or game.status.value in (
-            "completed",
-            "cancelled",
-            "postponed",
-        ):
+        elif game.status.value in ("completed", "cancelled", "postponed"):
             forecast = _unavailable_forecast(
                 game,
                 venue,
                 policy,
                 generated_at=generated_at,
-                note=f"Forecast starts within {forecast_horizon_hours} hours of kickoff.",
+                note=(
+                    "Game completed; no pregame forecast snapshot was archived."
+                    if game.status.value == "completed"
+                    else f"Game is {game.status.value}; no active forecast is available."
+                ),
+                forecast_scope=(
+                    "archive_missing"
+                    if game.status.value == "completed"
+                    else "game_unavailable"
+                ),
             )
+        elif game.kickoff_utc > limit:
+            carried_forecast = _carry_forward_week_ahead_forecast(
+                game_record, game, now=generated_at
+            )
+            if carried_forecast is None:
+                forecast = _unavailable_forecast(
+                    game,
+                    venue,
+                    policy,
+                    generated_at=generated_at,
+                    note="Weather outlook opens seven days before kickoff.",
+                    forecast_scope="forecast_pending",
+                )
+            else:
+                forecast = carried_forecast
+                forecasted += 1
         else:
             try:
-                hrrr_needed = game.kickoff_utc >= now - timedelta(hours=6)
+                hrrr_needed = (
+                    now - timedelta(hours=6)
+                    <= game.kickoff_utc
+                    <= now + timedelta(hours=48)
+                )
                 if hrrr_needed:
                     hrrr_cached = _cached_context(game_record, "hrrr_point")
                     if hrrr_provider is not None:
@@ -1752,7 +1824,11 @@ def refresh_forecasts(
                         "message": nws_error,
                     }
 
-                if not mrms_attempted:
+                near_term_exposure = (
+                    game.kickoff_utc <= now + timedelta(hours=6)
+                    or storm_motion_applicable
+                )
+                if not mrms_attempted and near_term_exposure:
                     mrms_attempted = True
                     try:
                         mrms_snapshot = MrmsSnapshot(include_storm_motion=storm_motion_needed)
@@ -1803,7 +1879,7 @@ def refresh_forecasts(
                             "message": str(exc),
                         }
 
-                if mrms_snapshot:
+                if mrms_snapshot and near_term_exposure:
                     cache_key = (venue.venue_id, policy.policy_id, storm_motion_applicable)
                     if cache_key not in mrms_features_by_venue:
                         mrms_features_by_venue[cache_key] = mrms_snapshot.sample(
@@ -1942,8 +2018,8 @@ def refresh_forecasts(
                         blending_config.get("nowcast_weight_at_zero", 0.9)
                     ),
                     nowcast_weight_at_60=float(blending_config.get("nowcast_weight_at_60", 0.2)),
-                    href_weight=float(blending_config.get("href_weight", 0.8)),
-                    nws_weight=float(blending_config.get("nws_weight", 0.2)),
+                    href_weight=float(blending_config.get("href_weight", 1.0)),
+                    nws_weight=float(blending_config.get("nws_weight", 0.0)),
                 )
                 forecast_hazards = [
                     point
@@ -2035,17 +2111,23 @@ def refresh_forecasts(
                         missing_sources.append("GOES GLM flash observations")
                     if not nws_hazards:
                         missing_sources.append("NWS probabilityOfThunder")
-                    if not href_rows:
+                    forecast_lead_minutes = int(
+                        (game.kickoff_utc - generated_at).total_seconds() / 60
+                    )
+                    if not href_rows and forecast_lead_minutes <= 48 * 60:
                         missing_sources.insert(0, "SPC HREF CT calibrated thunder")
                     elif href_errors:
                         missing_sources.insert(0, "SPC HREF CT hourly coverage gaps")
                     mrms_coverage = mrms_features.get("coverage", {}) if mrms_features else {}
-                    if not any(
+                    needs_near_term_observations = forecast_lead_minutes <= 6 * 60
+                    if needs_near_term_observations and not any(
                         mrms_coverage.get(name, False)
                         for name in ("probability_next_30min", "probability_next_60min")
                     ):
                         missing_sources.insert(0, "MRMS near-term probability grids")
-                    if not mrms_coverage.get("cg_density_1min", False):
+                    if needs_near_term_observations and not mrms_coverage.get(
+                        "cg_density_1min", False
+                    ):
                         missing_sources.insert(0, "MRMS current lightning density")
                     alert_features = _alert_snapshot_features(alert_snapshots.get(venue.venue_id))
                     if alert_features.get("status") != "ok":
@@ -2107,16 +2189,44 @@ def refresh_forecasts(
                         model_delay_active=model_active,
                         last_qualifying_event_at=latest_qualifying_event_at,
                     )
+                    local_nowcast_available = any(
+                        mrms_coverage.get(name, False)
+                        for name in ("probability_next_30min", "probability_next_60min")
+                    )
+                    long_range_outlook = forecast_lead_minutes > 48 * 60
+                    forecast_scope = (
+                        "regional_outlook"
+                        if long_range_outlook
+                        else "venue_nowcast_model"
+                        if local_nowcast_available
+                        else "regional_proxy"
+                    )
+                    quality_message = (
+                        "Low-confidence NWS 3–7 day regional thunder outlook. Local radar, venue "
+                        "lightning observations, and HREF coverage are unavailable at this lead; "
+                        "the displayed delay-risk simulation is not calibrated to venue outcomes."
+                        if long_range_outlook
+                        else "HREF/NWS thunder probabilities are regional proxies. Local MRMS "
+                        "lightning grids are unavailable; displayed venue-delay odds are "
+                        "experimental and uncalibrated."
+                        if not local_nowcast_available
+                        else "Local MRMS nowcast contributes to this experimental delay estimate; "
+                        "venue-level probabilities are not calibrated to representative outcomes."
+                    )
                     quality = ForecastQuality(
                         weather_data_age_seconds=age,
                         sports_data_age_seconds=0,
                         policy_verification=policy.verification,
-                        forecast_lead_minutes=int(
-                            (game.kickoff_utc - generated_at).total_seconds() / 60
-                        ),
+                        forecast_lead_minutes=forecast_lead_minutes,
+                        forecast_scope=forecast_scope,
                         missing_sources=missing_sources,
                         degraded=True,
-                        status="experimental HREF/MRMS/NWS lightning risk model",
+                        status=(
+                            "NWS week-ahead regional outlook"
+                            if long_range_outlook
+                            else "experimental HREF/MRMS/NWS weather-delay model"
+                        ),
+                        message=quality_message,
                     )
                     forecast = GameForecast(
                         generated_at=generated_at,
@@ -2129,11 +2239,6 @@ def refresh_forecasts(
                         delay=delay,
                         quality=quality,
                     ).model_dump(mode="json")
-                    forecast["quality"]["message"] = (
-                        "SPC HREF CT is a calibrated regional thunder probability; MRMS is a "
-                        "public lightning proxy, and venue delay probabilities remain "
-                        "experimental and unvalidated."
-                    )
                     forecasted += 1
             except Exception as exc:
                 errors.append(f"{game.game_id}: {exc}")

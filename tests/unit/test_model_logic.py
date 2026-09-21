@@ -13,8 +13,8 @@ from nfl_delay_tracker.model.simulator import (
     simulate_trajectory,
 )
 from nfl_delay_tracker.model.trajectories import correlated_events, estimate_latent_correlation
-from nfl_delay_tracker.models import HazardPoint, RestartOverhead, WeatherPolicy
-from nfl_delay_tracker.pipeline import load_registry
+from nfl_delay_tracker.models import Game, HazardPoint, League, RestartOverhead, WeatherPolicy
+from nfl_delay_tracker.pipeline import _carry_forward_week_ahead_forecast, load_registry
 
 
 def _outdoor_policy() -> WeatherPolicy:
@@ -24,6 +24,40 @@ def _outdoor_policy() -> WeatherPolicy:
 
 def _point(offset: int, probability: float) -> HazardPoint:
     return HazardPoint(offset_minutes=offset, probability=probability, source="test")
+
+
+def test_short_refresh_carries_fresh_week_ahead_forecast_without_old_alerts() -> None:
+    now = datetime(2026, 9, 20, 12, tzinfo=UTC)
+    game = Game(
+        game_id="week-ahead",
+        league=League.NFL,
+        season=2026,
+        home_team="Home",
+        away_team="Away",
+        kickoff_utc=now + timedelta(hours=120),
+    )
+    previous = {
+        "generated_at": (now - timedelta(hours=1)).isoformat(),
+        "game": {"status": "scheduled"},
+        "pregame": {"delay_probability": 0.04},
+        "quality": {"forecast_scope": "regional_outlook"},
+        "weather": {
+            "venue_features": {
+                "nws_alerts": {"status": "ok", "alerts": [{"headline": "old alert"}]}
+            }
+        },
+    }
+
+    carried = _carry_forward_week_ahead_forecast(previous, game, now=now)
+
+    assert carried is not None
+    assert carried["pregame"] == {"delay_probability": 0.04}
+    assert carried["game"]["game_id"] == game.game_id
+    assert carried["weather"]["venue_features"]["nws_alerts"] == {
+        "status": "stale",
+        "alerts": [],
+    }
+    assert previous["weather"]["venue_features"]["nws_alerts"]["alerts"]
 
 
 def test_zero_hazard_produces_zero_delay_probability() -> None:

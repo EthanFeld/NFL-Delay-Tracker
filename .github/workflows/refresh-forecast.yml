@@ -34,7 +34,7 @@ jobs:
             cp -R /tmp/nfl-delay-previous/data/. data/
           fi
       - run: python -m nfl_delay_tracker.cli refresh-live --days 3
-      - run: python -m nfl_delay_tracker.cli refresh-forecasts --horizon-hours 48 --simulations 20000
+      - run: python -m nfl_delay_tracker.cli refresh-forecasts --horizon-hours 168 --simulations 20000
       - name: Publish JSON-only live-data branch
         shell: bash
         run: |
