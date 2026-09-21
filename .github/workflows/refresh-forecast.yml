@@ -2,6 +2,12 @@ name: Refresh NFL Delay Tracker weather model
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'src/nfl_delay_tracker/**'
+      - 'config/model.yaml'
+      - '.github/workflows/refresh-forecast.yml'
   schedule:
     - cron: '17 * * * *'
 

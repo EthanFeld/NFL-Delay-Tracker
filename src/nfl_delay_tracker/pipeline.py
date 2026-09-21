@@ -443,6 +443,110 @@ def _blend_weather_hazards(
     return points
 
 
+def _hazard_window_state(
+    hazards: list[HazardPoint], *, start_offset: int, end_offset: int
+) -> str:
+    """Classify a five-minute game window as storm, clear, or incompletely covered."""
+    if end_offset <= start_offset:
+        return "clear"
+    by_offset: dict[int, HazardPoint] = {}
+    for point in hazards:
+        if start_offset <= point.offset_minutes < end_offset:
+            previous = by_offset.get(point.offset_minutes)
+            if previous is None or point.probability > previous.probability:
+                by_offset[point.offset_minutes] = point
+    missing = False
+    for offset in range(start_offset, end_offset, 5):
+        bin_point = by_offset.get(offset)
+        if bin_point is None:
+            missing = True
+        elif bin_point.probability > 0:
+            return "storm"
+    return "incomplete" if missing else "clear"
+
+
+def _is_numeric_zero(value: Any) -> bool:
+    return (
+        not isinstance(value, bool)
+        and isinstance(value, int | float)
+        and math.isfinite(float(value))
+        and float(value) == 0.0
+    )
+
+
+def _forecast_confirms_clear_window(
+    *,
+    start_offset: int,
+    end_offset: int,
+    forecast_hazards: list[HazardPoint],
+    nws_hazards: list[HazardPoint],
+    nws_fresh: bool,
+    href_hazards: list[HazardPoint],
+    href_fresh: bool,
+    window_is_current: bool,
+    mrms_features: dict[str, Any] | None,
+    alert_features: dict[str, Any],
+    storm_motion: dict[str, Any],
+    delay_active: bool,
+) -> bool:
+    """Require complete zero thunder input before publishing a hard zero risk."""
+    if end_offset <= start_offset:
+        return True
+    exposure_state = _hazard_window_state(
+        forecast_hazards, start_offset=start_offset, end_offset=end_offset
+    )
+    if exposure_state != "clear":
+        return False
+
+    source_states = []
+    if nws_fresh:
+        source_states.append(
+            _hazard_window_state(nws_hazards, start_offset=start_offset, end_offset=end_offset)
+        )
+    if href_fresh:
+        source_states.append(
+            _hazard_window_state(href_hazards, start_offset=start_offset, end_offset=end_offset)
+        )
+    if "storm" in source_states or "clear" not in source_states:
+        return False
+
+    if delay_active:
+        return False
+    tracks = storm_motion.get("tracks", [])
+    if isinstance(tracks, list) and any(
+        isinstance(track, dict)
+        and str(track.get("status", "")).lower() == StormMotionStatus.APPROACHING.value
+        for track in tracks
+    ):
+        return False
+
+    if not window_is_current:
+        return True
+    if alert_features.get("status") != "ok" or alert_features.get("has_active_warning"):
+        return False
+    if not isinstance(mrms_features, dict):
+        return False
+    coverage = mrms_features.get("coverage")
+    if not isinstance(coverage, dict) or not all(
+        coverage.get(name)
+        for name in ("probability_next_30min", "probability_next_60min", "cg_density_1min")
+    ):
+        return False
+    if any(
+        not _is_numeric_zero(mrms_features.get(name))
+        for name in ("probability_next_30min", "probability_next_60min")
+    ):
+        return False
+    density = mrms_features.get("cg_density_per_km2_min")
+    if not isinstance(density, dict):
+        return False
+    if not _is_numeric_zero(density.get("fraction_positive")) or not _is_numeric_zero(
+        density.get("max")
+    ):
+        return False
+    return True
+
+
 def _href_rows_to_hazards(rows: list[dict[str, Any]], kickoff: datetime) -> list[HazardPoint]:
     by_offset: dict[int, HazardPoint] = {}
     for row in rows:
@@ -2341,6 +2445,53 @@ def refresh_forecasts(
                 )
                 summary.update(game.model_dump(mode="json"))
 
+                alert_features = _alert_snapshot_features(alert_snapshots.get(venue.venue_id))
+                elapsed_seconds = (generated_at - game.kickoff_utc).total_seconds()
+                floor_now_offset = int(elapsed_seconds // 300) * 5
+                ceil_now_offset = math.ceil(elapsed_seconds / 300) * 5
+                live_forecast = (
+                    game.status in {GameStatus.IN_PROGRESS, GameStatus.WEATHER_DELAY}
+                    and generated_at >= game.kickoff_utc
+                )
+                remaining_minutes: int | None = None
+                if live_forecast:
+                    remaining_minutes = _remaining_game_exposure_minutes(game, generated_at)
+                    risk_start_offset = floor_now_offset + 5
+                    risk_end_offset = floor_now_offset + remaining_minutes
+                    window_is_current = True
+                else:
+                    risk_start_offset = max(
+                        -policy.warmup_exposure_minutes, ceil_now_offset
+                    )
+                    risk_end_offset = DEFAULT_GAME_DURATION_MINUTES
+                    window_is_current = risk_start_offset <= ceil_now_offset
+                nws_age = generated_at - weather_fetched_at
+                nws_fresh = timedelta(minutes=-5) <= nws_age <= timedelta(hours=12)
+                href_fresh = bool(href_rows) and all(
+                    (issued_at := _timestamp(row.get("issued_at"))) is not None
+                    and timedelta(minutes=-5) <= generated_at - issued_at <= timedelta(hours=18)
+                    for row in href_rows
+                )
+                clear_window_confirmed = _forecast_confirms_clear_window(
+                    start_offset=risk_start_offset,
+                    end_offset=risk_end_offset,
+                    forecast_hazards=forecast_hazards,
+                    nws_hazards=nws_hazards,
+                    nws_fresh=nws_fresh,
+                    href_hazards=href_hazards,
+                    href_fresh=href_fresh,
+                    window_is_current=window_is_current,
+                    mrms_features=mrms_features,
+                    alert_features=alert_features,
+                    storm_motion=storm_motion,
+                    delay_active=game.official_delay_active or game.model_delay_active,
+                )
+                exposure_state = _hazard_window_state(
+                    forecast_hazards,
+                    start_offset=risk_start_offset,
+                    end_offset=risk_end_offset,
+                )
+
                 if not forecast_hazards:
                     href_error_note = href_errors[0] if href_errors else "no usable hourly fields"
                     forecast = _unavailable_forecast(
@@ -2369,19 +2520,26 @@ def refresh_forecasts(
                             fetched_at=global_outlook_fetched_at,
                         )
                         forecasted += 1
+                elif exposure_state != "storm" and not clear_window_confirmed:
+                    forecast = _unavailable_forecast(
+                        game,
+                        venue,
+                        policy,
+                        generated_at=generated_at,
+                        note=(
+                            "Thunder inputs do not cover the full game exposure as clear. "
+                            "A zero delay probability cannot be confirmed."
+                        ),
+                        forecast_scope="weather_unavailable",
+                    )
                 else:
-                    if (
-                        game.status in {GameStatus.IN_PROGRESS, GameStatus.WEATHER_DELAY}
-                        and generated_at >= game.kickoff_utc
-                    ):
+                    if live_forecast:
                         result = simulate_remaining_game(
                             now=generated_at,
                             kickoff=game.kickoff_utc,
                             policy=policy,
                             hazards=forecast_hazards,
-                            remaining_game_minutes=_remaining_game_exposure_minutes(
-                                game, generated_at
-                            ),
+                            remaining_game_minutes=remaining_minutes or 0,
                             simulation_count=simulation_count,
                             rho=model_rho,
                             seed=2026,
@@ -2440,7 +2598,6 @@ def refresh_forecasts(
                         "cg_density_1min", False
                     ):
                         missing_sources.insert(0, "MRMS current lightning density")
-                    alert_features = _alert_snapshot_features(alert_snapshots.get(venue.venue_id))
                     if alert_features.get("status") != "ok":
                         missing_sources.append("NWS severe thunderstorm warning feed")
                     snapshot = WeatherSnapshot(

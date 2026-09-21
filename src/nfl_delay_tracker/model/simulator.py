@@ -68,6 +68,30 @@ def _step_probabilities(hazards: list[HazardPoint], offsets: list[int]) -> list[
     return [_interpolate_hazard(hazards, offset) for offset in offsets]
 
 
+def _has_positive_hazard_in_window(
+    hazards: list[HazardPoint], *, start_minute: int, duration_minutes: int
+) -> bool:
+    """Whether any sampled five-minute bin in the exposure window has storm risk."""
+    if duration_minutes <= 0:
+        return False
+    sorted_hazards = sorted(hazards, key=lambda item: item.offset_minutes)
+    return any(
+        _interpolate_hazard(sorted_hazards, minute) > 0
+        for minute in range(start_minute, start_minute + duration_minutes, STEP_MINUTES)
+    )
+
+
+def _zero_delay_result(simulation_count: int) -> dict[str, Any]:
+    return {
+        "delay_probability": 0.0,
+        "kickoff_delay_probability": 0.0,
+        "in_game_delay_probability": 0.0,
+        "multiple_delay_probability": 0.0,
+        "expected_delay_minutes": 0.0,
+        "simulation_count": simulation_count,
+    }
+
+
 def simulate_trajectory(
     *,
     kickoff: datetime,
@@ -202,6 +226,12 @@ def simulate_pregame(
     """Estimate delay probabilities and duration from correlated trajectories."""
     if simulation_count <= 0:
         raise ValueError("simulation_count must be positive")
+    if not _has_positive_hazard_in_window(
+        hazards,
+        start_minute=-policy.warmup_exposure_minutes,
+        duration_minutes=policy.warmup_exposure_minutes + game_duration_minutes,
+    ):
+        return _zero_delay_result(simulation_count)
     any_delay = kickoff_delay = in_game_delay = multiple = 0
     total_minutes = 0.0
     for index in range(simulation_count):
@@ -252,17 +282,16 @@ def simulate_remaining_game(
     if simulation_count <= 0:
         raise ValueError("simulation_count must be positive")
     if remaining_game_minutes == 0:
-        return {
-            "delay_probability": 0.0,
-            "kickoff_delay_probability": 0.0,
-            "in_game_delay_probability": 0.0,
-            "multiple_delay_probability": 0.0,
-            "expected_delay_minutes": 0.0,
-            "simulation_count": simulation_count,
-        }
+        return _zero_delay_result(simulation_count)
 
     elapsed_minutes = int((now - kickoff).total_seconds() // 60)
     start_offset = (elapsed_minutes // STEP_MINUTES) * STEP_MINUTES
+    if not _has_positive_hazard_in_window(
+        hazards,
+        start_minute=start_offset,
+        duration_minutes=remaining_game_minutes,
+    ):
+        return _zero_delay_result(simulation_count)
     any_delay = multiple = 0
     total_minutes = 0.0
     for index in range(simulation_count):

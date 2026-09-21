@@ -191,6 +191,22 @@ def test_zero_hazard_produces_zero_delay_probability() -> None:
     assert result["in_game_delay_probability"] == 0
 
 
+def test_storm_after_game_window_does_not_create_delay_probability() -> None:
+    result = simulate_pregame(
+        kickoff=datetime(2026, 9, 20, tzinfo=UTC),
+        policy=_outdoor_policy(),
+        hazards=[_point(600, 1.0), _point(605, 0.0)],
+        simulation_count=100,
+        seed=4,
+    )
+
+    assert result["delay_probability"] == 0
+    assert result["kickoff_delay_probability"] == 0
+    assert result["in_game_delay_probability"] == 0
+    assert result["multiple_delay_probability"] == 0
+    assert result["expected_delay_minutes"] == 0
+
+
 def test_live_game_horizon_follows_remaining_score_clock_and_overtime() -> None:
     now = datetime(2026, 9, 20, 22, 20, tzinfo=UTC)
     tied_game = Game(
