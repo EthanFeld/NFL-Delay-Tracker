@@ -20,10 +20,12 @@ from pydantic_core import to_jsonable_python
 from nfl_delay_tracker.geo import distance_miles
 from nfl_delay_tracker.model.hazard import blend_hazards, probability_per_bin
 from nfl_delay_tracker.model.simulator import (
+    DEFAULT_GAME_DURATION_MINUTES,
     historical_delay_duration_prior,
     load_historical_delay_durations,
     simulate_active_delay,
     simulate_pregame,
+    simulate_remaining_game,
 )
 from nfl_delay_tracker.model.storm_motion import (
     StormCellCentroid,
@@ -70,6 +72,94 @@ _GLOBAL_OUTLOOK_MISSING_SOURCES = [
     "Observed radar storm-motion track",
     "Verified venue lightning policy",
 ]
+
+
+def _clock_remaining_seconds(clock: str | None) -> int | None:
+    """Parse a scoreboard clock such as ``12:34`` into seconds."""
+    if not clock:
+        return None
+    parts = clock.strip().split(":")
+    if len(parts) != 2 or not all(part.isdigit() for part in parts):
+        return None
+    minutes, seconds = (int(part) for part in parts)
+    if seconds >= 60:
+        return None
+    return minutes * 60 + seconds
+
+
+def _remaining_game_exposure_minutes(game: Game, now: datetime) -> int:
+    """Estimate live forecast horizon from scoreboard clock, in model minutes.
+
+    The model's 210-minute full-game exposure is spread over the 60-minute
+    regulation clock. If scoreboard clock data is missing, elapsed wall time
+    reduces the horizon while a game is in progress. For a weather hold, the
+    game clock is paused, so missing clock data uses the full current period as
+    a conservative bound (or the full-game bound if the period is unknown). A
+    tied NFL game in the final minute gets one 10-minute overtime allowance;
+    college overtime uses a short capped horizon because its possession
+    periods have no continuous clock.
+    """
+    elapsed = max(0.0, (now - game.kickoff_utc).total_seconds() / 60)
+    fallback_minutes = max(
+        0, math.ceil(DEFAULT_GAME_DURATION_MINUTES - elapsed)
+    )
+    period = game.period
+    seconds_left = _clock_remaining_seconds(game.clock)
+    if period is None:
+        return (
+            DEFAULT_GAME_DURATION_MINUTES
+            if game.status == GameStatus.WEATHER_DELAY
+            else fallback_minutes
+        )
+
+    minutes_per_game_clock_minute = DEFAULT_GAME_DURATION_MINUTES / 60
+    if seconds_left is None:
+        if 1 <= period <= 4:
+            regulation_quarters_left = 5 - period
+            remaining = math.ceil(
+                regulation_quarters_left * 15 * minutes_per_game_clock_minute
+            )
+            if (
+                game.league.value == "NFL"
+                and period == 4
+                and game.home_score is not None
+                and game.away_score is not None
+                and game.home_score == game.away_score
+            ):
+                remaining += math.ceil(10 * minutes_per_game_clock_minute)
+            return min(DEFAULT_GAME_DURATION_MINUTES, remaining)
+        if period >= 5:
+            return 35 if game.league.value == "NFL" else 30
+        return (
+            DEFAULT_GAME_DURATION_MINUTES
+            if game.status == GameStatus.WEATHER_DELAY
+            else fallback_minutes
+        )
+    if 1 <= period <= 4:
+        regulation_seconds_left = (4 - period) * 15 * 60 + seconds_left
+        remaining = math.ceil(
+            regulation_seconds_left / 60 * minutes_per_game_clock_minute
+        )
+        tied_late = (
+            game.league.value == "NFL"
+            and period == 4
+            and seconds_left <= 60
+            and game.home_score is not None
+            and game.away_score is not None
+            and game.home_score == game.away_score
+        )
+        if tied_late:
+            remaining += math.ceil(10 * minutes_per_game_clock_minute)
+        return min(DEFAULT_GAME_DURATION_MINUTES, remaining)
+
+    if period >= 5:
+        if game.league.value == "NFL":
+            overtime_seconds_left = min(10 * 60, seconds_left)
+            return math.ceil(overtime_seconds_left / 60 * minutes_per_game_clock_minute)
+        # College overtime periods have no reliable continuous game clock.
+        return 30
+
+    return fallback_minutes
 
 
 def _team_identity(team: str, team_owner: dict[str, str]) -> str:
@@ -1441,7 +1531,7 @@ def _unavailable_forecast(
     )
     return {
         "generated_at": generated_at.isoformat(),
-        "model_version": "engineering-baseline-0.1.0",
+        "model_version": "engineering-baseline-0.2.0",
         "game": game.model_dump(mode="json"),
         "venue": venue.model_dump(mode="json") if venue else None,
         "policy": policy.model_dump(mode="json") if policy else None,
@@ -1772,7 +1862,7 @@ def refresh_forecasts(
         if venue and venue.roof_type == RoofType.FIXED_DOME and venue.roof_weather_protection:
             forecast = {
                 "generated_at": generated_at.isoformat(),
-                "model_version": "engineering-baseline-0.1.0",
+                "model_version": "engineering-baseline-0.2.0",
                 "game": game.model_dump(mode="json"),
                 "venue": venue.model_dump(mode="json"),
                 "policy": policy.model_dump(mode="json") if policy else None,
@@ -2280,14 +2370,31 @@ def refresh_forecasts(
                         )
                         forecasted += 1
                 else:
-                    result = simulate_pregame(
-                        kickoff=game.kickoff_utc,
-                        policy=policy,
-                        hazards=forecast_hazards,
-                        simulation_count=simulation_count,
-                        rho=model_rho,
-                        seed=2026,
-                    )
+                    if (
+                        game.status in {GameStatus.IN_PROGRESS, GameStatus.WEATHER_DELAY}
+                        and generated_at >= game.kickoff_utc
+                    ):
+                        result = simulate_remaining_game(
+                            now=generated_at,
+                            kickoff=game.kickoff_utc,
+                            policy=policy,
+                            hazards=forecast_hazards,
+                            remaining_game_minutes=_remaining_game_exposure_minutes(
+                                game, generated_at
+                            ),
+                            simulation_count=simulation_count,
+                            rho=model_rho,
+                            seed=2026,
+                        )
+                    else:
+                        result = simulate_pregame(
+                            kickoff=game.kickoff_utc,
+                            policy=policy,
+                            hazards=forecast_hazards,
+                            simulation_count=simulation_count,
+                            rho=model_rho,
+                            seed=2026,
+                        )
                     used_source_times = [weather_fetched_at] if nws_hazards else []
                     if hrrr_context:
                         hrrr_issued_at = _timestamp(hrrr_context.get("issued_at"))
@@ -2434,7 +2541,7 @@ def refresh_forecasts(
                     )
                     forecast = GameForecast(
                         generated_at=generated_at,
-                        model_version="engineering-baseline-0.1.0",
+                        model_version="engineering-baseline-0.2.0",
                         game=game,
                         venue=venue,
                         policy=policy,

@@ -11,12 +11,21 @@ from nfl_delay_tracker.model.simulator import (
     historical_delay_duration_prior,
     simulate_active_delay,
     simulate_pregame,
+    simulate_remaining_game,
     simulate_trajectory,
 )
 from nfl_delay_tracker.model.trajectories import correlated_events, estimate_latent_correlation
-from nfl_delay_tracker.models import Game, HazardPoint, League, RestartOverhead, WeatherPolicy
+from nfl_delay_tracker.models import (
+    Game,
+    GameStatus,
+    HazardPoint,
+    League,
+    RestartOverhead,
+    WeatherPolicy,
+)
 from nfl_delay_tracker.pipeline import (
     _carry_forward_future_forecast,
+    _remaining_game_exposure_minutes,
     _write_game_status,
     load_registry,
 )
@@ -180,6 +189,99 @@ def test_zero_hazard_produces_zero_delay_probability() -> None:
     assert result["delay_probability"] == 0
     assert result["kickoff_delay_probability"] == 0
     assert result["in_game_delay_probability"] == 0
+
+
+def test_live_game_horizon_follows_remaining_score_clock_and_overtime() -> None:
+    now = datetime(2026, 9, 20, 22, 20, tzinfo=UTC)
+    tied_game = Game(
+        game_id="late-tie",
+        league=League.NFL,
+        season=2026,
+        home_team="Home",
+        away_team="Away",
+        kickoff_utc=now - timedelta(hours=2),
+        status=GameStatus.IN_PROGRESS,
+        period=4,
+        clock="0:03",
+        home_score=27,
+        away_score=27,
+    )
+    close_but_not_tied = tied_game.model_copy(
+        update={"clock": "10:00", "home_score": 20, "away_score": 17}
+    )
+
+    assert _remaining_game_exposure_minutes(tied_game, now) == 36
+    assert _remaining_game_exposure_minutes(close_but_not_tied, now) == 35
+
+
+def test_weather_hold_with_missing_clock_does_not_lose_horizon_to_wall_time() -> None:
+    now = datetime(2026, 9, 20, 22, 20, tzinfo=UTC)
+    game = Game(
+        game_id="clock-paused",
+        league=League.NFL,
+        season=2026,
+        home_team="Home",
+        away_team="Away",
+        kickoff_utc=now - timedelta(hours=2),
+        status=GameStatus.WEATHER_DELAY,
+        period=3,
+        clock=None,
+    )
+
+    assert _remaining_game_exposure_minutes(game, now) == 105
+
+
+def test_college_overtime_uses_capped_horizon_without_a_continuous_clock() -> None:
+    now = datetime(2026, 9, 20, 22, 20, tzinfo=UTC)
+    game = Game(
+        game_id="college-overtime",
+        league=League.NCAA,
+        season=2026,
+        home_team="Home",
+        away_team="Away",
+        kickoff_utc=now - timedelta(hours=2),
+        status=GameStatus.IN_PROGRESS,
+        period=5,
+        clock="0:00",
+    )
+
+    assert _remaining_game_exposure_minutes(game, now) == 30
+
+
+def test_remaining_game_simulation_ignores_hazards_after_game_horizon() -> None:
+    kickoff = datetime(2026, 9, 20, 18, tzinfo=UTC)
+    now = kickoff + timedelta(minutes=120)
+    result = simulate_remaining_game(
+        now=now,
+        kickoff=kickoff,
+        policy=_outdoor_policy(),
+        hazards=[_point(140, 1.0), _point(180, 0.0)],
+        remaining_game_minutes=10,
+        simulation_count=200,
+        seed=19,
+    )
+
+    assert result["delay_probability"] == 0
+    assert result["kickoff_delay_probability"] == 0
+    assert result["in_game_delay_probability"] == 0
+
+
+def test_remaining_game_simulation_counts_future_hazard_as_in_game() -> None:
+    kickoff = datetime(2026, 9, 20, 18, tzinfo=UTC)
+    now = kickoff + timedelta(minutes=120)
+    result = simulate_remaining_game(
+        now=now,
+        kickoff=kickoff,
+        policy=_outdoor_policy(),
+        hazards=[_point(120, 1.0), _point(180, 0.0)],
+        remaining_game_minutes=45,
+        simulation_count=100,
+        seed=19,
+    )
+
+    assert result["delay_probability"] == 1
+    assert result["kickoff_delay_probability"] == 0
+    assert result["in_game_delay_probability"] == 1
 
 
 def test_event_at_kickoff_creates_kickoff_hold() -> None:

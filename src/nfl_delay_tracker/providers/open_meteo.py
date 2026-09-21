@@ -8,12 +8,13 @@ from __future__ import annotations
 
 import math
 import re
+import time
 from datetime import UTC, datetime, timedelta
 from typing import Any
 from urllib.parse import urlencode
 
 from nfl_delay_tracker.models import Venue
-from nfl_delay_tracker.providers.http import ProviderError, get_json
+from nfl_delay_tracker.providers.http import ProviderError, RetryableProviderError, get_json
 
 API_ROOT = "https://ensemble-api.open-meteo.com/v1/ensemble"
 ATTRIBUTION_URL = "https://open-meteo.com/en/docs/ensemble-api"
@@ -21,6 +22,8 @@ MODEL = "ecmwf_ifs025_ensemble"
 _MEMBER_FIELD = re.compile(r"^weather_code_member\d+$")
 _CLEAR_OR_CLOUDY_CODES = {0, 1, 2, 3}
 _FOG_CODES = {45, 48}
+_REQUEST_ATTEMPTS = 3
+_REQUEST_TIMEOUT_SECONDS = 25
 
 
 class OpenMeteoEnsembleProvider:
@@ -45,7 +48,14 @@ class OpenMeteoEnsembleProvider:
             }
         )
         request_url = f"{API_ROOT}?{query}"
-        payload = get_json(request_url)
+        for attempt in range(_REQUEST_ATTEMPTS):
+            try:
+                payload = get_json(request_url, timeout=_REQUEST_TIMEOUT_SECONDS)
+                break
+            except RetryableProviderError:
+                if attempt + 1 == _REQUEST_ATTEMPTS:
+                    raise
+                time.sleep(0.5 * (2**attempt))
         if not isinstance(payload, dict):
             raise ProviderError("Open-Meteo ensemble response is not an object")
         fetched_at = datetime.now(UTC)

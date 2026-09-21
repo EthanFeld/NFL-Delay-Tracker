@@ -7,7 +7,7 @@ import pytest
 
 from nfl_delay_tracker.models import Venue
 from nfl_delay_tracker.providers import open_meteo
-from nfl_delay_tracker.providers.http import ProviderError
+from nfl_delay_tracker.providers.http import ProviderError, RetryableProviderError
 
 
 @pytest.fixture
@@ -58,8 +58,9 @@ def test_fetch_conditions_outlook_counts_members_without_emitting_risk(
         ]
     requested_urls: list[str] = []
 
-    def fake_get_json(url: str) -> dict[str, object]:
+    def fake_get_json(url: str, *, timeout: int) -> dict[str, object]:
         requested_urls.append(url)
+        assert timeout == 25
         return {"hourly": hourly, "latitude": -22.9, "longitude": -43.2}
 
     monkeypatch.setattr(open_meteo, "get_json", fake_get_json)
@@ -99,7 +100,7 @@ def test_fetch_conditions_outlook_fails_closed_without_valid_members(
     monkeypatch.setattr(
         open_meteo,
         "get_json",
-        lambda _url: {
+        lambda _url, **_kwargs: {
             "hourly": {
                 "time": ["2026-09-23T21:00"],
                 "weather_code_member01": [None],
@@ -111,3 +112,51 @@ def test_fetch_conditions_outlook_fails_closed_without_valid_members(
         open_meteo.OpenMeteoEnsembleProvider().fetch_conditions_outlook(
             venue, kickoff=datetime(2026, 9, 23, 20, 25, tzinfo=UTC)
         )
+
+
+def test_fetch_conditions_outlook_retries_transient_provider_errors(
+    venue: Venue, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    attempts = 0
+    monkeypatch.setattr(open_meteo.time, "sleep", lambda _delay: None)
+
+    def flaky_get_json(_url: str, *, timeout: int) -> dict[str, object]:
+        nonlocal attempts
+        attempts += 1
+        assert timeout == 25
+        if attempts < 3:
+            raise RetryableProviderError("temporary provider error")
+        return {
+            "hourly": {
+                "time": ["2026-09-21T00:00"],
+                "weather_code_member01": [0],
+            }
+        }
+
+    monkeypatch.setattr(open_meteo, "get_json", flaky_get_json)
+    outlook, _, _ = open_meteo.OpenMeteoEnsembleProvider().fetch_conditions_outlook(
+        venue, kickoff=datetime(2026, 9, 21, 0, 30, tzinfo=UTC)
+    )
+
+    assert attempts == 3
+    assert outlook["valid_member_count"] == 1
+
+
+def test_fetch_conditions_outlook_does_not_retry_permanent_request_errors(
+    venue: Venue, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    attempts = 0
+
+    def permanent_get_json(_url: str, *, timeout: int) -> dict[str, object]:
+        nonlocal attempts
+        attempts += 1
+        assert timeout == 25
+        raise ProviderError("permanent provider error")
+
+    monkeypatch.setattr(open_meteo, "get_json", permanent_get_json)
+    with pytest.raises(ProviderError, match="permanent provider error"):
+        open_meteo.OpenMeteoEnsembleProvider().fetch_conditions_outlook(
+            venue, kickoff=datetime(2026, 9, 21, 0, 30, tzinfo=UTC)
+        )
+
+    assert attempts == 1

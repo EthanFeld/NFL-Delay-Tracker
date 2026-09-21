@@ -17,6 +17,7 @@ from nfl_delay_tracker.models import HazardPoint, WeatherPolicy
 
 _NORMAL = NormalDist()
 STEP_MINUTES = 5
+DEFAULT_GAME_DURATION_MINUTES = 210
 
 
 @dataclass(frozen=True)
@@ -72,32 +73,46 @@ def simulate_trajectory(
     kickoff: datetime,
     policy: WeatherPolicy,
     hazards: list[HazardPoint],
-    game_duration_minutes: int = 210,
+    game_duration_minutes: int = DEFAULT_GAME_DURATION_MINUTES,
     rho: float = 0.45,
     seed: int | None = None,
+    start_offset_minutes: int | None = None,
+    start_in_game: bool = False,
 ) -> TrajectoryResult:
-    """Run one correlated event path through warmups, game and shifted finish."""
+    """Run one correlated event path through warmups, game and shifted finish.
+
+    ``start_offset_minutes`` and ``start_in_game`` anchor a live-game path at
+    its current clock instead of simulating warmups and completed play again.
+    """
     if kickoff.tzinfo is None or kickoff.utcoffset() is None:
         raise ValueError("kickoff must be timezone-aware")
+    if start_in_game and start_offset_minutes is None:
+        raise ValueError("a live-game path needs its current offset from kickoff")
+    if start_offset_minutes is not None and not start_in_game:
+        raise ValueError("a current kickoff offset can only be used for a live-game path")
+    if start_in_game and start_offset_minutes is not None and start_offset_minutes < 0:
+        raise ValueError("a live-game path cannot start before kickoff")
     rng = random.Random(seed)
     sorted_hazards = sorted(hazards, key=lambda item: item.offset_minutes)
     warmup = policy.warmup_exposure_minutes
     # Six additional hours permit repeated storm arrivals and a shifted finish.
-    max_steps = (warmup + game_duration_minutes + 360) // STEP_MINUTES
-    offsets = [-warmup + index * STEP_MINUTES for index in range(max_steps)]
+    warmup_before_game = warmup if start_offset_minutes is None else 0
+    max_steps = (warmup_before_game + game_duration_minutes + 360) // STEP_MINUTES
+    first_minute = -warmup if start_offset_minutes is None else start_offset_minutes
+    offsets = [first_minute + index * STEP_MINUTES for index in range(max_steps)]
     probabilities = _step_probabilities(sorted_hazards, offsets)
     events = correlated_events(probabilities, rho=rho, rng=rng)
 
     holds: list[SimulatedHold] = []
     playing_minutes = 0
-    minute = -warmup
+    minute = first_minute
     in_hold = False
     hold_started = 0
     last_strike = 0
     clear_at: int | None = None
     resume_at: int | None = None
     reset_count = 0
-    phase = "pregame"
+    phase = "in_game" if start_in_game else "pregame"
     kickoff_delayed = False
 
     for event in events:
@@ -107,7 +122,11 @@ def simulate_trajectory(
                 hold_started = minute
                 last_strike = minute
                 reset_count = 0
-                phase = "pregame" if playing_minutes == 0 and minute <= 0 else "in_game"
+                phase = (
+                    "pregame"
+                    if not start_in_game and playing_minutes == 0 and minute <= 0
+                    else "in_game"
+                )
                 clear_at = minute + policy.quiet_period_minutes
                 restart = _sample_weighted(
                     policy.restart_overhead.minutes, policy.restart_overhead.weights, rng
@@ -176,7 +195,7 @@ def simulate_pregame(
     policy: WeatherPolicy,
     hazards: list[HazardPoint],
     simulation_count: int = 20_000,
-    game_duration_minutes: int = 210,
+    game_duration_minutes: int = DEFAULT_GAME_DURATION_MINUTES,
     rho: float = 0.45,
     seed: int = 17,
 ) -> dict[str, Any]:
@@ -204,6 +223,67 @@ def simulate_pregame(
         "delay_probability": any_delay / simulation_count,
         "kickoff_delay_probability": kickoff_delay / simulation_count,
         "in_game_delay_probability": in_game_delay / simulation_count,
+        "multiple_delay_probability": multiple / simulation_count,
+        "expected_delay_minutes": total_minutes / simulation_count,
+        "simulation_count": simulation_count,
+    }
+
+
+def simulate_remaining_game(
+    *,
+    now: datetime,
+    kickoff: datetime,
+    policy: WeatherPolicy,
+    hazards: list[HazardPoint],
+    remaining_game_minutes: int,
+    simulation_count: int = 20_000,
+    rho: float = 0.45,
+    seed: int = 2026,
+) -> dict[str, Any]:
+    """Estimate new delay risk from now through the remaining game horizon."""
+    if now.tzinfo is None or now.utcoffset() is None:
+        raise ValueError("now must be timezone-aware")
+    if kickoff.tzinfo is None or kickoff.utcoffset() is None:
+        raise ValueError("kickoff must be timezone-aware")
+    if now < kickoff:
+        raise ValueError("a remaining-game forecast cannot start before kickoff")
+    if remaining_game_minutes < 0:
+        raise ValueError("remaining_game_minutes cannot be negative")
+    if simulation_count <= 0:
+        raise ValueError("simulation_count must be positive")
+    if remaining_game_minutes == 0:
+        return {
+            "delay_probability": 0.0,
+            "kickoff_delay_probability": 0.0,
+            "in_game_delay_probability": 0.0,
+            "multiple_delay_probability": 0.0,
+            "expected_delay_minutes": 0.0,
+            "simulation_count": simulation_count,
+        }
+
+    elapsed_minutes = int((now - kickoff).total_seconds() // 60)
+    start_offset = (elapsed_minutes // STEP_MINUTES) * STEP_MINUTES
+    any_delay = multiple = 0
+    total_minutes = 0.0
+    for index in range(simulation_count):
+        result = simulate_trajectory(
+            kickoff=kickoff,
+            policy=policy,
+            hazards=hazards,
+            game_duration_minutes=remaining_game_minutes,
+            rho=rho,
+            seed=seed + index,
+            start_offset_minutes=start_offset,
+            start_in_game=True,
+        )
+        count = len(result.holds)
+        any_delay += count > 0
+        multiple += count > 1
+        total_minutes += result.total_delay_minutes
+    return {
+        "delay_probability": any_delay / simulation_count,
+        "kickoff_delay_probability": 0.0,
+        "in_game_delay_probability": any_delay / simulation_count,
         "multiple_delay_probability": multiple / simulation_count,
         "expected_delay_minutes": total_minutes / simulation_count,
         "simulation_count": simulation_count,

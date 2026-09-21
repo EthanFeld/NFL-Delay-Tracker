@@ -12,6 +12,10 @@ class ProviderError(RuntimeError):
     """A remote provider failed or returned invalid content."""
 
 
+class RetryableProviderError(ProviderError):
+    """A remote request failed for a reason that may succeed on retry."""
+
+
 def get_json(url: str, *, headers: dict[str, str] | None = None, timeout: int = 25) -> Any:
     request_headers = {"Accept": "application/json", "User-Agent": "NFL Delay Tracker/0.1"}
     if headers:
@@ -20,8 +24,15 @@ def get_json(url: str, *, headers: dict[str, str] | None = None, timeout: int = 
     try:
         with urlopen(request, timeout=timeout) as response:
             return json.loads(response.read())
-    except (HTTPError, URLError, TimeoutError, json.JSONDecodeError) as exc:
-        raise ProviderError(f"GET {url} failed: {exc}") from exc
+    except HTTPError as exc:
+        error_type = (
+            RetryableProviderError
+            if exc.code in {408, 429} or 500 <= exc.code < 600
+            else ProviderError
+        )
+        raise error_type(f"GET {url} failed: {exc}") from exc
+    except (URLError, TimeoutError, json.JSONDecodeError) as exc:
+        raise RetryableProviderError(f"GET {url} failed: {exc}") from exc
 
 
 def get_text(url: str, *, headers: dict[str, str] | None = None, timeout: int = 25) -> str:
