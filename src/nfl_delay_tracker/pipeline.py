@@ -1550,13 +1550,25 @@ def _carry_forward_future_forecast(
         global_outlook, dict
     )
     generated_at = _timestamp(game_record.get("generated_at"))
+    cached_game = game_record.get("game")
+    cached_kickoff = (
+        _timestamp(cached_game.get("kickoff_utc"))
+        if isinstance(cached_game, dict)
+        else None
+    )
     if (
         not (has_regional_outlook or has_global_outlook)
         or generated_at is None
+        or cached_kickoff is None
+        or abs(cached_kickoff - game.kickoff_utc) > timedelta(minutes=90)
         or not timedelta(minutes=-5) <= now - generated_at <= timedelta(hours=24)
         or game.kickoff_utc > now + timedelta(hours=_GLOBAL_OUTLOOK_HORIZON_HOURS)
     ):
         return None
+    if has_global_outlook and isinstance(global_outlook, dict):
+        valid_at = _timestamp(global_outlook.get("valid_at"))
+        if valid_at is None or abs(valid_at - game.kickoff_utc) > timedelta(minutes=90):
+            return None
 
     carried = dict(game_record)
     carried["game"] = game.model_dump(mode="json")
@@ -2693,7 +2705,8 @@ def refresh_forecasts(
             "url": successful_outlooks[-1].get("url") if successful_outlooks else None,
             "message": (
                 "Global ECMWF IFS ensemble weather-code conditions only; approximately 25 km "
-                "grid and 3-hour native resolution. This field cannot estimate thunderstorms, "
+                "grid; 3-hour steps through 144 hours, 6-hour steps afterward. This field "
+                "cannot estimate thunderstorms, "
                 "venue delay odds, or observed storm motion."
             ),
         }

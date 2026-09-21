@@ -43,7 +43,7 @@ def test_short_refresh_carries_fresh_forecast_without_old_alerts() -> None:
     )
     previous = {
         "generated_at": (now - timedelta(hours=1)).isoformat(),
-        "game": {"status": "scheduled"},
+        "game": {"status": "scheduled", "kickoff_utc": game.kickoff_utc.isoformat()},
         "pregame": {"delay_probability": 0.04},
         "quality": {"forecast_scope": "regional_outlook"},
         "weather": {
@@ -80,12 +80,12 @@ def test_short_refresh_carries_global_conditions_outlook_without_fake_pregame_ri
     )
     global_outlook = {
         "model": "ECMWF IFS ensemble",
-        "valid_at": "2026-09-25T12:00:00+00:00",
+        "valid_at": game.kickoff_utc.isoformat(),
         "condition_member_counts": {"clear_or_cloudy": 18},
     }
     previous = {
         "generated_at": (now - timedelta(hours=1)).isoformat(),
-        "game": {"status": "scheduled"},
+        "game": {"status": "scheduled", "kickoff_utc": game.kickoff_utc.isoformat()},
         "pregame": None,
         "quality": {"forecast_scope": "global_weather_outlook"},
         "weather": {"venue_features": {"global_weather_outlook": global_outlook}},
@@ -113,7 +113,11 @@ def test_live_status_write_preserves_week_ahead_forecast(tmp_path) -> None:
     record_path.parent.mkdir(parents=True)
     previous = {
         "generated_at": (now - timedelta(hours=1)).isoformat(),
-        "game": {"game_id": game.game_id, "status": "scheduled"},
+        "game": {
+            "game_id": game.game_id,
+            "status": "scheduled",
+            "kickoff_utc": game.kickoff_utc.isoformat(),
+        },
         "pregame": {"delay_probability": 0.04},
         "quality": {"forecast_scope": "regional_outlook"},
         "weather": {"hazards": [{"probability": 0.01}]},
@@ -128,6 +132,27 @@ def test_live_status_write_preserves_week_ahead_forecast(tmp_path) -> None:
     assert saved["quality"] == previous["quality"]
     assert saved["weather"] == previous["weather"]
     assert _carry_forward_future_forecast(saved, game, now=now) is not None
+
+
+def test_carry_forward_rejects_forecast_for_rescheduled_game() -> None:
+    now = datetime(2026, 9, 20, 12, tzinfo=UTC)
+    scheduled_kickoff = now + timedelta(hours=120)
+    game = Game(
+        game_id="rescheduled-game",
+        league=League.NFL,
+        season=2026,
+        home_team="Home",
+        away_team="Away",
+        kickoff_utc=scheduled_kickoff + timedelta(hours=12),
+    )
+    previous = {
+        "generated_at": (now - timedelta(hours=1)).isoformat(),
+        "game": {"kickoff_utc": scheduled_kickoff.isoformat()},
+        "pregame": {"delay_probability": 0.04},
+        "quality": {"forecast_scope": "regional_outlook"},
+    }
+
+    assert _carry_forward_future_forecast(previous, game, now=now) is None
 
 
 def test_zero_hazard_produces_zero_delay_probability() -> None:

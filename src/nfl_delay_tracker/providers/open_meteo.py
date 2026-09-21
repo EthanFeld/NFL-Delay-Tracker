@@ -87,19 +87,31 @@ class OpenMeteoEnsembleProvider:
             parsed_times.append(at.astimezone(UTC))
 
         target = kickoff.astimezone(UTC)
+        native_resolution_hours = (
+            6
+            if (target - fetched_at) > timedelta(hours=144)
+            else 3
+        )
         native_indices = [
             index
             for index, at in enumerate(parsed_times)
-            if at.minute == 0 and at.second == 0 and at.hour % 3 == 0
+            if at.minute == 0
+            and at.second == 0
+            and at.hour % native_resolution_hours == 0
         ]
         if not native_indices:
-            raise ProviderError("Open-Meteo ensemble response has no native three-hour values")
+            raise ProviderError(
+                "Open-Meteo ensemble response has no native-resolution values"
+            )
         valid_index = min(
             native_indices,
             key=lambda index: abs((parsed_times[index] - target).total_seconds()),
         )
         valid_at = parsed_times[valid_index]
-        if abs(valid_at - target) > timedelta(minutes=90):
+        tolerance = timedelta(
+            minutes=90 if native_resolution_hours == 3 else 180
+        )
+        if abs(valid_at - target) > tolerance:
             raise ProviderError("No Open-Meteo ensemble hour is close to kickoff")
 
         counts = {
@@ -137,7 +149,7 @@ class OpenMeteoEnsembleProvider:
         result = {
             "model": "ECMWF IFS ensemble",
             "valid_at": valid_at.isoformat(),
-            "native_resolution_hours": 3,
+            "native_resolution_hours": native_resolution_hours,
             "grid_resolution_km": 25,
             "member_count": len(member_names),
             "valid_member_count": valid_members,
