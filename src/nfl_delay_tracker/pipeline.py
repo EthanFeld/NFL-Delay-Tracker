@@ -188,14 +188,11 @@ def _dump_json(path: Path, data: Any) -> None:
 
 
 def _write_game_status(root: Path, game_id: str, game: Any) -> None:
-    """Write schedule status while retaining the last forecast's delay clock."""
+    """Update schedule status without discarding a published forecast snapshot."""
     path = root / "data" / "games" / f"{game_id}.json"
     previous = _load_json(path, {})
-    payload: dict[str, Any] = {"game": game}
-    if isinstance(previous, dict) and isinstance(previous.get("delay"), dict):
-        payload["delay"] = previous["delay"]
-    if isinstance(previous, dict) and isinstance(previous.get("weather"), dict):
-        payload["weather"] = previous["weather"]
+    payload: dict[str, Any] = dict(previous) if isinstance(previous, dict) else {}
+    payload["game"] = game
     _dump_json(path, payload)
 
 

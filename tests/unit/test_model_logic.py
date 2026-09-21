@@ -1,3 +1,4 @@
+import json
 import random
 from datetime import UTC, datetime, timedelta
 
@@ -14,7 +15,11 @@ from nfl_delay_tracker.model.simulator import (
 )
 from nfl_delay_tracker.model.trajectories import correlated_events, estimate_latent_correlation
 from nfl_delay_tracker.models import Game, HazardPoint, League, RestartOverhead, WeatherPolicy
-from nfl_delay_tracker.pipeline import _carry_forward_week_ahead_forecast, load_registry
+from nfl_delay_tracker.pipeline import (
+    _carry_forward_week_ahead_forecast,
+    _write_game_status,
+    load_registry,
+)
 
 
 def _outdoor_policy() -> WeatherPolicy:
@@ -58,6 +63,37 @@ def test_short_refresh_carries_fresh_week_ahead_forecast_without_old_alerts() ->
         "alerts": [],
     }
     assert previous["weather"]["venue_features"]["nws_alerts"]["alerts"]
+
+
+def test_live_status_write_preserves_week_ahead_forecast(tmp_path) -> None:
+    now = datetime(2026, 9, 20, 12, tzinfo=UTC)
+    game = Game(
+        game_id="week-ahead-preserved",
+        league=League.NFL,
+        season=2026,
+        home_team="Home",
+        away_team="Away",
+        kickoff_utc=now + timedelta(hours=120),
+    )
+    record_path = tmp_path / "data" / "games" / f"{game.game_id}.json"
+    record_path.parent.mkdir(parents=True)
+    previous = {
+        "generated_at": (now - timedelta(hours=1)).isoformat(),
+        "game": {"game_id": game.game_id, "status": "scheduled"},
+        "pregame": {"delay_probability": 0.04},
+        "quality": {"forecast_scope": "regional_outlook"},
+        "weather": {"hazards": [{"probability": 0.01}]},
+    }
+    record_path.write_text(json.dumps(previous), encoding="utf-8")
+
+    _write_game_status(tmp_path, game.game_id, game)
+
+    saved = json.loads(record_path.read_text(encoding="utf-8"))
+    assert saved["game"]["status"] == game.status.value
+    assert saved["pregame"] == previous["pregame"]
+    assert saved["quality"] == previous["quality"]
+    assert saved["weather"] == previous["weather"]
+    assert _carry_forward_week_ahead_forecast(saved, game, now=now) is not None
 
 
 def test_zero_hazard_produces_zero_delay_probability() -> None:
