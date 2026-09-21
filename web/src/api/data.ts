@@ -145,8 +145,28 @@ export function normalizeGame(input: unknown, manifestSources: SourceHealth[] = 
   const hrrrContext = asRecord(first(venueFeatures, 'hrrr_point'));
   const glmContext = asRecord(first(venueFeatures, 'glm_observation'));
   const motionContext = asRecord(first(venueFeatures, 'storm_motion'));
+  const globalOutlookContext = asRecord(first(venueFeatures, 'global_weather_outlook'));
+  const globalConditionCounts = asRecord(first(globalOutlookContext, 'condition_member_counts'));
   const motionAdjustment = asRecord(first(motionContext, 'model_adjustment'));
   const weatherContext = {
+    globalOutlook: Object.keys(globalOutlookContext).length ? {
+      model: text(first(globalOutlookContext, 'model')) || undefined,
+      validAt: isoOrString(first(globalOutlookContext, 'valid_at')) || undefined,
+      nativeResolutionHours: numeric(first(globalOutlookContext, 'native_resolution_hours')),
+      gridResolutionKm: numeric(first(globalOutlookContext, 'grid_resolution_km')),
+      memberCount: numeric(first(globalOutlookContext, 'member_count')),
+      validMemberCount: numeric(first(globalOutlookContext, 'valid_member_count')),
+      conditionMemberCounts: {
+        clearOrCloudy: numeric(first(globalConditionCounts, 'clear_or_cloudy')),
+        fog: numeric(first(globalConditionCounts, 'fog')),
+        precipitationOrSnow: numeric(first(globalConditionCounts, 'precipitation_or_snow')),
+        otherOrUnclassified: numeric(first(globalConditionCounts, 'other_or_unclassified')),
+      },
+      attributionUrl: (() => {
+        const url = text(first(globalOutlookContext, 'attribution_url'));
+        return url.startsWith('https://') ? url : undefined;
+      })(),
+    } : undefined,
     stormMotion: Object.keys(motionContext).length ? {
       status: text(first(motionContext, 'status')) || undefined,
       observedAt: isoOrString(first(motionContext, 'observed_at')) || undefined,
@@ -230,7 +250,7 @@ export function normalizeGame(input: unknown, manifestSources: SourceHealth[] = 
     qualityWarnings: warnings,
     nwsWarnings,
     nwsWarningsFresh: nwsAlertStatus === 'ok',
-    weatherContext: weatherContext.stormMotion || weatherContext.hrrr || weatherContext.glm ? weatherContext : undefined,
+    weatherContext: weatherContext.globalOutlook || weatherContext.stormMotion || weatherContext.hrrr || weatherContext.glm ? weatherContext : undefined,
     raw: root,
   };
 }

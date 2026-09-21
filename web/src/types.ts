@@ -18,7 +18,24 @@ export interface NwsWarning {
   url?: string;
 }
 
+export interface GlobalWeatherOutlook {
+  model?: string;
+  validAt?: string;
+  nativeResolutionHours?: number;
+  gridResolutionKm?: number;
+  memberCount?: number;
+  validMemberCount?: number;
+  conditionMemberCounts: {
+    clearOrCloudy?: number;
+    fog?: number;
+    precipitationOrSnow?: number;
+    otherOrUnclassified?: number;
+  };
+  attributionUrl?: string;
+}
+
 export interface WeatherContext {
+  globalOutlook?: GlobalWeatherOutlook;
   stormMotion?: {
     status?: string;
     observedAt?: string;

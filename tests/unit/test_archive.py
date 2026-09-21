@@ -63,6 +63,11 @@ def test_card_projection_keeps_venue_risk_and_active_resume_fields() -> None:
                         "alerts": [{"headline": "Severe thunderstorm warning"}],
                     },
                     "hrrr_point": {"cape_j_kg": 1400},
+                    "global_weather_outlook": {
+                        "model": "ECMWF IFS ensemble",
+                        "valid_at": "2026-09-20T12:00:00Z",
+                        "condition_member_counts": {"clear_or_cloudy": 12},
+                    },
                 }
             },
         }
@@ -74,6 +79,11 @@ def test_card_projection_keeps_venue_risk_and_active_resume_fields() -> None:
     assert projection["delay"]["resume_p90"] == "2026-09-20T13:00:00Z"
     assert projection["delay"]["probability_additional_minutes"]["30"] == 0.6
     assert projection["weather"]["venue_features"]["nws_alerts"]["has_active_warning"]
+    assert (
+        projection["weather"]["venue_features"]["global_weather_outlook"]
+        ["condition_member_counts"]["clear_or_cloudy"]
+        == 12
+    )
     assert "hourly_delay_hazard" not in projection["pregame"]
     assert "hrrr_point" not in projection["weather"]["venue_features"]
 

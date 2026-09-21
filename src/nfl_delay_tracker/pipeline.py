@@ -54,6 +54,7 @@ from nfl_delay_tracker.providers.hrrr import HrrrPointProvider
 from nfl_delay_tracker.providers.http import ProviderError
 from nfl_delay_tracker.providers.mrms import MrmsSnapshot
 from nfl_delay_tracker.providers.nws import NwsGridProvider
+from nfl_delay_tracker.providers.open_meteo import OpenMeteoEnsembleProvider
 from nfl_delay_tracker.providers.sports import NflverseScheduleProvider, fetch_cfbd_games
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -968,6 +969,13 @@ def _card_forecast_projection(forecast: dict[str, Any]) -> dict[str, Any]:
                     "nws_alerts": {key: alerts.get(key) for key in alert_fields if key in alerts}
                 }
             }
+        global_outlook = (
+            features.get("global_weather_outlook") if isinstance(features, dict) else None
+        )
+        if isinstance(global_outlook, dict):
+            if weather_summary is None:
+                weather_summary = {"venue_features": {}}
+            weather_summary["venue_features"]["global_weather_outlook"] = global_outlook
         motion = features.get("storm_motion") if isinstance(features, dict) else None
         if isinstance(motion, dict):
             if weather_summary is None:
@@ -1452,14 +1460,22 @@ def _unavailable_forecast(
 def _carry_forward_week_ahead_forecast(
     game_record: dict[str, Any], game: Game, *, now: datetime
 ) -> dict[str, Any] | None:
-    """Keep a fresh 3–7 day outlook during short-interval live refreshes."""
+    """Keep a fresh week-ahead forecast or conditions outlook during live refreshes."""
     pregame = game_record.get("pregame")
     quality = game_record.get("quality")
+    weather = game_record.get("weather")
+    features = weather.get("venue_features") if isinstance(weather, dict) else None
+    global_outlook = (
+        features.get("global_weather_outlook") if isinstance(features, dict) else None
+    )
+    forecast_scope = quality.get("forecast_scope") if isinstance(quality, dict) else None
+    has_regional_outlook = forecast_scope == "regional_outlook" and isinstance(pregame, dict)
+    has_global_outlook = forecast_scope == "global_weather_outlook" and isinstance(
+        global_outlook, dict
+    )
     generated_at = _timestamp(game_record.get("generated_at"))
     if (
-        not isinstance(pregame, dict)
-        or not isinstance(quality, dict)
-        or quality.get("forecast_scope") != "regional_outlook"
+        not (has_regional_outlook or has_global_outlook)
         or generated_at is None
         or not timedelta(minutes=-5) <= now - generated_at <= timedelta(hours=24)
         or game.kickoff_utc > now + timedelta(hours=168)
@@ -1510,6 +1526,7 @@ def refresh_forecasts(
     forecast_horizon_hours = min(168, max(1, forecast_horizon_hours))
     limit = now + timedelta(hours=forecast_horizon_hours)
     provider = NwsGridProvider()
+    global_provider = OpenMeteoEnsembleProvider()
     try:
         historical_durations = load_historical_delay_durations(
             root / "data" / "historical_delay_events.csv"
@@ -1523,6 +1540,7 @@ def refresh_forecasts(
         "mrms_lightning": {"status": "not_requested", "updated_at": None},
         "mrms_storm_motion": {"status": "not_requested", "updated_at": None},
         "href_calibrated_thunder": {"status": "unavailable", "updated_at": None},
+        "open_meteo_ifs_ensemble": {"status": "not_requested", "updated_at": None},
         "hrrr": {"status": "not_requested", "updated_at": None},
         "glm": {
             "status": "unavailable" if find_spec("netCDF4") is None else "not_requested",
@@ -1582,6 +1600,7 @@ def refresh_forecasts(
     href_rows_by_game: dict[str, list[dict[str, Any]]] = {}
     href_errors_by_game: dict[str, list[str]] = {}
     href_issue_times: list[datetime] = []
+    global_outlook_results: list[dict[str, Any]] = []
     if href_provider is not None:
         href_rows_by_game, href_errors_by_game = _prefetch_href_rows(
             href_provider,
@@ -1604,6 +1623,9 @@ def refresh_forecasts(
         latest_qualifying_event_at: datetime | None = None
         current_density_covered = False
         forecast_hazards: list[HazardPoint] = []
+        global_outlook: dict[str, Any] | None = None
+        global_outlook_fetched_at: datetime | None = None
+        global_outlook_url: str | None = None
         try:
             game = Game.model_validate(
                 {
@@ -1820,6 +1842,32 @@ def refresh_forecasts(
                         "updated_at": generated_at.isoformat(),
                         "message": nws_error,
                     }
+                    if not href_rows_by_game.get(game.game_id):
+                        try:
+                            (
+                                global_outlook,
+                                global_outlook_fetched_at,
+                                global_outlook_url,
+                            ) = global_provider.fetch_conditions_outlook(
+                                venue, kickoff=game.kickoff_utc
+                            )
+                            global_outlook_results.append(
+                                {
+                                    "status": "ok",
+                                    "venue_id": venue.venue_id,
+                                    "updated_at": global_outlook_fetched_at,
+                                    "url": global_outlook_url,
+                                }
+                            )
+                        except Exception as global_exc:
+                            global_outlook_results.append(
+                                {
+                                    "status": "error",
+                                    "venue_id": venue.venue_id,
+                                    "updated_at": generated_at,
+                                    "message": str(global_exc),
+                                }
+                            )
 
                 near_term_exposure = (
                     game.kickoff_utc <= now + timedelta(hours=6)
@@ -2072,6 +2120,62 @@ def refresh_forecasts(
                             "MRMS grid has no usable venue-radius data."
                         ),
                     )
+                    if (
+                        global_outlook is not None
+                        and global_outlook_fetched_at is not None
+                        and global_outlook_url is not None
+                    ):
+                        missing_sources = [
+                            "Thunder-capable thunderstorm probability forecast",
+                            "Venue-area lightning observations",
+                            "Observed radar storm-motion track",
+                            "Verified venue lightning policy",
+                        ]
+                        snapshot = WeatherSnapshot(
+                            venue_id=venue.venue_id,
+                            fetched_at=global_outlook_fetched_at,
+                            source=(
+                                "Open-Meteo ECMWF IFS ensemble conditions only; 3-hour native "
+                                "resolution; no thunder estimate"
+                            ),
+                            hazards=[],
+                            venue_features={"global_weather_outlook": global_outlook},
+                            missing_sources=missing_sources,
+                            notes=[
+                                "ECMWF IFS weather-code members summarize global conditions. "
+                                "This field lacks the atmospheric-stability detail required to "
+                                "estimate thunderstorms.",
+                                "No thunder/lightning delay probability or storm-motion "
+                                "estimate is produced from this global outlook.",
+                            ],
+                        )
+                        forecast["weather"] = snapshot.model_dump(mode="json")
+                        forecast["quality"].update(
+                            {
+                                "weather_data_age_seconds": max(
+                                    0,
+                                    int(
+                                        (generated_at - global_outlook_fetched_at).total_seconds()
+                                    ),
+                                ),
+                                "forecast_scope": "global_weather_outlook",
+                                "missing_sources": missing_sources,
+                                "status": "global conditions outlook only",
+                                "message": (
+                                    "Open-Meteo ECMWF IFS ensemble provides global conditions "
+                                    "at about 25 km with 3-hour native resolution. Its "
+                                    "weather-code field cannot estimate thunderstorms. "
+                                    "Venue-specific delay odds, local lightning observations, "
+                                    "and observed storm movement are unavailable; no numeric "
+                                    "delay risk is published."
+                                ),
+                            }
+                        )
+                        forecast["delay"].setdefault("notes", []).append(
+                            "Global weather codes provide a conditions outlook only; they do "
+                            "not provide thunderstorm or delay probabilities."
+                        )
+                        forecasted += 1
                 else:
                     result = simulate_pregame(
                         kickoff=game.kickoff_utc,
@@ -2471,6 +2575,44 @@ def refresh_forecasts(
                 "NWS probabilityOfThunder regional proxy; not venue-radius observations. "
                 f"Venue results: {nws_counts['ok']} current, {nws_counts['degraded']} empty, "
                 f"{nws_counts['stale']} stale, {nws_counts['error']} errors."
+            ),
+        }
+
+    if global_outlook_results:
+        successful_outlooks = [
+            item for item in global_outlook_results if item.get("status") == "ok"
+        ]
+        global_times = [
+            value
+            for item in successful_outlooks
+            if (value := item.get("updated_at")) is not None
+        ]
+        last_global_time = max(global_times, default=None)
+        global_age_seconds = (
+            max(0, int((datetime.now(UTC) - last_global_time).total_seconds()))
+            if isinstance(last_global_time, datetime)
+            else None
+        )
+        source_health["open_meteo_ifs_ensemble"] = {
+            "status": (
+                "ok"
+                if len(successful_outlooks) == len(global_outlook_results)
+                else "partial"
+                if successful_outlooks
+                else "error"
+            ),
+            "updated_at": last_global_time.isoformat() if last_global_time else now.isoformat(),
+            "retrieved_at": datetime.now(UTC).isoformat(),
+            "age_seconds": global_age_seconds,
+            "age_minutes": global_age_seconds / 60 if global_age_seconds is not None else None,
+            "freshness_limit_minutes": 360,
+            "venues_considered": len(global_outlook_results),
+            "venues_with_data": len(successful_outlooks),
+            "url": successful_outlooks[-1].get("url") if successful_outlooks else None,
+            "message": (
+                "Global ECMWF IFS ensemble weather-code conditions only; approximately 25 km "
+                "grid and 3-hour native resolution. This field cannot estimate thunderstorms, "
+                "venue delay odds, or observed storm motion."
             ),
         }
 

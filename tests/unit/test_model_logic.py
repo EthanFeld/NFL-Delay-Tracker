@@ -65,6 +65,37 @@ def test_short_refresh_carries_fresh_week_ahead_forecast_without_old_alerts() ->
     assert previous["weather"]["venue_features"]["nws_alerts"]["alerts"]
 
 
+def test_short_refresh_carries_global_conditions_outlook_without_fake_pregame_risk() -> None:
+    now = datetime(2026, 9, 20, 12, tzinfo=UTC)
+    game = Game(
+        game_id="global-outlook",
+        league=League.NFL,
+        season=2026,
+        home_team="Home",
+        away_team="Away",
+        kickoff_utc=now + timedelta(hours=120),
+    )
+    global_outlook = {
+        "model": "ECMWF IFS ensemble",
+        "valid_at": "2026-09-25T12:00:00+00:00",
+        "condition_member_counts": {"clear_or_cloudy": 18},
+    }
+    previous = {
+        "generated_at": (now - timedelta(hours=1)).isoformat(),
+        "game": {"status": "scheduled"},
+        "pregame": None,
+        "quality": {"forecast_scope": "global_weather_outlook"},
+        "weather": {"venue_features": {"global_weather_outlook": global_outlook}},
+    }
+
+    carried = _carry_forward_week_ahead_forecast(previous, game, now=now)
+
+    assert carried is not None
+    assert carried["pregame"] is None
+    assert carried["weather"]["venue_features"]["global_weather_outlook"] == global_outlook
+    assert carried["quality"]["forecast_scope"] == "global_weather_outlook"
+
+
 def test_live_status_write_preserves_week_ahead_forecast(tmp_path) -> None:
     now = datetime(2026, 9, 20, 12, tzinfo=UTC)
     game = Game(

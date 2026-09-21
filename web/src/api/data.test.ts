@@ -69,6 +69,51 @@ describe('scoreboard game normalization', () => {
     expect(game.forecastScope).toBe('regional_outlook');
   });
 
+  it('normalizes global ensemble conditions without treating them as delay risk', () => {
+    const game = normalizeGame({
+      id: 'global-outlook-game',
+      league: 'NFL',
+      home_team: 'Home Team',
+      away_team: 'Away Team',
+      kickoff_utc: '2026-09-27T20:25:00Z',
+      quality: { forecast_scope: 'global_weather_outlook' },
+      weather: {
+        venue_features: {
+          global_weather_outlook: {
+            model: 'ecmwf_ifs025_ensemble',
+            valid_at: '2026-09-27T21:00:00Z',
+            native_resolution_hours: 3,
+            grid_resolution_km: 25,
+            member_count: 50,
+            valid_member_count: 49,
+            condition_member_counts: {
+              clear_or_cloudy: 32,
+              fog: 1,
+              precipitation_or_snow: 15,
+              other_or_unclassified: 1,
+            },
+            attribution_url: 'https://open-meteo.com/en/docs/ensemble-api',
+          },
+        },
+      },
+      pregame: { delay_probability: 0.99, kickoff_delay_probability: 0.8, in_game_delay_probability: 0.5 },
+    });
+
+    expect(game.forecastScope).toBe('global_weather_outlook');
+    expect(game.weatherContext?.globalOutlook).toEqual({
+      model: 'ecmwf_ifs025_ensemble',
+      validAt: '2026-09-27T21:00:00Z',
+      nativeResolutionHours: 3,
+      gridResolutionKm: 25,
+      memberCount: 50,
+      validMemberCount: 49,
+      conditionMemberCounts: { clearOrCloudy: 32, fog: 1, precipitationOrSnow: 15, otherOrUnclassified: 1 },
+      attributionUrl: 'https://open-meteo.com/en/docs/ensemble-api',
+    });
+    // Normalization preserves source data; App renders condition-only UI for this scope.
+    expect(game.delayProbability).toBe(0.99);
+  });
+
   it('normalizes active-delay resume quantiles and additional-resume odds', () => {
     const game = normalizeGame({
       id: 'delayed-game',

@@ -80,7 +80,7 @@ function freshnessTone(source?: SourceHealth, generatedAt?: string): 'good' | 'w
 }
 
 function sourceLabel(name: string): string {
-  const labels: Record<string, string> = { mrms: 'Lightning observations', glm: 'Lightning observations', href: 'HREF model', href_calibrated_thunder: 'HREF thunder model', hrrr: 'HRRR model', nws_forecast: 'NWS forecast', nws_alerts: 'NWS warning feed', nfl: 'NFL schedule', nfl_schedule: 'NFL schedule', college: 'College schedule', cfbd: 'College schedule', sports_status: 'Live game status' };
+  const labels: Record<string, string> = { mrms: 'Lightning observations', glm: 'Lightning observations', href: 'HREF model', href_calibrated_thunder: 'HREF thunder model', hrrr: 'HRRR model', nws_forecast: 'NWS forecast', nws_alerts: 'NWS warning feed', open_meteo_ifs_ensemble: 'ECMWF global ensemble', nfl: 'NFL schedule', nfl_schedule: 'NFL schedule', college: 'College schedule', cfbd: 'College schedule', sports_status: 'Live game status' };
   return labels[name.toLowerCase()] || name.replaceAll('_', ' ');
 }
 
@@ -103,6 +103,34 @@ function isDome(game: Game): boolean {
   return game.roofType === 'fixed_dome' || game.roofType === 'closed' || game.roofType === 'dome';
 }
 
+function hasGlobalOutlook(game: Game): boolean {
+  return game.forecastScope === 'global_weather_outlook' || Boolean(game.weatherContext?.globalOutlook);
+}
+
+const globalConditionLabels = [
+  ['clearOrCloudy', 'Clear / cloudy'],
+  ['fog', 'Fog'],
+  ['precipitationOrSnow', 'Precipitation / snow'],
+  ['otherOrUnclassified', 'Other / unclassified'],
+] as const;
+
+function GlobalOutlookCard({ game }: { game: Game }) {
+  const outlook = game.weatherContext?.globalOutlook;
+  const validMembers = outlook?.validMemberCount ?? outlook?.memberCount;
+  const ranked = outlook ? globalConditionLabels
+    .flatMap(([key, label]) => {
+      const count = outlook.conditionMemberCounts[key];
+      return count === undefined ? [] : [{ label, count }];
+    })
+    .sort((a, b) => b.count - a.count) : [];
+  const mainCondition = ranked.find((row) => row.count > 0);
+  return <div className="global-outlook-card" aria-label="Global weather conditions only; delay odds unavailable">
+    <span className="global-outlook-kicker"><CloudLightning size={12} /> WEATHER CONDITIONS</span>
+    {mainCondition ? <><b>{mainCondition.label}</b><small>{mainCondition.count}{validMembers === undefined ? '' : ` of ${validMembers}`} ensemble members</small></> : <b>Condition data unavailable</b>}
+    <small>Thunder / delay odds unavailable</small>
+  </div>;
+}
+
 function routeGameId(): string | undefined {
   const match = window.location.hash.match(/^#\/game\/([^/?#]+)/);
   return match ? decodeURIComponent(match[1]) : undefined;
@@ -123,10 +151,13 @@ function RiskRing({ probability, large = false, label = 'delay risk' }: { probab
 function GameCard({ game, generatedAt }: { game: Game; generatedAt?: string }) {
   const live = isLive(game);
   const dome = isDome(game);
-  const source = game.sources[0];
   const status = statusLabel(game);
   const scheduleTime = formatTime(game.kickoff, game.timezone);
   const scope = game.forecastScope;
+  const globalOutlook = hasGlobalOutlook(game);
+  const source = globalOutlook
+    ? game.sources.find((item) => item.name.toLowerCase() === 'open_meteo_ifs_ensemble') || game.sources[0]
+    : game.sources[0];
   const riskLabel = scope === 'regional_outlook' || scope === 'regional_proxy' ? 'regional' : scope === 'forecast_pending' ? 'outlook pending' : scope === 'archive_missing' ? 'no archive' : scope === 'weather_unavailable' ? 'unavailable' : 'delay risk';
   return (
     <a className={`game-card ${live ? 'game-card-live' : ''}`} href={`#/game/${encodeURIComponent(game.id)}`} aria-label={`${game.awayTeam} at ${game.homeTeam}, ${status}`}>
@@ -155,7 +186,7 @@ function GameCard({ game, generatedAt }: { game: Game; generatedAt?: string }) {
           <div className="time-line"><Clock3 size={13} aria-hidden="true" /> <span>{live ? status : scheduleTime}</span></div>
         </div>
         <div className="card-risk">
-          {dome ? (
+          {globalOutlook ? <GlobalOutlookCard game={game} /> : dome ? (
             <div className="dome-risk"><span className="dome-icon"><Sun size={17} /></span><b>Indoor</b><small>Lightning delay model disabled</small></div>
           ) : game.activeDelay ? (
             <div className="resume-card-metric"><span className="metric-eyebrow">EST. RESUME · P50</span><strong>{formatTime(game.resumeP50, game.timezone, false)}</strong><small>P75 {formatTime(game.resumeP75, game.timezone, false)} · P90 {formatTime(game.resumeP90, game.timezone, false)}</small></div>
@@ -164,7 +195,12 @@ function GameCard({ game, generatedAt }: { game: Game; generatedAt?: string }) {
           )}
         </div>
       </div>
-      {game.activeDelay ? (
+      {globalOutlook ? (
+        <div className="card-bottom global-outlook-bottom">
+          <span>Condition ensemble only <b>Delay risk not available</b></span>
+          <span className="updated-note"><span className={`fresh-dot ${freshnessTone(source, game.generatedAt || generatedAt)}`} />{formatAge(source, game.generatedAt || generatedAt)}</span>
+        </div>
+      ) : game.activeDelay ? (
         <div className="card-bottom active-card-bottom">
           <span className={`delay-kind ${game.officialDelay ? 'official' : 'modeled'}`}><CloudLightning size={13} />{game.officialDelay ? 'Reported weather delay' : 'Modeled hold · not officially confirmed'}</span>
           <span className="compact-resume">Resumed by {formatPercent(game.probabilityAdditional[30] === undefined ? undefined : 1 - game.probabilityAdditional[30])} in 30m <ArrowRight size={14} /></span>
@@ -324,6 +360,8 @@ function PolicyRingView({ game }: { game: Game }) {
 function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; globalSources: SourceHealth[]; generatedAt?: string; onBack: () => void }) {
   const active = game.activeDelay;
   const liveRisk = isLive(game) && !active;
+  const globalOutlookOnly = hasGlobalOutlook(game);
+  const globalOutlook = game.weatherContext?.globalOutlook;
   const regionalRisk = game.forecastScope === 'regional_outlook' || game.forecastScope === 'regional_proxy';
   const sourceList = game.sources.length ? game.sources : globalSources;
   const dome = isDome(game);
@@ -366,7 +404,24 @@ function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; 
         </div>
       </div>}
       {dataWarnings.length > 0 && <div className="warning-strip"><AlertTriangle size={17} /><div><b>Forecast quality notice</b><span>{dataWarnings.join(' · ')}</span></div></div>}
-      {dome ? (
+      {globalOutlookOnly ? (
+        <section className="forecast-panel global-outlook-detail">
+          <div className="panel-heading"><div><span className="section-kicker"><CloudLightning size={14} /> GLOBAL WEATHER OUTLOOK</span><h2>Ensemble conditions</h2></div><span className="forecast-asof">{globalOutlook?.model || 'Global ensemble'}</span></div>
+          <p className="panel-description">{globalOutlook?.validAt ? `Valid ${formatFullDate(globalOutlook.validAt, game.timezone)} at ${formatTime(globalOutlook.validAt, game.timezone)}.` : 'Valid time unavailable.'} Condition member counts only; this is not a stadium-scale thunder forecast.</p>
+          {globalOutlook ? <>
+            <div className="global-outlook-meta">
+              <span><b>{globalOutlook.validMemberCount ?? '—'} / {globalOutlook.memberCount ?? '—'}</b> valid ensemble members</span>
+              <span><b>{globalOutlook.nativeResolutionHours ?? 3}h</b> native time step</span>
+              <span><b>~{globalOutlook.gridResolutionKm ?? 25} km</b> grid spacing</span>
+            </div>
+            <div className="global-condition-grid">
+              {globalConditionLabels.map(([key, label]) => <div key={key}><span>{label}</span><b>{globalOutlook.conditionMemberCounts[key] ?? '—'} members</b></div>)}
+            </div>
+            {globalOutlook.attributionUrl ? <a className="source-link" href={globalOutlook.attributionUrl} target="_blank" rel="noreferrer">Model and data attribution <ArrowRight size={13} /></a> : <p className="panel-subcopy">Model and data attribution link unavailable.</p>}
+          </> : <p className="panel-subcopy">Ensemble condition data is unavailable for this game.</p>}
+          <p className="global-outlook-limitation">Thunder, lightning, and delay odds are unavailable. Storm movement is unavailable. Do not interpret these weather-code member counts as thunder probability or venue delay risk. The model resolves conditions every 3 hours on an approximately 25 km grid, so it can miss short-lived or stadium-scale storms.</p>
+        </section>
+      ) : dome ? (
         <section className="dome-notice"><div className="notice-icon"><Sun size={23} /></div><div><h2>Indoor — lightning delay model disabled</h2><p>This stadium's fixed roof protects play from lightning. Weather conditions outside may still affect travel or venue operations.</p></div></section>
       ) : active ? (
         <section className="forecast-panel active-forecast">
@@ -437,7 +492,7 @@ function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; 
         <p className="muted-copy">Circle sizes use the configured mile radii. Lightning summaries and radar echo tracks are separate public observations.</p>
       </section>}
 
-      {game.weatherContext && <section className="info-panel weather-context-panel">
+      {game.weatherContext && (game.weatherContext.stormMotion || game.weatherContext.hrrr || game.weatherContext.glm) && <section className="info-panel weather-context-panel">
         <div className="small-panel-title"><CloudLightning size={17} /><h2>Storm context</h2></div>
         {game.weatherContext.stormMotion && <StormMotionSummary motion={game.weatherContext.stormMotion} />}
         <div className="policy-stats">
@@ -559,7 +614,7 @@ function App() {
       if (searchTerm && ![game.homeTeam, game.awayTeam, game.venue, game.city, game.homeAbbr, game.awayAbbr].some((part) => part?.toLowerCase().includes(searchTerm))) return false;
       return true;
     }).sort((a, b) => {
-      if (sort === 'risk') return (b.delayProbability ?? -1) - (a.delayProbability ?? -1);
+      if (sort === 'risk') return (hasGlobalOutlook(b) ? -1 : b.delayProbability ?? -1) - (hasGlobalOutlook(a) ? -1 : a.delayProbability ?? -1);
       if (sort === 'teams') return `${a.awayTeam} ${a.homeTeam}`.localeCompare(`${b.awayTeam} ${b.homeTeam}`);
       return new Date(a.kickoff).getTime() - new Date(b.kickoff).getTime();
     });

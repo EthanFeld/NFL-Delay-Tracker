@@ -3247,3 +3247,24 @@ venues:
     roof_source_url: "https://nusports.com/news/2026/02/03/northwestern-announces-2026-home-football-venues-and-ryan-field-opener"
     source_note: "Northwestern Athletics lists Martin Stadium as the first two 2026 home venues before Ryan Field opens October 2; coordinates from Wikidata. This is a temporary current-season venue. No venue-specific lightning procedure was verified."
     source_checked_at: "2026-09-20"
+  venue_maracana_stadium:
+    venue_id: "venue_maracana_stadium"
+    name: "Maracanã Stadium"
+    home_teams:
+      - "NFL International Game"
+    league: "NFL"
+    latitude: -22.9121619
+    longitude: -43.2311861
+    timezone: "America/Sao_Paulo"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Estádio Jornalista Mário Filho"
+      - "Maracanã"
+    city: "Rio de Janeiro"
+    source_url: "https://www.nfl.com/international/games/rio"
+    coordinate_source_url: "https://www.openstreetmap.org/relation/4587734"
+    roof_source_url: "https://www.nfl.com/international/games/rio"
+    source_note: "2026 NFL Rio neutral-site venue. The 8-mile/30-minute lightning policy is an unverified tracker assumption. NWS/HREF/MRMS venue coverage is unavailable; global model data is published as conditions only, without thunder, delay-risk, or storm-motion estimates."
+    source_checked_at: "2026-09-20"
