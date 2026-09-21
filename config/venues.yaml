@@ -1,0 +1,3249 @@
+venues:
+  venue_state_farm_stadium:
+    venue_id: "venue_state_farm_stadium"
+    name: "State Farm Stadium"
+    home_teams:
+      - "Arizona Cardinals"
+      - "ARI"
+    league: "NFL"
+    latitude: 33.5277555
+    longitude: -112.2625948
+    timezone: "America/Phoenix"
+    roof_type: "retractable"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "University of Phoenix Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_mercedes_benz_stadium:
+    venue_id: "venue_mercedes_benz_stadium"
+    name: "Mercedes-Benz Stadium"
+    home_teams:
+      - "Atlanta Falcons"
+      - "ATL"
+    league: "NFL"
+    latitude: 33.7555052
+    longitude: -84.4008484
+    timezone: "America/New_York"
+    roof_type: "retractable"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_m_and_t_bank_stadium:
+    venue_id: "venue_m_and_t_bank_stadium"
+    name: "M&T Bank Stadium"
+    home_teams:
+      - "Baltimore Ravens"
+      - "BAL"
+    league: "NFL"
+    latitude: 39.277958
+    longitude: -76.6227221
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_highmark_stadium:
+    venue_id: "venue_highmark_stadium"
+    name: "Highmark Stadium"
+    home_teams:
+      - "Buffalo Bills"
+      - "BUF"
+    league: "NFL"
+    latitude: 42.7730556
+    longitude: -78.7922222
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Ralph Wilson Stadium"
+      - "New Era Field"
+      - "Highmark Stadium (old)"
+      - "New Highmark Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/Highmark_Stadium"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Current Bills home venue is the 2026 Highmark Stadium, adjacent to the former stadium. Coordinates from the 2026 Highmark Stadium article; timezone and base location record from the public NFL stadium dataset."
+    source_checked_at: "2026-09-20"
+  venue_bank_of_america_stadium:
+    venue_id: "venue_bank_of_america_stadium"
+    name: "Bank of America Stadium"
+    home_teams:
+      - "Carolina Panthers"
+      - "CAR"
+    league: "NFL"
+    latitude: 35.2258152
+    longitude: -80.8528376
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "bank_of_america_public_8mi_30min"
+    aliases:
+      - "Ericsson Stadium"
+      - "Carolinas Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_soldier_field:
+    venue_id: "venue_soldier_field"
+    name: "Soldier Field"
+    home_teams:
+      - "Chicago Bears"
+      - "CHI"
+    league: "NFL"
+    latitude: 41.8624598
+    longitude: -87.6167762
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_paycor_stadium:
+    venue_id: "venue_paycor_stadium"
+    name: "Paycor Stadium"
+    home_teams:
+      - "Cincinnati Bengals"
+      - "CIN"
+    league: "NFL"
+    latitude: 39.0954306
+    longitude: -84.5160435
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Paul Brown Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  cleveland:
+    venue_id: "cleveland"
+    name: "Huntington Bank Field"
+    home_teams:
+      - "Cleveland Browns"
+      - "CLE"
+    league: "NFL"
+    latitude: 41.5060371
+    longitude: -81.699586
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "FirstEnergy Stadium"
+      - "Cleveland Browns Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_at_and_t_stadium:
+    venue_id: "venue_at_and_t_stadium"
+    name: "AT&T Stadium"
+    home_teams:
+      - "Dallas Cowboys"
+      - "DAL"
+    league: "NFL"
+    latitude: 32.7479723
+    longitude: -97.0928461
+    timezone: "America/Chicago"
+    roof_type: "retractable"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Cowboys Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  denver:
+    venue_id: "denver"
+    name: "Empower Field at Mile High"
+    home_teams:
+      - "Denver Broncos"
+      - "DEN"
+    league: "NFL"
+    latitude: 39.7439402
+    longitude: -105.0201065
+    timezone: "America/Denver"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_ford_field:
+    venue_id: "venue_ford_field"
+    name: "Ford Field"
+    home_teams:
+      - "Detroit Lions"
+      - "DET"
+    league: "NFL"
+    latitude: 42.3401334
+    longitude: -83.0456783
+    timezone: "America/Detroit"
+    roof_type: "fixed_dome"
+    roof_weather_protection: true
+    policy_id: "fixed_dome_indoor"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_lambeau_field:
+    venue_id: "venue_lambeau_field"
+    name: "Lambeau Field"
+    home_teams:
+      - "Green Bay Packers"
+      - "GB"
+    league: "NFL"
+    latitude: 44.5014769
+    longitude: -88.0621617
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_reliant_stadium:
+    venue_id: "venue_reliant_stadium"
+    name: "Reliant Stadium"
+    home_teams:
+      - "Houston Texans"
+      - "HOU"
+    league: "NFL"
+    latitude: 29.6849239
+    longitude: -95.41082
+    timezone: "America/Chicago"
+    roof_type: "retractable"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "NRG Stadium"
+      - "Houston Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_lucas_oil_stadium:
+    venue_id: "venue_lucas_oil_stadium"
+    name: "Lucas Oil Stadium"
+    home_teams:
+      - "Indianapolis Colts"
+      - "IND"
+    league: "NFL"
+    latitude: 39.7602037
+    longitude: -86.1638068
+    timezone: "America/Indiana/Indianapolis"
+    roof_type: "retractable"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_everbank_stadium:
+    venue_id: "venue_everbank_stadium"
+    name: "EverBank Stadium"
+    home_teams:
+      - "Jacksonville Jaguars"
+      - "JAX"
+    league: "NFL"
+    latitude: 30.3239164
+    longitude: -81.6373486
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "TIAA Bank Field"
+      - "EverBank Field"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  kansas_city:
+    venue_id: "kansas_city"
+    name: "GEHA Field at Arrowhead Stadium"
+    home_teams:
+      - "Kansas City Chiefs"
+      - "KC"
+    league: "NFL"
+    latitude: 39.0489275
+    longitude: -94.4839962
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Arrowhead Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  inglewood:
+    venue_id: "inglewood"
+    name: "SoFi Stadium"
+    home_teams:
+      - "Los Angeles Chargers"
+      - "LAC"
+      - "Los Angeles Rams"
+      - "LAR"
+    league: "NFL"
+    latitude: 33.953485
+    longitude: -118.3390307
+    timezone: "America/Los_Angeles"
+    roof_type: "partial"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "SoFi Stadium Inglewood"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  miami:
+    venue_id: "miami"
+    name: "Hard Rock Stadium"
+    home_teams:
+      - "Miami Dolphins"
+      - "MIA"
+      - "Miami"
+      - "Miami Hurricanes"
+    league:
+      - "NFL"
+      - "NCAA FBS"
+    latitude: 25.9579623
+    longitude: -80.2388423
+    timezone: "America/New_York"
+    roof_type: "partial"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Joe Robbie Stadium"
+      - "Pro Player Stadium"
+      - "Dolphin Stadium"
+      - "Sun Life Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included. Also serves Miami as a current NCAA FBS home venue; school/stadium relationship from https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums."
+    source_checked_at: "2026-09-20"
+    fbs_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+  venue_u_s_bank_stadium:
+    venue_id: "venue_u_s_bank_stadium"
+    name: "U.S. Bank Stadium"
+    home_teams:
+      - "Minnesota Vikings"
+      - "MIN"
+    league: "NFL"
+    latitude: 44.9736273
+    longitude: -93.2574111
+    timezone: "America/Chicago"
+    roof_type: "fixed_dome"
+    roof_weather_protection: true
+    policy_id: "fixed_dome_indoor"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_gillette_stadium:
+    venue_id: "venue_gillette_stadium"
+    name: "Gillette Stadium"
+    home_teams:
+      - "New England Patriots"
+      - "NE"
+    league: "NFL"
+    latitude: 42.0909217
+    longitude: -71.2643321
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_caesars_superdome:
+    venue_id: "venue_caesars_superdome"
+    name: "Caesars Superdome"
+    home_teams:
+      - "New Orleans Saints"
+      - "NO"
+    league: "NFL"
+    latitude: 29.9511425
+    longitude: -90.0810779
+    timezone: "America/Chicago"
+    roof_type: "fixed_dome"
+    roof_weather_protection: true
+    policy_id: "fixed_dome_indoor"
+    aliases:
+      - "Mercedes-Benz Superdome"
+      - "Louisiana Superdome"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_metlife_stadium:
+    venue_id: "venue_metlife_stadium"
+    name: "MetLife Stadium"
+    home_teams:
+      - "New York Giants"
+      - "NYG"
+      - "New York Jets"
+      - "NYJ"
+    league: "NFL"
+    latitude: 40.8135075
+    longitude: -74.0743424
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_allegiant_stadium:
+    venue_id: "venue_allegiant_stadium"
+    name: "Allegiant Stadium"
+    home_teams:
+      - "Las Vegas Raiders"
+      - "LV"
+      - "UNLV"
+      - "UNLV Rebels"
+    league:
+      - "NFL"
+      - "NCAA FBS"
+    latitude: 36.0908515
+    longitude: -115.1833441
+    timezone: "America/Los_Angeles"
+    roof_type: "fixed_dome"
+    roof_weather_protection: true
+    policy_id: "fixed_dome_indoor"
+    aliases:
+      - "Las Vegas Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included. Also serves UNLV as a current NCAA FBS home venue; school/stadium relationship from https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums."
+    source_checked_at: "2026-09-20"
+    fbs_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+  philadelphia:
+    venue_id: "philadelphia"
+    name: "Lincoln Financial Field"
+    home_teams:
+      - "Philadelphia Eagles"
+      - "PHI"
+      - "Temple"
+      - "Temple Owls"
+    league:
+      - "NFL"
+      - "NCAA FBS"
+    latitude: 39.9007914
+    longitude: -75.1674645
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included. Also serves Temple as a current NCAA FBS home venue; school/stadium relationship from https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums."
+    source_checked_at: "2026-09-20"
+    fbs_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+  pittsburgh:
+    venue_id: "pittsburgh"
+    name: "Acrisure Stadium"
+    home_teams:
+      - "Pittsburgh Steelers"
+      - "PIT"
+      - "Pittsburgh"
+      - "Pittsburgh Panthers"
+    league:
+      - "NFL"
+      - "NCAA FBS"
+    latitude: 40.4467883
+    longitude: -80.0157692
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Heinz Field"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included. Also serves Pittsburgh as a current NCAA FBS home venue; school/stadium relationship from https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums."
+    source_checked_at: "2026-09-20"
+    fbs_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+  venue_levi_s_stadium:
+    venue_id: "venue_levi_s_stadium"
+    name: "Levi's Stadium"
+    home_teams:
+      - "San Francisco 49ers"
+      - "SF"
+    league: "NFL"
+    latitude: 37.4031837
+    longitude: -121.9698094
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_lumen_field:
+    venue_id: "venue_lumen_field"
+    name: "Lumen Field"
+    home_teams:
+      - "Seattle Seahawks"
+      - "SEA"
+    league: "NFL"
+    latitude: 47.5951513
+    longitude: -122.3316259
+    timezone: "America/Los_Angeles"
+    roof_type: "partial"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Qwest Field"
+      - "CenturyLink Field"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_raymond_james_stadium:
+    venue_id: "venue_raymond_james_stadium"
+    name: "Raymond James Stadium"
+    home_teams:
+      - "Tampa Bay Buccaneers"
+      - "TB"
+      - "South Florida"
+      - "South Florida Bulls"
+    league:
+      - "NFL"
+      - "NCAA FBS"
+    latitude: 27.9759691
+    longitude: -82.503356
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included. Also serves South Florida as a current NCAA FBS home venue; school/stadium relationship from https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums."
+    source_checked_at: "2026-09-20"
+    fbs_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+  venue_nissan_stadium:
+    venue_id: "venue_nissan_stadium"
+    name: "Nissan Stadium"
+    home_teams:
+      - "Tennessee Titans"
+      - "TEN"
+    league: "NFL"
+    latitude: 36.1664774
+    longitude: -86.7712938
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_northwest_stadium:
+    venue_id: "venue_northwest_stadium"
+    name: "Northwest Stadium"
+    home_teams:
+      - "Washington Commanders"
+      - "WAS"
+    league: "NFL"
+    latitude: 38.907703
+    longitude: -76.8645083
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "FedExField"
+      - "FedEx Field"
+      - "Commanders Field"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    coordinate_source_url: "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    source_note: "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included."
+    source_checked_at: "2026-09-20"
+  venue_acrisure_bounce_house:
+    venue_id: "venue_acrisure_bounce_house"
+    name: "Acrisure Bounce House"
+    home_teams:
+      - "UCF"
+      - "UCF Knights"
+    league: "NCAA FBS"
+    latitude: 28.6079589
+    longitude: -81.1929989
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Bright House Networks Stadium"
+      - "Spectrum Stadium"
+      - "FBC Mortgage Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_aggie_memorial_stadium:
+    venue_id: "venue_aggie_memorial_stadium"
+    name: "Aggie Memorial Stadium"
+    home_teams:
+      - "New Mexico State"
+      - "New Mexico State Aggies"
+    league: "NCAA FBS"
+    latitude: 32.2797494
+    longitude: -106.7411363
+    timezone: "America/Denver"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_alamodome:
+    venue_id: "venue_alamodome"
+    name: "Alamodome"
+    home_teams:
+      - "UTSA"
+      - "UTSA Roadrunners"
+    league: "NCAA FBS"
+    latitude: 29.4169371
+    longitude: -98.4789026
+    timezone: "America/Chicago"
+    roof_type: "fixed_dome"
+    roof_weather_protection: true
+    policy_id: "fixed_dome_indoor"
+    aliases:
+      - "Alamo Dome"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/Alamodome"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_husky_stadium:
+    venue_id: "venue_husky_stadium"
+    name: "Husky Stadium"
+    home_teams:
+      - "Washington"
+      - "Washington Huskies"
+    league: "NCAA FBS"
+    latitude: 47.6504305
+    longitude: -122.3029198
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_albertsons_stadium:
+    venue_id: "venue_albertsons_stadium"
+    name: "Albertsons Stadium"
+    home_teams:
+      - "Boise State"
+      - "Boise State Broncos"
+    league: "NCAA FBS"
+    latitude: 43.6027081
+    longitude: -116.1959124
+    timezone: "America/Boise"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_allegacy_federal_credit_union_stadium:
+    venue_id: "venue_allegacy_federal_credit_union_stadium"
+    name: "Allegacy Federal Credit Union Stadium"
+    home_teams:
+      - "Wake Forest"
+      - "Wake Forest Demon Deacons"
+    league: "NCAA FBS"
+    latitude: 36.0918348
+    longitude: -80.2553415
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "BB&T Field"
+      - "Groves Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_allen_e_paulson_stadium:
+    venue_id: "venue_allen_e_paulson_stadium"
+    name: "Allen E. Paulson Stadium"
+    home_teams:
+      - "Georgia Southern"
+      - "Georgia Southern Eagles"
+    league: "NCAA FBS"
+    latitude: 32.4122117
+    longitude: -81.7831707
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Paulson Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_alumni_stadium:
+    venue_id: "venue_alumni_stadium"
+    name: "Alumni Stadium"
+    home_teams:
+      - "Boston College"
+      - "Boston College Eagles"
+    league: "NCAA FBS"
+    latitude: 42.3351083
+    longitude: -71.1664724
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_amon_g_carter_stadium:
+    venue_id: "venue_amon_g_carter_stadium"
+    name: "Amon G. Carter Stadium"
+    home_teams:
+      - "TCU"
+      - "TCU Horned Frogs"
+    league: "NCAA FBS"
+    latitude: 32.709916
+    longitude: -97.367996
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_arthur_l_williams_stadium:
+    venue_id: "venue_arthur_l_williams_stadium"
+    name: "Arthur L. Williams Stadium"
+    home_teams:
+      - "Liberty"
+      - "Liberty Flames"
+    league: "NCAA FBS"
+    latitude: 37.35429
+    longitude: -79.17496
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Williams Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://mapcarta.com/W897718684"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. Williams Stadium map pin (Mapcarta/OpenStreetMap). No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_autzen_stadium:
+    venue_id: "venue_autzen_stadium"
+    name: "Autzen Stadium"
+    home_teams:
+      - "Oregon"
+      - "Oregon Ducks"
+    league: "NCAA FBS"
+    latitude: 44.0582727
+    longitude: -123.0685043
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_bagwell_field_at_dowdyficklen_stadium:
+    venue_id: "venue_bagwell_field_at_dowdyficklen_stadium"
+    name: "Bagwell Field at Dowdy–Ficklen Stadium"
+    home_teams:
+      - "East Carolina"
+      - "East Carolina Pirates"
+    league: "NCAA FBS"
+    latitude: 35.5964258
+    longitude: -77.3652291
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Dowdy–Ficklen Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_beaver_stadium:
+    venue_id: "venue_beaver_stadium"
+    name: "Beaver Stadium"
+    home_teams:
+      - "Penn State"
+      - "Penn State Nittany Lions"
+    league: "NCAA FBS"
+    latitude: 40.8121527
+    longitude: -77.8562021
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_benson_field_at_yulman_stadium:
+    venue_id: "venue_benson_field_at_yulman_stadium"
+    name: "Benson Field at Yulman Stadium"
+    home_teams:
+      - "Tulane"
+      - "Tulane Green Wave"
+    league: "NCAA FBS"
+    latitude: 29.9458981
+    longitude: -90.1151911
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_bill_snyder_family_football_stadium:
+    venue_id: "venue_bill_snyder_family_football_stadium"
+    name: "Bill Snyder Family Football Stadium"
+    home_teams:
+      - "Kansas State"
+      - "Kansas State Wildcats"
+    league: "NCAA FBS"
+    latitude: 39.2018636
+    longitude: -96.5937924
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_blaik_field_at_michie_stadium:
+    venue_id: "venue_blaik_field_at_michie_stadium"
+    name: "Blaik Field at Michie Stadium"
+    home_teams:
+      - "Army"
+      - "Army Black Knights"
+    league: "NCAA FBS"
+    latitude: 41.3870804
+    longitude: -73.9640808
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Michie Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_bobby_bowden_field_at_doak_s_campbell_stadium:
+    venue_id: "venue_bobby_bowden_field_at_doak_s_campbell_stadium"
+    name: "Bobby Bowden Field at Doak S. Campbell Stadium"
+    home_teams:
+      - "Florida State"
+      - "Florida State Seminoles"
+    league: "NCAA FBS"
+    latitude: 30.4375476
+    longitude: -84.304534
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Bobby Bowden Field at Doak Campbell Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_bobby_dodd_stadium_at_hyundai_field:
+    venue_id: "venue_bobby_dodd_stadium_at_hyundai_field"
+    name: "Bobby Dodd Stadium at Hyundai Field"
+    home_teams:
+      - "Georgia Tech"
+      - "Georgia Tech Yellow Jackets"
+    league: "NCAA FBS"
+    latitude: 33.7725569
+    longitude: -84.3928528
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Bobby Dodd Stadium at Historic Grant Field"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_boone_pickens_stadium:
+    venue_id: "venue_boone_pickens_stadium"
+    name: "Boone Pickens Stadium"
+    home_teams:
+      - "Oklahoma State"
+      - "Oklahoma State Cowboys"
+    league: "NCAA FBS"
+    latitude: 36.1257087
+    longitude: -97.066505
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_bridgeforth_stadium:
+    venue_id: "venue_bridgeforth_stadium"
+    name: "Bridgeforth Stadium"
+    home_teams:
+      - "James Madison"
+      - "James Madison Dukes"
+    league: "NCAA FBS"
+    latitude: 38.4352778
+    longitude: -78.8730556
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/Bridgeforth_Stadium"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. Bridgeforth Stadium coordinate from its public stadium article. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_brigham_field_at_huskie_stadium:
+    venue_id: "venue_brigham_field_at_huskie_stadium"
+    name: "Brigham Field at Huskie Stadium"
+    home_teams:
+      - "NIU"
+      - "Northern Illinois Huskies"
+    league: "NCAA FBS"
+    latitude: 41.934014
+    longitude: -88.778222
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Huskie Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_brooks_field_at_wallace_wade_stadium:
+    venue_id: "venue_brooks_field_at_wallace_wade_stadium"
+    name: "Brooks Field at Wallace Wade Stadium"
+    home_teams:
+      - "Duke"
+      - "Duke Blue Devils"
+    league: "NCAA FBS"
+    latitude: 35.9953167
+    longitude: -78.9417243
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Wallace Wade Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_brooks_stadium:
+    venue_id: "venue_brooks_stadium"
+    name: "Brooks Stadium"
+    home_teams:
+      - "Coastal Carolina"
+      - "Coastal Carolina Chanticleers"
+    league: "NCAA FBS"
+    latitude: 33.7929
+    longitude: -79.0175
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://fr.wikipedia.org/wiki/Brooks_Stadium"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. Brooks Stadium coordinate from its public stadium article. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_burgesssnow_field_at_amfirst_stadium:
+    venue_id: "venue_burgesssnow_field_at_amfirst_stadium"
+    name: "Burgess–Snow Field at AmFirst Stadium"
+    home_teams:
+      - "Jacksonville State"
+      - "Jacksonville State Gamecocks"
+    league: "NCAA FBS"
+    latitude: 33.82028
+    longitude: -85.76639
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Burgess–Snow Field at JSU Stadium"
+      - "Burgess-Snow Field at JSU Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/AmFirst_Stadium"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. AmFirst Stadium coordinate from its public stadium article. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_cajun_field:
+    venue_id: "venue_cajun_field"
+    name: "Cajun Field"
+    home_teams:
+      - "Louisiana"
+      - "Louisiana Ragin' Cajuns"
+    league: "NCAA FBS"
+    latitude: 30.2157961
+    longitude: -92.0162641
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_california_memorial_stadium:
+    venue_id: "venue_california_memorial_stadium"
+    name: "California Memorial Stadium"
+    home_teams:
+      - "California"
+      - "California Golden Bears"
+    league: "NCAA FBS"
+    latitude: 37.8706866
+    longitude: -122.2507095
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_camp_randall_stadium:
+    venue_id: "venue_camp_randall_stadium"
+    name: "Camp Randall Stadium"
+    home_teams:
+      - "Wisconsin"
+      - "Wisconsin Badgers"
+    league: "NCAA FBS"
+    latitude: 43.069938
+    longitude: -89.4127464
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_carl_smith_center_home_of_david_a_harrison_iii_field_at_scott_stadium:
+    venue_id: "venue_carl_smith_center_home_of_david_a_harrison_iii_field_at_scott_stadium"
+    name: "Carl Smith Center, Home of David A. Harrison III Field at Scott Stadium"
+    home_teams:
+      - "Virginia"
+      - "Virginia Cavaliers"
+    league: "NCAA FBS"
+    latitude: 38.0311237
+    longitude: -78.5137081
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Scott Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_carlisle_faulkner_field_at_m_m_roberts_stadium:
+    venue_id: "venue_carlisle_faulkner_field_at_m_m_roberts_stadium"
+    name: "Carlisle-Faulkner Field at M.M. Roberts Stadium"
+    home_teams:
+      - "Southern Miss"
+      - "Southern Miss Golden Eagles"
+    league: "NCAA FBS"
+    latitude: 31.3289784
+    longitude: -89.3313307
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "M. M. Roberts Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_casino_del_sol_stadium:
+    venue_id: "venue_casino_del_sol_stadium"
+    name: "Casino Del Sol Stadium"
+    home_teams:
+      - "Arizona"
+      - "Arizona Wildcats"
+    league: "NCAA FBS"
+    latitude: 32.2283402
+    longitude: -110.9490395
+    timezone: "America/Phoenix"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Arizona Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_cefcu_stadium:
+    venue_id: "venue_cefcu_stadium"
+    name: "CEFCU Stadium"
+    home_teams:
+      - "San Jose State"
+      - "San Jose State Spartans"
+    league: "NCAA FBS"
+    latitude: 37.3201052
+    longitude: -121.8681161
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Spartan Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_centennial_bank_stadium:
+    venue_id: "venue_centennial_bank_stadium"
+    name: "Centennial Bank Stadium"
+    home_teams:
+      - "Arkansas State"
+      - "Arkansas State Red Wolves"
+    league: "NCAA FBS"
+    latitude: 35.8489901
+    longitude: -90.6676949
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_center_parc_stadium:
+    venue_id: "venue_center_parc_stadium"
+    name: "Center Parc Stadium"
+    home_teams:
+      - "Georgia State"
+      - "Georgia State Panthers"
+    league: "NCAA FBS"
+    latitude: 33.7352778
+    longitude: -84.3894444
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Turner Field"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/Center_Parc_Stadium"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. Georgia State now plays at Center Parc Stadium, not the demolished Georgia Dome; coordinate from current stadium article. Roof classification is a venue-structure label; lightning procedure remains an unverified venue assumption."
+    source_checked_at: "2026-09-20"
+  venue_clarence_t_c_ching_athletics_complex:
+    venue_id: "venue_clarence_t_c_ching_athletics_complex"
+    name: "Clarence T. C. Ching Athletics Complex"
+    home_teams:
+      - "Hawaii"
+      - "Hawaii Warriors"
+    league: "NCAA FBS"
+    latitude: 21.294
+    longitude: -157.818
+    timezone: "Pacific/Honolulu"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Clarence T. C. Ching Field"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/Clarence_T._C._Ching_Athletics_Complex"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. Hawaii plays at Clarence T. C. Ching Athletics Complex; coordinate from its public venue record (not legacy Aloha Stadium point). Roof classification is a venue-structure label; lightning procedure remains an unverified venue assumption."
+    source_checked_at: "2026-09-20"
+  venue_darrell_k_royaltexas_memorial_stadium:
+    venue_id: "venue_darrell_k_royaltexas_memorial_stadium"
+    name: "Darrell K Royal–Texas Memorial Stadium"
+    home_teams:
+      - "Texas"
+      - "Texas Longhorns"
+    league: "NCAA FBS"
+    latitude: 30.2836034
+    longitude: -97.7323365
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_datcu_stadium:
+    venue_id: "venue_datcu_stadium"
+    name: "DATCU Stadium"
+    home_teams:
+      - "North Texas"
+      - "North Texas Mean Green"
+    league: "NCAA FBS"
+    latitude: 33.2039351
+    longitude: -97.1592236
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Apogee Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_david_booth_kansas_memorial_stadium:
+    venue_id: "venue_david_booth_kansas_memorial_stadium"
+    name: "David Booth Kansas Memorial Stadium"
+    home_teams:
+      - "Kansas"
+      - "Kansas Jayhawks"
+    league: "NCAA FBS"
+    latitude: 38.962946
+    longitude: -95.246315
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Memorial Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_davis_wade_stadium_at_scott_field:
+    venue_id: "venue_davis_wade_stadium_at_scott_field"
+    name: "Davis Wade Stadium at Scott Field"
+    home_teams:
+      - "Mississippi State"
+      - "Mississippi State Bulldogs"
+    league: "NCAA FBS"
+    latitude: 33.4562306
+    longitude: -88.7934244
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Davis Wade Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_delaware_stadium:
+    venue_id: "venue_delaware_stadium"
+    name: "Delaware Stadium"
+    home_teams:
+      - "Delaware"
+      - "Delaware Fightin' Blue Hens"
+    league: "NCAA FBS"
+    latitude: 39.6617
+    longitude: -75.7488
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/Delaware_Stadium"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. Delaware Stadium coordinate from its public stadium article. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_dix_stadium:
+    venue_id: "venue_dix_stadium"
+    name: "Dix Stadium"
+    home_teams:
+      - "Kent State"
+      - "Kent State Golden Flashes"
+    league: "NCAA FBS"
+    latitude: 41.1390868
+    longitude: -81.3134395
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_donald_w_reynolds_razorback_stadium_frank_broyles_field:
+    venue_id: "venue_donald_w_reynolds_razorback_stadium_frank_broyles_field"
+    name: "Donald W. Reynolds Razorback Stadium, Frank Broyles Field"
+    home_teams:
+      - "Arkansas"
+      - "Arkansas Razorbacks"
+    league: "NCAA FBS"
+    latitude: 36.0678508
+    longitude: -94.1787958
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Donald W. Reynolds Razorback Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_doyt_l_perry_stadium:
+    venue_id: "venue_doyt_l_perry_stadium"
+    name: "Doyt L. Perry Stadium"
+    home_teams:
+      - "Bowling Green"
+      - "Bowling Green Falcons"
+    league: "NCAA FBS"
+    latitude: 41.3780544
+    longitude: -83.6224821
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Doyt Perry Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_elliott_t_bowers_stadium:
+    venue_id: "venue_elliott_t_bowers_stadium"
+    name: "Elliott T. Bowers Stadium"
+    home_teams:
+      - "Sam Houston"
+      - "Sam Houston Bearkats"
+    league: "NCAA FBS"
+    latitude: 30.7138889
+    longitude: -95.5416667
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Bowers Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/Bowers_Stadium"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. Bowers Stadium coordinate from its public stadium article. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_falcon_stadium:
+    venue_id: "venue_falcon_stadium"
+    name: "Falcon Stadium"
+    home_teams:
+      - "Air Force"
+      - "Air Force Falcons"
+    league: "NCAA FBS"
+    latitude: 38.9969074
+    longitude: -104.843688
+    timezone: "America/Denver"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_fargodome:
+    venue_id: "venue_fargodome"
+    name: "Fargodome"
+    home_teams:
+      - "North Dakota State"
+      - "North Dakota State Bison"
+    league: "NCAA FBS"
+    latitude: 46.9030556
+    longitude: -96.8016667
+    timezone: "America/Chicago"
+    roof_type: "fixed_dome"
+    roof_weather_protection: true
+    policy_id: "fixed_dome_indoor"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/Fargodome"
+    roof_source_url: "https://en.wikipedia.org/wiki/Fargodome"
+    source_note: "Current venue/team from the public FBS stadium list. Fargodome coordinate from its public stadium article. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_faurot_field_at_memorial_stadium:
+    venue_id: "venue_faurot_field_at_memorial_stadium"
+    name: "Faurot Field at Memorial Stadium"
+    home_teams:
+      - "Missouri"
+      - "Missouri Tigers"
+    league: "NCAA FBS"
+    latitude: 38.9358953
+    longitude: -92.3331141
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Faurot Field"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_fifth_third_stadium:
+    venue_id: "venue_fifth_third_stadium"
+    name: "Fifth Third Stadium"
+    home_teams:
+      - "Kennesaw State"
+      - "Kennesaw State Owls"
+    league: "NCAA FBS"
+    latitude: 34.02876
+    longitude: -84.5678
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://mapcarta.com/W246685669"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. Fifth Third Stadium map pin (Mapcarta/OpenStreetMap). No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_firstbank_stadium:
+    venue_id: "venue_firstbank_stadium"
+    name: "FirstBank Stadium"
+    home_teams:
+      - "Vanderbilt"
+      - "Vanderbilt Commodores"
+    league: "NCAA FBS"
+    latitude: 36.1435585
+    longitude: -86.8087721
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Vanderbilt Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_folsom_field:
+    venue_id: "venue_folsom_field"
+    name: "Folsom Field"
+    home_teams:
+      - "Colorado"
+      - "Colorado Buffaloes"
+    league: "NCAA FBS"
+    latitude: 40.0093984
+    longitude: -105.2668869
+    timezone: "America/Denver"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_frank_howard_field_at_clemson_memorial_stadium:
+    venue_id: "venue_frank_howard_field_at_clemson_memorial_stadium"
+    name: "Frank Howard Field at Clemson Memorial Stadium"
+    home_teams:
+      - "Clemson"
+      - "Clemson Tigers"
+    league: "NCAA FBS"
+    latitude: 34.6787467
+    longitude: -82.8431797
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Memorial Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_mountain_america_stadium:
+    venue_id: "venue_mountain_america_stadium"
+    name: "Mountain America Stadium"
+    home_teams:
+      - "Arizona State"
+      - "Arizona State Sun Devils"
+    league: "NCAA FBS"
+    latitude: 33.426364
+    longitude: -111.932616
+    timezone: "America/Phoenix"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Sun Devil Stadium Frank Kush Field"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_fred_c_yager_stadium:
+    venue_id: "venue_fred_c_yager_stadium"
+    name: "Fred C. Yager Stadium"
+    home_teams:
+      - "Miami (OH)"
+      - "Miami RedHawks"
+    league: "NCAA FBS"
+    latitude: 39.5194211
+    longitude: -84.7333545
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Yager Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_gaylord_family_oklahoma_memorial_stadium:
+    venue_id: "venue_gaylord_family_oklahoma_memorial_stadium"
+    name: "Gaylord Family Oklahoma Memorial Stadium"
+    home_teams:
+      - "Oklahoma"
+      - "Oklahoma Sooners"
+    league: "NCAA FBS"
+    latitude: 35.2058996
+    longitude: -97.4425507
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_gerald_j_ford_stadium:
+    venue_id: "venue_gerald_j_ford_stadium"
+    name: "Gerald J. Ford Stadium"
+    home_teams:
+      - "SMU"
+      - "SMU Mustangs"
+    league: "NCAA FBS"
+    latitude: 32.8377158
+    longitude: -96.7827058
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_gies_memorial_stadium:
+    venue_id: "venue_gies_memorial_stadium"
+    name: "Gies Memorial Stadium"
+    home_teams:
+      - "Illinois"
+      - "Illinois Fighting Illini"
+    league: "NCAA FBS"
+    latitude: 40.0993057
+    longitude: -88.2359862
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Memorial Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_glass_bowl:
+    venue_id: "venue_glass_bowl"
+    name: "Glass Bowl"
+    home_teams:
+      - "Toledo"
+      - "Toledo Rockets"
+    league: "NCAA FBS"
+    latitude: 41.6573908
+    longitude: -83.6140172
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_hancock_whitney_stadium:
+    venue_id: "venue_hancock_whitney_stadium"
+    name: "Hancock Whitney Stadium"
+    home_teams:
+      - "South Alabama"
+      - "South Alabama Jaguars"
+    league: "NCAA FBS"
+    latitude: 30.696904
+    longitude: -88.192013
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/Hancock_Whitney_Stadium"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list. South Alabama moved from Ladd-Peebles Stadium to Hancock Whitney Stadium in 2020; coordinates from the current stadium article. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_hornet_stadium:
+    venue_id: "venue_hornet_stadium"
+    name: "Hornet Stadium"
+    home_teams:
+      - "Sacramento State"
+      - "Sacramento State Hornets"
+    league: "NCAA FBS"
+    latitude: 38.55567
+    longitude: -121.42295
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://mapcarta.com/W535418848"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. Hornet Stadium map pin (Mapcarta/OpenStreetMap). No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_houchens_industriesl_t_smith_stadium_at_jimmy_feix_field:
+    venue_id: "venue_houchens_industriesl_t_smith_stadium_at_jimmy_feix_field"
+    name: "Houchens Industries–L. T. Smith Stadium at Jimmy Feix Field"
+    home_teams:
+      - "Western Kentucky"
+      - "Western Kentucky Hilltoppers"
+    league: "NCAA FBS"
+    latitude: 36.9848766
+    longitude: -86.459014
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Houchens Industries–L. T. Smith Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_howard_schnellenberger_field_at_flagler_credit_union_stadium:
+    venue_id: "venue_howard_schnellenberger_field_at_flagler_credit_union_stadium"
+    name: "Howard Schnellenberger Field at Flagler Credit Union Stadium"
+    home_teams:
+      - "Florida Atlantic"
+      - "Florida Atlantic Owls"
+    league: "NCAA FBS"
+    latitude: 26.3754536
+    longitude: -80.1016831
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "FAU Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_huntington_bank_stadium:
+    venue_id: "venue_huntington_bank_stadium"
+    name: "Huntington Bank Stadium"
+    home_teams:
+      - "Minnesota"
+      - "Minnesota Golden Gophers"
+    league: "NCAA FBS"
+    latitude: 44.976525
+    longitude: -93.2245758
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "TCF Bank Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_infocision_stadiumsumma_field:
+    venue_id: "venue_infocision_stadiumsumma_field"
+    name: "InfoCision Stadium–Summa Field"
+    home_teams:
+      - "Akron"
+      - "Akron Zips"
+    league: "NCAA FBS"
+    latitude: 41.0725695
+    longitude: -81.5083838
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Summa Field at InfoCision Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_jma_wireless_dome:
+    venue_id: "venue_jma_wireless_dome"
+    name: "JMA Wireless Dome"
+    home_teams:
+      - "Syracuse"
+      - "Syracuse Orange"
+    league: "NCAA FBS"
+    latitude: 43.0361328
+    longitude: -76.1365199
+    timezone: "America/New_York"
+    roof_type: "fixed_dome"
+    roof_weather_protection: true
+    policy_id: "fixed_dome_indoor"
+    aliases:
+      - "Carrier Dome"
+      - "Dome at Syracuse University"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/JMA_Wireless_Dome"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_jack_trice_stadium:
+    venue_id: "venue_jack_trice_stadium"
+    name: "Jack Trice Stadium"
+    home_teams:
+      - "Iowa State"
+      - "Iowa State Cyclones"
+    league: "NCAA FBS"
+    latitude: 42.0140054
+    longitude: -93.6358094
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_jim_wacker_field_at_ufcu_stadium:
+    venue_id: "venue_jim_wacker_field_at_ufcu_stadium"
+    name: "Jim Wacker Field at UFCU Stadium"
+    home_teams:
+      - "Texas State"
+      - "Texas State Bobcats"
+    league: "NCAA FBS"
+    latitude: 29.8913445
+    longitude: -97.9253118
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Bobcat Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_joan_c_edwards_stadium:
+    venue_id: "venue_joan_c_edwards_stadium"
+    name: "Joan C. Edwards Stadium"
+    home_teams:
+      - "Marshall"
+      - "Marshall Thundering Herd"
+    league: "NCAA FBS"
+    latitude: 38.4248654
+    longitude: -82.4218583
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_joe_aillet_stadium:
+    venue_id: "venue_joe_aillet_stadium"
+    name: "Joe Aillet Stadium"
+    home_teams:
+      - "Louisiana Tech"
+      - "Louisiana Tech Bulldogs"
+    league: "NCAA FBS"
+    latitude: 32.5322381
+    longitude: -92.6560189
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_john_o_quinn_field_at_space_city_financial_stadium:
+    venue_id: "venue_john_o_quinn_field_at_space_city_financial_stadium"
+    name: "John O'Quinn Field at Space City Financial Stadium"
+    home_teams:
+      - "Houston"
+      - "Houston Cougars"
+    league: "NCAA FBS"
+    latitude: 29.721768
+    longitude: -95.3490984
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "TDECU Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_johnny_red_floyd_stadium:
+    venue_id: "venue_johnny_red_floyd_stadium"
+    name: "Johnny \"Red\" Floyd Stadium"
+    home_teams:
+      - "Middle Tennessee"
+      - "Middle Tennessee Blue Raiders"
+    league: "NCAA FBS"
+    latitude: 35.8511091
+    longitude: -86.3684499
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_jonah_field_at_war_memorial_stadium:
+    venue_id: "venue_jonah_field_at_war_memorial_stadium"
+    name: "Jonah Field at War Memorial Stadium"
+    home_teams:
+      - "Wyoming"
+      - "Wyoming Cowboys"
+    league: "NCAA FBS"
+    latitude: 41.311936
+    longitude: -105.5690646
+    timezone: "America/Denver"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "War Memorial Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_galaxy_stadium:
+    venue_id: "venue_galaxy_stadium"
+    name: "Galaxy Stadium"
+    home_teams:
+      - "Texas Tech"
+      - "Texas Tech Red Raiders"
+    league: "NCAA FBS"
+    latitude: 33.5910283
+    longitude: -101.8729377
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Jones AT&T Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_kelly_shorts_stadium:
+    venue_id: "venue_kelly_shorts_stadium"
+    name: "Kelly/Shorts Stadium"
+    home_teams:
+      - "Central Michigan"
+      - "Central Michigan Chippewas"
+    league: "NCAA FBS"
+    latitude: 43.5776123
+    longitude: -84.7708297
+    timezone: "America/Detroit"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_kenan_stadium:
+    venue_id: "venue_kenan_stadium"
+    name: "Kenan Stadium"
+    home_teams:
+      - "North Carolina"
+      - "North Carolina Tar Heels"
+    league: "NCAA FBS"
+    latitude: 35.9069883
+    longitude: -79.0479183
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Kenan Memorial Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_kidd_brewer_stadium:
+    venue_id: "venue_kidd_brewer_stadium"
+    name: "Kidd Brewer Stadium"
+    home_teams:
+      - "Appalachian State"
+      - "Appalachian State Mountaineers"
+    league: "NCAA FBS"
+    latitude: 36.2115153
+    longitude: -81.6855061
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_kinnick_stadium:
+    venue_id: "venue_kinnick_stadium"
+    name: "Kinnick Stadium"
+    home_teams:
+      - "Iowa"
+      - "Iowa Hawkeyes"
+    league: "NCAA FBS"
+    latitude: 41.6583889
+    longitude: -91.5514755
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_kornblau_field_at_s_b_ballard_stadium:
+    venue_id: "venue_kornblau_field_at_s_b_ballard_stadium"
+    name: "Kornblau Field at S.B. Ballard Stadium"
+    home_teams:
+      - "Old Dominion"
+      - "Old Dominion Monarchs"
+    league: "NCAA FBS"
+    latitude: 36.8887813
+    longitude: -76.3056761
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Foreman Field"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_kroger_field_at_c_m_newton_grounds:
+    venue_id: "venue_kroger_field_at_c_m_newton_grounds"
+    name: "Kroger Field at C.M. Newton Grounds"
+    home_teams:
+      - "Kentucky"
+      - "Kentucky Wildcats"
+    league: "NCAA FBS"
+    latitude: 38.0226217
+    longitude: -84.5052052
+    timezone: "America/Kentucky/Louisville"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Commonwealth Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_kyle_field:
+    venue_id: "venue_kyle_field"
+    name: "Kyle Field"
+    home_teams:
+      - "Texas A&M"
+      - "Texas A&M Aggies"
+    league: "NCAA FBS"
+    latitude: 30.6100976
+    longitude: -96.3407292
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_l_and_n_federal_credit_union_stadium:
+    venue_id: "venue_l_and_n_federal_credit_union_stadium"
+    name: "L&N Federal Credit Union Stadium"
+    home_teams:
+      - "Louisville"
+      - "Louisville Cardinals"
+    league: "NCAA FBS"
+    latitude: 38.2054217
+    longitude: -85.7581056
+    timezone: "America/Kentucky/Louisville"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Papa John's Cardinal Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_lane_stadium_worsham_field:
+    venue_id: "venue_lane_stadium_worsham_field"
+    name: "Lane Stadium/Worsham Field"
+    home_teams:
+      - "Virginia Tech"
+      - "Virginia Tech Hokies"
+    league: "NCAA FBS"
+    latitude: 37.2199743
+    longitude: -80.4180551
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Lane Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_lavell_edwards_stadium:
+    venue_id: "venue_lavell_edwards_stadium"
+    name: "LaVell Edwards Stadium"
+    home_teams:
+      - "BYU"
+      - "BYU Cougars"
+    league: "NCAA FBS"
+    latitude: 40.257488
+    longitude: -111.654439
+    timezone: "America/Denver"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_los_angeles_memorial_coliseum:
+    venue_id: "venue_los_angeles_memorial_coliseum"
+    name: "Los Angeles Memorial Coliseum"
+    home_teams:
+      - "USC"
+      - "USC Trojans"
+    league: "NCAA FBS"
+    latitude: 34.0140097
+    longitude: -118.2878959
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_mackay_stadium:
+    venue_id: "venue_mackay_stadium"
+    name: "Mackay Stadium"
+    home_teams:
+      - "Nevada"
+      - "Nevada Wolf Pack"
+    league: "NCAA FBS"
+    latitude: 39.5469249
+    longitude: -119.8175597
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_malone_stadium:
+    venue_id: "venue_malone_stadium"
+    name: "Malone Stadium"
+    home_teams:
+      - "Louisiana-Monroe"
+      - "Louisiana–Monroe Warhawks"
+    league: "NCAA FBS"
+    latitude: 32.5310687
+    longitude: -92.0664408
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_martin_stadium:
+    venue_id: "venue_martin_stadium"
+    name: "Martin Stadium"
+    home_teams:
+      - "Washington State"
+      - "Washington State Cougars"
+    league: "NCAA FBS"
+    latitude: 46.731968
+    longitude: -117.1605858
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_mccollrichardson_field_at_jerry_richardson_stadium:
+    venue_id: "venue_mccollrichardson_field_at_jerry_richardson_stadium"
+    name: "McColl–Richardson Field at Jerry Richardson Stadium"
+    home_teams:
+      - "Charlotte"
+      - "Charlotte 49ers"
+    league: "NCAA FBS"
+    latitude: 35.3102807
+    longitude: -80.7404938
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Jerry Richardson Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_mclane_stadium:
+    venue_id: "venue_mclane_stadium"
+    name: "McLane Stadium"
+    home_teams:
+      - "Baylor"
+      - "Baylor Bears"
+    league: "NCAA FBS"
+    latitude: 31.5586626
+    longitude: -97.1156001
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_merchants_bank_field_at_memorial_stadium:
+    venue_id: "venue_merchants_bank_field_at_memorial_stadium"
+    name: "Merchants Bank Field at Memorial Stadium"
+    home_teams:
+      - "Indiana"
+      - "Indiana Hoosiers"
+    league: "NCAA FBS"
+    latitude: 39.1809091
+    longitude: -86.5255737
+    timezone: "America/Indiana/Indianapolis"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Memorial Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_memorial_stadium_tom_osborne_field:
+    venue_id: "venue_memorial_stadium_tom_osborne_field"
+    name: "Memorial Stadium, Tom Osborne Field"
+    home_teams:
+      - "Nebraska"
+      - "Nebraska Cornhuskers"
+    league: "NCAA FBS"
+    latitude: 40.8204835
+    longitude: -96.7057157
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Memorial Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_merlin_olsen_field_at_maverik_stadium:
+    venue_id: "venue_merlin_olsen_field_at_maverik_stadium"
+    name: "Merlin Olsen Field at Maverik Stadium"
+    home_teams:
+      - "Utah State"
+      - "Utah State Aggies"
+    league: "NCAA FBS"
+    latitude: 41.7515319
+    longitude: -111.8121057
+    timezone: "America/Denver"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Romney Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_michigan_stadium:
+    venue_id: "venue_michigan_stadium"
+    name: "Michigan Stadium"
+    home_teams:
+      - "Michigan"
+      - "Michigan Wolverines"
+    league: "NCAA FBS"
+    latitude: 42.2658687
+    longitude: -83.7487257
+    timezone: "America/Detroit"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_mountaineer_field_at_milan_puskar_stadium:
+    venue_id: "venue_mountaineer_field_at_milan_puskar_stadium"
+    name: "Mountaineer Field at Milan Puskar Stadium"
+    home_teams:
+      - "West Virginia"
+      - "West Virginia Mountaineers"
+    league: "NCAA FBS"
+    latitude: 39.6522199
+    longitude: -79.9551753
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_navymarine_corps_memorial_stadium:
+    venue_id: "venue_navymarine_corps_memorial_stadium"
+    name: "Navy–Marine Corps Memorial Stadium"
+    home_teams:
+      - "Navy"
+      - "Navy Midshipmen"
+    league: "NCAA FBS"
+    latitude: 38.9848326
+    longitude: -76.5071154
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_neyland_stadium:
+    venue_id: "venue_neyland_stadium"
+    name: "Neyland Stadium"
+    home_teams:
+      - "Tennessee"
+      - "Tennessee Volunteers"
+    league: "NCAA FBS"
+    latitude: 35.9547344
+    longitude: -83.925333
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_nippert_stadium:
+    venue_id: "venue_nippert_stadium"
+    name: "Nippert Stadium"
+    home_teams:
+      - "Cincinnati"
+      - "Cincinnati Bearcats"
+    league: "NCAA FBS"
+    latitude: 39.1312843
+    longitude: -84.5162614
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_notre_dame_stadium:
+    venue_id: "venue_notre_dame_stadium"
+    name: "Notre Dame Stadium"
+    home_teams:
+      - "Notre Dame"
+      - "Notre Dame Fighting Irish"
+    league: "NCAA FBS"
+    latitude: 41.6984231
+    longitude: -86.2338245
+    timezone: "America/Indiana/Indianapolis"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_ohio_stadium:
+    venue_id: "venue_ohio_stadium"
+    name: "Ohio Stadium"
+    home_teams:
+      - "Ohio State"
+      - "Ohio State Buckeyes"
+    league: "NCAA FBS"
+    latitude: 40.0016857
+    longitude: -83.0197281
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_pat_dye_field_at_jordanhare_stadium:
+    venue_id: "venue_pat_dye_field_at_jordanhare_stadium"
+    name: "Pat Dye Field at Jordan–Hare Stadium"
+    home_teams:
+      - "Auburn"
+      - "Auburn Tigers"
+    league: "NCAA FBS"
+    latitude: 32.6023617
+    longitude: -85.4889107
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Jordan–Hare Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_peden_stadium:
+    venue_id: "venue_peden_stadium"
+    name: "Peden Stadium"
+    home_teams:
+      - "Ohio"
+      - "Ohio Bobcats"
+    league: "NCAA FBS"
+    latitude: 39.3213091
+    longitude: -82.1034394
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_pitbull_stadium:
+    venue_id: "venue_pitbull_stadium"
+    name: "Pitbull Stadium"
+    home_teams:
+      - "FIU"
+      - "FIU Panthers"
+    league: "NCAA FBS"
+    latitude: 25.7524928
+    longitude: -80.3778648
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "FIU Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_pratt_and_whitney_stadium_at_rentschler_field:
+    venue_id: "venue_pratt_and_whitney_stadium_at_rentschler_field"
+    name: "Pratt & Whitney Stadium at Rentschler Field"
+    home_teams:
+      - "UConn"
+      - "UConn Huskies"
+    league: "NCAA FBS"
+    latitude: 41.7598843
+    longitude: -72.6189423
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Rentschler Field"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_protective_stadium:
+    venue_id: "venue_protective_stadium"
+    name: "Protective Stadium"
+    home_teams:
+      - "UAB"
+      - "UAB Blazers"
+    league: "NCAA FBS"
+    latitude: 33.5278
+    longitude: -86.8092
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/Protective_Stadium"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. Protective Stadium coordinate from its public stadium article. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_reser_stadium:
+    venue_id: "venue_reser_stadium"
+    name: "Reser Stadium"
+    home_teams:
+      - "Oregon State"
+      - "Oregon State Beavers"
+    league: "NCAA FBS"
+    latitude: 44.5594768
+    longitude: -123.2814074
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_rice_stadium:
+    venue_id: "venue_rice_stadium"
+    name: "Rice Stadium"
+    home_teams:
+      - "Rice"
+      - "Rice Owls"
+    league: "NCAA FBS"
+    latitude: 29.716234
+    longitude: -95.4092646
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_riceeccles_stadium:
+    venue_id: "venue_riceeccles_stadium"
+    name: "Rice–Eccles Stadium"
+    home_teams:
+      - "Utah"
+      - "Utah Utes"
+    league: "NCAA FBS"
+    latitude: 40.7599478
+    longitude: -111.848824
+    timezone: "America/Denver"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Rice-Eccles Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_robert_w_plaster_stadium:
+    venue_id: "venue_robert_w_plaster_stadium"
+    name: "Robert W. Plaster Stadium"
+    home_teams:
+      - "Missouri State"
+      - "Missouri State Bears"
+    league: "NCAA FBS"
+    latitude: 37.1977778
+    longitude: -93.2797222
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/Robert_W._Plaster_Stadium"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. Robert W. Plaster Stadium coordinate from its public stadium article. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_rose_bowl_stadium:
+    venue_id: "venue_rose_bowl_stadium"
+    name: "Rose Bowl Stadium"
+    home_teams:
+      - "UCLA"
+      - "UCLA Bruins"
+    league: "NCAA FBS"
+    latitude: 34.1615696
+    longitude: -118.1676149
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Rose Bowl"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_rossade_stadium:
+    venue_id: "venue_rossade_stadium"
+    name: "Ross–Ade Stadium"
+    home_teams:
+      - "Purdue"
+      - "Purdue Boilermakers"
+    league: "NCAA FBS"
+    latitude: 40.434323
+    longitude: -86.918485
+    timezone: "America/Indiana/Indianapolis"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_ryan_field:
+    venue_id: "venue_ryan_field"
+    name: "Ryan Field"
+    home_teams:
+      - "Northwestern"
+      - "Northwestern Wildcats"
+    league: "NCAA FBS"
+    latitude: 42.0653997
+    longitude: -87.6924956
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Northwestern University Stadium"
+      - "Dyche Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_rynearson_stadium:
+    venue_id: "venue_rynearson_stadium"
+    name: "Rynearson Stadium"
+    home_teams:
+      - "Eastern Michigan"
+      - "Eastern Michigan Eagles"
+    league: "NCAA FBS"
+    latitude: 42.2557607
+    longitude: -83.6477566
+    timezone: "America/Detroit"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_saban_field_at_bryantdenny_stadium:
+    venue_id: "venue_saban_field_at_bryantdenny_stadium"
+    name: "Saban Field at Bryant–Denny Stadium"
+    home_teams:
+      - "Alabama"
+      - "Alabama Crimson Tide"
+    league: "NCAA FBS"
+    latitude: 33.2074899
+    longitude: -87.5503922
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Bryant–Denny Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_sanford_stadium:
+    venue_id: "venue_sanford_stadium"
+    name: "Sanford Stadium"
+    home_teams:
+      - "Georgia"
+      - "Georgia Bulldogs"
+    league: "NCAA FBS"
+    latitude: 33.9498215
+    longitude: -83.3734417
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_scheumann_stadium:
+    venue_id: "venue_scheumann_stadium"
+    name: "Scheumann Stadium"
+    home_teams:
+      - "Ball State"
+      - "Ball State Cardinals"
+    league: "NCAA FBS"
+    latitude: 40.2160276
+    longitude: -85.4176996
+    timezone: "America/Indiana/Indianapolis"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_secu_stadium:
+    venue_id: "venue_secu_stadium"
+    name: "SECU Stadium"
+    home_teams:
+      - "Maryland"
+      - "Maryland Terrapins"
+    league: "NCAA FBS"
+    latitude: 38.9912028
+    longitude: -76.9473117
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Byrd Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_shi_stadium:
+    venue_id: "venue_shi_stadium"
+    name: "SHI Stadium"
+    home_teams:
+      - "Rutgers"
+      - "Rutgers Scarlet Knights"
+    league: "NCAA FBS"
+    latitude: 40.5137829
+    longitude: -74.4650446
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "High Point Solutions Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_simmons_bank_liberty_stadium:
+    venue_id: "venue_simmons_bank_liberty_stadium"
+    name: "Simmons Bank Liberty Stadium"
+    home_teams:
+      - "Memphis"
+      - "Memphis Tigers"
+    league: "NCAA FBS"
+    latitude: 35.1208569
+    longitude: -89.9780574
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Liberty Bowl Memorial Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_skelly_field_at_h_a_chapman_stadium:
+    venue_id: "venue_skelly_field_at_h_a_chapman_stadium"
+    name: "Skelly Field at H. A. Chapman Stadium"
+    home_teams:
+      - "Tulsa"
+      - "Tulsa Golden Hurricane"
+    league: "NCAA FBS"
+    latitude: 36.1488607
+    longitude: -95.9436035
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_snapdragon_stadium:
+    venue_id: "venue_snapdragon_stadium"
+    name: "Snapdragon Stadium"
+    home_teams:
+      - "San Diego State"
+      - "San Diego State Aztecs"
+    league: "NCAA FBS"
+    latitude: 32.7844444
+    longitude: -117.1227778
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "San Diego Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/Snapdragon_Stadium"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. San Diego State moved from Qualcomm Stadium to Snapdragon Stadium; coordinate from current stadium article. Roof classification is a venue-structure label; lightning procedure remains an unverified venue assumption."
+    source_checked_at: "2026-09-20"
+  venue_sonny_lubick_field_at_canvas_stadium:
+    venue_id: "venue_sonny_lubick_field_at_canvas_stadium"
+    name: "Sonny Lubick Field at Canvas Stadium"
+    home_teams:
+      - "Colorado State"
+      - "Colorado State Rams"
+    league: "NCAA FBS"
+    latitude: 40.57
+    longitude: -105.0885
+    timezone: "America/Denver"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://en.wikipedia.org/wiki/Canvas_Stadium"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current venue/team from the public FBS stadium list. Colorado State moved from Hughes Stadium to Canvas Stadium; coordinate from the current stadium article. Roof classification is a venue-structure label; lightning procedure remains an unverified venue assumption."
+    source_checked_at: "2026-09-20"
+  venue_spartan_stadium:
+    venue_id: "venue_spartan_stadium"
+    name: "Spartan Stadium"
+    home_teams:
+      - "Michigan State"
+      - "Michigan State Spartans"
+    league: "NCAA FBS"
+    latitude: 42.7281691
+    longitude: -84.4848754
+    timezone: "America/Detroit"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_stanford_stadium:
+    venue_id: "venue_stanford_stadium"
+    name: "Stanford Stadium"
+    home_teams:
+      - "Stanford"
+      - "Stanford Cardinal"
+    league: "NCAA FBS"
+    latitude: 37.4347264
+    longitude: -122.1610165
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_steve_spurrier_florida_field_at_ben_hill_griffin_stadium:
+    venue_id: "venue_steve_spurrier_florida_field_at_ben_hill_griffin_stadium"
+    name: "Steve Spurrier-Florida Field at Ben Hill Griffin Stadium"
+    home_teams:
+      - "Florida"
+      - "Florida Gators"
+    league: "NCAA FBS"
+    latitude: 29.6498687
+    longitude: -82.3486662
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Ben Hill Griffin Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_sun_bowl_stadium:
+    venue_id: "venue_sun_bowl_stadium"
+    name: "Sun Bowl Stadium"
+    home_teams:
+      - "UTEP"
+      - "UTEP Miners"
+    league: "NCAA FBS"
+    latitude: 31.7733453
+    longitude: -106.5078968
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_tiger_stadium:
+    venue_id: "venue_tiger_stadium"
+    name: "Tiger Stadium"
+    home_teams:
+      - "LSU"
+      - "LSU Tigers"
+    league: "NCAA FBS"
+    latitude: 30.4120124
+    longitude: -91.1838198
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_ub_stadium:
+    venue_id: "venue_ub_stadium"
+    name: "UB Stadium"
+    home_teams:
+      - "Buffalo"
+      - "Buffalo Bulls"
+    league: "NCAA FBS"
+    latitude: 42.9990684
+    longitude: -78.7775195
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_university_stadium:
+    venue_id: "venue_university_stadium"
+    name: "University Stadium"
+    home_teams:
+      - "New Mexico"
+      - "New Mexico Lobos"
+    league: "NCAA FBS"
+    latitude: 35.0676105
+    longitude: -106.6281028
+    timezone: "America/Denver"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_valley_children_s_stadium:
+    venue_id: "venue_valley_children_s_stadium"
+    name: "Valley Children's Stadium"
+    home_teams:
+      - "Fresno State"
+      - "Fresno State Bulldogs"
+    league: "NCAA FBS"
+    latitude: 36.8143197
+    longitude: -119.7581016
+    timezone: "America/Los_Angeles"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Bulldog Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_vaughthemingway_stadium_at_hollingsworth_field:
+    venue_id: "venue_vaughthemingway_stadium_at_hollingsworth_field"
+    name: "Vaught–Hemingway Stadium at Hollingsworth Field"
+    home_teams:
+      - "Mississippi"
+      - "Ole Miss Rebels"
+    league: "NCAA FBS"
+    latitude: 34.3621543
+    longitude: -89.5341463
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Vaught–Hemingway Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_veterans_memorial_stadium_at_larry_blakeney_field:
+    venue_id: "venue_veterans_memorial_stadium_at_larry_blakeney_field"
+    name: "Veterans Memorial Stadium at Larry Blakeney Field"
+    home_teams:
+      - "Troy"
+      - "Troy Trojans"
+    league: "NCAA FBS"
+    latitude: 31.7995274
+    longitude: -85.9521769
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Veterans Memorial Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_waldo_stadium:
+    venue_id: "venue_waldo_stadium"
+    name: "Waldo Stadium"
+    home_teams:
+      - "Western Michigan"
+      - "Western Michigan Broncos"
+    league: "NCAA FBS"
+    latitude: 42.2857555
+    longitude: -85.6010042
+    timezone: "America/Detroit"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_warren_mcguirk_alumni_stadium:
+    venue_id: "venue_warren_mcguirk_alumni_stadium"
+    name: "Warren McGuirk Alumni Stadium"
+    home_teams:
+      - "UMass"
+      - "UMass Minutemen"
+    league: "NCAA FBS"
+    latitude: 42.3775132
+    longitude: -72.5356269
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases: []
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_wayne_day_family_field_at_carterfinley_stadium:
+    venue_id: "venue_wayne_day_family_field_at_carterfinley_stadium"
+    name: "Wayne Day Family Field at Carter–Finley Stadium"
+    home_teams:
+      - "NC State"
+      - "NC State Wolfpack"
+    league: "NCAA FBS"
+    latitude: 35.8007597
+    longitude: -78.7194872
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Carter–Finley Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_williamsbrice_stadium:
+    venue_id: "venue_williamsbrice_stadium"
+    name: "Williams–Brice Stadium"
+    home_teams:
+      - "South Carolina"
+      - "South Carolina Gamecocks"
+    league: "NCAA FBS"
+    latitude: 33.9725912
+    longitude: -81.0202163
+    timezone: "America/New_York"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Williams-Brice Stadium"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    coordinate_source_url: "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv"
+    roof_source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    source_note: "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"
+  venue_northwestern_martin_stadium:
+    venue_id: "venue_northwestern_martin_stadium"
+    name: "Northwestern Medicine Field at Martin Stadium"
+    home_teams:
+      - "Northwestern"
+      - "Northwestern Wildcats"
+    league: "NCAA FBS"
+    latitude: 42.05825
+    longitude: -87.670881
+    timezone: "America/Chicago"
+    roof_type: "outdoor"
+    roof_weather_protection: false
+    policy_id: "venue_assumption_8mi_30min"
+    aliases:
+      - "Martin Stadium"
+      - "Lenny and Sharon Martin Field"
+    source_url: "https://nusports.com/news/2026/02/03/northwestern-announces-2026-home-football-venues-and-ryan-field-opener"
+    coordinate_source_url: "https://www.wikidata.org/wiki/Q134722468"
+    roof_source_url: "https://nusports.com/news/2026/02/03/northwestern-announces-2026-home-football-venues-and-ryan-field-opener"
+    source_note: "Northwestern Athletics lists Martin Stadium as the first two 2026 home venues before Ryan Field opens October 2; coordinates from Wikidata. This is a temporary current-season venue. No venue-specific lightning procedure was verified."
+    source_checked_at: "2026-09-20"

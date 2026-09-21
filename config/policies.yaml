@@ -1,0 +1,100 @@
+policies:
+  venue_assumption_8mi_30min:
+    policy_id: "venue_assumption_8mi_30min"
+    trigger_radius_miles: 8
+    monitor_radii_miles:
+      - 10
+      - 15
+      - 20
+    quiet_period_minutes: 30
+    clearance_mode: "fixed_quiet_period"
+    warmup_exposure_minutes: 60
+    restart_overhead:
+      type: "distribution"
+      minutes:
+        - 5
+        - 10
+        - 15
+        - 20
+      weights:
+        - 0.1
+        - 0.4
+        - 0.35
+        - 0.15
+    verification: "venue_assumption"
+    source_checked_at: "2026-09-20"
+    source_url: "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums"
+    notes: "UNVERIFIED project baseline used only where no venue-specific public procedure was sourced: assume an 8-mile lightning trigger and 30-minute quiet period. This is not an official universal NFL or NCAA rule. NCAA safety guidance is venue-specific and is recorded separately; validate each venue procedure before operational use."
+  bank_of_america_public_8mi_30min:
+    policy_id: "bank_of_america_public_8mi_30min"
+    trigger_radius_miles: 8
+    monitor_radii_miles:
+      - 10
+      - 15
+      - 20
+    quiet_period_minutes: 30
+    clearance_mode: "fixed_quiet_period"
+    warmup_exposure_minutes: 60
+    restart_overhead:
+      type: "distribution"
+      minutes:
+        - 5
+        - 10
+        - 15
+        - 20
+      weights:
+        - 0.1
+        - 0.4
+        - 0.35
+        - 0.15
+    verification: "verified_public"
+    source_checked_at: "2026-09-20"
+    source_url: "https://www.panthers.com/stadium/inclement-weather-policy"
+    notes: "Bank of America Stadium / Carolina Panthers public inclement-weather page states that lightning within eight miles starts Seek Cover and the protocol remains until no lightning is detected within that radius for 30 minutes. This source verifies the venue public procedure; actual game resumption remains an operational decision, and this app does not represent the venue."
+  ncaa_guidance_reference:
+    policy_id: "ncaa_guidance_reference"
+    trigger_radius_miles: 8
+    monitor_radii_miles:
+      - 8
+    quiet_period_minutes: 30
+    clearance_mode: "conditional_meteorologist_guidance"
+    warmup_exposure_minutes: 60
+    restart_overhead:
+      type: "distribution"
+      minutes:
+        - 5
+        - 10
+        - 15
+        - 20
+      weights:
+        - 0.1
+        - 0.4
+        - 0.35
+        - 0.15
+    verification: "league_guidance"
+    source_checked_at: "2026-09-20"
+    source_url: "https://ncaaorg.s3.amazonaws.com/championships/resources/common/2024-25NCAAChamp_BestPracticesVenueSafetySecurity.pdf"
+    notes: "Reference only; not assigned as a universal FBS venue policy. NCAA 2024-25 championship venue guidance says a professional meteorologist using real-time cloud-to-cloud and cloud-to-ground data may support resumption after lightning is beyond eight miles, storm motion is away and new-lightning threat within eight miles has ended. Without that meteorologist, it describes 30 minutes after no observed thunder or lightning; venue-specific policies are not superseded."
+  fixed_dome_indoor:
+    policy_id: "fixed_dome_indoor"
+    trigger_radius_miles: 0
+    monitor_radii_miles: []
+    quiet_period_minutes: 0
+    clearance_mode: "indoor_protected"
+    warmup_exposure_minutes: 0
+    restart_overhead:
+      type: "distribution"
+      minutes:
+        - 5
+        - 10
+        - 15
+        - 20
+      weights:
+        - 0.1
+        - 0.4
+        - 0.35
+        - 0.15
+    verification: "unknown"
+    source_checked_at: "2026-09-20"
+    source_url: "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums"
+    notes: "Exposure classification only, not a venue lightning policy. Assigned only to permanently enclosed fixed-dome venues marked roof_weather_protection: true; outdoor lightning is not modeled as an on-field weather delay while the game is indoors. Roof/weather exposure for retractable stadiums is not assumed protected unless a game-time roof state is available."

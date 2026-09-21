@@ -1,0 +1,19 @@
+sports:
+  schedule: ESPN public scoreboard; unofficial; server-side only
+  college_schedule_authenticated: CFBD_API_KEY optional
+  nfl_schedule: nflverse-compatible provider interface; not official league feed
+weather:
+  current_baseline: NOAA SPC HREF CT calibrated regional thunder plus NOAA MRMS local probabilities
+  live_lightning: NOAA MRMS NLDN CG public proxy; may differ from venue operational sensors
+  calibrated_thunder: NOAA SPC HREF CT 1-hour calibrated regional thunder probability
+  hrrr_point_context: NOAA HRRR nearest-grid reflectivity, rain rate, CAPE and wind; supporting context only
+  goes_glm_context: NOAA GOES-18/19 total-lightning flash centroids; short-window satellite proxy
+  severe_thunderstorm_warnings: NOAA NWS active-alert feed; polygon-matched to outdoor venues
+  required_environment:
+    CFBD_API_KEY: optional authenticated college schedule feed
+    NWS_CONTACT_EMAIL: optional identifying contact for api.weather.gov requests
+  requests:
+    user_agent: NFL Delay Tracker experimental weather project
+    cache_minutes: 5
+    href_request_interval_seconds: 0.25
+    href_retry_backoff: exponential

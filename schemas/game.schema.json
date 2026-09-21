@@ -1,0 +1,217 @@
+{
+  "$defs": {
+    "GameStatus": {
+      "enum": [
+        "scheduled",
+        "pregame",
+        "in_progress",
+        "weather_delay",
+        "completed",
+        "postponed",
+        "cancelled",
+        "unknown"
+      ],
+      "title": "GameStatus",
+      "type": "string"
+    },
+    "League": {
+      "enum": [
+        "NFL",
+        "NCAA"
+      ],
+      "title": "League",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "game_id": {
+      "minLength": 1,
+      "title": "Game Id",
+      "type": "string"
+    },
+    "league": {
+      "$ref": "#/$defs/League"
+    },
+    "season": {
+      "maximum": 2200,
+      "minimum": 1900,
+      "title": "Season",
+      "type": "integer"
+    },
+    "home_team": {
+      "minLength": 1,
+      "title": "Home Team",
+      "type": "string"
+    },
+    "away_team": {
+      "minLength": 1,
+      "title": "Away Team",
+      "type": "string"
+    },
+    "venue_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Venue Id"
+    },
+    "venue_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Venue Name"
+    },
+    "venue_city": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Venue City"
+    },
+    "neutral_site": {
+      "default": false,
+      "title": "Neutral Site",
+      "type": "boolean"
+    },
+    "kickoff_utc": {
+      "format": "date-time",
+      "title": "Kickoff Utc",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/GameStatus",
+      "default": "scheduled"
+    },
+    "status_source": {
+      "default": "unknown",
+      "title": "Status Source",
+      "type": "string"
+    },
+    "official_delay_active": {
+      "default": false,
+      "title": "Official Delay Active",
+      "type": "boolean"
+    },
+    "model_delay_active": {
+      "default": false,
+      "title": "Model Delay Active",
+      "type": "boolean"
+    },
+    "delay_started_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Delay Started At"
+    },
+    "official_resume_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Official Resume At"
+    },
+    "delay_source_note": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Delay Source Note"
+    },
+    "home_score": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Home Score"
+    },
+    "away_score": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Away Score"
+    },
+    "period": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Period"
+    },
+    "clock": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Clock"
+    }
+  },
+  "required": [
+    "game_id",
+    "league",
+    "season",
+    "home_team",
+    "away_team",
+    "kickoff_utc"
+  ],
+  "title": "Game",
+  "type": "object"
+}

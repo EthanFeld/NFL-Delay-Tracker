@@ -1,0 +1,34 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "title": "Version",
+      "type": "string"
+    },
+    "generated_at": {
+      "format": "date-time",
+      "title": "Generated At",
+      "type": "string"
+    },
+    "sources": {
+      "additionalProperties": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Sources",
+      "type": "object"
+    },
+    "game_index_url": {
+      "default": "games/index.json",
+      "title": "Game Index Url",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "generated_at",
+    "sources"
+  ],
+  "title": "DataManifest",
+  "type": "object"
+}

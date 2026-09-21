@@ -1,0 +1,127 @@
+{
+  "$defs": {
+    "PolicyVerification": {
+      "enum": [
+        "verified_public",
+        "league_guidance",
+        "venue_assumption",
+        "unknown"
+      ],
+      "title": "PolicyVerification",
+      "type": "string"
+    },
+    "RestartOverhead": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "default": "distribution",
+          "title": "Type",
+          "type": "string"
+        },
+        "minutes": {
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 1,
+          "title": "Minutes",
+          "type": "array"
+        },
+        "weights": {
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "title": "Weights",
+          "type": "array"
+        }
+      },
+      "required": [
+        "minutes",
+        "weights"
+      ],
+      "title": "RestartOverhead",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "policy_id": {
+      "title": "Policy Id",
+      "type": "string"
+    },
+    "trigger_radius_miles": {
+      "minimum": 0,
+      "title": "Trigger Radius Miles",
+      "type": "number"
+    },
+    "monitor_radii_miles": {
+      "items": {
+        "type": "number"
+      },
+      "title": "Monitor Radii Miles",
+      "type": "array"
+    },
+    "quiet_period_minutes": {
+      "minimum": 0,
+      "title": "Quiet Period Minutes",
+      "type": "integer"
+    },
+    "warmup_exposure_minutes": {
+      "minimum": 0,
+      "title": "Warmup Exposure Minutes",
+      "type": "integer"
+    },
+    "clearance_mode": {
+      "title": "Clearance Mode",
+      "type": "string"
+    },
+    "restart_overhead": {
+      "$ref": "#/$defs/RestartOverhead"
+    },
+    "verification": {
+      "$ref": "#/$defs/PolicyVerification"
+    },
+    "source_checked_at": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Checked At"
+    },
+    "source_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Url"
+    },
+    "notes": {
+      "title": "Notes",
+      "type": "string"
+    }
+  },
+  "required": [
+    "policy_id",
+    "trigger_radius_miles",
+    "monitor_radii_miles",
+    "quiet_period_minutes",
+    "warmup_exposure_minutes",
+    "clearance_mode",
+    "restart_overhead",
+    "verification",
+    "notes"
+  ],
+  "title": "WeatherPolicy",
+  "type": "object"
+}

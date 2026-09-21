@@ -1,0 +1,989 @@
+{
+  "$defs": {
+    "DelayForecast": {
+      "additionalProperties": false,
+      "properties": {
+        "active": {
+          "default": false,
+          "title": "Active",
+          "type": "boolean"
+        },
+        "officially_confirmed": {
+          "default": false,
+          "title": "Officially Confirmed",
+          "type": "boolean"
+        },
+        "model_delay_active": {
+          "default": false,
+          "title": "Model Delay Active",
+          "type": "boolean"
+        },
+        "last_qualifying_event_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Qualifying Event At"
+        },
+        "earliest_weather_clear_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Earliest Weather Clear At"
+        },
+        "weather_clear_cdf": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Weather Clear Cdf",
+          "type": "array"
+        },
+        "resume_cdf": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Resume Cdf",
+          "type": "array"
+        },
+        "resume_p50": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Resume P50"
+        },
+        "resume_p75": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Resume P75"
+        },
+        "resume_p90": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Resume P90"
+        },
+        "probability_additional_minutes": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Probability Additional Minutes",
+          "type": "object"
+        },
+        "holds": {
+          "items": {
+            "$ref": "#/$defs/HoldInterval"
+          },
+          "title": "Holds",
+          "type": "array"
+        },
+        "source": {
+          "default": "policy simulation",
+          "title": "Source",
+          "type": "string"
+        },
+        "notes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Notes",
+          "type": "array"
+        }
+      },
+      "title": "DelayForecast",
+      "type": "object"
+    },
+    "ForecastQuality": {
+      "additionalProperties": false,
+      "properties": {
+        "weather_data_age_seconds": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Weather Data Age Seconds"
+        },
+        "sports_data_age_seconds": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sports Data Age Seconds"
+        },
+        "policy_verification": {
+          "$ref": "#/$defs/PolicyVerification"
+        },
+        "forecast_lead_minutes": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Forecast Lead Minutes"
+        },
+        "missing_sources": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Sources",
+          "type": "array"
+        },
+        "degraded": {
+          "default": false,
+          "title": "Degraded",
+          "type": "boolean"
+        },
+        "status": {
+          "default": "experimental",
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "policy_verification"
+      ],
+      "title": "ForecastQuality",
+      "type": "object"
+    },
+    "Game": {
+      "additionalProperties": false,
+      "properties": {
+        "game_id": {
+          "minLength": 1,
+          "title": "Game Id",
+          "type": "string"
+        },
+        "league": {
+          "$ref": "#/$defs/League"
+        },
+        "season": {
+          "maximum": 2200,
+          "minimum": 1900,
+          "title": "Season",
+          "type": "integer"
+        },
+        "home_team": {
+          "minLength": 1,
+          "title": "Home Team",
+          "type": "string"
+        },
+        "away_team": {
+          "minLength": 1,
+          "title": "Away Team",
+          "type": "string"
+        },
+        "venue_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Venue Id"
+        },
+        "venue_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Venue Name"
+        },
+        "venue_city": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Venue City"
+        },
+        "neutral_site": {
+          "default": false,
+          "title": "Neutral Site",
+          "type": "boolean"
+        },
+        "kickoff_utc": {
+          "format": "date-time",
+          "title": "Kickoff Utc",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/GameStatus",
+          "default": "scheduled"
+        },
+        "status_source": {
+          "default": "unknown",
+          "title": "Status Source",
+          "type": "string"
+        },
+        "official_delay_active": {
+          "default": false,
+          "title": "Official Delay Active",
+          "type": "boolean"
+        },
+        "model_delay_active": {
+          "default": false,
+          "title": "Model Delay Active",
+          "type": "boolean"
+        },
+        "delay_started_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Delay Started At"
+        },
+        "official_resume_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Official Resume At"
+        },
+        "delay_source_note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Delay Source Note"
+        },
+        "home_score": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Home Score"
+        },
+        "away_score": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Away Score"
+        },
+        "period": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Period"
+        },
+        "clock": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Clock"
+        }
+      },
+      "required": [
+        "game_id",
+        "league",
+        "season",
+        "home_team",
+        "away_team",
+        "kickoff_utc"
+      ],
+      "title": "Game",
+      "type": "object"
+    },
+    "GameStatus": {
+      "enum": [
+        "scheduled",
+        "pregame",
+        "in_progress",
+        "weather_delay",
+        "completed",
+        "postponed",
+        "cancelled",
+        "unknown"
+      ],
+      "title": "GameStatus",
+      "type": "string"
+    },
+    "HazardPoint": {
+      "additionalProperties": false,
+      "properties": {
+        "offset_minutes": {
+          "title": "Offset Minutes",
+          "type": "integer"
+        },
+        "probability": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Probability",
+          "type": "number"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        }
+      },
+      "required": [
+        "offset_minutes",
+        "probability",
+        "source"
+      ],
+      "title": "HazardPoint",
+      "type": "object"
+    },
+    "HoldInterval": {
+      "additionalProperties": false,
+      "properties": {
+        "started_at": {
+          "format": "date-time",
+          "title": "Started At",
+          "type": "string"
+        },
+        "weather_clear_at": {
+          "format": "date-time",
+          "title": "Weather Clear At",
+          "type": "string"
+        },
+        "football_resume_at": {
+          "format": "date-time",
+          "title": "Football Resume At",
+          "type": "string"
+        },
+        "phase": {
+          "title": "Phase",
+          "type": "string"
+        },
+        "reset_count": {
+          "minimum": 0,
+          "title": "Reset Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "started_at",
+        "weather_clear_at",
+        "football_resume_at",
+        "phase",
+        "reset_count"
+      ],
+      "title": "HoldInterval",
+      "type": "object"
+    },
+    "League": {
+      "enum": [
+        "NFL",
+        "NCAA"
+      ],
+      "title": "League",
+      "type": "string"
+    },
+    "PolicyVerification": {
+      "enum": [
+        "verified_public",
+        "league_guidance",
+        "venue_assumption",
+        "unknown"
+      ],
+      "title": "PolicyVerification",
+      "type": "string"
+    },
+    "PregameForecast": {
+      "additionalProperties": false,
+      "properties": {
+        "delay_probability": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Delay Probability",
+          "type": "number"
+        },
+        "kickoff_delay_probability": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Kickoff Delay Probability",
+          "type": "number"
+        },
+        "in_game_delay_probability": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "In Game Delay Probability",
+          "type": "number"
+        },
+        "multiple_delay_probability": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Multiple Delay Probability",
+          "type": "number"
+        },
+        "expected_delay_minutes": {
+          "minimum": 0,
+          "title": "Expected Delay Minutes",
+          "type": "number"
+        },
+        "hourly_delay_hazard": {
+          "items": {
+            "$ref": "#/$defs/HazardPoint"
+          },
+          "title": "Hourly Delay Hazard",
+          "type": "array"
+        },
+        "simulation_count": {
+          "minimum": 0,
+          "title": "Simulation Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "delay_probability",
+        "kickoff_delay_probability",
+        "in_game_delay_probability",
+        "multiple_delay_probability",
+        "expected_delay_minutes",
+        "hourly_delay_hazard",
+        "simulation_count"
+      ],
+      "title": "PregameForecast",
+      "type": "object"
+    },
+    "RestartOverhead": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "default": "distribution",
+          "title": "Type",
+          "type": "string"
+        },
+        "minutes": {
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 1,
+          "title": "Minutes",
+          "type": "array"
+        },
+        "weights": {
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "title": "Weights",
+          "type": "array"
+        }
+      },
+      "required": [
+        "minutes",
+        "weights"
+      ],
+      "title": "RestartOverhead",
+      "type": "object"
+    },
+    "RoofType": {
+      "enum": [
+        "outdoor",
+        "fixed_dome",
+        "retractable",
+        "partial",
+        "unknown"
+      ],
+      "title": "RoofType",
+      "type": "string"
+    },
+    "Venue": {
+      "additionalProperties": false,
+      "properties": {
+        "venue_id": {
+          "minLength": 1,
+          "title": "Venue Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "latitude": {
+          "maximum": 90,
+          "minimum": -90,
+          "title": "Latitude",
+          "type": "number"
+        },
+        "longitude": {
+          "maximum": 180,
+          "minimum": -180,
+          "title": "Longitude",
+          "type": "number"
+        },
+        "timezone": {
+          "title": "Timezone",
+          "type": "string"
+        },
+        "roof_type": {
+          "$ref": "#/$defs/RoofType"
+        },
+        "roof_weather_protection": {
+          "title": "Roof Weather Protection",
+          "type": "boolean"
+        },
+        "policy_id": {
+          "title": "Policy Id",
+          "type": "string"
+        },
+        "league": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/League"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "leagues": {
+          "items": {
+            "$ref": "#/$defs/League"
+          },
+          "title": "Leagues",
+          "type": "array"
+        },
+        "home_teams": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Home Teams",
+          "type": "array"
+        },
+        "aliases": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Aliases",
+          "type": "array"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "coordinate_source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Coordinate Source Url"
+        },
+        "roof_source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Roof Source Url"
+        },
+        "source_note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Note"
+        },
+        "source_checked_at": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Checked At"
+        },
+        "city": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "City"
+        },
+        "state": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "State"
+        },
+        "fbs_source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fbs Source Url"
+        }
+      },
+      "required": [
+        "venue_id",
+        "name",
+        "latitude",
+        "longitude",
+        "timezone",
+        "roof_type",
+        "roof_weather_protection",
+        "policy_id",
+        "home_teams"
+      ],
+      "title": "Venue",
+      "type": "object"
+    },
+    "WeatherPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "policy_id": {
+          "title": "Policy Id",
+          "type": "string"
+        },
+        "trigger_radius_miles": {
+          "minimum": 0,
+          "title": "Trigger Radius Miles",
+          "type": "number"
+        },
+        "monitor_radii_miles": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Monitor Radii Miles",
+          "type": "array"
+        },
+        "quiet_period_minutes": {
+          "minimum": 0,
+          "title": "Quiet Period Minutes",
+          "type": "integer"
+        },
+        "warmup_exposure_minutes": {
+          "minimum": 0,
+          "title": "Warmup Exposure Minutes",
+          "type": "integer"
+        },
+        "clearance_mode": {
+          "title": "Clearance Mode",
+          "type": "string"
+        },
+        "restart_overhead": {
+          "$ref": "#/$defs/RestartOverhead"
+        },
+        "verification": {
+          "$ref": "#/$defs/PolicyVerification"
+        },
+        "source_checked_at": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Checked At"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "notes": {
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "policy_id",
+        "trigger_radius_miles",
+        "monitor_radii_miles",
+        "quiet_period_minutes",
+        "warmup_exposure_minutes",
+        "clearance_mode",
+        "restart_overhead",
+        "verification",
+        "notes"
+      ],
+      "title": "WeatherPolicy",
+      "type": "object"
+    },
+    "WeatherSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "venue_id": {
+          "title": "Venue Id",
+          "type": "string"
+        },
+        "fetched_at": {
+          "format": "date-time",
+          "title": "Fetched At",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "hazards": {
+          "items": {
+            "$ref": "#/$defs/HazardPoint"
+          },
+          "title": "Hazards",
+          "type": "array"
+        },
+        "venue_features": {
+          "additionalProperties": true,
+          "title": "Venue Features",
+          "type": "object"
+        },
+        "missing_sources": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Sources",
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Notes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "venue_id",
+        "fetched_at",
+        "source",
+        "hazards"
+      ],
+      "title": "WeatherSnapshot",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "generated_at": {
+      "format": "date-time",
+      "title": "Generated At",
+      "type": "string"
+    },
+    "model_version": {
+      "title": "Model Version",
+      "type": "string"
+    },
+    "game": {
+      "$ref": "#/$defs/Game"
+    },
+    "venue": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Venue"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "policy": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/WeatherPolicy"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "weather": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/WeatherSnapshot"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "pregame": {
+      "$ref": "#/$defs/PregameForecast"
+    },
+    "delay": {
+      "$ref": "#/$defs/DelayForecast"
+    },
+    "quality": {
+      "$ref": "#/$defs/ForecastQuality"
+    }
+  },
+  "required": [
+    "generated_at",
+    "model_version",
+    "game",
+    "pregame",
+    "quality"
+  ],
+  "title": "GameForecast",
+  "type": "object"
+}

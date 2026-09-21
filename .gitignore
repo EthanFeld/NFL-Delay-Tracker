@@ -1,0 +1,29 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.env
+.env.*
+!.env.example
+node_modules/
+web/dist/
+dist/
+build/
+*.egg-info/
+.coverage
+htmlcov/
+*.tsbuildinfo
+/reports/
+
+# Build instructions supplied for this run; keep out of project history.
+/Build spec.md
+
+# Generated forecasts and archives are published by Actions, not committed.
+/data/manifest.json
+/data/games/*.json
+/data/archive/*.csv
+/data/archive/*.jsonl
+/data/archive/*.jsonl.gz
+/data/archive/*.latest.json

@@ -1,0 +1,93 @@
+{
+  "$defs": {
+    "HazardPoint": {
+      "additionalProperties": false,
+      "properties": {
+        "offset_minutes": {
+          "title": "Offset Minutes",
+          "type": "integer"
+        },
+        "probability": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Probability",
+          "type": "number"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        }
+      },
+      "required": [
+        "offset_minutes",
+        "probability",
+        "source"
+      ],
+      "title": "HazardPoint",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "venue_id": {
+      "title": "Venue Id",
+      "type": "string"
+    },
+    "fetched_at": {
+      "format": "date-time",
+      "title": "Fetched At",
+      "type": "string"
+    },
+    "source": {
+      "title": "Source",
+      "type": "string"
+    },
+    "hazards": {
+      "items": {
+        "$ref": "#/$defs/HazardPoint"
+      },
+      "title": "Hazards",
+      "type": "array"
+    },
+    "venue_features": {
+      "additionalProperties": true,
+      "title": "Venue Features",
+      "type": "object"
+    },
+    "missing_sources": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Missing Sources",
+      "type": "array"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "venue_id",
+    "fetched_at",
+    "source",
+    "hazards"
+  ],
+  "title": "WeatherSnapshot",
+  "type": "object"
+}

@@ -1,0 +1,35 @@
+model_version: engineering-baseline-0.1.0
+simulation_count: 20000
+time_step_minutes: 5
+initial_latent_correlation: 0.45
+correlation_source: configurable bootstrap prior; archive fit required before production claims
+temporal_blending:
+  nowcast_weight_at_zero: 0.9
+  nowcast_weight_at_60: 0.2
+  href_weight: 0.8
+  nws_weight: 0.2
+weather_forecast_horizon_hours: 48
+active_delay_duration_prior:
+  source: data/historical_delay_events.csv
+  count: 28
+  priority_range_30_180_minutes_count: 24
+  selection: documented positive NFL and college delay events, 2011-2025
+  limitation: selected positives; not representative of every venue, league, or storm regime
+  chronological_priority_backtest:
+    training_events: 19
+    holdout_events: 5
+    fixed_baseline_p50_mae_minutes: 31.8
+    empirical_prior_p50_mae_minutes: 16.6
+    fixed_baseline_p10_p90_coverage: 0.0
+    empirical_prior_p10_p90_coverage: 1.0
+    fixed_baseline_brier_over_60m: 0.8
+    empirical_prior_brier_over_60m: 0.3036
+  durations_minutes: [23, 24, 26, 30, 34, 35, 36, 40, 45, 46, 47, 50, 54, 56, 59, 62, 65, 65, 69, 76, 78, 86, 86, 88, 113, 117, 122, 348]
+  weights: [0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035714, 0.035722]
+storm_motion:
+  source: MRMS quality-controlled composite reflectivity
+  sampling: active games only; 5-minute workflow cadence, 60-mile local radius
+  echo_threshold_dbz: 35
+  maximum_added_hazard_probability: 0.15
+  valid_eta_minutes: [30, 180]
+  limitation: observed radar echoes are not lightning; constant-speed ETA and motion adjustment are experimental and uncalibrated

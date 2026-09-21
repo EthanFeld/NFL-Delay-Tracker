@@ -1,0 +1,206 @@
+{
+  "$defs": {
+    "League": {
+      "enum": [
+        "NFL",
+        "NCAA"
+      ],
+      "title": "League",
+      "type": "string"
+    },
+    "RoofType": {
+      "enum": [
+        "outdoor",
+        "fixed_dome",
+        "retractable",
+        "partial",
+        "unknown"
+      ],
+      "title": "RoofType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "venue_id": {
+      "minLength": 1,
+      "title": "Venue Id",
+      "type": "string"
+    },
+    "name": {
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "latitude": {
+      "maximum": 90,
+      "minimum": -90,
+      "title": "Latitude",
+      "type": "number"
+    },
+    "longitude": {
+      "maximum": 180,
+      "minimum": -180,
+      "title": "Longitude",
+      "type": "number"
+    },
+    "timezone": {
+      "title": "Timezone",
+      "type": "string"
+    },
+    "roof_type": {
+      "$ref": "#/$defs/RoofType"
+    },
+    "roof_weather_protection": {
+      "title": "Roof Weather Protection",
+      "type": "boolean"
+    },
+    "policy_id": {
+      "title": "Policy Id",
+      "type": "string"
+    },
+    "league": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/League"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "leagues": {
+      "items": {
+        "$ref": "#/$defs/League"
+      },
+      "title": "Leagues",
+      "type": "array"
+    },
+    "home_teams": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Home Teams",
+      "type": "array"
+    },
+    "aliases": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Aliases",
+      "type": "array"
+    },
+    "source_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Url"
+    },
+    "coordinate_source_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Coordinate Source Url"
+    },
+    "roof_source_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Roof Source Url"
+    },
+    "source_note": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Note"
+    },
+    "source_checked_at": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Checked At"
+    },
+    "city": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "City"
+    },
+    "state": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "State"
+    },
+    "fbs_source_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Fbs Source Url"
+    }
+  },
+  "required": [
+    "venue_id",
+    "name",
+    "latitude",
+    "longitude",
+    "timezone",
+    "roof_type",
+    "roof_weather_protection",
+    "policy_id",
+    "home_teams"
+  ],
+  "title": "Venue",
+  "type": "object"
+}
