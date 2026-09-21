@@ -81,6 +81,7 @@ def test_short_refresh_carries_global_conditions_outlook_without_fake_pregame_ri
     global_outlook = {
         "model": "ECMWF IFS ensemble",
         "valid_at": game.kickoff_utc.isoformat(),
+        "native_resolution_hours": 6 if lead_hours > 144 else 3,
         "condition_member_counts": {"clear_or_cloudy": 18},
     }
     previous = {
@@ -97,6 +98,19 @@ def test_short_refresh_carries_global_conditions_outlook_without_fake_pregame_ri
     assert carried["pregame"] is None
     assert carried["weather"]["venue_features"]["global_weather_outlook"] == global_outlook
     assert carried["quality"]["forecast_scope"] == "global_weather_outlook"
+    stale_resolution = 3 if lead_hours > 144 else 6
+    stale_record = {
+        **previous,
+        "weather": {
+            "venue_features": {
+                "global_weather_outlook": {
+                    **global_outlook,
+                    "native_resolution_hours": stale_resolution,
+                }
+            }
+        },
+    }
+    assert _carry_forward_future_forecast(stale_record, game, now=now) is None
 
 
 def test_live_status_write_preserves_week_ahead_forecast(tmp_path) -> None:

@@ -1567,7 +1567,16 @@ def _carry_forward_future_forecast(
         return None
     if has_global_outlook and isinstance(global_outlook, dict):
         valid_at = _timestamp(global_outlook.get("valid_at"))
-        if valid_at is None or abs(valid_at - game.kickoff_utc) > timedelta(minutes=90):
+        expected_resolution_hours = (
+            6
+            if game.kickoff_utc - now > timedelta(hours=144)
+            else 3
+        )
+        if (
+            valid_at is None
+            or abs(valid_at - game.kickoff_utc) > timedelta(minutes=90)
+            or global_outlook.get("native_resolution_hours") != expected_resolution_hours
+        ):
             return None
 
     carried = dict(game_record)
