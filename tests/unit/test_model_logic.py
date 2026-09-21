@@ -16,7 +16,7 @@ from nfl_delay_tracker.model.simulator import (
 from nfl_delay_tracker.model.trajectories import correlated_events, estimate_latent_correlation
 from nfl_delay_tracker.models import Game, HazardPoint, League, RestartOverhead, WeatherPolicy
 from nfl_delay_tracker.pipeline import (
-    _carry_forward_week_ahead_forecast,
+    _carry_forward_future_forecast,
     _write_game_status,
     load_registry,
 )
@@ -31,7 +31,7 @@ def _point(offset: int, probability: float) -> HazardPoint:
     return HazardPoint(offset_minutes=offset, probability=probability, source="test")
 
 
-def test_short_refresh_carries_fresh_week_ahead_forecast_without_old_alerts() -> None:
+def test_short_refresh_carries_fresh_forecast_without_old_alerts() -> None:
     now = datetime(2026, 9, 20, 12, tzinfo=UTC)
     game = Game(
         game_id="week-ahead",
@@ -53,7 +53,7 @@ def test_short_refresh_carries_fresh_week_ahead_forecast_without_old_alerts() ->
         },
     }
 
-    carried = _carry_forward_week_ahead_forecast(previous, game, now=now)
+    carried = _carry_forward_future_forecast(previous, game, now=now)
 
     assert carried is not None
     assert carried["pregame"] == {"delay_probability": 0.04}
@@ -65,7 +65,10 @@ def test_short_refresh_carries_fresh_week_ahead_forecast_without_old_alerts() ->
     assert previous["weather"]["venue_features"]["nws_alerts"]["alerts"]
 
 
-def test_short_refresh_carries_global_conditions_outlook_without_fake_pregame_risk() -> None:
+@pytest.mark.parametrize("lead_hours", [120, 240])
+def test_short_refresh_carries_global_conditions_outlook_without_fake_pregame_risk(
+    lead_hours: int,
+) -> None:
     now = datetime(2026, 9, 20, 12, tzinfo=UTC)
     game = Game(
         game_id="global-outlook",
@@ -73,7 +76,7 @@ def test_short_refresh_carries_global_conditions_outlook_without_fake_pregame_ri
         season=2026,
         home_team="Home",
         away_team="Away",
-        kickoff_utc=now + timedelta(hours=120),
+        kickoff_utc=now + timedelta(hours=lead_hours),
     )
     global_outlook = {
         "model": "ECMWF IFS ensemble",
@@ -88,7 +91,7 @@ def test_short_refresh_carries_global_conditions_outlook_without_fake_pregame_ri
         "weather": {"venue_features": {"global_weather_outlook": global_outlook}},
     }
 
-    carried = _carry_forward_week_ahead_forecast(previous, game, now=now)
+    carried = _carry_forward_future_forecast(previous, game, now=now)
 
     assert carried is not None
     assert carried["pregame"] is None
@@ -124,7 +127,7 @@ def test_live_status_write_preserves_week_ahead_forecast(tmp_path) -> None:
     assert saved["pregame"] == previous["pregame"]
     assert saved["quality"] == previous["quality"]
     assert saved["weather"] == previous["weather"]
-    assert _carry_forward_week_ahead_forecast(saved, game, now=now) is not None
+    assert _carry_forward_future_forecast(saved, game, now=now) is not None
 
 
 def test_zero_hazard_produces_zero_delay_probability() -> None:

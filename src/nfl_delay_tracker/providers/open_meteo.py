@@ -1,4 +1,4 @@
-"""Global ECMWF ensemble conditions adapter for venues outside NWS coverage.
+"""Global ECMWF ensemble conditions adapter for venues outside NWS coverage or horizon.
 
 The weather-code field is retained as a categorical conditions outlook only. It is
 not a thunderstorm or venue-delay probability input.
@@ -40,7 +40,7 @@ class OpenMeteoEnsembleProvider:
                 "longitude": f"{venue.longitude:.4f}",
                 "models": MODEL,
                 "hourly": "weather_code",
-                "forecast_days": 8,
+                "forecast_days": 15,
                 "timezone": "GMT",
             }
         )

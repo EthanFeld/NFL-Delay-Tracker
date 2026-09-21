@@ -56,7 +56,7 @@ def test_fetch_conditions_outlook_counts_members_without_emitting_risk(
 
     query = parse_qs(urlsplit(requested_urls[0]).query)
     assert query["models"] == ["ecmwf_ifs025_ensemble"]
-    assert query["forecast_days"] == ["8"]
+    assert query["forecast_days"] == ["15"]
     assert query["timezone"] == ["GMT"]
     assert fetched_at.tzinfo is UTC
     assert source_url == requested_urls[0]

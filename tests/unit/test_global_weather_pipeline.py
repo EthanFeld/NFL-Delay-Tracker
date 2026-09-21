@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from datetime import UTC, datetime, timedelta
 
+import pytest
 import yaml
 
 from nfl_delay_tracker.pipeline import refresh_forecasts
@@ -12,8 +13,9 @@ from nfl_delay_tracker.providers.http import ProviderError
 from nfl_delay_tracker.providers.nws import NwsGridProvider
 
 
-def test_out_of_coverage_game_publishes_conditions_without_delay_odds(
-    tmp_path, monkeypatch
+@pytest.mark.parametrize("lead", [timedelta(hours=120), timedelta(days=12)])
+def test_out_of_coverage_or_long_range_game_publishes_conditions_without_delay_odds(
+    tmp_path, monkeypatch, lead
 ) -> None:
     config_dir = tmp_path / "config"
     games_dir = tmp_path / "data" / "games"
@@ -64,7 +66,7 @@ def test_out_of_coverage_game_publishes_conditions_without_delay_odds(
     (config_dir / "model.yaml").write_text(
         "initial_latent_correlation: 0.45\ntemporal_blending: {}\n", encoding="utf-8"
     )
-    kickoff = datetime.now(UTC) + timedelta(hours=120)
+    kickoff = datetime.now(UTC) + lead
     game_id = "nfl_2026_401872960"
     (games_dir / "index.json").write_text(
         json.dumps(
