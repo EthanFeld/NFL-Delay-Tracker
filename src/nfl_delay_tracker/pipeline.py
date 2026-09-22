@@ -60,7 +60,7 @@ from nfl_delay_tracker.providers.open_meteo import OpenMeteoEnsembleProvider
 from nfl_delay_tracker.providers.sports import NflverseScheduleProvider, fetch_cfbd_games
 
 ROOT = Path(__file__).resolve().parents[2]
-MODEL_VERSION = "engineering-baseline-0.2.1"
+MODEL_VERSION = "engineering-baseline-0.2.2"
 _TERMINAL_GAME_STATUSES = {
     GameStatus.COMPLETED,
     GameStatus.POSTPONED,
