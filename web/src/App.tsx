@@ -207,7 +207,7 @@ function GameCard({ game, generatedAt }: { game: Game; generatedAt?: string }) {
         </div>
       ) : game.activeDelay ? (
         <div className="card-bottom active-card-bottom">
-          <span className={`delay-kind ${game.officialDelay ? 'official' : 'modeled'}`}><CloudLightning size={13} />{game.officialDelay ? 'Reported weather delay' : 'Modeled weather hold'}</span>
+          <span className={`delay-kind ${game.officialDelay ? 'official' : 'modeled'}`}><CloudLightning size={13} />{game.officialDelay ? 'Reported weather delay' : 'Modeled weather hold · no official report'}</span>
           <span className="compact-resume">Resumed by {formatPercent(game.probabilityAdditional[30] === undefined ? undefined : 1 - game.probabilityAdditional[30])} in 30m <ArrowRight size={14} /></span>
         </div>
       ) : (
@@ -312,7 +312,7 @@ function StormMotionSummary({ motion }: { motion: NonNullable<Game['weatherConte
       <div><span>Track ETA</span><b>{etaLabel}</b></div>
       <div><span>Echo peak</span><b>{motion.maxReflectivityDbz === undefined ? '—' : `${motion.maxReflectivityDbz.toFixed(0)} dBZ`}</b></div>
     </div>
-    {motion.modelAdjustmentApplied && <p className="motion-calibration-note">Fresh track adjustment applied to the 30–180 minute window.</p>}
+    {motion.modelAdjustmentApplied && <p className="motion-calibration-note">Fresh approaching MRMS track adjustment applied; capped to the 30–180 minute window.</p>}
     <p className="muted-copy">Radar echo track; lightning confirmation remains separate. ETA bounds show sensitivity range.</p>
   </div>;
 }
@@ -424,13 +424,13 @@ function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; 
             </div>
             {globalOutlook.attributionUrl ? <a className="source-link" href={globalOutlook.attributionUrl} target="_blank" rel="noreferrer">Model and data attribution <ArrowRight size={13} /></a> : <p className="panel-subcopy">Model and data attribution link unavailable.</p>}
           </> : <p className="panel-subcopy">Ensemble condition data is unavailable for this game.</p>}
-          <p className="global-outlook-limitation">Conditions only. Thunder, lightning, delay risk, and storm movement unavailable. Resolution: 3 hours on an approximately 25 km grid.</p>
+          <p className="global-outlook-limitation">Conditions only. Thunder, lightning, delay risk, and storm movement unavailable. Resolution: {globalOutlook?.nativeResolutionHours ?? 3} hours on an approximately {globalOutlook?.gridResolutionKm ?? 25} km grid.</p>
         </section>
       ) : dome ? (
         <section className="dome-notice"><div className="notice-icon"><Sun size={23} /></div><div><h2>Indoor — lightning delay model disabled</h2><p>This stadium's fixed roof protects play from lightning. Weather conditions outside may still affect travel or venue operations.</p></div></section>
       ) : active ? (
         <section className="forecast-panel active-forecast">
-          <div className="panel-heading"><div><span className="section-kicker"><CloudLightning size={14} /> ACTIVE WEATHER DELAY</span><h2>Game resumption</h2></div><span className={`delay-kind ${game.officialDelay ? 'official' : 'modeled'}`}>{game.officialDelay ? 'Officially reported weather delay' : 'Modeled weather hold'}</span></div>
+          <div className="panel-heading"><div><span className="section-kicker"><CloudLightning size={14} /> ACTIVE WEATHER DELAY</span><h2>Game resumption</h2></div><span className={`delay-kind ${game.officialDelay ? 'official' : 'modeled'}`}>{game.officialDelay ? 'Officially reported weather delay' : 'Modeled weather hold · no official report'}</span></div>
           <p className="panel-description">Chance that play has resumed by each time. Weather clearance and football restart are separate; operational restart time is included where data allows.</p>
           <div className="resume-estimates">
             <div className="resume-estimate primary"><span>P50 · MOST LIKELY</span><b>{formatTime(game.resumeP50, game.timezone)}</b></div>
