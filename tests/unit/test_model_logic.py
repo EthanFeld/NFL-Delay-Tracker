@@ -300,6 +300,38 @@ def test_remaining_game_simulation_counts_future_hazard_as_in_game() -> None:
     assert result["in_game_delay_probability"] == 1
 
 
+def test_remaining_game_simulation_excludes_horizon_endpoint() -> None:
+    kickoff = datetime(2026, 9, 20, 18, tzinfo=UTC)
+    now = kickoff + timedelta(minutes=120)
+    result = simulate_remaining_game(
+        now=now,
+        kickoff=kickoff,
+        policy=_outdoor_policy(),
+        hazards=[_point(165, 1.0), _point(180, 0.0)],
+        remaining_game_minutes=45,
+        simulation_count=100,
+        seed=19,
+    )
+
+    assert result["delay_probability"] == 0
+
+
+def test_remaining_game_simulation_returns_zero_for_sub_bin_horizon() -> None:
+    kickoff = datetime(2026, 9, 20, 18, tzinfo=UTC)
+    now = kickoff + timedelta(minutes=120)
+    result = simulate_remaining_game(
+        now=now,
+        kickoff=kickoff,
+        policy=_outdoor_policy(),
+        hazards=[_point(125, 1.0), _point(180, 0.0)],
+        remaining_game_minutes=4,
+        simulation_count=100,
+        seed=19,
+    )
+
+    assert result["delay_probability"] == 0
+
+
 def test_event_at_kickoff_creates_kickoff_hold() -> None:
     hazards = [_point(-5, 0), _point(0, 1), _point(5, 0), _point(600, 0)]
     result = simulate_trajectory(

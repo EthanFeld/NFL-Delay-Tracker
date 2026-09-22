@@ -285,13 +285,17 @@ def simulate_remaining_game(
         return _zero_delay_result(simulation_count)
 
     elapsed_minutes = int((now - kickoff).total_seconds() // 60)
+    floor_offset = (elapsed_minutes // STEP_MINUTES) * STEP_MINUTES
     # Start at the next five-minute bin. The current bin is already partly
     # elapsed at refresh time and is excluded by the pipeline risk window.
-    start_offset = ((elapsed_minutes // STEP_MINUTES) + 1) * STEP_MINUTES
+    start_offset = floor_offset + STEP_MINUTES
+    exposure_minutes = max(0, remaining_game_minutes - (start_offset - floor_offset))
+    if exposure_minutes == 0:
+        return _zero_delay_result(simulation_count)
     if not _has_positive_hazard_in_window(
         hazards,
         start_minute=start_offset,
-        duration_minutes=remaining_game_minutes,
+        duration_minutes=exposure_minutes,
     ):
         return _zero_delay_result(simulation_count)
     any_delay = multiple = 0
@@ -301,7 +305,7 @@ def simulate_remaining_game(
             kickoff=kickoff,
             policy=policy,
             hazards=hazards,
-            game_duration_minutes=remaining_game_minutes,
+            game_duration_minutes=exposure_minutes,
             rho=rho,
             seed=seed + index,
             start_offset_minutes=start_offset,
