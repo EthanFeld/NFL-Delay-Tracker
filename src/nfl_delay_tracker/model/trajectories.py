@@ -23,7 +23,10 @@ def correlated_events(
     """Draw Bernoulli events with requested marginals and serial dependence."""
     if not -0.999 < rho < 0.999:
         raise ValueError("rho must be between -0.999 and 0.999")
-    previous = 0.0
+    # Start in the stationary N(0, 1) distribution. Starting at zero shrinks
+    # the first latent draw's variance and distorts its requested Bernoulli
+    # marginal whenever p is not 0.5.
+    previous = rng.gauss(0.0, 1.0)
     residual_scale = math.sqrt(1 - rho * rho)
     events: list[bool] = []
     for raw_probability in probabilities:

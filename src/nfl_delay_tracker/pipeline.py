@@ -60,6 +60,7 @@ from nfl_delay_tracker.providers.open_meteo import OpenMeteoEnsembleProvider
 from nfl_delay_tracker.providers.sports import NflverseScheduleProvider, fetch_cfbd_games
 
 ROOT = Path(__file__).resolve().parents[2]
+MODEL_VERSION = "engineering-baseline-0.2.1"
 _TERMINAL_GAME_STATUSES = {
     GameStatus.COMPLETED,
     GameStatus.POSTPONED,
@@ -115,7 +116,11 @@ def _remaining_game_exposure_minutes(game: Game, now: datetime) -> int:
     minutes_per_game_clock_minute = DEFAULT_GAME_DURATION_MINUTES / 60
     if seconds_left is None:
         if 1 <= period <= 4:
+            # During a paused weather hold, missing clock data cannot tell us
+            # how much of the current quarter remains. Use the full quarter.
             regulation_quarters_left = 5 - period
+            if game.status == GameStatus.WEATHER_DELAY:
+                regulation_quarters_left += 1
             remaining = math.ceil(
                 regulation_quarters_left * 15 * minutes_per_game_clock_minute
             )
@@ -1635,7 +1640,7 @@ def _unavailable_forecast(
     )
     return {
         "generated_at": generated_at.isoformat(),
-        "model_version": "engineering-baseline-0.2.0",
+        "model_version": MODEL_VERSION,
         "game": game.model_dump(mode="json"),
         "venue": venue.model_dump(mode="json") if venue else None,
         "policy": policy.model_dump(mode="json") if policy else None,
@@ -1966,7 +1971,7 @@ def refresh_forecasts(
         if venue and venue.roof_type == RoofType.FIXED_DOME and venue.roof_weather_protection:
             forecast = {
                 "generated_at": generated_at.isoformat(),
-                "model_version": "engineering-baseline-0.2.0",
+                "model_version": MODEL_VERSION,
                 "game": game.model_dump(mode="json"),
                 "venue": venue.model_dump(mode="json"),
                 "policy": policy.model_dump(mode="json") if policy else None,
@@ -2698,7 +2703,7 @@ def refresh_forecasts(
                     )
                     forecast = GameForecast(
                         generated_at=generated_at,
-                        model_version="engineering-baseline-0.2.0",
+                        model_version=MODEL_VERSION,
                         game=game,
                         venue=venue,
                         policy=policy,

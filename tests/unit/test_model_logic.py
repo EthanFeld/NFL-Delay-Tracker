@@ -244,7 +244,7 @@ def test_weather_hold_with_missing_clock_does_not_lose_horizon_to_wall_time() ->
         clock=None,
     )
 
-    assert _remaining_game_exposure_minutes(game, now) == 105
+    assert _remaining_game_exposure_minutes(game, now) == 158
 
 
 def test_college_overtime_uses_capped_horizon_without_a_continuous_clock() -> None:
@@ -400,6 +400,15 @@ def test_correlated_trajectory_is_deterministic_and_estimator_needs_history() ->
     assert left == right
     assert estimate_latent_correlation([left]) is not None
     assert estimate_latent_correlation([[True, False]]) is None
+
+
+def test_correlated_trajectory_preserves_first_bin_marginal() -> None:
+    draws = [
+        correlated_events([0.2], rho=0.6, rng=random.Random(seed))[0]
+        for seed in range(5_000)
+    ]
+    observed = sum(draws) / len(draws)
+    assert observed == pytest.approx(0.2, abs=0.02)
 
 
 def test_policy_circle_uses_great_circle_distance() -> None:

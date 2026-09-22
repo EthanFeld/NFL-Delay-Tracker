@@ -53,6 +53,8 @@ python -m nfl_delay_tracker.cli backtest
 
 The command compares a fixed 40-minute median baseline with an empirical duration prior on sourced historical delay reports. It uses pre-2023 events for training and 2023+ events for chronological holdout. The expanded sample has 22 training and 7 holdout events; overall holdout P50 MAE is 31.0 vs 38.1 minutes, P10-P90 coverage is 71.4% vs 0%, and the Brier score for delays over 60 minutes is 0.2972 vs 0.7143 (empirical vs fixed). For the priority 30-180 minute range, the subset has 19 training and 6 holdout events: P50 MAE is 26.5 vs 41.8 minutes, interval coverage is 83.3% vs 0%, and the over-60-minute Brier score is 0.3089 vs 0.8333. These are selected positive delay events, not a full game denominator; two interruptions from one game are separate observations and may share storm conditions. The backtest scores total delay duration only. It does not measure pregame probability calibration or establish overall forecast skill. Output summary goes to ignored `reports/historical-backtest.json`.
 
+The reported delay percentages are model-based scenario estimates, not calibrated probabilities. The 20,000 Monte Carlo draws quantify simulation noise only; they do not provide uncertainty for weather inputs, policy assumptions, storm motion, or model misspecification. Do not treat small differences between estimates as statistically meaningful until a representative game-level archive supports out-of-sample calibration.
+
 ## Development checks
 
 ```powershell

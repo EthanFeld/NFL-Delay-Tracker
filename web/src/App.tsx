@@ -55,7 +55,12 @@ function formatFullDate(value?: string, timezone?: string): string {
 }
 
 function formatPercent(value?: number): string {
-  return value === undefined ? '—' : `${Math.round(value * 100)}%`;
+  if (value === undefined) return '—';
+  const percent = value * 100;
+  // Keep nonzero risk from looking like a hard zero. Exact 0% is reserved
+  // for the model's explicit clear-window result.
+  if (percent > 0 && percent < 1) return '<1%';
+  return `${Math.round(percent)}%`;
 }
 
 function formatAge(source?: SourceHealth, generatedAt?: string): string {
