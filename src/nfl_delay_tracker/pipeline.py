@@ -1803,7 +1803,10 @@ def refresh_forecasts(
     refresh_hrrr: bool = True,
 ) -> dict[str, Any]:
     model_config = yaml.safe_load((root / "config" / "model.yaml").read_text(encoding="utf-8"))
-    model_rho = float(model_config.get("initial_latent_correlation", 0.45))
+    # Keep production forecasts independent until serial dependence is fit on
+    # a representative archive. Period probabilities are already calibrated
+    # as source-window marginals; an unfit AR prior would shrink their union.
+    model_rho = float(model_config.get("initial_latent_correlation", 0.0))
     blending_config = model_config.get("temporal_blending", {})
     venues, policy_by_id = load_registry(root)
     venue_by_id = {venue.venue_id: venue for venue in venues}

@@ -98,7 +98,7 @@ def simulate_trajectory(
     policy: WeatherPolicy,
     hazards: list[HazardPoint],
     game_duration_minutes: int = DEFAULT_GAME_DURATION_MINUTES,
-    rho: float = 0.45,
+    rho: float = 0.0,
     seed: int | None = None,
     start_offset_minutes: int | None = None,
     start_in_game: bool = False,
@@ -220,7 +220,7 @@ def simulate_pregame(
     hazards: list[HazardPoint],
     simulation_count: int = 20_000,
     game_duration_minutes: int = DEFAULT_GAME_DURATION_MINUTES,
-    rho: float = 0.45,
+    rho: float = 0.0,
     seed: int = 17,
 ) -> dict[str, Any]:
     """Estimate delay probabilities and duration from correlated trajectories."""
@@ -267,7 +267,7 @@ def simulate_remaining_game(
     hazards: list[HazardPoint],
     remaining_game_minutes: int,
     simulation_count: int = 20_000,
-    rho: float = 0.45,
+    rho: float = 0.0,
     seed: int = 2026,
 ) -> dict[str, Any]:
     """Estimate new delay risk from now through the remaining game horizon."""
@@ -285,7 +285,9 @@ def simulate_remaining_game(
         return _zero_delay_result(simulation_count)
 
     elapsed_minutes = int((now - kickoff).total_seconds() // 60)
-    start_offset = (elapsed_minutes // STEP_MINUTES) * STEP_MINUTES
+    # Start at the next five-minute bin. The current bin is already partly
+    # elapsed at refresh time and is excluded by the pipeline risk window.
+    start_offset = ((elapsed_minutes // STEP_MINUTES) + 1) * STEP_MINUTES
     if not _has_positive_hazard_in_window(
         hazards,
         start_minute=start_offset,
@@ -326,7 +328,7 @@ def simulate_active_delay(
     policy: WeatherPolicy,
     future_hazards: list[HazardPoint],
     simulation_count: int = 20_000,
-    rho: float = 0.45,
+    rho: float = 0.0,
     seed: int = 23,
     horizon_minutes: int = 180,
 ) -> dict[str, Any]:

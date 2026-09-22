@@ -31,14 +31,14 @@ def correlated_events(
     events: list[bool] = []
     for raw_probability in probabilities:
         probability = _bounded_probability(raw_probability)
+        latent = rho * previous + residual_scale * rng.gauss(0.0, 1.0)
+        previous = latent
         if probability <= 0:
             events.append(False)
         elif probability >= 1:
             events.append(True)
         else:
-            latent = rho * previous + residual_scale * rng.gauss(0.0, 1.0)
             events.append(_NORMAL.cdf(latent) < probability)
-            previous = latent
     return events
 
 

@@ -1,8 +1,8 @@
 model_version: engineering-baseline-0.2.1
 simulation_count: 20000
 time_step_minutes: 5
-initial_latent_correlation: 0.45
-correlation_source: configurable bootstrap prior; archive fit required before production claims
+initial_latent_correlation: 0.0
+correlation_source: disabled until serial dependence is fit on a representative archive; independent bins preserve source-period marginals
 temporal_blending:
   nowcast_weight_at_zero: 0.9
   nowcast_weight_at_60: 0.2

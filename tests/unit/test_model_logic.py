@@ -289,7 +289,7 @@ def test_remaining_game_simulation_counts_future_hazard_as_in_game() -> None:
         now=now,
         kickoff=kickoff,
         policy=_outdoor_policy(),
-        hazards=[_point(120, 1.0), _point(180, 0.0)],
+        hazards=[_point(125, 1.0), _point(180, 0.0)],
         remaining_game_minutes=45,
         simulation_count=100,
         seed=19,
@@ -409,6 +409,22 @@ def test_correlated_trajectory_preserves_first_bin_marginal() -> None:
     ]
     observed = sum(draws) / len(draws)
     assert observed == pytest.approx(0.2, abs=0.02)
+
+
+def test_correlated_trajectory_advances_latent_state_through_deterministic_bins() -> None:
+    class GaussianSequence:
+        def __init__(self, values: list[float]) -> None:
+            self.values = iter(values)
+
+        def gauss(self, _mu: float, _sigma: float) -> float:
+            return next(self.values)
+
+    # The first deterministic zero still advances the latent state. With these
+    # draws the second bin changes side of the p=.5 threshold only if it does.
+    events = correlated_events(
+        [0.0, 0.5], rho=0.9, rng=GaussianSequence([1.0, -2.5, 0.0])  # type: ignore[arg-type]
+    )
+    assert events == [False, True]
 
 
 def test_policy_circle_uses_great_circle_distance() -> None:
