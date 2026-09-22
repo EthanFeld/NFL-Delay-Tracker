@@ -129,10 +129,10 @@ function GlobalOutlookCard({ game }: { game: Game }) {
     })
     .sort((a, b) => b.count - a.count) : [];
   const mainCondition = ranked.find((row) => row.count > 0);
-  return <div className="global-outlook-card" aria-label="Global weather conditions only; delay odds unavailable">
+  return <div className="global-outlook-card" aria-label="Global conditions; delay risk unavailable">
     <span className="global-outlook-kicker"><CloudLightning size={12} /> WEATHER CONDITIONS</span>
     {mainCondition ? <><b>{mainCondition.label}</b><small>{mainCondition.count}{validMembers === undefined ? '' : ` of ${validMembers}`} ensemble members</small></> : <b>Condition data unavailable</b>}
-    <small>Thunder / delay odds unavailable</small>
+    <small>No thunder or delay risk</small>
   </div>;
 }
 
@@ -163,13 +163,13 @@ function GameCard({ game, generatedAt }: { game: Game; generatedAt?: string }) {
   const source = globalOutlook
     ? game.sources.find((item) => item.name.toLowerCase() === 'open_meteo_ifs_ensemble') || game.sources[0]
     : game.sources[0];
-  const riskLabel = scope === 'regional_outlook' || scope === 'regional_proxy' ? 'regional' : scope === 'forecast_pending' ? 'outlook pending' : scope === 'archive_missing' ? 'no archive' : scope === 'weather_unavailable' ? 'unavailable' : 'delay risk';
+  const riskLabel = scope === 'regional_outlook' || scope === 'regional_proxy' ? 'regional model' : scope === 'forecast_pending' ? 'outlook pending' : scope === 'archive_missing' ? 'no archive' : scope === 'weather_unavailable' ? 'unavailable' : 'delay risk';
   return (
     <a className={`game-card ${live ? 'game-card-live' : ''}`} href={`#/game/${encodeURIComponent(game.id)}`} aria-label={`${game.awayTeam} at ${game.homeTeam}, ${status}`}>
       <div className="game-card-topline">
         <span className="league-label">{game.league === 'NFL' ? 'NFL' : 'COLLEGE FOOTBALL'}</span>
         <div className="game-card-statuses">
-          {game.nwsWarnings.length > 0 && <span className={`nws-warning-chip ${game.nwsWarningsFresh ? '' : 'stale'}`} aria-label={`${game.nwsWarnings.length} NWS severe thunderstorm warning${game.nwsWarnings.length === 1 ? '' : 's'}${game.nwsWarningsFresh ? '' : ', last update may be stale'}`} title={game.nwsWarningsFresh ? 'Active NWS severe thunderstorm warning for this venue' : 'NWS warning in the last published snapshot; feed may have changed'}><AlertTriangle size={10} aria-hidden="true" /> NWS {game.nwsWarnings.length > 1 ? `WARNINGS · ${game.nwsWarnings.length}` : 'WARNING'}{game.nwsWarningsFresh ? '' : ' · STALE'}</span>}
+          {game.nwsWarnings.length > 0 && <span className={`nws-warning-chip ${game.nwsWarningsFresh ? '' : 'stale'}`} aria-label={`${game.nwsWarnings.length} NWS severe thunderstorm warning${game.nwsWarnings.length === 1 ? '' : 's'}${game.nwsWarningsFresh ? '' : ', snapshot stale'}`} title={game.nwsWarningsFresh ? 'Active NWS severe thunderstorm warning for this venue' : 'NWS warning in the published snapshot; snapshot stale'}><AlertTriangle size={10} aria-hidden="true" /> NWS {game.nwsWarnings.length > 1 ? `WARNINGS · ${game.nwsWarnings.length}` : 'WARNING'}{game.nwsWarningsFresh ? '' : ' · STALE'}</span>}
           <span className={`status-badge ${live ? 'status-live' : ''}`}>
             {live ? <Radio size={12} aria-hidden="true" /> : null}{status}
           </span>
@@ -194,7 +194,7 @@ function GameCard({ game, generatedAt }: { game: Game; generatedAt?: string }) {
           {globalOutlook ? <GlobalOutlookCard game={game} /> : dome ? (
             <div className="dome-risk"><span className="dome-icon"><Sun size={17} /></span><b>Indoor</b><small>Lightning delay model disabled</small></div>
           ) : game.activeDelay ? (
-            <div className="resume-card-metric"><span className="metric-eyebrow">EST. RESUME · P50</span><strong>{formatTime(game.resumeP50, game.timezone, false)}</strong><small>P75 {formatTime(game.resumeP75, game.timezone, false)} · P90 {formatTime(game.resumeP90, game.timezone, false)}</small></div>
+            <div className="resume-card-metric"><span className="metric-eyebrow">RESUME · P50</span><strong>{formatTime(game.resumeP50, game.timezone, false)}</strong><small>P75 {formatTime(game.resumeP75, game.timezone, false)} · P90 {formatTime(game.resumeP90, game.timezone, false)}</small></div>
           ) : (
             <RiskRing probability={game.delayProbability} label={riskLabel} />
           )}
@@ -202,12 +202,12 @@ function GameCard({ game, generatedAt }: { game: Game; generatedAt?: string }) {
       </div>
       {globalOutlook ? (
         <div className="card-bottom global-outlook-bottom">
-          <span>Condition ensemble only <b>Delay risk not available</b></span>
+          <span>Conditions only <b>Delay risk unavailable</b></span>
           <span className="updated-note"><span className={`fresh-dot ${freshnessTone(source, game.generatedAt || generatedAt)}`} />{formatAge(source, game.generatedAt || generatedAt)}</span>
         </div>
       ) : game.activeDelay ? (
         <div className="card-bottom active-card-bottom">
-          <span className={`delay-kind ${game.officialDelay ? 'official' : 'modeled'}`}><CloudLightning size={13} />{game.officialDelay ? 'Reported weather delay' : 'Modeled hold · not officially confirmed'}</span>
+          <span className={`delay-kind ${game.officialDelay ? 'official' : 'modeled'}`}><CloudLightning size={13} />{game.officialDelay ? 'Reported weather delay' : 'Modeled weather hold'}</span>
           <span className="compact-resume">Resumed by {formatPercent(game.probabilityAdditional[30] === undefined ? undefined : 1 - game.probabilityAdditional[30])} in 30m <ArrowRight size={14} /></span>
         </div>
       ) : (
@@ -221,7 +221,7 @@ function GameCard({ game, generatedAt }: { game: Game; generatedAt?: string }) {
 }
 
 function RiskTimeline({ game }: { game: Game }) {
-  if (game.hourlyRisk.length === 0) return <div className="empty-timeline">Hourly risk data has not been published for this forecast.</div>;
+  if (game.hourlyRisk.length === 0) return <div className="empty-timeline">Hourly risk data unavailable.</div>;
   const width = 720;
   const height = 186;
   const left = 35;
@@ -255,7 +255,7 @@ function ResumeChart({ game }: { game: Game }) {
   const rows = game.resumeCdf;
   if (rows.length < 2) {
     const probabilities = [30, 45, 60, 90, 120, 150, 180].map((minute) => ({ minute, probability: game.probabilityAdditional[minute] === undefined ? undefined : 1 - game.probabilityAdditional[minute] }));
-    if (!probabilities.some((row) => row.probability !== undefined)) return <div className="empty-timeline">Resume-time distribution has not been published.</div>;
+    if (!probabilities.some((row) => row.probability !== undefined)) return <div className="empty-timeline">Resume-time distribution unavailable.</div>;
     return <div className="resume-bars" aria-label="Probability the game resumes by each time from now">
       {probabilities.map((row) => row.probability === undefined ? null : <div className="resume-bar-row" key={row.minute}><span>+{row.minute} min</span><div className="bar-track"><div className="bar-fill" style={{ width: `${row.probability * 100}%` }} /></div><b>{formatPercent(row.probability)}</b></div>)}
     </div>;
@@ -292,12 +292,12 @@ function StormMotionSummary({ motion }: { motion: NonNullable<Game['weatherConte
     approaching: 'Approaching the configured boundary',
     moving_away: 'Moving away from the venue',
     inside_policy: 'Reflectivity echo overlaps the configured boundary',
-    uncertain: 'Direction is uncertain',
-    no_history: 'Tracking radar echo; another scan is needed',
+    uncertain: 'Direction unresolved',
+    no_history: 'Radar track needs another scan',
     no_echoes: 'No qualifying radar echo within 60 miles',
     stale: 'Radar motion sample is stale',
-    ambiguous: 'Storm track association is uncertain',
-    unavailable: 'Storm movement is unavailable',
+    ambiguous: 'Storm track association unresolved',
+    unavailable: 'No storm-motion data',
   };
   const etaLabel = motion.etaLowerMinutes !== undefined && motion.etaUpperMinutes !== undefined
     ? `${Math.round(motion.etaLowerMinutes)}–${Math.round(motion.etaUpperMinutes)} min`
@@ -305,15 +305,15 @@ function StormMotionSummary({ motion }: { motion: NonNullable<Game['weatherConte
   const direction = compassDirection(motion.bearingDegrees);
   return <div className="storm-motion-summary">
     <div className="storm-motion-heading"><b>Observed storm movement</b><span>{motion.observedAt ? formatTime(motion.observedAt) : 'No timestamp'}</span></div>
-    <p>{statusLabels[motion.status || ''] || 'Storm movement unavailable'}</p>
+    <p>{statusLabels[motion.status || ''] || 'No storm-motion data'}</p>
     <div className="policy-stats">
       <div><span>Motion</span><b>{direction && motion.speedMph !== undefined ? `${direction} · ${Math.round(motion.speedMph)} mph` : '—'}</b></div>
       <div><span>Boundary distance</span><b>{motion.distanceToPolicyBoundaryMiles === undefined ? '—' : `${motion.distanceToPolicyBoundaryMiles.toFixed(1)} mi`}</b></div>
-      <div><span>Estimated arrival</span><b>{etaLabel}</b></div>
+      <div><span>Track ETA</span><b>{etaLabel}</b></div>
       <div><span>Echo peak</span><b>{motion.maxReflectivityDbz === undefined ? '—' : `${motion.maxReflectivityDbz.toFixed(0)} dBZ`}</b></div>
     </div>
-    {motion.modelAdjustmentApplied && <p className="motion-calibration-note">This fresh track contributed a small experimental adjustment to the 30–180 minute delay estimate.</p>}
-    <p className="muted-copy">Radar echo movement is not a lightning observation. ETA bounds are sensitivity estimates, not calibrated confidence intervals.</p>
+    {motion.modelAdjustmentApplied && <p className="motion-calibration-note">Fresh track adjustment applied to the 30–180 minute window.</p>}
+    <p className="muted-copy">Radar echo track; lightning confirmation remains separate. ETA bounds show sensitivity range.</p>
   </div>;
 }
 
@@ -337,8 +337,8 @@ function PolicyRingView({ game }: { game: Game }) {
   const outerRadius = Math.max(1, ...radii);
   const scale = 145 / outerRadius;
   const description = trigger === undefined
-    ? 'Venue coordinates or policy radius are unavailable.'
-    : `Venue-centered policy circles: trigger ${trigger} miles; monitoring ${radii.filter((radius) => radius !== trigger).join(', ') || 'radii unavailable'} miles.`;
+    ? 'Venue coordinates or policy radius unavailable.'
+    : `Venue policy circles: trigger ${trigger} miles; monitoring ${radii.filter((radius) => radius !== trigger).join(', ') || 'radii unavailable'} miles.`;
   return <div className="policy-ring-view">
     <svg viewBox="0 0 360 360" role="img" aria-label={description}>
       <circle className="ring-map-background" cx="180" cy="180" r="156" />
@@ -405,14 +405,14 @@ function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; 
           {game.nwsWarnings.map((warning, index) => <span key={`${warning.url || warning.headline || 'nws-warning'}-${index}`}>
             {warning.headline || 'Severe thunderstorm warning'}{warning.expiresAt ? ` · Expires ${formatTime(warning.expiresAt, game.timezone)}` : ''}{warning.severity ? ` · ${warning.severity}` : ''}{warning.url ? <> · <a href={warning.url} target="_blank" rel="noreferrer">View NWS alert</a></> : null}
           </span>)}
-          {!game.nwsWarningsFresh && <span>The alert feed may have changed since this snapshot.</span>}
+          {!game.nwsWarningsFresh && <span>Alert snapshot is stale.</span>}
         </div>
       </div>}
       {dataWarnings.length > 0 && <div className="warning-strip"><AlertTriangle size={17} /><div><b>Forecast quality notice</b><span>{dataWarnings.join(' · ')}</span></div></div>}
       {globalOutlookOnly ? (
         <section className="forecast-panel global-outlook-detail">
           <div className="panel-heading"><div><span className="section-kicker"><CloudLightning size={14} /> GLOBAL WEATHER OUTLOOK</span><h2>Ensemble conditions</h2></div><span className="forecast-asof">{globalOutlook?.model || 'Global ensemble'}</span></div>
-          <p className="panel-description">{globalOutlook?.validAt ? `Valid ${formatFullDate(globalOutlook.validAt, game.timezone)} at ${formatTime(globalOutlook.validAt, game.timezone)}.` : 'Valid time unavailable.'} Condition member counts only; this is not a stadium-scale thunder forecast.</p>
+          <p className="panel-description">{globalOutlook?.validAt ? `Valid ${formatFullDate(globalOutlook.validAt, game.timezone)} at ${formatTime(globalOutlook.validAt, game.timezone)}.` : 'Valid time unavailable.'} Condition-member counts. No stadium-scale thunder forecast.</p>
           {globalOutlook ? <>
             <div className="global-outlook-meta">
               <span><b>{globalOutlook.validMemberCount ?? '—'} / {globalOutlook.memberCount ?? '—'}</b> valid ensemble members</span>
@@ -424,13 +424,13 @@ function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; 
             </div>
             {globalOutlook.attributionUrl ? <a className="source-link" href={globalOutlook.attributionUrl} target="_blank" rel="noreferrer">Model and data attribution <ArrowRight size={13} /></a> : <p className="panel-subcopy">Model and data attribution link unavailable.</p>}
           </> : <p className="panel-subcopy">Ensemble condition data is unavailable for this game.</p>}
-          <p className="global-outlook-limitation">Thunder, lightning, and delay odds are unavailable. Storm movement is unavailable. Do not interpret these weather-code member counts as thunder probability or venue delay risk. The model resolves conditions every 3 hours on an approximately 25 km grid, so it can miss short-lived or stadium-scale storms.</p>
+          <p className="global-outlook-limitation">Conditions only. Thunder, lightning, delay risk, and storm movement unavailable. Resolution: 3 hours on an approximately 25 km grid.</p>
         </section>
       ) : dome ? (
         <section className="dome-notice"><div className="notice-icon"><Sun size={23} /></div><div><h2>Indoor — lightning delay model disabled</h2><p>This stadium's fixed roof protects play from lightning. Weather conditions outside may still affect travel or venue operations.</p></div></section>
       ) : active ? (
         <section className="forecast-panel active-forecast">
-          <div className="panel-heading"><div><span className="section-kicker"><CloudLightning size={14} /> ACTIVE WEATHER DELAY</span><h2>Estimated game resumption</h2></div><span className={`delay-kind ${game.officialDelay ? 'official' : 'modeled'}`}>{game.officialDelay ? 'Officially reported weather delay' : 'Modeled weather hold · not officially confirmed'}</span></div>
+          <div className="panel-heading"><div><span className="section-kicker"><CloudLightning size={14} /> ACTIVE WEATHER DELAY</span><h2>Game resumption</h2></div><span className={`delay-kind ${game.officialDelay ? 'official' : 'modeled'}`}>{game.officialDelay ? 'Officially reported weather delay' : 'Modeled weather hold'}</span></div>
           <p className="panel-description">Chance that play has resumed by each time. Weather clearance and football restart are separate; operational restart time is included where data allows.</p>
           <div className="resume-estimates">
             <div className="resume-estimate primary"><span>P50 · MOST LIKELY</span><b>{formatTime(game.resumeP50, game.timezone)}</b></div>
@@ -446,7 +446,7 @@ function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; 
           <div className="chart-heading"><b>Probability game resumes by time</b><span>Current forecast</span></div>
           <ResumeChart game={game} />
           {clearCdfRows.length > 0 && <div className="weather-clear-cdf">
-            <div className="chart-heading"><b>Probability weather is clear by time</b><span>All-clear estimate</span></div>
+            <div className="chart-heading"><b>Probability weather is clear by time</b><span>All-clear probability</span></div>
             <div className="policy-stats">
               {clearCdfRows.map((row) => <div key={row.minutes}><span>+{row.minutes} min</span><b>{formatPercent(row.probability)}</b></div>)}
             </div>
@@ -455,13 +455,13 @@ function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; 
             <div><span>Earliest weather all-clear</span><b>{formatTime(game.earliestWeatherClear, game.timezone)}</b></div>
             <div><span>Latest modeled qualifying lightning</span><b>{formatTime(game.lastQualifyingEvent, game.timezone)}</b></div>
           </div>
-          <p className="reset-note"><Info size={15} /> Another qualifying strike could reset the quiet-period clock.</p>
+          <p className="reset-note"><Info size={15} /> A qualifying strike resets the quiet-period clock.</p>
         </section>
       ) : (
         <section className="forecast-panel pregame-forecast">
           <div className="panel-heading"><div><span className="section-kicker"><Activity size={14} /> {liveRisk ? 'LIVE GAME RISK' : 'PREGAME FORECAST'}</span><h2>{liveRisk ? 'New weather delay' : 'Weather delay risk'}</h2></div><span className="forecast-asof">Forecast {formatAge(undefined, game.generatedAt || generatedAt).toLowerCase()}</span></div>
           <div className="risk-detail-top">
-            <div className="risk-primary"><RiskRing probability={game.delayProbability} large label={regionalRisk ? 'regional' : 'delay risk'} /><p>{regionalRisk ? 'Regional thunder inputs; this is an experimental scenario, not calibrated stadium delay odds.' : liveRisk ? 'Chance of a new lightning-related delay from now through game end.' : 'Chance of at least one lightning-related delay affecting this game.'}</p></div>
+            <div className="risk-primary"><RiskRing probability={game.delayProbability} large label={regionalRisk ? 'regional model' : 'delay risk'} /><p>{regionalRisk ? 'Regional thunder model. Stadium policy calibration pending.' : liveRisk ? 'Chance of a new lightning-related delay from now through game end.' : 'Chance of at least one lightning-related delay affecting this game.'}</p></div>
             {liveRisk ? <div className="risk-splits"><div><span>New in-game delay</span><b>{formatPercent(game.inGameDelayProbability ?? game.delayProbability)}</b></div><div><span>Expected delay from now</span><b>{game.expectedDelayMinutes === undefined ? '—' : `${Math.round(game.expectedDelayMinutes)} min`}</b></div><div><span>Kickoff delay</span><b>Not applicable</b></div></div> : <div className="risk-splits"><div><span>Kickoff delay</span><b>{formatPercent(game.kickoffDelayProbability)}</b></div><div><span>In-game delay</span><b>{formatPercent(game.inGameDelayProbability)}</b></div><div><span>Expected total delay</span><b>{game.expectedDelayMinutes === undefined ? '—' : `${Math.round(game.expectedDelayMinutes)} min`}</b></div></div>}
           </div>
           {game.highestRiskWindow && <div className="highest-window"><span>Highest-risk window</span><b>{game.highestRiskWindow}</b></div>}
@@ -482,7 +482,7 @@ function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; 
           <div className="policy-stats"><div><span>Trigger radius</span><b>{game.policyTriggerMiles === undefined ? 'Not published' : `${game.policyTriggerMiles} mi`}</b></div><div><span>Quiet interval</span><b>{game.policyQuietMinutes === undefined ? 'Not published' : `${game.policyQuietMinutes} min`}</b></div></div>
           {game.policyNotes && <p className="policy-note">{game.policyNotes}</p>}
           {game.policySource && <a className="source-link" href={game.policySource} target="_blank" rel="noreferrer">Policy source <ArrowRight size={13} /></a>}
-          <p className="muted-copy">The tracker never treats a general league guideline as a verified venue policy.</p>
+          <p className="muted-copy">League guidelines are separate from verified venue policy.</p>
         </section>
         <section className="info-panel">
           <div className="small-panel-title"><RefreshCw size={17} /><h2>Forecast freshness</h2></div>
@@ -494,7 +494,7 @@ function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; 
       {!dome && <section className="info-panel proximity-panel">
         <div className="small-panel-title"><MapPin size={17} /><h2>Lightning policy geometry</h2></div>
         <PolicyRingView game={game} />
-        <p className="muted-copy">Circle sizes use the configured mile radii. Lightning summaries and radar echo tracks are separate public observations.</p>
+        <p className="muted-copy">Circle sizes use configured mile radii. Lightning summaries and radar tracks are separate observations.</p>
       </section>}
 
       {game.weatherContext && (game.weatherContext.stormMotion || game.weatherContext.hrrr || game.weatherContext.glm) && <section className="info-panel weather-context-panel">
@@ -513,10 +513,10 @@ function DetailPage({ game, globalSources, generatedAt, onBack }: { game: Game; 
             <div><span>GLM observation ended</span><b>{formatTime(game.weatherContext.glm.validEnd, game.timezone)}</b></div>
           </>}
         </div>
-        <p className="muted-copy">HRRR and GLM are supporting context. Only a fresh approaching MRMS radar track can add the capped experimental 30–180 minute hazard adjustment.</p>
+        <p className="muted-copy">HRRR and GLM provide supporting context. A fresh approaching MRMS radar track adds the capped 30–180 minute hazard adjustment.</p>
       </section>}
 
-      <section className="safety-notice"><div className="safety-icon"><Info size={19} /></div><div><b>Experimental estimate, not official safety guidance</b><p>This tracker provides experimental weather-policy estimates. It is not affiliated with the NFL, NCAA, NOAA, any team, or venue. Official team and venue announcements take precedence over every model estimate. NOAA data attribution: weather and lightning observations are sourced from public NOAA data products where available; no NOAA endorsement is implied.</p></div></section>
+      <section className="safety-notice"><div className="safety-icon"><Info size={19} /></div><div><b>Model estimate · venue alerts govern</b><p>Official team and venue announcements govern event decisions. This tracker is independent of the NFL, NCAA, NOAA, teams, and venues. NOAA data attribution: weather and lightning observations use public NOAA products where available.</p></div></section>
     </main>
   );
 }
@@ -645,7 +645,7 @@ function App() {
       <SiteHeader onHome={backToBoard} />
       <main className="board-page">
         <section className="board-hero">
-          <div className="hero-copy"><div className="eyebrow"><span className="hero-pulse" /> WEATHER WATCH <span className="dot-separator">·</span> {now.getFullYear()} SEASON</div><h1>Game day,<br /><span>weather aware.</span></h1><p>Track lightning delay risk and estimated resume times across football.</p></div>
+          <div className="hero-copy"><div className="eyebrow"><span className="hero-pulse" /> WEATHER WATCH <span className="dot-separator">·</span> {now.getFullYear()} SEASON</div><h1>Game day,<br /><span>weather aware.</span></h1><p>Track lightning delay risk and game resume times across football.</p></div>
           <div className="hero-stat"><span className="stat-icon"><Activity size={18} /></span><div><b>{data.games.filter(isLive).length.toString().padStart(2, '0')}</b><span>games live now</span></div><span className="hero-stat-divider" /><div><b>{data.games.filter((game) => game.activeDelay).length.toString().padStart(2, '0')}</b><span>weather holds</span></div></div>
           <div className="hero-orbit hero-orbit-one" /><div className="hero-orbit hero-orbit-two" /><div className="hero-lightning"><CloudLightning size={82} strokeWidth={1.15} /></div>
         </section>
@@ -688,7 +688,7 @@ function App() {
           <div className="board-info-card"><span className="board-info-icon green"><CheckCircle2 size={18} /></span><div><b>Official vs modeled</b><p>We label reported delays separately from weather holds inferred by the model.</p></div></div>
           <div className="board-info-card"><span className="board-info-icon amber"><ShieldAlert size={18} /></span><div><b>Venue policy matters</b><p>Policy source and verification status are shown on each game page.</p></div></div>
         </section>
-        <section className="board-safety"><Info size={16} /><p><b>Experimental estimates only.</b> This tracker is not an official safety system. Follow team and venue instructions; those announcements take precedence.</p><a href="#safety" onClick={(event) => { event.preventDefault(); document.querySelector('.board-info-grid')?.scrollIntoView({ behavior: 'smooth' }); }}>Safety & data <ArrowRight size={13} /></a></section>
+        <section className="board-safety"><Info size={16} /><p><b>Model estimates.</b> Follow official team and venue instructions.</p><a href="#safety" onClick={(event) => { event.preventDefault(); document.querySelector('.board-info-grid')?.scrollIntoView({ behavior: 'smooth' }); }}>Safety & data <ArrowRight size={13} /></a></section>
       </main>
       <SiteFooter />
     </div>
@@ -696,11 +696,11 @@ function App() {
 }
 
 function SiteHeader({ onHome }: { onHome: () => void }) {
-  return <header className="site-header"><div className="header-inner"><a href="#/" className="brand" onClick={onHome} aria-label="NFL Delay Tracker home"><span className="brand-mark"><CloudLightning size={20} fill="currentColor" /></span><span>NFL <b>Delay Tracker</b></span></a><nav className="header-nav" aria-label="Main navigation"><a href="#/" className="active">Scoreboard</a><a href="#/about-safety" onClick={(event) => { event.preventDefault(); document.querySelector('.board-info-grid')?.scrollIntoView({ behavior: 'smooth' }); }}>How it works</a></nav><div className="header-live"><span className="live-signal" /> PUBLIC DATA <span className="header-dot">·</span> EXPERIMENTAL</div></div></header>;
+  return <header className="site-header"><div className="header-inner"><a href="#/" className="brand" onClick={onHome} aria-label="NFL Delay Tracker home"><span className="brand-mark"><CloudLightning size={20} fill="currentColor" /></span><span>NFL <b>Delay Tracker</b></span></a><nav className="header-nav" aria-label="Main navigation"><a href="#/" className="active">Scoreboard</a><a href="#/about-safety" onClick={(event) => { event.preventDefault(); document.querySelector('.board-info-grid')?.scrollIntoView({ behavior: 'smooth' }); }}>How it works</a></nav><div className="header-live"><span className="live-signal" /> PUBLIC DATA <span className="header-dot">·</span> MODEL ESTIMATES</div></div></header>;
 }
 
 function SiteFooter() {
-  return <footer className="site-footer"><div className="footer-inner"><a href="#/" className="footer-brand"><span className="brand-mark"><CloudLightning size={17} /></span> NFL Delay Tracker</a><span>Experimental estimates · Not official safety guidance</span><span>NOAA data attribution · No NOAA endorsement</span></div></footer>;
+  return <footer className="site-footer"><div className="footer-inner"><a href="#/" className="footer-brand"><span className="brand-mark"><CloudLightning size={17} /></span> NFL Delay Tracker</a><span>Model estimates · Follow venue alerts</span><span>NOAA data attribution</span></div></footer>;
 }
 
 export default App;

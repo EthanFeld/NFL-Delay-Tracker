@@ -511,3 +511,90 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* ESPN-style visual pass: hard edges, flat panels, red game-day accents. */
+:root {
+  --navy: #111820;
+  --navy-mid: #1b222b;
+  --ink: #151a20;
+  --muted: #68727d;
+  --line: #d3d7dc;
+  --paper: #fff;
+  --risk-high: #d71920;
+  --risk-medium: #e0523e;
+  --risk-low: #34734f;
+  --cyan: #d71920;
+  --green: #34734f;
+  --shadow: 0 2px 0 rgba(17, 24, 32, .08);
+}
+
+body { background: #f2f2f2; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline-color: rgba(215, 25, 32, .55); }
+
+.site-header { background: #101419; border-bottom: 3px solid #d71920; }
+.brand-mark { color: #fff; background: #d71920; border: 0; border-radius: 0; }
+.header-nav a.active::after { background: #d71920; border-radius: 0; }
+.header-live { color: #c3c8ce; }
+.live-signal, .hero-pulse { background: #d71920; box-shadow: 0 0 0 4px rgba(215, 25, 32, .18); }
+.header-dot, .dot-separator { color: #7c858e; }
+
+.board-hero { border-left: 5px solid #d71920; border-radius: 0; background: #171d24; box-shadow: none; }
+.board-hero::before { background: linear-gradient(90deg, transparent, rgba(215, 25, 32, .2), transparent); }
+.hero-copy h1 span { color: #f0444b; }
+.hero-lightning { color: rgba(215, 25, 32, .48); filter: drop-shadow(0 0 18px rgba(215, 25, 32, .2)); }
+.hero-orbit { border-color: rgba(215, 25, 32, .18); border-radius: 50%; }
+.hero-stat { border-radius: 0; border-color: rgba(255, 255, 255, .2); background: rgba(0, 0, 0, .3); box-shadow: none; }
+.stat-icon { border-radius: 0; color: #fff; background: #b7131a; }
+
+.demo-notice, .warning-strip, .board-safety, .safety-notice { border-radius: 0; box-shadow: none; }
+.warning-demo { border-left: 4px solid #d71920; }
+.board-controls { border-top: 3px solid #d71920; border-radius: 0; box-shadow: none; }
+.segmented, .segmented button, .icon-button, .search-box, .sort-select { border-radius: 0; }
+.segmented button.selected { color: #fff; background: #d71920; box-shadow: none; }
+.segmented button:hover { color: #d71920; }
+.icon-button:hover { color: #d71920; background: #fbeaec; border-color: #d71920; }
+.search-box:focus-within { border-color: #d71920; box-shadow: 0 0 0 2px rgba(215, 25, 32, .12); }
+
+.game-card { border-top: 3px solid #d71920; border-radius: 0; box-shadow: none; }
+.game-card:hover { transform: none; border-color: #d71920; box-shadow: 0 2px 0 #d71920; }
+.game-card-live { border-color: #d71920; }
+.status-badge, .nws-warning-chip, .team-mark, .dome-icon, .global-outlook-card, .delay-kind { border-radius: 0; }
+.status-live { color: #fff; background: #d71920; }
+.team-mark { background: #171d24; }
+.mark-college { color: #171d24; background: #d9dde1; }
+.risk-ring { --risk-high: #d71920; }
+.global-outlook-card { border-color: #c8cdd2; background: #f6f6f6; }
+.dome-icon { color: #fff; background: #4c5964; }
+.card-bottom { border-top-color: #d3d7dc; }
+.delay-kind.official, .delay-kind.modeled { color: #d71920; }
+
+.empty-state, .board-info-card, .board-safety { border-radius: 0; box-shadow: none; }
+.board-info-icon, .board-info-icon.green, .board-info-icon.amber { border-radius: 0; color: #fff; background: #d71920; }
+.board-info-icon.green { background: #34734f; }
+.board-info-icon.amber { background: #a3482c; }
+.text-button, .board-safety a { color: #d71920; }
+
+.site-footer { border-top: 3px solid #d71920; background: #101419; }
+.footer-brand .brand-mark { border-radius: 0; }
+
+.detail-hero { border-left: 5px solid #d71920; border-radius: 0; background: #171d24; box-shadow: none; }
+.detail-hero::after { border-color: rgba(215, 25, 32, .2); box-shadow: 0 0 0 47px rgba(215, 25, 32, .04), 0 0 0 96px rgba(215, 25, 32, .025); }
+.forecast-panel, .info-panel { border-radius: 0; box-shadow: none; }
+.forecast-panel { border-top: 3px solid #d71920; }
+.section-kicker svg, .small-panel-title, .small-panel-title h2 { color: #d71920; }
+.resume-estimates, .resume-range-summary, .resume-range-grid div, .resume-facts div, .risk-splits div, .policy-stats div, .global-outlook-meta span, .global-condition-grid div { border-radius: 0; }
+.resume-estimate.primary b, .resume-range-grid b, .risk-splits b { color: #d71920; }
+.timeline-area { fill: rgba(215, 25, 32, .12); }
+.timeline-line { stroke: #d71920; }
+.timeline-dot { stroke: #d71920; }
+.resume-area { fill: rgba(215, 25, 32, .1); }
+.resume-line { stroke: #d71920; }
+.resume-dot { stroke: #d71920; }
+.bar-fill { background: #d71920; border-radius: 0; }
+.verification, .verification.venue_assumption, .verification.unknown, .verification.league_guidance { border-radius: 0; color: #fff; background: #59636d; }
+.storm-motion-summary { border-radius: 0; border-left: 3px solid #d71920; background: #f6f6f6; }
+.policy-ring-view .trigger-ring { stroke: #d71920; }
+.policy-ring-view .stadium-marker { fill: #d71920; }
+.warning-strip { border-left: 4px solid #d71920; }
+.dome-notice { border-radius: 0; border-left: 4px solid #34734f; }
+.safety-notice { border-left: 4px solid #d71920; }
