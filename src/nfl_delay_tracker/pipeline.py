@@ -60,7 +60,7 @@ from nfl_delay_tracker.providers.open_meteo import OpenMeteoEnsembleProvider
 from nfl_delay_tracker.providers.sports import NflverseScheduleProvider, fetch_cfbd_games
 
 ROOT = Path(__file__).resolve().parents[2]
-MODEL_VERSION = "engineering-baseline-0.2.3"
+MODEL_VERSION = "engineering-baseline-0.2.4"
 _TERMINAL_GAME_STATUSES = {
     GameStatus.COMPLETED,
     GameStatus.POSTPONED,
@@ -1749,6 +1749,7 @@ def _carry_forward_future_forecast(
         global_outlook, dict
     )
     generated_at = _timestamp(game_record.get("generated_at"))
+    cached_model_version = game_record.get("model_version")
     cached_game = game_record.get("game")
     cached_kickoff = (
         _timestamp(cached_game.get("kickoff_utc"))
@@ -1757,6 +1758,10 @@ def _carry_forward_future_forecast(
     )
     if (
         not (has_regional_outlook or has_global_outlook)
+        or (
+            cached_model_version is not None
+            and cached_model_version != MODEL_VERSION
+        )
         or generated_at is None
         or cached_kickoff is None
         or abs(cached_kickoff - game.kickoff_utc) > timedelta(minutes=90)

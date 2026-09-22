@@ -178,6 +178,35 @@ def test_carry_forward_rejects_forecast_for_rescheduled_game() -> None:
     assert _carry_forward_future_forecast(previous, game, now=now) is None
 
 
+def test_carry_forward_rejects_forecast_from_older_model_version() -> None:
+    now = datetime(2026, 9, 20, 12, tzinfo=UTC)
+    game = Game(
+        game_id="old-model-forecast",
+        league=League.NFL,
+        season=2026,
+        home_team="Home",
+        away_team="Away",
+        kickoff_utc=now + timedelta(hours=48),
+    )
+    previous = {
+        "generated_at": (now - timedelta(hours=1)).isoformat(),
+        "model_version": "engineering-baseline-0.2.2",
+        "game": {"kickoff_utc": game.kickoff_utc.isoformat()},
+        "pregame": None,
+        "quality": {"forecast_scope": "global_weather_outlook"},
+        "weather": {
+            "venue_features": {
+                "global_weather_outlook": {
+                    "valid_at": game.kickoff_utc.isoformat(),
+                    "native_resolution_hours": 3,
+                }
+            }
+        },
+    }
+
+    assert _carry_forward_future_forecast(previous, game, now=now) is None
+
+
 def test_zero_hazard_produces_zero_delay_probability() -> None:
     result = simulate_pregame(
         kickoff=datetime(2026, 9, 20, tzinfo=UTC),
