@@ -1,0 +1,156 @@
+{
+  "generated_at": "2026-09-26T18:00:22.826399+00:00",
+  "model_version": "engineering-baseline-0.2.4",
+  "game": {
+    "game_id": "nfl_2026_401872975",
+    "league": "NFL",
+    "season": 2026,
+    "home_team": "San Francisco 49ers",
+    "away_team": "Denver Broncos",
+    "venue_id": "venue_levi_s_stadium",
+    "venue_name": "Levi's Stadium",
+    "venue_city": "Santa Clara",
+    "neutral_site": false,
+    "kickoff_utc": "2026-10-04T20:25:00Z",
+    "status": "scheduled",
+    "status_source": "ESPN public scoreboard; unofficial",
+    "official_delay_active": false,
+    "model_delay_active": false,
+    "delay_started_at": null,
+    "official_resume_at": null,
+    "delay_source_note": null,
+    "home_score": 0,
+    "away_score": 0,
+    "period": 0,
+    "clock": "0:00"
+  },
+  "venue": {
+    "venue_id": "venue_levi_s_stadium",
+    "name": "Levi's Stadium",
+    "latitude": 37.4031837,
+    "longitude": -121.9698094,
+    "timezone": "America/Los_Angeles",
+    "roof_type": "outdoor",
+    "roof_weather_protection": false,
+    "policy_id": "venue_assumption_8mi_30min",
+    "league": "NFL",
+    "leagues": [
+      "NFL"
+    ],
+    "home_teams": [
+      "San Francisco 49ers",
+      "SF"
+    ],
+    "aliases": [],
+    "source_url": "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums",
+    "coordinate_source_url": "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv",
+    "roof_source_url": "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums",
+    "source_note": "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included.",
+    "source_checked_at": "2026-09-20",
+    "city": null,
+    "state": null,
+    "fbs_source_url": null
+  },
+  "policy": {
+    "policy_id": "venue_assumption_8mi_30min",
+    "trigger_radius_miles": 8.0,
+    "monitor_radii_miles": [
+      10.0,
+      15.0,
+      20.0
+    ],
+    "quiet_period_minutes": 30,
+    "warmup_exposure_minutes": 60,
+    "clearance_mode": "fixed_quiet_period",
+    "restart_overhead": {
+      "type": "distribution",
+      "minutes": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "weights": [
+        0.1,
+        0.4,
+        0.35,
+        0.15
+      ]
+    },
+    "verification": "venue_assumption",
+    "source_checked_at": "2026-09-20",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "notes": "UNVERIFIED project baseline used only where no venue-specific public procedure was sourced: assume an 8-mile lightning trigger and 30-minute quiet period. This is not an official universal NFL or NCAA rule. NCAA safety guidance is venue-specific and is recorded separately; validate each venue procedure before operational use."
+  },
+  "weather": {
+    "venue_id": "venue_levi_s_stadium",
+    "fetched_at": "2026-09-26T18:00:23.642714Z",
+    "source": "Open-Meteo ECMWF IFS ensemble conditions only; 6-hour native resolution; no thunder estimate",
+    "hazards": [],
+    "venue_features": {
+      "global_weather_outlook": {
+        "model": "ECMWF IFS ensemble",
+        "valid_at": "2026-10-04T18:00:00+00:00",
+        "native_resolution_hours": 6,
+        "grid_resolution_km": 25,
+        "member_count": 50,
+        "valid_member_count": 50,
+        "condition_member_counts": {
+          "clear_or_cloudy": 50,
+          "fog": 0,
+          "precipitation_or_snow": 0,
+          "other_or_unclassified": 0
+        },
+        "attribution_url": "https://open-meteo.com/en/docs/ensemble-api",
+        "source_url": "https://ensemble-api.open-meteo.com/v1/ensemble?latitude=37.4032&longitude=-121.9698&models=ecmwf_ifs025_ensemble&hourly=weather_code&forecast_days=15&timezone=GMT",
+        "thunderstorm_probability": null,
+        "storm_motion": "unavailable"
+      },
+      "nws_alerts": {
+        "status": "ok",
+        "fetched_at": "2026-09-26T17:57:29.303960Z",
+        "freshness_seconds": 0,
+        "source_url": "https://api.weather.gov/alerts/active?event=Severe+Thunderstorm+Warning",
+        "has_active_warning": false,
+        "notes": [],
+        "alerts": []
+      }
+    },
+    "missing_sources": [
+      "Thunder-capable thunderstorm probability forecast",
+      "Venue-area lightning observations",
+      "Observed radar storm-motion track",
+      "Verified venue lightning policy"
+    ],
+    "notes": [
+      "ECMWF IFS ensemble weather codes summarize broad conditions; they lack the atmospheric-stability detail required to estimate thunderstorms.",
+      "No thunder/lightning delay probability or storm-motion estimate is produced from this global outlook."
+    ]
+  },
+  "pregame": null,
+  "delay": {
+    "active": false,
+    "officially_confirmed": false,
+    "model_delay_active": false,
+    "resume_cdf": [],
+    "notes": [
+      "Global ECMWF IFS ensemble provides weather conditions only. Thunderstorm and venue-delay probabilities, local lightning observations, and observed storm movement are unavailable.",
+      "Global weather codes provide a conditions outlook only; they do not provide thunderstorm or delay probabilities."
+    ]
+  },
+  "quality": {
+    "weather_data_age_seconds": 0,
+    "sports_data_age_seconds": 0,
+    "policy_verification": "venue_assumption",
+    "forecast_scope": "global_weather_outlook",
+    "missing_sources": [
+      "Thunder-capable thunderstorm probability forecast",
+      "Venue-area lightning observations",
+      "Observed radar storm-motion track",
+      "Verified venue lightning policy"
+    ],
+    "degraded": true,
+    "status": "global conditions outlook only",
+    "message": "Open-Meteo ECMWF IFS ensemble provides global conditions at about 25 km with 6-hour native resolution. Its weather-code field cannot estimate thunderstorms. Venue-specific delay odds, local lightning observations, and observed storm movement are unavailable; no numeric delay risk is published."
+  }
+}

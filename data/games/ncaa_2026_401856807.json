@@ -1,0 +1,1517 @@
+{
+  "generated_at": "2026-09-26T17:26:55.730638Z",
+  "model_version": "engineering-baseline-0.2.4",
+  "game": {
+    "game_id": "ncaa_2026_401856807",
+    "league": "NCAA",
+    "season": 2026,
+    "home_team": "Kansas Jayhawks",
+    "away_team": "Middle Tennessee Blue Raiders",
+    "venue_id": "venue_david_booth_kansas_memorial_stadium",
+    "venue_name": "David Booth Kansas Memorial Stadium",
+    "venue_city": "Lawrence",
+    "neutral_site": false,
+    "kickoff_utc": "2026-10-03T16:00:00Z",
+    "status": "scheduled",
+    "status_source": "ESPN public scoreboard; unofficial",
+    "official_delay_active": false,
+    "model_delay_active": false,
+    "delay_started_at": null,
+    "official_resume_at": null,
+    "delay_source_note": null,
+    "home_score": 0,
+    "away_score": 0,
+    "period": 0,
+    "clock": "0:00"
+  },
+  "venue": {
+    "venue_id": "venue_david_booth_kansas_memorial_stadium",
+    "name": "David Booth Kansas Memorial Stadium",
+    "latitude": 38.962946,
+    "longitude": -95.246315,
+    "timezone": "America/Chicago",
+    "roof_type": "outdoor",
+    "roof_weather_protection": false,
+    "policy_id": "venue_assumption_8mi_30min",
+    "league": "NCAA",
+    "leagues": [
+      "NCAA"
+    ],
+    "home_teams": [
+      "Kansas",
+      "Kansas Jayhawks"
+    ],
+    "aliases": [
+      "Memorial Stadium"
+    ],
+    "source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "coordinate_source_url": "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv",
+    "roof_source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "source_note": "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified.",
+    "source_checked_at": "2026-09-20",
+    "city": null,
+    "state": null,
+    "fbs_source_url": null
+  },
+  "policy": {
+    "policy_id": "venue_assumption_8mi_30min",
+    "trigger_radius_miles": 8.0,
+    "monitor_radii_miles": [
+      10.0,
+      15.0,
+      20.0
+    ],
+    "quiet_period_minutes": 30,
+    "warmup_exposure_minutes": 60,
+    "clearance_mode": "fixed_quiet_period",
+    "restart_overhead": {
+      "type": "distribution",
+      "minutes": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "weights": [
+        0.1,
+        0.4,
+        0.35,
+        0.15
+      ]
+    },
+    "verification": "venue_assumption",
+    "source_checked_at": "2026-09-20",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "notes": "UNVERIFIED project baseline used only where no venue-specific public procedure was sourced: assume an 8-mile lightning trigger and 30-minute quiet period. This is not an official universal NFL or NCAA rule. NCAA safety guidance is venue-specific and is recorded separately; validate each venue procedure before operational use."
+  },
+  "weather": {
+    "venue_id": "venue_david_booth_kansas_memorial_stadium",
+    "fetched_at": "2026-09-26T16:31:55Z",
+    "source": "NWS regional thunder proxy",
+    "hazards": [
+      {
+        "offset_minutes": -90,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T14:30:00Z"
+      },
+      {
+        "offset_minutes": -85,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T14:35:00Z"
+      },
+      {
+        "offset_minutes": -80,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T14:40:00Z"
+      },
+      {
+        "offset_minutes": -75,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T14:45:00Z"
+      },
+      {
+        "offset_minutes": -70,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T14:50:00Z"
+      },
+      {
+        "offset_minutes": -65,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T14:55:00Z"
+      },
+      {
+        "offset_minutes": -60,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:00:00Z"
+      },
+      {
+        "offset_minutes": -55,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:05:00Z"
+      },
+      {
+        "offset_minutes": -50,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:10:00Z"
+      },
+      {
+        "offset_minutes": -45,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:15:00Z"
+      },
+      {
+        "offset_minutes": -40,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:20:00Z"
+      },
+      {
+        "offset_minutes": -35,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:25:00Z"
+      },
+      {
+        "offset_minutes": -30,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:30:00Z"
+      },
+      {
+        "offset_minutes": -25,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:35:00Z"
+      },
+      {
+        "offset_minutes": -20,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:40:00Z"
+      },
+      {
+        "offset_minutes": -15,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:45:00Z"
+      },
+      {
+        "offset_minutes": -10,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:50:00Z"
+      },
+      {
+        "offset_minutes": -5,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:55:00Z"
+      },
+      {
+        "offset_minutes": 0,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:00:00Z"
+      },
+      {
+        "offset_minutes": 5,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:05:00Z"
+      },
+      {
+        "offset_minutes": 10,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:10:00Z"
+      },
+      {
+        "offset_minutes": 15,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:15:00Z"
+      },
+      {
+        "offset_minutes": 20,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:20:00Z"
+      },
+      {
+        "offset_minutes": 25,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:25:00Z"
+      },
+      {
+        "offset_minutes": 30,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:30:00Z"
+      },
+      {
+        "offset_minutes": 35,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:35:00Z"
+      },
+      {
+        "offset_minutes": 40,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:40:00Z"
+      },
+      {
+        "offset_minutes": 45,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:45:00Z"
+      },
+      {
+        "offset_minutes": 50,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:50:00Z"
+      },
+      {
+        "offset_minutes": 55,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:55:00Z"
+      },
+      {
+        "offset_minutes": 60,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:00:00Z"
+      },
+      {
+        "offset_minutes": 65,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:05:00Z"
+      },
+      {
+        "offset_minutes": 70,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:10:00Z"
+      },
+      {
+        "offset_minutes": 75,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:15:00Z"
+      },
+      {
+        "offset_minutes": 80,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:20:00Z"
+      },
+      {
+        "offset_minutes": 85,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:25:00Z"
+      },
+      {
+        "offset_minutes": 90,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:30:00Z"
+      },
+      {
+        "offset_minutes": 95,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:35:00Z"
+      },
+      {
+        "offset_minutes": 100,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:40:00Z"
+      },
+      {
+        "offset_minutes": 105,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:45:00Z"
+      },
+      {
+        "offset_minutes": 110,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:50:00Z"
+      },
+      {
+        "offset_minutes": 115,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:55:00Z"
+      },
+      {
+        "offset_minutes": 120,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:00:00Z"
+      },
+      {
+        "offset_minutes": 125,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:05:00Z"
+      },
+      {
+        "offset_minutes": 130,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:10:00Z"
+      },
+      {
+        "offset_minutes": 135,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:15:00Z"
+      },
+      {
+        "offset_minutes": 140,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:20:00Z"
+      },
+      {
+        "offset_minutes": 145,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:25:00Z"
+      },
+      {
+        "offset_minutes": 150,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:30:00Z"
+      },
+      {
+        "offset_minutes": 155,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:35:00Z"
+      },
+      {
+        "offset_minutes": 160,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:40:00Z"
+      },
+      {
+        "offset_minutes": 165,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:45:00Z"
+      },
+      {
+        "offset_minutes": 170,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:50:00Z"
+      },
+      {
+        "offset_minutes": 175,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:55:00Z"
+      },
+      {
+        "offset_minutes": 180,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:00:00Z"
+      },
+      {
+        "offset_minutes": 185,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:05:00Z"
+      },
+      {
+        "offset_minutes": 190,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:10:00Z"
+      },
+      {
+        "offset_minutes": 195,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:15:00Z"
+      },
+      {
+        "offset_minutes": 200,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:20:00Z"
+      },
+      {
+        "offset_minutes": 205,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:25:00Z"
+      },
+      {
+        "offset_minutes": 210,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:30:00Z"
+      },
+      {
+        "offset_minutes": 215,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:35:00Z"
+      },
+      {
+        "offset_minutes": 220,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:40:00Z"
+      },
+      {
+        "offset_minutes": 225,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:45:00Z"
+      },
+      {
+        "offset_minutes": 230,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:50:00Z"
+      },
+      {
+        "offset_minutes": 235,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:55:00Z"
+      },
+      {
+        "offset_minutes": 240,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:00:00Z"
+      },
+      {
+        "offset_minutes": 245,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:05:00Z"
+      },
+      {
+        "offset_minutes": 250,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:10:00Z"
+      },
+      {
+        "offset_minutes": 255,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:15:00Z"
+      },
+      {
+        "offset_minutes": 260,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:20:00Z"
+      },
+      {
+        "offset_minutes": 265,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:25:00Z"
+      },
+      {
+        "offset_minutes": 270,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:30:00Z"
+      },
+      {
+        "offset_minutes": 275,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:35:00Z"
+      },
+      {
+        "offset_minutes": 280,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:40:00Z"
+      },
+      {
+        "offset_minutes": 285,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:45:00Z"
+      },
+      {
+        "offset_minutes": 290,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:50:00Z"
+      },
+      {
+        "offset_minutes": 295,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:55:00Z"
+      },
+      {
+        "offset_minutes": 300,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:00:00Z"
+      },
+      {
+        "offset_minutes": 305,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:05:00Z"
+      },
+      {
+        "offset_minutes": 310,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:10:00Z"
+      },
+      {
+        "offset_minutes": 315,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:15:00Z"
+      },
+      {
+        "offset_minutes": 320,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:20:00Z"
+      },
+      {
+        "offset_minutes": 325,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:25:00Z"
+      },
+      {
+        "offset_minutes": 330,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:30:00Z"
+      },
+      {
+        "offset_minutes": 335,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:35:00Z"
+      },
+      {
+        "offset_minutes": 340,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:40:00Z"
+      },
+      {
+        "offset_minutes": 345,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:45:00Z"
+      },
+      {
+        "offset_minutes": 350,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:50:00Z"
+      },
+      {
+        "offset_minutes": 355,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:55:00Z"
+      },
+      {
+        "offset_minutes": 360,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:00:00Z"
+      },
+      {
+        "offset_minutes": 365,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:05:00Z"
+      },
+      {
+        "offset_minutes": 370,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:10:00Z"
+      },
+      {
+        "offset_minutes": 375,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:15:00Z"
+      },
+      {
+        "offset_minutes": 380,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:20:00Z"
+      },
+      {
+        "offset_minutes": 385,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:25:00Z"
+      },
+      {
+        "offset_minutes": 390,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:30:00Z"
+      },
+      {
+        "offset_minutes": 395,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:35:00Z"
+      },
+      {
+        "offset_minutes": 400,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:40:00Z"
+      },
+      {
+        "offset_minutes": 405,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:45:00Z"
+      },
+      {
+        "offset_minutes": 410,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:50:00Z"
+      },
+      {
+        "offset_minutes": 415,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:55:00Z"
+      },
+      {
+        "offset_minutes": 420,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:00:00Z"
+      },
+      {
+        "offset_minutes": 425,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:05:00Z"
+      },
+      {
+        "offset_minutes": 430,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:10:00Z"
+      },
+      {
+        "offset_minutes": 435,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:15:00Z"
+      },
+      {
+        "offset_minutes": 440,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:20:00Z"
+      },
+      {
+        "offset_minutes": 445,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:25:00Z"
+      },
+      {
+        "offset_minutes": 450,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:30:00Z"
+      },
+      {
+        "offset_minutes": 455,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:35:00Z"
+      },
+      {
+        "offset_minutes": 460,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:40:00Z"
+      },
+      {
+        "offset_minutes": 465,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:45:00Z"
+      },
+      {
+        "offset_minutes": 470,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:50:00Z"
+      },
+      {
+        "offset_minutes": 475,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:55:00Z"
+      }
+    ],
+    "venue_features": {
+      "href_hourly": [],
+      "nws_alerts": {
+        "status": "ok",
+        "fetched_at": "2026-09-26T17:57:29.303960Z",
+        "freshness_seconds": 0,
+        "source_url": "https://api.weather.gov/alerts/active?event=Severe+Thunderstorm+Warning",
+        "has_active_warning": false,
+        "notes": [],
+        "alerts": []
+      },
+      "hrrr_point": null,
+      "glm_observation": null
+    },
+    "missing_sources": [],
+    "notes": [
+      "NWS thunder probability is a regional forecast proxy; it is not calibrated to venue policy radii."
+    ]
+  },
+  "pregame": {
+    "delay_probability": 0.06495,
+    "kickoff_delay_probability": 0.01015,
+    "in_game_delay_probability": 0.0553,
+    "multiple_delay_probability": 0.002,
+    "expected_delay_minutes": 2.877,
+    "hourly_delay_hazard": [
+      {
+        "offset_minutes": -90,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T14:30:00Z"
+      },
+      {
+        "offset_minutes": -85,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T14:35:00Z"
+      },
+      {
+        "offset_minutes": -80,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T14:40:00Z"
+      },
+      {
+        "offset_minutes": -75,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T14:45:00Z"
+      },
+      {
+        "offset_minutes": -70,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T14:50:00Z"
+      },
+      {
+        "offset_minutes": -65,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T14:55:00Z"
+      },
+      {
+        "offset_minutes": -60,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:00:00Z"
+      },
+      {
+        "offset_minutes": -55,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:05:00Z"
+      },
+      {
+        "offset_minutes": -50,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:10:00Z"
+      },
+      {
+        "offset_minutes": -45,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:15:00Z"
+      },
+      {
+        "offset_minutes": -40,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:20:00Z"
+      },
+      {
+        "offset_minutes": -35,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:25:00Z"
+      },
+      {
+        "offset_minutes": -30,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:30:00Z"
+      },
+      {
+        "offset_minutes": -25,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:35:00Z"
+      },
+      {
+        "offset_minutes": -20,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:40:00Z"
+      },
+      {
+        "offset_minutes": -15,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:45:00Z"
+      },
+      {
+        "offset_minutes": -10,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:50:00Z"
+      },
+      {
+        "offset_minutes": -5,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T15:55:00Z"
+      },
+      {
+        "offset_minutes": 0,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:00:00Z"
+      },
+      {
+        "offset_minutes": 5,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:05:00Z"
+      },
+      {
+        "offset_minutes": 10,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:10:00Z"
+      },
+      {
+        "offset_minutes": 15,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:15:00Z"
+      },
+      {
+        "offset_minutes": 20,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:20:00Z"
+      },
+      {
+        "offset_minutes": 25,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:25:00Z"
+      },
+      {
+        "offset_minutes": 30,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:30:00Z"
+      },
+      {
+        "offset_minutes": 35,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:35:00Z"
+      },
+      {
+        "offset_minutes": 40,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:40:00Z"
+      },
+      {
+        "offset_minutes": 45,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:45:00Z"
+      },
+      {
+        "offset_minutes": 50,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:50:00Z"
+      },
+      {
+        "offset_minutes": 55,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T16:55:00Z"
+      },
+      {
+        "offset_minutes": 60,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:00:00Z"
+      },
+      {
+        "offset_minutes": 65,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:05:00Z"
+      },
+      {
+        "offset_minutes": 70,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:10:00Z"
+      },
+      {
+        "offset_minutes": 75,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:15:00Z"
+      },
+      {
+        "offset_minutes": 80,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:20:00Z"
+      },
+      {
+        "offset_minutes": 85,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:25:00Z"
+      },
+      {
+        "offset_minutes": 90,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:30:00Z"
+      },
+      {
+        "offset_minutes": 95,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:35:00Z"
+      },
+      {
+        "offset_minutes": 100,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:40:00Z"
+      },
+      {
+        "offset_minutes": 105,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:45:00Z"
+      },
+      {
+        "offset_minutes": 110,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:50:00Z"
+      },
+      {
+        "offset_minutes": 115,
+        "probability": 0.0008590114454393172,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T17:55:00Z"
+      },
+      {
+        "offset_minutes": 120,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:00:00Z"
+      },
+      {
+        "offset_minutes": 125,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:05:00Z"
+      },
+      {
+        "offset_minutes": 130,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:10:00Z"
+      },
+      {
+        "offset_minutes": 135,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:15:00Z"
+      },
+      {
+        "offset_minutes": 140,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:20:00Z"
+      },
+      {
+        "offset_minutes": 145,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:25:00Z"
+      },
+      {
+        "offset_minutes": 150,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:30:00Z"
+      },
+      {
+        "offset_minutes": 155,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:35:00Z"
+      },
+      {
+        "offset_minutes": 160,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:40:00Z"
+      },
+      {
+        "offset_minutes": 165,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:45:00Z"
+      },
+      {
+        "offset_minutes": 170,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:50:00Z"
+      },
+      {
+        "offset_minutes": 175,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T18:55:00Z"
+      },
+      {
+        "offset_minutes": 180,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:00:00Z"
+      },
+      {
+        "offset_minutes": 185,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:05:00Z"
+      },
+      {
+        "offset_minutes": 190,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:10:00Z"
+      },
+      {
+        "offset_minutes": 195,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:15:00Z"
+      },
+      {
+        "offset_minutes": 200,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:20:00Z"
+      },
+      {
+        "offset_minutes": 205,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:25:00Z"
+      },
+      {
+        "offset_minutes": 210,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:30:00Z"
+      },
+      {
+        "offset_minutes": 215,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:35:00Z"
+      },
+      {
+        "offset_minutes": 220,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:40:00Z"
+      },
+      {
+        "offset_minutes": 225,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:45:00Z"
+      },
+      {
+        "offset_minutes": 230,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:50:00Z"
+      },
+      {
+        "offset_minutes": 235,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T19:55:00Z"
+      },
+      {
+        "offset_minutes": 240,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:00:00Z"
+      },
+      {
+        "offset_minutes": 245,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:05:00Z"
+      },
+      {
+        "offset_minutes": 250,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:10:00Z"
+      },
+      {
+        "offset_minutes": 255,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:15:00Z"
+      },
+      {
+        "offset_minutes": 260,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:20:00Z"
+      },
+      {
+        "offset_minutes": 265,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:25:00Z"
+      },
+      {
+        "offset_minutes": 270,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:30:00Z"
+      },
+      {
+        "offset_minutes": 275,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:35:00Z"
+      },
+      {
+        "offset_minutes": 280,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:40:00Z"
+      },
+      {
+        "offset_minutes": 285,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:45:00Z"
+      },
+      {
+        "offset_minutes": 290,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:50:00Z"
+      },
+      {
+        "offset_minutes": 295,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T20:55:00Z"
+      },
+      {
+        "offset_minutes": 300,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:00:00Z"
+      },
+      {
+        "offset_minutes": 305,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:05:00Z"
+      },
+      {
+        "offset_minutes": 310,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:10:00Z"
+      },
+      {
+        "offset_minutes": 315,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:15:00Z"
+      },
+      {
+        "offset_minutes": 320,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:20:00Z"
+      },
+      {
+        "offset_minutes": 325,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:25:00Z"
+      },
+      {
+        "offset_minutes": 330,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:30:00Z"
+      },
+      {
+        "offset_minutes": 335,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:35:00Z"
+      },
+      {
+        "offset_minutes": 340,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:40:00Z"
+      },
+      {
+        "offset_minutes": 345,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:45:00Z"
+      },
+      {
+        "offset_minutes": 350,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:50:00Z"
+      },
+      {
+        "offset_minutes": 355,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T21:55:00Z"
+      },
+      {
+        "offset_minutes": 360,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:00:00Z"
+      },
+      {
+        "offset_minutes": 365,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:05:00Z"
+      },
+      {
+        "offset_minutes": 370,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:10:00Z"
+      },
+      {
+        "offset_minutes": 375,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:15:00Z"
+      },
+      {
+        "offset_minutes": 380,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:20:00Z"
+      },
+      {
+        "offset_minutes": 385,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:25:00Z"
+      },
+      {
+        "offset_minutes": 390,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:30:00Z"
+      },
+      {
+        "offset_minutes": 395,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:35:00Z"
+      },
+      {
+        "offset_minutes": 400,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:40:00Z"
+      },
+      {
+        "offset_minutes": 405,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:45:00Z"
+      },
+      {
+        "offset_minutes": 410,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:50:00Z"
+      },
+      {
+        "offset_minutes": 415,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T22:55:00Z"
+      },
+      {
+        "offset_minutes": 420,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:00:00Z"
+      },
+      {
+        "offset_minutes": 425,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:05:00Z"
+      },
+      {
+        "offset_minutes": 430,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:10:00Z"
+      },
+      {
+        "offset_minutes": 435,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:15:00Z"
+      },
+      {
+        "offset_minutes": 440,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:20:00Z"
+      },
+      {
+        "offset_minutes": 445,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:25:00Z"
+      },
+      {
+        "offset_minutes": 450,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:30:00Z"
+      },
+      {
+        "offset_minutes": 455,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:35:00Z"
+      },
+      {
+        "offset_minutes": 460,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:40:00Z"
+      },
+      {
+        "offset_minutes": 465,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:45:00Z"
+      },
+      {
+        "offset_minutes": 470,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:50:00Z"
+      },
+      {
+        "offset_minutes": 475,
+        "probability": 0.002092569873935579,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-03T23:55:00Z"
+      }
+    ],
+    "simulation_count": 20000
+  },
+  "delay": {
+    "active": false,
+    "officially_confirmed": false,
+    "model_delay_active": false,
+    "last_qualifying_event_at": null,
+    "earliest_weather_clear_at": null,
+    "weather_clear_cdf": [],
+    "resume_cdf": [],
+    "resume_p50": null,
+    "resume_p75": null,
+    "resume_p90": null,
+    "probability_additional_minutes": {},
+    "holds": [],
+    "source": "policy simulation",
+    "notes": []
+  },
+  "quality": {
+    "weather_data_age_seconds": 3300,
+    "sports_data_age_seconds": 0,
+    "policy_verification": "venue_assumption",
+    "forecast_lead_minutes": 9993,
+    "forecast_scope": "regional_outlook",
+    "missing_sources": [],
+    "degraded": true,
+    "status": "NWS week-ahead regional outlook",
+    "message": "Low-confidence NWS 3–7 day regional thunder outlook. Local radar, venue lightning observations, and HREF coverage are unavailable at this lead; the displayed delay-risk simulation is not calibrated to venue outcomes."
+  }
+}

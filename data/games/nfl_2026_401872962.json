@@ -1,0 +1,2079 @@
+{
+  "generated_at": "2026-09-26T17:59:47.534540Z",
+  "model_version": "engineering-baseline-0.2.4",
+  "game": {
+    "game_id": "nfl_2026_401872962",
+    "league": "NFL",
+    "season": 2026,
+    "home_team": "Denver Broncos",
+    "away_team": "Los Angeles Rams",
+    "venue_id": "denver",
+    "venue_name": "Empower Field at Mile High",
+    "venue_city": "Denver",
+    "neutral_site": false,
+    "kickoff_utc": "2026-09-28T00:20:00Z",
+    "status": "scheduled",
+    "status_source": "ESPN public scoreboard; unofficial",
+    "official_delay_active": false,
+    "model_delay_active": false,
+    "delay_started_at": null,
+    "official_resume_at": null,
+    "delay_source_note": null,
+    "home_score": 0,
+    "away_score": 0,
+    "period": 0,
+    "clock": "0:00"
+  },
+  "venue": {
+    "venue_id": "denver",
+    "name": "Empower Field at Mile High",
+    "latitude": 39.7439402,
+    "longitude": -105.0201065,
+    "timezone": "America/Denver",
+    "roof_type": "outdoor",
+    "roof_weather_protection": false,
+    "policy_id": "venue_assumption_8mi_30min",
+    "league": "NFL",
+    "leagues": [
+      "NFL"
+    ],
+    "home_teams": [
+      "Denver Broncos",
+      "DEN"
+    ],
+    "aliases": [],
+    "source_url": "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums",
+    "coordinate_source_url": "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv",
+    "roof_source_url": "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums",
+    "source_note": "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included.",
+    "source_checked_at": "2026-09-20",
+    "city": null,
+    "state": null,
+    "fbs_source_url": null
+  },
+  "policy": {
+    "policy_id": "venue_assumption_8mi_30min",
+    "trigger_radius_miles": 8.0,
+    "monitor_radii_miles": [
+      10.0,
+      15.0,
+      20.0
+    ],
+    "quiet_period_minutes": 30,
+    "warmup_exposure_minutes": 60,
+    "clearance_mode": "fixed_quiet_period",
+    "restart_overhead": {
+      "type": "distribution",
+      "minutes": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "weights": [
+        0.1,
+        0.4,
+        0.35,
+        0.15
+      ]
+    },
+    "verification": "venue_assumption",
+    "source_checked_at": "2026-09-20",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "notes": "UNVERIFIED project baseline used only where no venue-specific public procedure was sourced: assume an 8-mile lightning trigger and 30-minute quiet period. This is not an official universal NFL or NCAA rule. NCAA safety guidance is venue-specific and is recorded separately; validate each venue procedure before operational use."
+  },
+  "weather": {
+    "venue_id": "denver",
+    "fetched_at": "2026-09-26T06:46:32Z",
+    "source": "SPC HREF CT thunder + NWS regional thunder proxy + HRRR point context",
+    "hazards": [
+      {
+        "offset_minutes": -90,
+        "probability": 0.0002791370299384255,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-09-27T22:50:00Z"
+      },
+      {
+        "offset_minutes": -85,
+        "probability": 0.0002791370299384255,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-09-27T22:55:00Z"
+      },
+      {
+        "offset_minutes": -80,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:00:00Z"
+      },
+      {
+        "offset_minutes": -75,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:05:00Z"
+      },
+      {
+        "offset_minutes": -70,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:10:00Z"
+      },
+      {
+        "offset_minutes": -65,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:15:00Z"
+      },
+      {
+        "offset_minutes": -60,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:20:00Z"
+      },
+      {
+        "offset_minutes": -55,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:25:00Z"
+      },
+      {
+        "offset_minutes": -50,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:30:00Z"
+      },
+      {
+        "offset_minutes": -45,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:35:00Z"
+      },
+      {
+        "offset_minutes": -40,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:40:00Z"
+      },
+      {
+        "offset_minutes": -35,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:45:00Z"
+      },
+      {
+        "offset_minutes": -30,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:50:00Z"
+      },
+      {
+        "offset_minutes": -25,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:55:00Z"
+      },
+      {
+        "offset_minutes": -20,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:00:00Z"
+      },
+      {
+        "offset_minutes": -15,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:05:00Z"
+      },
+      {
+        "offset_minutes": -10,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:10:00Z"
+      },
+      {
+        "offset_minutes": -5,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:15:00Z"
+      },
+      {
+        "offset_minutes": 0,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:20:00Z"
+      },
+      {
+        "offset_minutes": 5,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:25:00Z"
+      },
+      {
+        "offset_minutes": 10,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:30:00Z"
+      },
+      {
+        "offset_minutes": 15,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:35:00Z"
+      },
+      {
+        "offset_minutes": 20,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:40:00Z"
+      },
+      {
+        "offset_minutes": 25,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:45:00Z"
+      },
+      {
+        "offset_minutes": 30,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:50:00Z"
+      },
+      {
+        "offset_minutes": 35,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:55:00Z"
+      },
+      {
+        "offset_minutes": 40,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:00:00Z"
+      },
+      {
+        "offset_minutes": 45,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:05:00Z"
+      },
+      {
+        "offset_minutes": 50,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:10:00Z"
+      },
+      {
+        "offset_minutes": 55,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:15:00Z"
+      },
+      {
+        "offset_minutes": 60,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:20:00Z"
+      },
+      {
+        "offset_minutes": 65,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:25:00Z"
+      },
+      {
+        "offset_minutes": 70,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:30:00Z"
+      },
+      {
+        "offset_minutes": 75,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:35:00Z"
+      },
+      {
+        "offset_minutes": 80,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:40:00Z"
+      },
+      {
+        "offset_minutes": 85,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:45:00Z"
+      },
+      {
+        "offset_minutes": 90,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:50:00Z"
+      },
+      {
+        "offset_minutes": 95,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:55:00Z"
+      },
+      {
+        "offset_minutes": 100,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:00:00Z"
+      },
+      {
+        "offset_minutes": 105,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:05:00Z"
+      },
+      {
+        "offset_minutes": 110,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:10:00Z"
+      },
+      {
+        "offset_minutes": 115,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:15:00Z"
+      },
+      {
+        "offset_minutes": 120,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:20:00Z"
+      },
+      {
+        "offset_minutes": 125,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:25:00Z"
+      },
+      {
+        "offset_minutes": 130,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:30:00Z"
+      },
+      {
+        "offset_minutes": 135,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:35:00Z"
+      },
+      {
+        "offset_minutes": 140,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:40:00Z"
+      },
+      {
+        "offset_minutes": 145,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:45:00Z"
+      },
+      {
+        "offset_minutes": 150,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:50:00Z"
+      },
+      {
+        "offset_minutes": 155,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:55:00Z"
+      },
+      {
+        "offset_minutes": 160,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:00:00Z"
+      },
+      {
+        "offset_minutes": 165,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:05:00Z"
+      },
+      {
+        "offset_minutes": 170,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:10:00Z"
+      },
+      {
+        "offset_minutes": 175,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:15:00Z"
+      },
+      {
+        "offset_minutes": 180,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:20:00Z"
+      },
+      {
+        "offset_minutes": 185,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:25:00Z"
+      },
+      {
+        "offset_minutes": 190,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:30:00Z"
+      },
+      {
+        "offset_minutes": 195,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:35:00Z"
+      },
+      {
+        "offset_minutes": 200,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:40:00Z"
+      },
+      {
+        "offset_minutes": 205,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:45:00Z"
+      },
+      {
+        "offset_minutes": 210,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:50:00Z"
+      },
+      {
+        "offset_minutes": 215,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:55:00Z"
+      },
+      {
+        "offset_minutes": 220,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:00:00Z"
+      },
+      {
+        "offset_minutes": 225,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:05:00Z"
+      },
+      {
+        "offset_minutes": 230,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:10:00Z"
+      },
+      {
+        "offset_minutes": 235,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:15:00Z"
+      },
+      {
+        "offset_minutes": 240,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:20:00Z"
+      },
+      {
+        "offset_minutes": 245,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:25:00Z"
+      },
+      {
+        "offset_minutes": 250,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:30:00Z"
+      },
+      {
+        "offset_minutes": 255,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:35:00Z"
+      },
+      {
+        "offset_minutes": 260,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:40:00Z"
+      },
+      {
+        "offset_minutes": 265,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:45:00Z"
+      },
+      {
+        "offset_minutes": 270,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:50:00Z"
+      },
+      {
+        "offset_minutes": 275,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:55:00Z"
+      },
+      {
+        "offset_minutes": 280,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:00:00Z"
+      },
+      {
+        "offset_minutes": 285,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:05:00Z"
+      },
+      {
+        "offset_minutes": 290,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:10:00Z"
+      },
+      {
+        "offset_minutes": 295,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:15:00Z"
+      },
+      {
+        "offset_minutes": 300,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:20:00Z"
+      },
+      {
+        "offset_minutes": 305,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:25:00Z"
+      },
+      {
+        "offset_minutes": 310,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:30:00Z"
+      },
+      {
+        "offset_minutes": 315,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:35:00Z"
+      },
+      {
+        "offset_minutes": 320,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:40:00Z"
+      },
+      {
+        "offset_minutes": 325,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:45:00Z"
+      },
+      {
+        "offset_minutes": 330,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:50:00Z"
+      },
+      {
+        "offset_minutes": 335,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:55:00Z"
+      },
+      {
+        "offset_minutes": 340,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:00:00Z"
+      },
+      {
+        "offset_minutes": 345,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:05:00Z"
+      },
+      {
+        "offset_minutes": 350,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:10:00Z"
+      },
+      {
+        "offset_minutes": 355,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:15:00Z"
+      },
+      {
+        "offset_minutes": 360,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:20:00Z"
+      },
+      {
+        "offset_minutes": 365,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:25:00Z"
+      },
+      {
+        "offset_minutes": 370,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:30:00Z"
+      },
+      {
+        "offset_minutes": 375,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:35:00Z"
+      },
+      {
+        "offset_minutes": 380,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:40:00Z"
+      },
+      {
+        "offset_minutes": 385,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:45:00Z"
+      },
+      {
+        "offset_minutes": 390,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:50:00Z"
+      },
+      {
+        "offset_minutes": 395,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:55:00Z"
+      },
+      {
+        "offset_minutes": 400,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:00:00Z"
+      },
+      {
+        "offset_minutes": 405,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:05:00Z"
+      },
+      {
+        "offset_minutes": 410,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:10:00Z"
+      },
+      {
+        "offset_minutes": 415,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:15:00Z"
+      },
+      {
+        "offset_minutes": 420,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:20:00Z"
+      },
+      {
+        "offset_minutes": 425,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:25:00Z"
+      },
+      {
+        "offset_minutes": 430,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:30:00Z"
+      },
+      {
+        "offset_minutes": 435,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:35:00Z"
+      },
+      {
+        "offset_minutes": 440,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:40:00Z"
+      },
+      {
+        "offset_minutes": 445,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:45:00Z"
+      },
+      {
+        "offset_minutes": 450,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:50:00Z"
+      },
+      {
+        "offset_minutes": 455,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:55:00Z"
+      },
+      {
+        "offset_minutes": 460,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:00:00Z"
+      },
+      {
+        "offset_minutes": 465,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:05:00Z"
+      },
+      {
+        "offset_minutes": 470,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:10:00Z"
+      },
+      {
+        "offset_minutes": 475,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:15:00Z"
+      },
+      {
+        "offset_minutes": 480,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:20:00Z"
+      },
+      {
+        "offset_minutes": 485,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:25:00Z"
+      },
+      {
+        "offset_minutes": 490,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:30:00Z"
+      },
+      {
+        "offset_minutes": 495,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:35:00Z"
+      },
+      {
+        "offset_minutes": 500,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:40:00Z"
+      },
+      {
+        "offset_minutes": 505,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:45:00Z"
+      },
+      {
+        "offset_minutes": 510,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:50:00Z"
+      },
+      {
+        "offset_minutes": 515,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:55:00Z"
+      },
+      {
+        "offset_minutes": 520,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:00:00Z"
+      },
+      {
+        "offset_minutes": 525,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:05:00Z"
+      },
+      {
+        "offset_minutes": 530,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:10:00Z"
+      },
+      {
+        "offset_minutes": 535,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:15:00Z"
+      },
+      {
+        "offset_minutes": 540,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:20:00Z"
+      },
+      {
+        "offset_minutes": 545,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:25:00Z"
+      },
+      {
+        "offset_minutes": 550,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:30:00Z"
+      },
+      {
+        "offset_minutes": 555,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:35:00Z"
+      },
+      {
+        "offset_minutes": 560,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:40:00Z"
+      },
+      {
+        "offset_minutes": 565,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:45:00Z"
+      },
+      {
+        "offset_minutes": 570,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:50:00Z"
+      },
+      {
+        "offset_minutes": 575,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:55:00Z"
+      },
+      {
+        "offset_minutes": 580,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:00:00Z"
+      },
+      {
+        "offset_minutes": 585,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:05:00Z"
+      },
+      {
+        "offset_minutes": 590,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:10:00Z"
+      },
+      {
+        "offset_minutes": 595,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:15:00Z"
+      },
+      {
+        "offset_minutes": 600,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:20:00Z"
+      },
+      {
+        "offset_minutes": 605,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:25:00Z"
+      },
+      {
+        "offset_minutes": 610,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:30:00Z"
+      },
+      {
+        "offset_minutes": 615,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:35:00Z"
+      },
+      {
+        "offset_minutes": 620,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:40:00Z"
+      },
+      {
+        "offset_minutes": 625,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:45:00Z"
+      },
+      {
+        "offset_minutes": 630,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:50:00Z"
+      },
+      {
+        "offset_minutes": 635,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:55:00Z"
+      }
+    ],
+    "venue_features": {
+      "href_hourly": [
+        {
+          "probability": 0.08,
+          "issued_at": "2026-09-26T12:00:00+00:00",
+          "valid_start": "2026-09-27T23:00:00+00:00",
+          "valid_end": "2026-09-28T00:00:00+00:00",
+          "forecast_hour": 36,
+          "latitude": 39.7439402,
+          "longitude": -105.0201065,
+          "grid_latitude": 39.69898676230213,
+          "grid_longitude": -105.10173938955694,
+          "grid_distance_km": 8.587005508701214,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20260926/thunder/spc_post.t12z.hrefct_1hr.f036.grib2"
+        },
+        {
+          "probability": 0.05,
+          "issued_at": "2026-09-26T12:00:00+00:00",
+          "valid_start": "2026-09-28T00:00:00+00:00",
+          "valid_end": "2026-09-28T01:00:00+00:00",
+          "forecast_hour": 37,
+          "latitude": 39.7439402,
+          "longitude": -105.0201065,
+          "grid_latitude": 39.69898676230213,
+          "grid_longitude": -105.10173938955694,
+          "grid_distance_km": 8.587005508701214,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20260926/thunder/spc_post.t12z.hrefct_1hr.f037.grib2"
+        },
+        {
+          "probability": 0.05,
+          "issued_at": "2026-09-26T12:00:00+00:00",
+          "valid_start": "2026-09-28T01:00:00+00:00",
+          "valid_end": "2026-09-28T02:00:00+00:00",
+          "forecast_hour": 38,
+          "latitude": 39.7439402,
+          "longitude": -105.0201065,
+          "grid_latitude": 39.69898676230213,
+          "grid_longitude": -105.10173938955694,
+          "grid_distance_km": 8.587005508701214,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20260926/thunder/spc_post.t12z.hrefct_1hr.f038.grib2"
+        },
+        {
+          "probability": 0.04,
+          "issued_at": "2026-09-26T12:00:00+00:00",
+          "valid_start": "2026-09-28T02:00:00+00:00",
+          "valid_end": "2026-09-28T03:00:00+00:00",
+          "forecast_hour": 39,
+          "latitude": 39.7439402,
+          "longitude": -105.0201065,
+          "grid_latitude": 39.69898676230213,
+          "grid_longitude": -105.10173938955694,
+          "grid_distance_km": 8.587005508701214,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20260926/thunder/spc_post.t12z.hrefct_1hr.f039.grib2"
+        },
+        {
+          "probability": 0.03,
+          "issued_at": "2026-09-26T12:00:00+00:00",
+          "valid_start": "2026-09-28T03:00:00+00:00",
+          "valid_end": "2026-09-28T04:00:00+00:00",
+          "forecast_hour": 40,
+          "latitude": 39.7439402,
+          "longitude": -105.0201065,
+          "grid_latitude": 39.69898676230213,
+          "grid_longitude": -105.10173938955694,
+          "grid_distance_km": 8.587005508701214,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20260926/thunder/spc_post.t12z.hrefct_1hr.f040.grib2"
+        },
+        {
+          "probability": 0.01,
+          "issued_at": "2026-09-26T12:00:00+00:00",
+          "valid_start": "2026-09-28T04:00:00+00:00",
+          "valid_end": "2026-09-28T05:00:00+00:00",
+          "forecast_hour": 41,
+          "latitude": 39.7439402,
+          "longitude": -105.0201065,
+          "grid_latitude": 39.69898676230213,
+          "grid_longitude": -105.10173938955694,
+          "grid_distance_km": 8.587005508701214,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20260926/thunder/spc_post.t12z.hrefct_1hr.f041.grib2"
+        },
+        {
+          "probability": 0.01,
+          "issued_at": "2026-09-26T12:00:00+00:00",
+          "valid_start": "2026-09-28T05:00:00+00:00",
+          "valid_end": "2026-09-28T06:00:00+00:00",
+          "forecast_hour": 42,
+          "latitude": 39.7439402,
+          "longitude": -105.0201065,
+          "grid_latitude": 39.69898676230213,
+          "grid_longitude": -105.10173938955694,
+          "grid_distance_km": 8.587005508701214,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20260926/thunder/spc_post.t12z.hrefct_1hr.f042.grib2"
+        },
+        {
+          "probability": 0.02,
+          "issued_at": "2026-09-26T12:00:00+00:00",
+          "valid_start": "2026-09-28T06:00:00+00:00",
+          "valid_end": "2026-09-28T07:00:00+00:00",
+          "forecast_hour": 43,
+          "latitude": 39.7439402,
+          "longitude": -105.0201065,
+          "grid_latitude": 39.69898676230213,
+          "grid_longitude": -105.10173938955694,
+          "grid_distance_km": 8.587005508701214,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20260926/thunder/spc_post.t12z.hrefct_1hr.f043.grib2"
+        },
+        {
+          "probability": 0.02,
+          "issued_at": "2026-09-26T12:00:00+00:00",
+          "valid_start": "2026-09-28T07:00:00+00:00",
+          "valid_end": "2026-09-28T08:00:00+00:00",
+          "forecast_hour": 44,
+          "latitude": 39.7439402,
+          "longitude": -105.0201065,
+          "grid_latitude": 39.69898676230213,
+          "grid_longitude": -105.10173938955694,
+          "grid_distance_km": 8.587005508701214,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20260926/thunder/spc_post.t12z.hrefct_1hr.f044.grib2"
+        },
+        {
+          "probability": 0.02,
+          "issued_at": "2026-09-26T12:00:00+00:00",
+          "valid_start": "2026-09-28T08:00:00+00:00",
+          "valid_end": "2026-09-28T09:00:00+00:00",
+          "forecast_hour": 45,
+          "latitude": 39.7439402,
+          "longitude": -105.0201065,
+          "grid_latitude": 39.69898676230213,
+          "grid_longitude": -105.10173938955694,
+          "grid_distance_km": 8.587005508701214,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20260926/thunder/spc_post.t12z.hrefct_1hr.f045.grib2"
+        },
+        {
+          "probability": 0.02,
+          "issued_at": "2026-09-26T12:00:00+00:00",
+          "valid_start": "2026-09-28T09:00:00+00:00",
+          "valid_end": "2026-09-28T10:00:00+00:00",
+          "forecast_hour": 46,
+          "latitude": 39.7439402,
+          "longitude": -105.0201065,
+          "grid_latitude": 39.69898676230213,
+          "grid_longitude": -105.10173938955694,
+          "grid_distance_km": 8.587005508701214,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20260926/thunder/spc_post.t12z.hrefct_1hr.f046.grib2"
+        },
+        {
+          "probability": 0.02,
+          "issued_at": "2026-09-26T12:00:00+00:00",
+          "valid_start": "2026-09-28T10:00:00+00:00",
+          "valid_end": "2026-09-28T11:00:00+00:00",
+          "forecast_hour": 47,
+          "latitude": 39.7439402,
+          "longitude": -105.0201065,
+          "grid_latitude": 39.69898676230213,
+          "grid_longitude": -105.10173938955694,
+          "grid_distance_km": 8.587005508701214,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20260926/thunder/spc_post.t12z.hrefct_1hr.f047.grib2"
+        }
+      ],
+      "nws_alerts": {
+        "status": "ok",
+        "fetched_at": "2026-09-26T17:57:29.303960Z",
+        "freshness_seconds": 0,
+        "source_url": "https://api.weather.gov/alerts/active?event=Severe+Thunderstorm+Warning",
+        "has_active_warning": false,
+        "notes": [],
+        "alerts": []
+      },
+      "hrrr_point": {
+        "latitude": 39.7439402,
+        "longitude": -105.0201065,
+        "grid_latitude": 39.744753213661326,
+        "grid_longitude": -105.02136160927455,
+        "grid_distance_km": 0.14031928540418867,
+        "issued_at": "2026-09-26T12:00:00Z",
+        "valid_at": "2026-09-28T00:00:00Z",
+        "forecast_hour": 36,
+        "reflectivity_dbz": 13.3125,
+        "precipitation_rate_kg_m2_s": 0.0,
+        "cape_j_kg": 30.0,
+        "u_wind_10m_ms": -1.3930587768554688,
+        "v_wind_10m_ms": 6.626588821411133,
+        "wind_speed_10m_ms": 6.771432061523252,
+        "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20260926/conus/hrrr.t12z.wrfsfcf36.grib2",
+        "field_source_urls": {
+          "reflectivity": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20260926/conus/hrrr.t12z.wrfsfcf36.grib2#bytes=0-682757",
+          "precipitation": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20260926/conus/hrrr.t12z.wrfsfcf36.grib2#bytes=63067858-63145303",
+          "cape": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20260926/conus/hrrr.t12z.wrfsfcf36.grib2#bytes=76457489-77051155",
+          "u_wind": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20260926/conus/hrrr.t12z.wrfsfcf36.grib2#bytes=54300248-56681862",
+          "v_wind": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20260926/conus/hrrr.t12z.wrfsfcf36.grib2#bytes=56681863-59063477"
+        }
+      },
+      "glm_observation": null
+    },
+    "missing_sources": [],
+    "notes": [
+      "NWS thunder probability is a regional forecast proxy; it is not calibrated to venue policy radii."
+    ]
+  },
+  "pregame": {
+    "delay_probability": 0.2002,
+    "kickoff_delay_probability": 0.07415,
+    "in_game_delay_probability": 0.1354,
+    "multiple_delay_probability": 0.01695,
+    "expected_delay_minutes": 9.423,
+    "hourly_delay_hazard": [
+      {
+        "offset_minutes": -90,
+        "probability": 0.0002791370299384255,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-09-27T22:50:00Z"
+      },
+      {
+        "offset_minutes": -85,
+        "probability": 0.0002791370299384255,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-09-27T22:55:00Z"
+      },
+      {
+        "offset_minutes": -80,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:00:00Z"
+      },
+      {
+        "offset_minutes": -75,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:05:00Z"
+      },
+      {
+        "offset_minutes": -70,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:10:00Z"
+      },
+      {
+        "offset_minutes": -65,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:15:00Z"
+      },
+      {
+        "offset_minutes": -60,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:20:00Z"
+      },
+      {
+        "offset_minutes": -55,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:25:00Z"
+      },
+      {
+        "offset_minutes": -50,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:30:00Z"
+      },
+      {
+        "offset_minutes": -45,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:35:00Z"
+      },
+      {
+        "offset_minutes": -40,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:40:00Z"
+      },
+      {
+        "offset_minutes": -35,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:45:00Z"
+      },
+      {
+        "offset_minutes": -30,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:50:00Z"
+      },
+      {
+        "offset_minutes": -25,
+        "probability": 0.006924382628299419,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-27T23:55:00Z"
+      },
+      {
+        "offset_minutes": -20,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:00:00Z"
+      },
+      {
+        "offset_minutes": -15,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:05:00Z"
+      },
+      {
+        "offset_minutes": -10,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:10:00Z"
+      },
+      {
+        "offset_minutes": -5,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:15:00Z"
+      },
+      {
+        "offset_minutes": 0,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:20:00Z"
+      },
+      {
+        "offset_minutes": 5,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:25:00Z"
+      },
+      {
+        "offset_minutes": 10,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:30:00Z"
+      },
+      {
+        "offset_minutes": 15,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:35:00Z"
+      },
+      {
+        "offset_minutes": 20,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:40:00Z"
+      },
+      {
+        "offset_minutes": 25,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:45:00Z"
+      },
+      {
+        "offset_minutes": 30,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:50:00Z"
+      },
+      {
+        "offset_minutes": 35,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T00:55:00Z"
+      },
+      {
+        "offset_minutes": 40,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:00:00Z"
+      },
+      {
+        "offset_minutes": 45,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:05:00Z"
+      },
+      {
+        "offset_minutes": 50,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:10:00Z"
+      },
+      {
+        "offset_minutes": 55,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:15:00Z"
+      },
+      {
+        "offset_minutes": 60,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:20:00Z"
+      },
+      {
+        "offset_minutes": 65,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:25:00Z"
+      },
+      {
+        "offset_minutes": 70,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:30:00Z"
+      },
+      {
+        "offset_minutes": 75,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:35:00Z"
+      },
+      {
+        "offset_minutes": 80,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:40:00Z"
+      },
+      {
+        "offset_minutes": 85,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:45:00Z"
+      },
+      {
+        "offset_minutes": 90,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:50:00Z"
+      },
+      {
+        "offset_minutes": 95,
+        "probability": 0.004265318777560645,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T01:55:00Z"
+      },
+      {
+        "offset_minutes": 100,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:00:00Z"
+      },
+      {
+        "offset_minutes": 105,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:05:00Z"
+      },
+      {
+        "offset_minutes": 110,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:10:00Z"
+      },
+      {
+        "offset_minutes": 115,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:15:00Z"
+      },
+      {
+        "offset_minutes": 120,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:20:00Z"
+      },
+      {
+        "offset_minutes": 125,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:25:00Z"
+      },
+      {
+        "offset_minutes": 130,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:30:00Z"
+      },
+      {
+        "offset_minutes": 135,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:35:00Z"
+      },
+      {
+        "offset_minutes": 140,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:40:00Z"
+      },
+      {
+        "offset_minutes": 145,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:45:00Z"
+      },
+      {
+        "offset_minutes": 150,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:50:00Z"
+      },
+      {
+        "offset_minutes": 155,
+        "probability": 0.003396053198917559,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T02:55:00Z"
+      },
+      {
+        "offset_minutes": 160,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:00:00Z"
+      },
+      {
+        "offset_minutes": 165,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:05:00Z"
+      },
+      {
+        "offset_minutes": 170,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:10:00Z"
+      },
+      {
+        "offset_minutes": 175,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:15:00Z"
+      },
+      {
+        "offset_minutes": 180,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:20:00Z"
+      },
+      {
+        "offset_minutes": 185,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:25:00Z"
+      },
+      {
+        "offset_minutes": 190,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:30:00Z"
+      },
+      {
+        "offset_minutes": 195,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:35:00Z"
+      },
+      {
+        "offset_minutes": 200,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:40:00Z"
+      },
+      {
+        "offset_minutes": 205,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:45:00Z"
+      },
+      {
+        "offset_minutes": 210,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:50:00Z"
+      },
+      {
+        "offset_minutes": 215,
+        "probability": 0.002535048613836688,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T03:55:00Z"
+      },
+      {
+        "offset_minutes": 220,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:00:00Z"
+      },
+      {
+        "offset_minutes": 225,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:05:00Z"
+      },
+      {
+        "offset_minutes": 230,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:10:00Z"
+      },
+      {
+        "offset_minutes": 235,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:15:00Z"
+      },
+      {
+        "offset_minutes": 240,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:20:00Z"
+      },
+      {
+        "offset_minutes": 245,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:25:00Z"
+      },
+      {
+        "offset_minutes": 250,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:30:00Z"
+      },
+      {
+        "offset_minutes": 255,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:35:00Z"
+      },
+      {
+        "offset_minutes": 260,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:40:00Z"
+      },
+      {
+        "offset_minutes": 265,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:45:00Z"
+      },
+      {
+        "offset_minutes": 270,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:50:00Z"
+      },
+      {
+        "offset_minutes": 275,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T04:55:00Z"
+      },
+      {
+        "offset_minutes": 280,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:00:00Z"
+      },
+      {
+        "offset_minutes": 285,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:05:00Z"
+      },
+      {
+        "offset_minutes": 290,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:10:00Z"
+      },
+      {
+        "offset_minutes": 295,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:15:00Z"
+      },
+      {
+        "offset_minutes": 300,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:20:00Z"
+      },
+      {
+        "offset_minutes": 305,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:25:00Z"
+      },
+      {
+        "offset_minutes": 310,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:30:00Z"
+      },
+      {
+        "offset_minutes": 315,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:35:00Z"
+      },
+      {
+        "offset_minutes": 320,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:40:00Z"
+      },
+      {
+        "offset_minutes": 325,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:45:00Z"
+      },
+      {
+        "offset_minutes": 330,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:50:00Z"
+      },
+      {
+        "offset_minutes": 335,
+        "probability": 0.0008371773591205889,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T05:55:00Z"
+      },
+      {
+        "offset_minutes": 340,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:00:00Z"
+      },
+      {
+        "offset_minutes": 345,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:05:00Z"
+      },
+      {
+        "offset_minutes": 350,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:10:00Z"
+      },
+      {
+        "offset_minutes": 355,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:15:00Z"
+      },
+      {
+        "offset_minutes": 360,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:20:00Z"
+      },
+      {
+        "offset_minutes": 365,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:25:00Z"
+      },
+      {
+        "offset_minutes": 370,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:30:00Z"
+      },
+      {
+        "offset_minutes": 375,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:35:00Z"
+      },
+      {
+        "offset_minutes": 380,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:40:00Z"
+      },
+      {
+        "offset_minutes": 385,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:45:00Z"
+      },
+      {
+        "offset_minutes": 390,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:50:00Z"
+      },
+      {
+        "offset_minutes": 395,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T06:55:00Z"
+      },
+      {
+        "offset_minutes": 400,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:00:00Z"
+      },
+      {
+        "offset_minutes": 405,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:05:00Z"
+      },
+      {
+        "offset_minutes": 410,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:10:00Z"
+      },
+      {
+        "offset_minutes": 415,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:15:00Z"
+      },
+      {
+        "offset_minutes": 420,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:20:00Z"
+      },
+      {
+        "offset_minutes": 425,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:25:00Z"
+      },
+      {
+        "offset_minutes": 430,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:30:00Z"
+      },
+      {
+        "offset_minutes": 435,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:35:00Z"
+      },
+      {
+        "offset_minutes": 440,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:40:00Z"
+      },
+      {
+        "offset_minutes": 445,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:45:00Z"
+      },
+      {
+        "offset_minutes": 450,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:50:00Z"
+      },
+      {
+        "offset_minutes": 455,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T07:55:00Z"
+      },
+      {
+        "offset_minutes": 460,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:00:00Z"
+      },
+      {
+        "offset_minutes": 465,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:05:00Z"
+      },
+      {
+        "offset_minutes": 470,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:10:00Z"
+      },
+      {
+        "offset_minutes": 475,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:15:00Z"
+      },
+      {
+        "offset_minutes": 480,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:20:00Z"
+      },
+      {
+        "offset_minutes": 485,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:25:00Z"
+      },
+      {
+        "offset_minutes": 490,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:30:00Z"
+      },
+      {
+        "offset_minutes": 495,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:35:00Z"
+      },
+      {
+        "offset_minutes": 500,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:40:00Z"
+      },
+      {
+        "offset_minutes": 505,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:45:00Z"
+      },
+      {
+        "offset_minutes": 510,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:50:00Z"
+      },
+      {
+        "offset_minutes": 515,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T08:55:00Z"
+      },
+      {
+        "offset_minutes": 520,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:00:00Z"
+      },
+      {
+        "offset_minutes": 525,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:05:00Z"
+      },
+      {
+        "offset_minutes": 530,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:10:00Z"
+      },
+      {
+        "offset_minutes": 535,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:15:00Z"
+      },
+      {
+        "offset_minutes": 540,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:20:00Z"
+      },
+      {
+        "offset_minutes": 545,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:25:00Z"
+      },
+      {
+        "offset_minutes": 550,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:30:00Z"
+      },
+      {
+        "offset_minutes": 555,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:35:00Z"
+      },
+      {
+        "offset_minutes": 560,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:40:00Z"
+      },
+      {
+        "offset_minutes": 565,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:45:00Z"
+      },
+      {
+        "offset_minutes": 570,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:50:00Z"
+      },
+      {
+        "offset_minutes": 575,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T09:55:00Z"
+      },
+      {
+        "offset_minutes": 580,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:00:00Z"
+      },
+      {
+        "offset_minutes": 585,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:05:00Z"
+      },
+      {
+        "offset_minutes": 590,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:10:00Z"
+      },
+      {
+        "offset_minutes": 595,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:15:00Z"
+      },
+      {
+        "offset_minutes": 600,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:20:00Z"
+      },
+      {
+        "offset_minutes": 605,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:25:00Z"
+      },
+      {
+        "offset_minutes": 610,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:30:00Z"
+      },
+      {
+        "offset_minutes": 615,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:35:00Z"
+      },
+      {
+        "offset_minutes": 620,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:40:00Z"
+      },
+      {
+        "offset_minutes": 625,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:45:00Z"
+      },
+      {
+        "offset_minutes": 630,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:50:00Z"
+      },
+      {
+        "offset_minutes": 635,
+        "probability": 0.001682142552739574,
+        "source": "SPC HREF CT",
+        "valid_at": "2026-09-28T10:55:00Z"
+      }
+    ],
+    "simulation_count": 20000
+  },
+  "delay": {
+    "active": false,
+    "officially_confirmed": false,
+    "model_delay_active": false,
+    "last_qualifying_event_at": null,
+    "earliest_weather_clear_at": null,
+    "weather_clear_cdf": [],
+    "resume_cdf": [],
+    "resume_p50": null,
+    "resume_p75": null,
+    "resume_p90": null,
+    "probability_additional_minutes": {},
+    "holds": [],
+    "source": "policy simulation",
+    "notes": []
+  },
+  "quality": {
+    "weather_data_age_seconds": 40395,
+    "sports_data_age_seconds": 0,
+    "policy_verification": "venue_assumption",
+    "forecast_lead_minutes": 1820,
+    "forecast_scope": "regional_proxy",
+    "missing_sources": [],
+    "degraded": true,
+    "status": "experimental HREF/MRMS/NWS weather-delay model",
+    "message": "HREF/NWS thunder probabilities are regional proxies. Local MRMS lightning grids are unavailable; displayed venue-delay odds are experimental and uncalibrated."
+  }
+}

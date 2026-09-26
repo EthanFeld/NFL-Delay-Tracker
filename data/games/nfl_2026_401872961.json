@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-09-26T17:59:47.534005+00:00",
+  "model_version": "engineering-baseline-0.2.4",
+  "game": {
+    "game_id": "nfl_2026_401872961",
+    "league": "NFL",
+    "season": 2026,
+    "home_team": "New Orleans Saints",
+    "away_team": "Las Vegas Raiders",
+    "venue_id": "venue_caesars_superdome",
+    "venue_name": "Caesars Superdome",
+    "venue_city": "New Orleans",
+    "neutral_site": false,
+    "kickoff_utc": "2026-09-27T20:25:00Z",
+    "status": "scheduled",
+    "status_source": "ESPN public scoreboard; unofficial",
+    "official_delay_active": false,
+    "model_delay_active": false,
+    "delay_started_at": null,
+    "official_resume_at": null,
+    "delay_source_note": null,
+    "home_score": 0,
+    "away_score": 0,
+    "period": 0,
+    "clock": "0:00"
+  },
+  "venue": {
+    "venue_id": "venue_caesars_superdome",
+    "name": "Caesars Superdome",
+    "latitude": 29.9511425,
+    "longitude": -90.0810779,
+    "timezone": "America/Chicago",
+    "roof_type": "fixed_dome",
+    "roof_weather_protection": true,
+    "policy_id": "fixed_dome_indoor",
+    "league": "NFL",
+    "leagues": [
+      "NFL"
+    ],
+    "home_teams": [
+      "New Orleans Saints",
+      "NO"
+    ],
+    "aliases": [
+      "Mercedes-Benz Superdome",
+      "Louisiana Superdome"
+    ],
+    "source_url": "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums",
+    "coordinate_source_url": "https://github.com/greerreNFL/Stadiums/blob/main/data/stadiums.csv",
+    "roof_source_url": "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums",
+    "source_note": "Coordinates and IANA timezone from the public Greerre NFL stadium dataset; current NFL venue names, team assignments and roof classifications checked against the current NFL stadium list. Retractable and partial roofs are conservatively treated as weather-exposed because game-time roof state is not included.",
+    "source_checked_at": "2026-09-20",
+    "city": null,
+    "state": null,
+    "fbs_source_url": null
+  },
+  "policy": {
+    "policy_id": "fixed_dome_indoor",
+    "trigger_radius_miles": 0.0,
+    "monitor_radii_miles": [],
+    "quiet_period_minutes": 0,
+    "warmup_exposure_minutes": 0,
+    "clearance_mode": "indoor_protected",
+    "restart_overhead": {
+      "type": "distribution",
+      "minutes": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "weights": [
+        0.1,
+        0.4,
+        0.35,
+        0.15
+      ]
+    },
+    "verification": "unknown",
+    "source_checked_at": "2026-09-20",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums",
+    "notes": "Exposure classification only, not a venue lightning policy. Assigned only to permanently enclosed fixed-dome venues marked roof_weather_protection: true; outdoor lightning is not modeled as an on-field weather delay while the game is indoors. Roof/weather exposure for retractable stadiums is not assumed protected unless a game-time roof state is available."
+  },
+  "weather": null,
+  "pregame": {
+    "delay_probability": 0.0,
+    "kickoff_delay_probability": 0.0,
+    "in_game_delay_probability": 0.0,
+    "multiple_delay_probability": 0.0,
+    "expected_delay_minutes": 0.0,
+    "hourly_delay_hazard": [],
+    "simulation_count": 0
+  },
+  "delay": {
+    "active": false,
+    "officially_confirmed": false,
+    "model_delay_active": false,
+    "resume_cdf": []
+  },
+  "quality": {
+    "weather_data_age_seconds": null,
+    "sports_data_age_seconds": 0,
+    "policy_verification": "unknown",
+    "forecast_scope": "indoor",
+    "missing_sources": [],
+    "degraded": false,
+    "status": "indoor",
+    "message": "Indoor — lightning delay model disabled"
+  }
+}

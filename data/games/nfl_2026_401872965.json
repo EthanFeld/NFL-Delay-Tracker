@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-09-26T18:00:22.820734+00:00",
+  "model_version": "engineering-baseline-0.2.4",
+  "game": {
+    "game_id": "nfl_2026_401872965",
+    "league": "NFL",
+    "season": 2026,
+    "home_team": "Washington Commanders",
+    "away_team": "Indianapolis Colts",
+    "venue_id": null,
+    "venue_name": "Tottenham Hotspur Stadium",
+    "venue_city": "London",
+    "neutral_site": true,
+    "kickoff_utc": "2026-10-04T13:30:00Z",
+    "status": "scheduled",
+    "status_source": "ESPN public scoreboard; unofficial",
+    "official_delay_active": false,
+    "model_delay_active": false,
+    "delay_started_at": null,
+    "official_resume_at": null,
+    "delay_source_note": null,
+    "home_score": 0,
+    "away_score": 0,
+    "period": 0,
+    "clock": "0:00"
+  },
+  "venue": null,
+  "policy": null,
+  "weather": null,
+  "pregame": null,
+  "delay": {
+    "active": false,
+    "officially_confirmed": false,
+    "model_delay_active": false,
+    "resume_cdf": [],
+    "notes": [
+      "Venue or policy is unresolved."
+    ]
+  },
+  "quality": {
+    "weather_data_age_seconds": null,
+    "sports_data_age_seconds": 0,
+    "policy_verification": "unknown",
+    "forecast_scope": "venue_unresolved",
+    "missing_sources": [
+      "Venue registry or weather policy"
+    ],
+    "degraded": true,
+    "status": "unavailable",
+    "message": "Venue or policy is unresolved."
+  }
+}

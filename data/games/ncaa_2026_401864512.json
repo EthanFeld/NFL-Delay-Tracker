@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-09-26T17:57:53.471525+00:00",
+  "model_version": "engineering-baseline-0.2.4",
+  "game": {
+    "game_id": "ncaa_2026_401864512",
+    "league": "NCAA",
+    "season": 2026,
+    "home_team": "Akron Zips",
+    "away_team": "UNLV Rebels",
+    "venue_id": "venue_infocision_stadiumsumma_field",
+    "venue_name": "InfoCision Stadium–Summa Field",
+    "venue_city": "Akron",
+    "neutral_site": false,
+    "kickoff_utc": "2026-09-26T16:00:00Z",
+    "status": "in_progress",
+    "status_source": "ESPN public scoreboard; unofficial",
+    "official_delay_active": false,
+    "model_delay_active": false,
+    "delay_started_at": null,
+    "official_resume_at": null,
+    "delay_source_note": null,
+    "home_score": 10,
+    "away_score": 21,
+    "period": 3,
+    "clock": "11:43"
+  },
+  "venue": {
+    "venue_id": "venue_infocision_stadiumsumma_field",
+    "name": "InfoCision Stadium–Summa Field",
+    "latitude": 41.0725695,
+    "longitude": -81.5083838,
+    "timezone": "America/New_York",
+    "roof_type": "outdoor",
+    "roof_weather_protection": false,
+    "policy_id": "venue_assumption_8mi_30min",
+    "league": "NCAA",
+    "leagues": [
+      "NCAA"
+    ],
+    "home_teams": [
+      "Akron",
+      "Akron Zips"
+    ],
+    "aliases": [
+      "Summa Field at InfoCision Stadium"
+    ],
+    "source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "coordinate_source_url": "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv",
+    "roof_source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "source_note": "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified.",
+    "source_checked_at": "2026-09-20",
+    "city": null,
+    "state": null,
+    "fbs_source_url": null
+  },
+  "policy": {
+    "policy_id": "venue_assumption_8mi_30min",
+    "trigger_radius_miles": 8.0,
+    "monitor_radii_miles": [
+      10.0,
+      15.0,
+      20.0
+    ],
+    "quiet_period_minutes": 30,
+    "warmup_exposure_minutes": 60,
+    "clearance_mode": "fixed_quiet_period",
+    "restart_overhead": {
+      "type": "distribution",
+      "minutes": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "weights": [
+        0.1,
+        0.4,
+        0.35,
+        0.15
+      ]
+    },
+    "verification": "venue_assumption",
+    "source_checked_at": "2026-09-20",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "notes": "UNVERIFIED project baseline used only where no venue-specific public procedure was sourced: assume an 8-mile lightning trigger and 30-minute quiet period. This is not an official universal NFL or NCAA rule. NCAA safety guidance is venue-specific and is recorded separately; validate each venue procedure before operational use."
+  },
+  "weather": {
+    "venue_id": "venue_infocision_stadiumsumma_field",
+    "fetched_at": "2026-09-26T17:57:29.303960+00:00",
+    "source": "NWS severe thunderstorm warning feed",
+    "hazards": [],
+    "venue_features": {
+      "nws_alerts": {
+        "status": "ok",
+        "fetched_at": "2026-09-26T17:57:29.303960Z",
+        "freshness_seconds": 0,
+        "source_url": "https://api.weather.gov/alerts/active?event=Severe+Thunderstorm+Warning",
+        "has_active_warning": false,
+        "notes": [],
+        "alerts": []
+      },
+      "hrrr_point": {
+        "latitude": 41.0725695,
+        "longitude": -81.5083838,
+        "grid_latitude": 41.06699918714868,
+        "grid_longitude": -81.51852927242203,
+        "grid_distance_km": 1.05217987482697,
+        "issued_at": "2026-09-26T16:00:00Z",
+        "valid_at": "2026-09-26T17:00:00Z",
+        "forecast_hour": 1,
+        "reflectivity_dbz": -10.0,
+        "precipitation_rate_kg_m2_s": 0.0,
+        "cape_j_kg": 0.0,
+        "u_wind_10m_ms": -0.41863441467285156,
+        "v_wind_10m_ms": -3.967998504638672,
+        "wind_speed_10m_ms": 3.9900209154794184,
+        "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20260926/conus/hrrr.t16z.wrfsfcf01.grib2",
+        "field_source_urls": {
+          "reflectivity": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20260926/conus/hrrr.t16z.wrfsfcf01.grib2#bytes=0-215324",
+          "precipitation": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20260926/conus/hrrr.t16z.wrfsfcf01.grib2#bytes=59007529-59039884",
+          "cape": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20260926/conus/hrrr.t16z.wrfsfcf01.grib2#bytes=72590055-73145636",
+          "u_wind": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20260926/conus/hrrr.t16z.wrfsfcf01.grib2#bytes=50566032-52947646",
+          "v_wind": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20260926/conus/hrrr.t16z.wrfsfcf01.grib2#bytes=52947647-55329261"
+        }
+      },
+      "glm_observation": {
+        "satellite": "GOES-19",
+        "latitude": 41.0725695,
+        "longitude": -81.5083838,
+        "radius_miles": 8.0,
+        "flash_count": 0,
+        "duration_seconds": 20.0,
+        "flash_rate_per_minute": 0.0,
+        "flash_density_per_km2_min": 0.0,
+        "valid_start": "2026-09-26T17:57:00Z",
+        "valid_end": "2026-09-26T17:57:20Z",
+        "source_url": "https://noaa-goes19.s3.amazonaws.com/GLM-L2-LCFA/2026/269/17/OR_GLM-L2-LCFA_G19_s20262691757000_e20262691757200_c20262691757215.nc"
+      }
+    },
+    "missing_sources": [
+      "Weather forecast probability inputs"
+    ],
+    "notes": []
+  },
+  "pregame": null,
+  "delay": {
+    "active": false,
+    "officially_confirmed": false,
+    "model_delay_active": false,
+    "resume_cdf": [],
+    "notes": [
+      "Thunder inputs do not cover the full game exposure as clear. A zero delay probability cannot be confirmed."
+    ]
+  },
+  "quality": {
+    "weather_data_age_seconds": null,
+    "sports_data_age_seconds": 0,
+    "policy_verification": "venue_assumption",
+    "forecast_scope": "weather_unavailable",
+    "missing_sources": [
+      "SPC HREF CT thunder probabilities",
+      "NWS probability of thunder",
+      "MRMS lightning observations"
+    ],
+    "degraded": true,
+    "status": "unavailable",
+    "message": "Thunder inputs do not cover the full game exposure as clear. A zero delay probability cannot be confirmed."
+  }
+}
