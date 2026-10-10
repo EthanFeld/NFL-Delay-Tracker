@@ -1,0 +1,1526 @@
+{
+  "generated_at": "2026-10-10T23:53:11.604353Z",
+  "model_version": "engineering-baseline-0.2.4",
+  "game": {
+    "game_id": "ncaa_2026_401866435",
+    "league": "NCAA",
+    "season": 2026,
+    "home_team": "Akron Zips",
+    "away_team": "Eastern Michigan Eagles",
+    "venue_id": "venue_infocision_stadiumsumma_field",
+    "venue_name": "InfoCision Stadium–Summa Field",
+    "venue_city": "Akron",
+    "neutral_site": false,
+    "kickoff_utc": "2026-10-10T19:30:00Z",
+    "status": "in_progress",
+    "status_source": "ESPN public scoreboard; unofficial",
+    "official_delay_active": false,
+    "model_delay_active": false,
+    "delay_started_at": null,
+    "official_resume_at": null,
+    "delay_source_note": null,
+    "home_score": 14,
+    "away_score": 13,
+    "period": 2,
+    "clock": "2:10"
+  },
+  "venue": {
+    "venue_id": "venue_infocision_stadiumsumma_field",
+    "name": "InfoCision Stadium–Summa Field",
+    "latitude": 41.0725695,
+    "longitude": -81.5083838,
+    "timezone": "America/New_York",
+    "roof_type": "outdoor",
+    "roof_weather_protection": false,
+    "policy_id": "venue_assumption_8mi_30min",
+    "league": "NCAA",
+    "leagues": [
+      "NCAA"
+    ],
+    "home_teams": [
+      "Akron",
+      "Akron Zips"
+    ],
+    "aliases": [
+      "Summa Field at InfoCision Stadium"
+    ],
+    "source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "coordinate_source_url": "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv",
+    "roof_source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "source_note": "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified.",
+    "source_checked_at": "2026-09-20",
+    "city": null,
+    "state": null,
+    "fbs_source_url": null
+  },
+  "policy": {
+    "policy_id": "venue_assumption_8mi_30min",
+    "trigger_radius_miles": 8.0,
+    "monitor_radii_miles": [
+      10.0,
+      15.0,
+      20.0
+    ],
+    "quiet_period_minutes": 30,
+    "warmup_exposure_minutes": 60,
+    "clearance_mode": "fixed_quiet_period",
+    "restart_overhead": {
+      "type": "distribution",
+      "minutes": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "weights": [
+        0.1,
+        0.4,
+        0.35,
+        0.15
+      ]
+    },
+    "verification": "venue_assumption",
+    "source_checked_at": "2026-09-20",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "notes": "UNVERIFIED project baseline used only where no venue-specific public procedure was sourced: assume an 8-mile lightning trigger and 30-minute quiet period. This is not an official universal NFL or NCAA rule. NCAA safety guidance is venue-specific and is recorded separately; validate each venue procedure before operational use."
+  },
+  "weather": {
+    "venue_id": "venue_infocision_stadiumsumma_field",
+    "fetched_at": "2026-10-10T22:00:00Z",
+    "source": "MRMS local lightning + NWS regional thunder proxy + HRRR point context + GOES GLM flash observations",
+    "hazards": [
+      {
+        "offset_minutes": 265,
+        "probability": 0.0014867625054691088,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-10T23:55:00Z"
+      },
+      {
+        "offset_minutes": 270,
+        "probability": 0.0013891326974176668,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:00:00Z"
+      },
+      {
+        "offset_minutes": 275,
+        "probability": 0.0012915028893662243,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:05:00Z"
+      },
+      {
+        "offset_minutes": 280,
+        "probability": 0.0011938730813147818,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:10:00Z"
+      },
+      {
+        "offset_minutes": 285,
+        "probability": 0.0010962432732633393,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:15:00Z"
+      },
+      {
+        "offset_minutes": 290,
+        "probability": 0.0009986134652118968,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:20:00Z"
+      },
+      {
+        "offset_minutes": 295,
+        "probability": 0.0,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:25:00Z"
+      },
+      {
+        "offset_minutes": 300,
+        "probability": 0.0,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:30:00Z"
+      },
+      {
+        "offset_minutes": 305,
+        "probability": 0.0,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:35:00Z"
+      },
+      {
+        "offset_minutes": 310,
+        "probability": 0.0,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:40:00Z"
+      },
+      {
+        "offset_minutes": 315,
+        "probability": 0.0,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:45:00Z"
+      },
+      {
+        "offset_minutes": 320,
+        "probability": 0.0,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:50:00Z"
+      },
+      {
+        "offset_minutes": 325,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:55:00Z"
+      },
+      {
+        "offset_minutes": 330,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:00:00Z"
+      },
+      {
+        "offset_minutes": 335,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:05:00Z"
+      },
+      {
+        "offset_minutes": 340,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:10:00Z"
+      },
+      {
+        "offset_minutes": 345,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:15:00Z"
+      },
+      {
+        "offset_minutes": 350,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:20:00Z"
+      },
+      {
+        "offset_minutes": 355,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:25:00Z"
+      },
+      {
+        "offset_minutes": 360,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:30:00Z"
+      },
+      {
+        "offset_minutes": 365,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:35:00Z"
+      },
+      {
+        "offset_minutes": 370,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:40:00Z"
+      },
+      {
+        "offset_minutes": 375,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:45:00Z"
+      },
+      {
+        "offset_minutes": 380,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:50:00Z"
+      },
+      {
+        "offset_minutes": 385,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:55:00Z"
+      },
+      {
+        "offset_minutes": 390,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:00:00Z"
+      },
+      {
+        "offset_minutes": 395,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:05:00Z"
+      },
+      {
+        "offset_minutes": 400,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:10:00Z"
+      },
+      {
+        "offset_minutes": 405,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:15:00Z"
+      },
+      {
+        "offset_minutes": 410,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:20:00Z"
+      },
+      {
+        "offset_minutes": 415,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:25:00Z"
+      },
+      {
+        "offset_minutes": 420,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:30:00Z"
+      },
+      {
+        "offset_minutes": 425,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:35:00Z"
+      },
+      {
+        "offset_minutes": 430,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:40:00Z"
+      },
+      {
+        "offset_minutes": 435,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:45:00Z"
+      },
+      {
+        "offset_minutes": 440,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:50:00Z"
+      },
+      {
+        "offset_minutes": 445,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:55:00Z"
+      },
+      {
+        "offset_minutes": 450,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:00:00Z"
+      },
+      {
+        "offset_minutes": 455,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:05:00Z"
+      },
+      {
+        "offset_minutes": 460,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:10:00Z"
+      },
+      {
+        "offset_minutes": 465,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:15:00Z"
+      },
+      {
+        "offset_minutes": 470,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:20:00Z"
+      },
+      {
+        "offset_minutes": 475,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:25:00Z"
+      },
+      {
+        "offset_minutes": 480,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:30:00Z"
+      },
+      {
+        "offset_minutes": 485,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:35:00Z"
+      },
+      {
+        "offset_minutes": 490,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:40:00Z"
+      },
+      {
+        "offset_minutes": 495,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:45:00Z"
+      },
+      {
+        "offset_minutes": 500,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:50:00Z"
+      },
+      {
+        "offset_minutes": 505,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:55:00Z"
+      },
+      {
+        "offset_minutes": 510,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T04:00:00Z"
+      },
+      {
+        "offset_minutes": 515,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T04:05:00Z"
+      },
+      {
+        "offset_minutes": 520,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T04:10:00Z"
+      },
+      {
+        "offset_minutes": 525,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T04:15:00Z"
+      },
+      {
+        "offset_minutes": 530,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T04:20:00Z"
+      },
+      {
+        "offset_minutes": 535,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T04:25:00Z"
+      }
+    ],
+    "venue_features": {
+      "probability_next_30min": 0.01,
+      "probability_next_60min": 0.01,
+      "cg_density_per_km2_min": {
+        "max": null,
+        "mean": null,
+        "p90": null,
+        "fraction_positive": null,
+        "cells": 0
+      },
+      "last_qualifying_event_at": null,
+      "coverage": {
+        "probability_next_30min": true,
+        "probability_next_60min": true,
+        "cg_density_1min": false
+      },
+      "has_venue_data": true,
+      "product_valid_at": {
+        "probability_next_30min": "2026-10-10T23:48:00Z",
+        "probability_next_60min": "2026-10-10T23:48:00Z",
+        "cg_density_1min": "2026-10-10T23:50:00Z"
+      },
+      "trigger_radius_miles": 8.0,
+      "probability_valid_at": "2026-10-10T23:48:00Z",
+      "density_valid_at": "2026-10-10T23:50:00Z",
+      "rings": {
+        "trigger": {
+          "probability_next_30min": {
+            "max": 1.0,
+            "mean": 1.0,
+            "p90": 1.0,
+            "fraction_positive": 1.0,
+            "cells": 255
+          },
+          "cg_density_1min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          }
+        },
+        "8-10_mi": {
+          "probability_next_30min": {
+            "max": 1.0,
+            "mean": 1.0,
+            "p90": 1.0,
+            "fraction_positive": 1.0,
+            "cells": 138
+          },
+          "cg_density_1min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          }
+        },
+        "10-15_mi": {
+          "probability_next_30min": {
+            "max": 1.0,
+            "mean": 1.0,
+            "p90": 1.0,
+            "fraction_positive": 1.0,
+            "cells": 209
+          },
+          "cg_density_1min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          }
+        },
+        "15-20_mi": {
+          "probability_next_30min": {
+            "max": 1.0,
+            "mean": 1.0,
+            "p90": 1.0,
+            "fraction_positive": 1.0,
+            "cells": 227
+          },
+          "cg_density_1min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          }
+        },
+        "20-30_mi": {
+          "probability_next_30min": {
+            "max": 1.0,
+            "mean": 1.0,
+            "p90": 1.0,
+            "fraction_positive": 1.0,
+            "cells": 881
+          },
+          "cg_density_1min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          }
+        }
+      },
+      "storm_echoes": {
+        "valid_at": "2026-10-10T23:50:00Z",
+        "source_url": "https://mrms.ncep.noaa.gov/2D/MergedReflectivityQComposite/MRMS_MergedReflectivityQComposite.latest.grib2.gz",
+        "threshold_dbz": 35.0,
+        "coverage_cells": 28224,
+        "objects": [
+          {
+            "latitude": 41.116565737549124,
+            "longitude": -81.6922655848208,
+            "distance_miles": 0.24341245711652876,
+            "max_reflectivity_dbz": 50.800000000000004,
+            "cells": 3520,
+            "effective_radius_miles": 20.765355763867856
+          },
+          {
+            "latitude": 40.956111512336854,
+            "longitude": -81.49277916375354,
+            "distance_miles": 6.743687917147277,
+            "max_reflectivity_dbz": 37.5,
+            "cells": 9,
+            "effective_radius_miles": 1.0499999999999998
+          },
+          {
+            "latitude": 40.961667067733636,
+            "longitude": -81.53666805138829,
+            "distance_miles": 7.0063949738831,
+            "max_reflectivity_dbz": 37.300000000000004,
+            "cells": 6,
+            "effective_radius_miles": 0.8573214099741122
+          },
+          {
+            "latitude": 40.96824062434279,
+            "longitude": -81.2439958064927,
+            "distance_miles": 8.630602453804842,
+            "max_reflectivity_dbz": 43.800000000000004,
+            "cells": 358,
+            "effective_radius_miles": 6.622310774948575
+          },
+          {
+            "latitude": 41.16500039525579,
+            "longitude": -81.66973822302435,
+            "distance_miles": 8.810892678821208,
+            "max_reflectivity_dbz": 41.7,
+            "cells": 19,
+            "effective_radius_miles": 1.5256146302392357
+          },
+          {
+            "latitude": 41.057500398328095,
+            "longitude": -81.32750139069867,
+            "distance_miles": 9.046791763243046,
+            "max_reflectivity_dbz": 38.0,
+            "cells": 4,
+            "effective_radius_miles": 0.7
+          },
+          {
+            "latitude": 41.06000039825665,
+            "longitude": -81.30250139141305,
+            "distance_miles": 10.594918130632674,
+            "max_reflectivity_dbz": 36.800000000000004,
+            "cells": 4,
+            "effective_radius_miles": 0.7
+          },
+          {
+            "latitude": 41.27250039218348,
+            "longitude": -81.42500138791257,
+            "distance_miles": 13.98514090725161,
+            "max_reflectivity_dbz": 37.0,
+            "cells": 4,
+            "effective_radius_miles": 0.7
+          },
+          {
+            "latitude": 41.25500039268362,
+            "longitude": -81.6400013817688,
+            "distance_miles": 14.221705273359976,
+            "max_reflectivity_dbz": 37.300000000000004,
+            "cells": 2,
+            "effective_radius_miles": 0.4949747468305833
+          },
+          {
+            "latitude": 41.28500039182623,
+            "longitude": -81.36000138976999,
+            "distance_miles": 16.462967909104545,
+            "max_reflectivity_dbz": 37.0,
+            "cells": 2,
+            "effective_radius_miles": 0.4949747468305833
+          },
+          {
+            "latitude": 40.97000040082881,
+            "longitude": -81.80500137705383,
+            "distance_miles": 16.86740430480242,
+            "max_reflectivity_dbz": 37.5,
+            "cells": 2,
+            "effective_radius_miles": 0.4949747468305833
+          },
+          {
+            "latitude": 41.303333724635614,
+            "longitude": -81.31833472429395,
+            "distance_miles": 18.366020255524536,
+            "max_reflectivity_dbz": 36.5,
+            "cells": 6,
+            "effective_radius_miles": 0.8573214099741122
+          }
+        ]
+      },
+      "sources": {
+        "probability_next_30min": "https://mrms.ncep.noaa.gov/2D/LightningProbabilityNext30min/MRMS_LightningProbabilityNext30min.latest.grib2.gz",
+        "probability_next_60min": "https://mrms.ncep.noaa.gov/2D/LightningProbabilityNext60min/MRMS_LightningProbabilityNext60min.latest.grib2.gz",
+        "cg_density_1min": "https://mrms.ncep.noaa.gov/2D/NLDN_CG_001min_AvgDensity/MRMS_NLDN_CG_001min_AvgDensity.latest.grib2.gz",
+        "storm_motion_reflectivity": "https://mrms.ncep.noaa.gov/2D/MergedReflectivityQComposite/MRMS_MergedReflectivityQComposite.latest.grib2.gz"
+      },
+      "storm_motion": {
+        "status": "no_history",
+        "track_id": "mrms:20261010T235000:5",
+        "observed_at": "2026-10-10T23:50:00+00:00",
+        "observation_age_minutes": 3.1934058833333334,
+        "bearing_degrees": null,
+        "speed_mph": null,
+        "radial_speed_toward_mph": null,
+        "radial_speed_uncertainty_mph": null,
+        "distance_to_policy_boundary_miles": 0.7802302765292108,
+        "eta_minutes": null,
+        "eta_lower_minutes": null,
+        "eta_upper_minutes": null,
+        "max_reflectivity_dbz": 38.0,
+        "cells": 4,
+        "latitude": 41.057500398328095,
+        "longitude": -81.32750139069867,
+        "coverage_cells": 28224,
+        "source_url": "https://mrms.ncep.noaa.gov/2D/MergedReflectivityQComposite/MRMS_MergedReflectivityQComposite.latest.grib2.gz",
+        "threshold_dbz": 35.0,
+        "tracks": [
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261010T235000:5",
+            "observed_at": "2026-10-10T23:50:00+00:00",
+            "observation_age_minutes": 3.1934058833333334,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 0.7802302765292108,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 38.0,
+            "cells": 4,
+            "latitude": 41.057500398328095,
+            "longitude": -81.32750139069867
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261010T235000:3",
+            "observed_at": "2026-10-10T23:50:00+00:00",
+            "observation_age_minutes": 3.1934058833333334,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 0.9313023928125794,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 43.800000000000004,
+            "cells": 358,
+            "latitude": 40.96824062434279,
+            "longitude": -81.2439958064927
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261010T235000:4",
+            "observed_at": "2026-10-10T23:50:00+00:00",
+            "observation_age_minutes": 3.1934058833333334,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 1.0254091786227184,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 41.7,
+            "cells": 19,
+            "latitude": 41.16500039525579,
+            "longitude": -81.66973822302435
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261010T235000:6",
+            "observed_at": "2026-10-10T23:50:00+00:00",
+            "observation_age_minutes": 3.1934058833333334,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 2.060130459535725,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 36.800000000000004,
+            "cells": 4,
+            "latitude": 41.06000039825665,
+            "longitude": -81.30250139141305
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261010T235000:7",
+            "observed_at": "2026-10-10T23:50:00+00:00",
+            "observation_age_minutes": 3.1934058833333334,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 5.778612820986434,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 37.0,
+            "cells": 4,
+            "latitude": 41.27250039218348,
+            "longitude": -81.42500138791257
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261010T235000:8",
+            "observed_at": "2026-10-10T23:50:00+00:00",
+            "observation_age_minutes": 3.1934058833333334,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 5.849025194376522,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 37.300000000000004,
+            "cells": 2,
+            "latitude": 41.25500039268362,
+            "longitude": -81.6400013817688
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261010T235000:9",
+            "observed_at": "2026-10-10T23:50:00+00:00",
+            "observation_age_minutes": 3.1934058833333334,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 8.08738115817822,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 37.0,
+            "cells": 2,
+            "latitude": 41.28500039182623,
+            "longitude": -81.36000138976999
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261010T235000:10",
+            "observed_at": "2026-10-10T23:50:00+00:00",
+            "observation_age_minutes": 3.1934058833333334,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 8.513983411443734,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 37.5,
+            "cells": 2,
+            "latitude": 40.97000040082881,
+            "longitude": -81.80500137705383
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261010T235000:11",
+            "observed_at": "2026-10-10T23:50:00+00:00",
+            "observation_age_minutes": 3.1934058833333334,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 9.900917462815308,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 36.5,
+            "cells": 6,
+            "latitude": 41.303333724635614,
+            "longitude": -81.31833472429395
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261010T235000:0",
+            "observed_at": "2026-10-10T23:50:00+00:00",
+            "observation_age_minutes": 3.1934058833333334,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 0.0,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 50.800000000000004,
+            "cells": 3520,
+            "latitude": 41.116565737549124,
+            "longitude": -81.6922655848208
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261010T235000:1",
+            "observed_at": "2026-10-10T23:50:00+00:00",
+            "observation_age_minutes": 3.1934058833333334,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 0.0,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 37.5,
+            "cells": 9,
+            "latitude": 40.956111512336854,
+            "longitude": -81.49277916375354
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261010T235000:2",
+            "observed_at": "2026-10-10T23:50:00+00:00",
+            "observation_age_minutes": 3.1934058833333334,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 0.0,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 37.300000000000004,
+            "cells": 6,
+            "latitude": 40.961667067733636,
+            "longitude": -81.53666805138829
+          }
+        ],
+        "objects": [
+          {
+            "latitude": 41.116565737549124,
+            "longitude": -81.6922655848208,
+            "distance_miles": 0.24341245711652876,
+            "max_reflectivity_dbz": 50.800000000000004,
+            "cells": 3520,
+            "effective_radius_miles": 20.765355763867856,
+            "track_id": "mrms:20261010T235000:0"
+          },
+          {
+            "latitude": 40.956111512336854,
+            "longitude": -81.49277916375354,
+            "distance_miles": 6.743687917147277,
+            "max_reflectivity_dbz": 37.5,
+            "cells": 9,
+            "effective_radius_miles": 1.0499999999999998,
+            "track_id": "mrms:20261010T235000:1"
+          },
+          {
+            "latitude": 40.961667067733636,
+            "longitude": -81.53666805138829,
+            "distance_miles": 7.0063949738831,
+            "max_reflectivity_dbz": 37.300000000000004,
+            "cells": 6,
+            "effective_radius_miles": 0.8573214099741122,
+            "track_id": "mrms:20261010T235000:2"
+          },
+          {
+            "latitude": 40.96824062434279,
+            "longitude": -81.2439958064927,
+            "distance_miles": 8.630602453804842,
+            "max_reflectivity_dbz": 43.800000000000004,
+            "cells": 358,
+            "effective_radius_miles": 6.622310774948575,
+            "track_id": "mrms:20261010T235000:3"
+          },
+          {
+            "latitude": 41.16500039525579,
+            "longitude": -81.66973822302435,
+            "distance_miles": 8.810892678821208,
+            "max_reflectivity_dbz": 41.7,
+            "cells": 19,
+            "effective_radius_miles": 1.5256146302392357,
+            "track_id": "mrms:20261010T235000:4"
+          },
+          {
+            "latitude": 41.057500398328095,
+            "longitude": -81.32750139069867,
+            "distance_miles": 9.046791763243046,
+            "max_reflectivity_dbz": 38.0,
+            "cells": 4,
+            "effective_radius_miles": 0.7,
+            "track_id": "mrms:20261010T235000:5"
+          },
+          {
+            "latitude": 41.06000039825665,
+            "longitude": -81.30250139141305,
+            "distance_miles": 10.594918130632674,
+            "max_reflectivity_dbz": 36.800000000000004,
+            "cells": 4,
+            "effective_radius_miles": 0.7,
+            "track_id": "mrms:20261010T235000:6"
+          },
+          {
+            "latitude": 41.27250039218348,
+            "longitude": -81.42500138791257,
+            "distance_miles": 13.98514090725161,
+            "max_reflectivity_dbz": 37.0,
+            "cells": 4,
+            "effective_radius_miles": 0.7,
+            "track_id": "mrms:20261010T235000:7"
+          },
+          {
+            "latitude": 41.25500039268362,
+            "longitude": -81.6400013817688,
+            "distance_miles": 14.221705273359976,
+            "max_reflectivity_dbz": 37.300000000000004,
+            "cells": 2,
+            "effective_radius_miles": 0.4949747468305833,
+            "track_id": "mrms:20261010T235000:8"
+          },
+          {
+            "latitude": 41.28500039182623,
+            "longitude": -81.36000138976999,
+            "distance_miles": 16.462967909104545,
+            "max_reflectivity_dbz": 37.0,
+            "cells": 2,
+            "effective_radius_miles": 0.4949747468305833,
+            "track_id": "mrms:20261010T235000:9"
+          },
+          {
+            "latitude": 40.97000040082881,
+            "longitude": -81.80500137705383,
+            "distance_miles": 16.86740430480242,
+            "max_reflectivity_dbz": 37.5,
+            "cells": 2,
+            "effective_radius_miles": 0.4949747468305833,
+            "track_id": "mrms:20261010T235000:10"
+          },
+          {
+            "latitude": 41.303333724635614,
+            "longitude": -81.31833472429395,
+            "distance_miles": 18.366020255524536,
+            "max_reflectivity_dbz": 36.5,
+            "cells": 6,
+            "effective_radius_miles": 0.8573214099741122,
+            "track_id": "mrms:20261010T235000:11"
+          }
+        ],
+        "track_history": {
+          "mrms:20261010T235000:0": [
+            {
+              "track_id": "mrms:20261010T235000:0",
+              "observed_at": "2026-10-10T23:50:00+00:00",
+              "latitude": 41.116565737549124,
+              "longitude": -81.6922655848208,
+              "effective_radius_miles": 20.765355763867856
+            }
+          ],
+          "mrms:20261010T235000:1": [
+            {
+              "track_id": "mrms:20261010T235000:1",
+              "observed_at": "2026-10-10T23:50:00+00:00",
+              "latitude": 40.956111512336854,
+              "longitude": -81.49277916375354,
+              "effective_radius_miles": 1.0499999999999998
+            }
+          ],
+          "mrms:20261010T235000:2": [
+            {
+              "track_id": "mrms:20261010T235000:2",
+              "observed_at": "2026-10-10T23:50:00+00:00",
+              "latitude": 40.961667067733636,
+              "longitude": -81.53666805138829,
+              "effective_radius_miles": 0.8573214099741122
+            }
+          ],
+          "mrms:20261010T235000:3": [
+            {
+              "track_id": "mrms:20261010T235000:3",
+              "observed_at": "2026-10-10T23:50:00+00:00",
+              "latitude": 40.96824062434279,
+              "longitude": -81.2439958064927,
+              "effective_radius_miles": 6.622310774948575
+            }
+          ],
+          "mrms:20261010T235000:4": [
+            {
+              "track_id": "mrms:20261010T235000:4",
+              "observed_at": "2026-10-10T23:50:00+00:00",
+              "latitude": 41.16500039525579,
+              "longitude": -81.66973822302435,
+              "effective_radius_miles": 1.5256146302392357
+            }
+          ],
+          "mrms:20261010T235000:5": [
+            {
+              "track_id": "mrms:20261010T235000:5",
+              "observed_at": "2026-10-10T23:50:00+00:00",
+              "latitude": 41.057500398328095,
+              "longitude": -81.32750139069867,
+              "effective_radius_miles": 0.7
+            }
+          ],
+          "mrms:20261010T235000:6": [
+            {
+              "track_id": "mrms:20261010T235000:6",
+              "observed_at": "2026-10-10T23:50:00+00:00",
+              "latitude": 41.06000039825665,
+              "longitude": -81.30250139141305,
+              "effective_radius_miles": 0.7
+            }
+          ],
+          "mrms:20261010T235000:7": [
+            {
+              "track_id": "mrms:20261010T235000:7",
+              "observed_at": "2026-10-10T23:50:00+00:00",
+              "latitude": 41.27250039218348,
+              "longitude": -81.42500138791257,
+              "effective_radius_miles": 0.7
+            }
+          ],
+          "mrms:20261010T235000:8": [
+            {
+              "track_id": "mrms:20261010T235000:8",
+              "observed_at": "2026-10-10T23:50:00+00:00",
+              "latitude": 41.25500039268362,
+              "longitude": -81.6400013817688,
+              "effective_radius_miles": 0.4949747468305833
+            }
+          ],
+          "mrms:20261010T235000:9": [
+            {
+              "track_id": "mrms:20261010T235000:9",
+              "observed_at": "2026-10-10T23:50:00+00:00",
+              "latitude": 41.28500039182623,
+              "longitude": -81.36000138976999,
+              "effective_radius_miles": 0.4949747468305833
+            }
+          ],
+          "mrms:20261010T235000:10": [
+            {
+              "track_id": "mrms:20261010T235000:10",
+              "observed_at": "2026-10-10T23:50:00+00:00",
+              "latitude": 40.97000040082881,
+              "longitude": -81.80500137705383,
+              "effective_radius_miles": 0.4949747468305833
+            }
+          ],
+          "mrms:20261010T235000:11": [
+            {
+              "track_id": "mrms:20261010T235000:11",
+              "observed_at": "2026-10-10T23:50:00+00:00",
+              "latitude": 41.303333724635614,
+              "longitude": -81.31833472429395,
+              "effective_radius_miles": 0.8573214099741122
+            }
+          ]
+        }
+      },
+      "href_hourly": [],
+      "nws_alerts": {
+        "status": "ok",
+        "fetched_at": "2026-10-10T23:52:44.291946Z",
+        "freshness_seconds": 0,
+        "source_url": "https://api.weather.gov/alerts/active?event=Severe+Thunderstorm+Warning",
+        "has_active_warning": false,
+        "notes": [],
+        "alerts": []
+      },
+      "hrrr_point": {
+        "latitude": 41.0725695,
+        "longitude": -81.5083838,
+        "grid_latitude": 41.06699918714868,
+        "grid_longitude": -81.51852927242203,
+        "grid_distance_km": 1.05217987482697,
+        "issued_at": "2026-10-10T22:00:00Z",
+        "valid_at": "2026-10-10T23:00:00Z",
+        "forecast_hour": 1,
+        "reflectivity_dbz": 23.8125,
+        "precipitation_rate_kg_m2_s": 0.0,
+        "cape_j_kg": 0.0,
+        "u_wind_10m_ms": -1.9424362182617188,
+        "v_wind_10m_ms": 0.8740234375,
+        "wind_speed_10m_ms": 2.1300177068076698,
+        "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20261010/conus/hrrr.t22z.wrfsfcf01.grib2",
+        "field_source_urls": {
+          "reflectivity": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20261010/conus/hrrr.t22z.wrfsfcf01.grib2#bytes=0-533572",
+          "precipitation": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20261010/conus/hrrr.t22z.wrfsfcf01.grib2#bytes=63101156-63204236",
+          "cape": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20261010/conus/hrrr.t22z.wrfsfcf01.grib2#bytes=75576733-76275068",
+          "u_wind": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20261010/conus/hrrr.t22z.wrfsfcf01.grib2#bytes=54340220-56721834",
+          "v_wind": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20261010/conus/hrrr.t22z.wrfsfcf01.grib2#bytes=56721835-59103449"
+        }
+      },
+      "glm_observation": {
+        "satellite": "GOES-19",
+        "latitude": 41.0725695,
+        "longitude": -81.5083838,
+        "radius_miles": 8.0,
+        "flash_count": 0,
+        "duration_seconds": 20.0,
+        "flash_rate_per_minute": 0.0,
+        "flash_density_per_km2_min": 0.0,
+        "valid_start": "2026-10-10T23:52:00Z",
+        "valid_end": "2026-10-10T23:52:20Z",
+        "source_url": "https://noaa-goes19.s3.amazonaws.com/GLM-L2-LCFA/2026/283/23/OR_GLM-L2-LCFA_G19_s20262832352000_e20262832352200_c20262832352221.nc"
+      }
+    },
+    "missing_sources": [
+      "MRMS current lightning density",
+      "SPC HREF CT calibrated thunder"
+    ],
+    "notes": [
+      "MRMS probabilities are sampled conservatively within the configured radius; NLDN CG density is a one-minute public proxy, not the venue operational lightning network.",
+      "NWS thunder probability is a regional forecast proxy, not a calibrated venue-specific policy probability."
+    ]
+  },
+  "pregame": {
+    "delay_probability": 0.00615,
+    "kickoff_delay_probability": 0.0,
+    "in_game_delay_probability": 0.00615,
+    "multiple_delay_probability": 0.0,
+    "expected_delay_minutes": 0.26375,
+    "hourly_delay_hazard": [
+      {
+        "offset_minutes": 265,
+        "probability": 0.0014867625054691088,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-10T23:55:00Z"
+      },
+      {
+        "offset_minutes": 270,
+        "probability": 0.0013891326974176668,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:00:00Z"
+      },
+      {
+        "offset_minutes": 275,
+        "probability": 0.0012915028893662243,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:05:00Z"
+      },
+      {
+        "offset_minutes": 280,
+        "probability": 0.0011938730813147818,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:10:00Z"
+      },
+      {
+        "offset_minutes": 285,
+        "probability": 0.0010962432732633393,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:15:00Z"
+      },
+      {
+        "offset_minutes": 290,
+        "probability": 0.0009986134652118968,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:20:00Z"
+      },
+      {
+        "offset_minutes": 295,
+        "probability": 0.0,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:25:00Z"
+      },
+      {
+        "offset_minutes": 300,
+        "probability": 0.0,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:30:00Z"
+      },
+      {
+        "offset_minutes": 305,
+        "probability": 0.0,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:35:00Z"
+      },
+      {
+        "offset_minutes": 310,
+        "probability": 0.0,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:40:00Z"
+      },
+      {
+        "offset_minutes": 315,
+        "probability": 0.0,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:45:00Z"
+      },
+      {
+        "offset_minutes": 320,
+        "probability": 0.0,
+        "source": "MRMS nowcast + NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:50:00Z"
+      },
+      {
+        "offset_minutes": 325,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T00:55:00Z"
+      },
+      {
+        "offset_minutes": 330,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:00:00Z"
+      },
+      {
+        "offset_minutes": 335,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:05:00Z"
+      },
+      {
+        "offset_minutes": 340,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:10:00Z"
+      },
+      {
+        "offset_minutes": 345,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:15:00Z"
+      },
+      {
+        "offset_minutes": 350,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:20:00Z"
+      },
+      {
+        "offset_minutes": 355,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:25:00Z"
+      },
+      {
+        "offset_minutes": 360,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:30:00Z"
+      },
+      {
+        "offset_minutes": 365,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:35:00Z"
+      },
+      {
+        "offset_minutes": 370,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:40:00Z"
+      },
+      {
+        "offset_minutes": 375,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:45:00Z"
+      },
+      {
+        "offset_minutes": 380,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:50:00Z"
+      },
+      {
+        "offset_minutes": 385,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T01:55:00Z"
+      },
+      {
+        "offset_minutes": 390,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:00:00Z"
+      },
+      {
+        "offset_minutes": 395,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:05:00Z"
+      },
+      {
+        "offset_minutes": 400,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:10:00Z"
+      },
+      {
+        "offset_minutes": 405,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:15:00Z"
+      },
+      {
+        "offset_minutes": 410,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:20:00Z"
+      },
+      {
+        "offset_minutes": 415,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:25:00Z"
+      },
+      {
+        "offset_minutes": 420,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:30:00Z"
+      },
+      {
+        "offset_minutes": 425,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:35:00Z"
+      },
+      {
+        "offset_minutes": 430,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:40:00Z"
+      },
+      {
+        "offset_minutes": 435,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:45:00Z"
+      },
+      {
+        "offset_minutes": 440,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:50:00Z"
+      },
+      {
+        "offset_minutes": 445,
+        "probability": 0.0,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T02:55:00Z"
+      },
+      {
+        "offset_minutes": 450,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:00:00Z"
+      },
+      {
+        "offset_minutes": 455,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:05:00Z"
+      },
+      {
+        "offset_minutes": 460,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:10:00Z"
+      },
+      {
+        "offset_minutes": 465,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:15:00Z"
+      },
+      {
+        "offset_minutes": 470,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:20:00Z"
+      },
+      {
+        "offset_minutes": 475,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:25:00Z"
+      },
+      {
+        "offset_minutes": 480,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:30:00Z"
+      },
+      {
+        "offset_minutes": 485,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:35:00Z"
+      },
+      {
+        "offset_minutes": 490,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:40:00Z"
+      },
+      {
+        "offset_minutes": 495,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:45:00Z"
+      },
+      {
+        "offset_minutes": 500,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:50:00Z"
+      },
+      {
+        "offset_minutes": 505,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T03:55:00Z"
+      },
+      {
+        "offset_minutes": 510,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T04:00:00Z"
+      },
+      {
+        "offset_minutes": 515,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T04:05:00Z"
+      },
+      {
+        "offset_minutes": 520,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T04:10:00Z"
+      },
+      {
+        "offset_minutes": 525,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T04:15:00Z"
+      },
+      {
+        "offset_minutes": 530,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T04:20:00Z"
+      },
+      {
+        "offset_minutes": 535,
+        "probability": 0.0005610288787873952,
+        "source": "NWS regional thunder proxy",
+        "valid_at": "2026-10-11T04:25:00Z"
+      }
+    ],
+    "simulation_count": 20000
+  },
+  "delay": {
+    "active": false,
+    "officially_confirmed": false,
+    "model_delay_active": false,
+    "last_qualifying_event_at": null,
+    "earliest_weather_clear_at": null,
+    "weather_clear_cdf": [],
+    "resume_cdf": [],
+    "resume_p50": null,
+    "resume_p75": null,
+    "resume_p90": null,
+    "probability_additional_minutes": {},
+    "holds": [],
+    "source": "policy simulation",
+    "notes": []
+  },
+  "quality": {
+    "weather_data_age_seconds": 6791,
+    "sports_data_age_seconds": 0,
+    "policy_verification": "venue_assumption",
+    "forecast_lead_minutes": -263,
+    "forecast_scope": "venue_nowcast_model",
+    "missing_sources": [
+      "MRMS current lightning density",
+      "SPC HREF CT calibrated thunder"
+    ],
+    "degraded": true,
+    "status": "experimental HREF/MRMS/NWS weather-delay model",
+    "message": "Local MRMS nowcast contributes to this experimental delay estimate; venue-level probabilities are not calibrated to representative outcomes."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-10-10T23:52:50.414390+00:00",
+  "model_version": "engineering-baseline-0.2.4",
+  "game": {
+    "game_id": "ncaa_2026_401856717",
+    "league": "NCAA",
+    "season": 2026,
+    "home_team": "Oklahoma Sooners",
+    "away_team": "Texas Longhorns",
+    "venue_id": null,
+    "venue_name": "Cotton Bowl",
+    "venue_city": "Dallas",
+    "neutral_site": true,
+    "kickoff_utc": "2026-10-10T19:30:00Z",
+    "status": "completed",
+    "status_source": "ESPN public scoreboard; unofficial",
+    "official_delay_active": false,
+    "model_delay_active": false,
+    "delay_started_at": null,
+    "official_resume_at": null,
+    "delay_source_note": null,
+    "home_score": 27,
+    "away_score": 24,
+    "period": 4,
+    "clock": "0:00"
+  },
+  "venue": null,
+  "policy": null,
+  "weather": null,
+  "pregame": null,
+  "delay": {
+    "active": false,
+    "officially_confirmed": false,
+    "model_delay_active": false,
+    "resume_cdf": [],
+    "notes": [
+      "Venue or policy is unresolved."
+    ]
+  },
+  "quality": {
+    "weather_data_age_seconds": null,
+    "sports_data_age_seconds": 0,
+    "policy_verification": "unknown",
+    "forecast_scope": "venue_unresolved",
+    "missing_sources": [
+      "Venue registry or weather policy"
+    ],
+    "degraded": true,
+    "status": "unavailable",
+    "message": "Venue or policy is unresolved."
+  }
+}
