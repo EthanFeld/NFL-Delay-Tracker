@@ -1,0 +1,112 @@
+{
+  "version": "20261017T184837Z",
+  "generated_at": "2026-10-17T18:48:37.602462Z",
+  "sources": {
+    "nfl_scoreboard": {
+      "status": "ok",
+      "updated_at": "2026-10-17T18:46:04.779080+00:00",
+      "message": "Public scoreboard; unofficial source"
+    },
+    "college_scoreboard": {
+      "status": "degraded",
+      "updated_at": "2026-10-17T18:46:05.092642+00:00",
+      "message": "2026-10-16: GET https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261016&limit=1000&groups=80 failed: <urlopen error _ssl.c:1015: The handshake operation timed out>"
+    },
+    "nfl_schedule": {
+      "status": "ok",
+      "updated_at": "2026-10-17T18:46:04.779080+00:00",
+      "message": "Public scoreboard; unofficial source"
+    },
+    "college_schedule": {
+      "status": "degraded",
+      "updated_at": "2026-10-17T18:46:05.092642+00:00",
+      "message": "2026-10-16: GET https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261016&limit=1000&groups=80 failed: <urlopen error _ssl.c:1015: The handshake operation timed out>"
+    },
+    "nws_forecast": {
+      "status": "partial",
+      "updated_at": "2026-10-17T15:39:13+00:00",
+      "age_seconds": 11311,
+      "age_minutes": 188.51666666666668,
+      "freshness_limit_minutes": 720,
+      "venues_considered": 35,
+      "venue_status": {
+        "ok": 34,
+        "degraded": 0,
+        "stale": 0,
+        "error": 1
+      },
+      "message": "NWS probabilityOfThunder regional proxy; not venue-radius observations. Venue results: 34 current, 0 empty, 0 stale, 1 errors."
+    },
+    "nws_alerts": {
+      "status": "ok",
+      "updated_at": "2026-10-17T18:46:31.147055+00:00",
+      "url": "https://api.weather.gov/alerts/active?event=Severe+Thunderstorm+Warning",
+      "venues_checked": 158,
+      "venue_alert_matches": 0,
+      "venues_with_active_warnings": 0,
+      "message": "Official NWS severe thunderstorm warning feed; polygons matched to venues"
+    },
+    "mrms_lightning": {
+      "status": "no_venue_data",
+      "updated_at": "2026-10-17T18:44:00+00:00",
+      "url": "https://mrms.ncep.noaa.gov/2D/LightningProbabilityNext30min/MRMS_LightningProbabilityNext30min.latest.grib2.gz",
+      "message": "Venue grids: 0 complete, 0 partial, 25 without coverage, 0 stale. MRMS is a regional public proxy, not the venue operational sensor.",
+      "venue_coverage": {
+        "covered": 0,
+        "partial": 0,
+        "no_coverage": 25,
+        "stale": 0
+      }
+    },
+    "mrms_storm_motion": {
+      "status": "ok",
+      "updated_at": "2026-10-17T18:44:00+00:00",
+      "url": "https://mrms.ncep.noaa.gov/2D/MergedReflectivityQComposite/MRMS_MergedReflectivityQComposite.latest.grib2.gz",
+      "message": "MRMS reflectivity object motion is experimental and does not identify lightning."
+    },
+    "href_calibrated_thunder": {
+      "status": "cached",
+      "updated_at": "2026-10-17T12:00:00+00:00",
+      "retrieved_at": "2026-10-17T18:46:31.147055+00:00",
+      "age_seconds": 24391,
+      "age_minutes": 406.51666666666665,
+      "freshness_limit_minutes": 1080,
+      "venues_with_cached_data": 22,
+      "message": "HREF downloads are skipped on the five-minute live refresh."
+    },
+    "open_meteo_ifs_ensemble": {
+      "status": "ok",
+      "updated_at": "2026-10-17T18:48:37.593970+00:00",
+      "retrieved_at": "2026-10-17T18:48:37.602327+00:00",
+      "age_seconds": 0,
+      "age_minutes": 0.0,
+      "freshness_limit_minutes": 360,
+      "venues_considered": 3,
+      "venues_with_data": 3,
+      "url": "https://ensemble-api.open-meteo.com/v1/ensemble?latitude=33.5278&longitude=-112.2626&models=ecmwf_ifs025_ensemble&hourly=weather_code&forecast_days=15&timezone=GMT",
+      "message": "Global ECMWF IFS ensemble weather-code conditions only; approximately 25 km grid; 3-hour steps through 144 hours, 6-hour steps afterward. This field cannot estimate thunderstorms, venue delay odds, or observed storm motion."
+    },
+    "hrrr": {
+      "status": "ok",
+      "updated_at": "2026-10-17T12:00:00+00:00",
+      "retrieved_at": "2026-10-17T18:48:37.602437+00:00",
+      "age_seconds": 24517,
+      "age_minutes": 408.6166666666667,
+      "freshness_limit_minutes": 720,
+      "games_considered": 35,
+      "games_with_data": 35,
+      "message": "HRRR nearest-grid reflectivity, rain rate, CAPE and wind; supporting context only."
+    },
+    "glm": {
+      "status": "ok",
+      "updated_at": "2026-10-17T18:46:20+00:00",
+      "retrieved_at": "2026-10-17T18:48:37.602459+00:00",
+      "age_seconds": 137,
+      "freshness_limit_minutes": 30,
+      "games_considered": 25,
+      "games_with_data": 25,
+      "message": "GOES GLM total-flash observations; satellite proxy, not a venue sensor."
+    }
+  },
+  "game_index_url": "games/index.json"
+}
