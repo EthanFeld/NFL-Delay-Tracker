@@ -1,0 +1,101 @@
+{
+  "version": "20261031T100028Z",
+  "generated_at": "2026-10-31T10:00:28.156311Z",
+  "sources": {
+    "nfl_scoreboard": {
+      "status": "ok",
+      "updated_at": "2026-10-31T09:47:18.619185+00:00",
+      "message": "Public scoreboard; unofficial source"
+    },
+    "college_scoreboard": {
+      "status": "ok",
+      "updated_at": "2026-10-31T09:47:19.117450+00:00",
+      "message": "Public scoreboard; unofficial source"
+    },
+    "nfl_schedule": {
+      "status": "ok",
+      "updated_at": "2026-10-31T09:47:18.619185+00:00",
+      "message": "Public scoreboard; unofficial source"
+    },
+    "college_schedule": {
+      "status": "ok",
+      "updated_at": "2026-10-31T09:47:19.117450+00:00",
+      "message": "Public scoreboard; unofficial source"
+    },
+    "nws_forecast": {
+      "status": "ok",
+      "updated_at": "2026-10-31T05:17:31+00:00",
+      "age_seconds": 16365,
+      "age_minutes": 272.75,
+      "freshness_limit_minutes": 720,
+      "venues_considered": 56,
+      "venue_status": {
+        "ok": 56,
+        "degraded": 0,
+        "stale": 0,
+        "error": 0
+      },
+      "message": "NWS probabilityOfThunder regional proxy; not venue-radius observations. Venue results: 56 current, 0 empty, 0 stale, 0 errors."
+    },
+    "nws_alerts": {
+      "status": "ok",
+      "updated_at": "2026-10-31T09:47:20.291718+00:00",
+      "url": "https://api.weather.gov/alerts/active?event=Severe+Thunderstorm+Warning",
+      "venues_checked": 158,
+      "venue_alert_matches": 0,
+      "venues_with_active_warnings": 0,
+      "message": "Official NWS severe thunderstorm warning feed; polygons matched to venues"
+    },
+    "mrms_lightning": {
+      "status": "not_requested",
+      "updated_at": null
+    },
+    "mrms_storm_motion": {
+      "status": "not_requested",
+      "updated_at": null
+    },
+    "href_calibrated_thunder": {
+      "status": "partial",
+      "updated_at": "2026-10-31T00:00:00+00:00",
+      "retrieved_at": "2026-10-31T10:00:28.156281+00:00",
+      "age_seconds": 36028,
+      "age_minutes": 600.4666666666667,
+      "freshness_limit_minutes": 1080,
+      "venues_considered": 53,
+      "venue_coverage": {
+        "covered": 20,
+        "partial": 10,
+        "no_coverage": 23
+      },
+      "message": "SPC HREF CT calibrated one-hour regional thunder probability; grid probabilities do not represent venue policy outcomes."
+    },
+    "open_meteo_ifs_ensemble": {
+      "status": "ok",
+      "updated_at": "2026-10-31T10:00:28.149945+00:00",
+      "retrieved_at": "2026-10-31T10:00:28.156241+00:00",
+      "age_seconds": 0,
+      "age_minutes": 0.0,
+      "freshness_limit_minutes": 360,
+      "venues_considered": 8,
+      "venues_with_data": 8,
+      "url": "https://ensemble-api.open-meteo.com/v1/ensemble?latitude=47.5952&longitude=-122.3316&models=ecmwf_ifs025_ensemble&hourly=weather_code&forecast_days=15&timezone=GMT",
+      "message": "Global ECMWF IFS ensemble weather-code conditions only; approximately 25 km grid; 3-hour steps through 144 hours, 6-hour steps afterward. This field cannot estimate thunderstorms, venue delay odds, or observed storm motion."
+    },
+    "hrrr": {
+      "status": "ok",
+      "updated_at": "2026-10-31T06:00:00+00:00",
+      "retrieved_at": "2026-10-31T10:00:28.156308+00:00",
+      "age_seconds": 14428,
+      "age_minutes": 240.46666666666667,
+      "freshness_limit_minutes": 720,
+      "games_considered": 34,
+      "games_with_data": 34,
+      "message": "HRRR nearest-grid reflectivity, rain rate, CAPE and wind; supporting context only."
+    },
+    "glm": {
+      "status": "not_requested",
+      "updated_at": null
+    }
+  },
+  "game_index_url": "games/index.json"
+}
