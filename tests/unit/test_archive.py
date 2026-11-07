@@ -6,14 +6,17 @@ from datetime import UTC, datetime, timedelta
 
 from nfl_delay_tracker.pipeline import (
     _archive_issuances,
+    _cached_href_rows,
     _card_forecast_projection,
     _compact_archived_features,
 )
 
 
 def test_compact_weather_features_retain_provider_provenance() -> None:
+    refsct_url = "https://example.test/refsct/spc_post.t00z.refsct_1hr.f012.grib2"
     compact = _compact_archived_features(
         {
+            "href_hourly": [{"source_url": refsct_url, "probability": 0.25}],
             "hrrr_point": {
                 "source_url": "https://example.test/hrrr.grib2",
                 "field_source_urls": {"cape_j_kg": "https://example.test/hrrr.grib2"},
@@ -26,9 +29,29 @@ def test_compact_weather_features_retain_provider_provenance() -> None:
         }
     )
 
+    assert compact["href_hourly"][0]["source_url"] == refsct_url
     assert compact["hrrr_point"]["source_url"].endswith("hrrr.grib2")
     assert compact["hrrr_point"]["field_source_urls"]["cape_j_kg"].endswith("hrrr.grib2")
     assert compact["glm_observation"]["source_url"].endswith("glm.nc")
+
+
+def test_live_refresh_reuses_only_current_refsct_samples() -> None:
+    now = datetime(2026, 11, 7, 12, 0, tzinfo=UTC)
+    refsct = {
+        "issued_at": (now - timedelta(hours=12)).isoformat(),
+        "valid_end": (now + timedelta(hours=1)).isoformat(),
+        "source_url": "https://example.test/refsct/spc_post.t00z.refsct_1hr.f013.grib2",
+    }
+    legacy_href = {
+        **refsct,
+        "source_url": "https://example.test/thunder/spc_post.t00z.hrefct_1hr.f013.grib2",
+    }
+    stale_refsct = {**refsct, "issued_at": (now - timedelta(hours=19)).isoformat()}
+    game = {
+        "weather": {"venue_features": {"href_hourly": [legacy_href, stale_refsct, refsct]}}
+    }
+
+    assert _cached_href_rows(game, now=now) == [refsct]
 
 
 def test_card_projection_keeps_venue_risk_and_active_resume_fields() -> None:

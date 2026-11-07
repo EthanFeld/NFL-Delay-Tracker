@@ -50,6 +50,18 @@ describe('published scoreboard refresh', () => {
 });
 
 describe('scoreboard game normalization', () => {
+  it('preserves the thunder feed product when supplied and accepts older snapshots without it', () => {
+    const current = normalizeGame({
+      sources: { href_calibrated_thunder: { status: 'ok', product: 'REFSCT' } },
+    });
+    const legacy = normalizeGame({
+      sources: { href_calibrated_thunder: { status: 'ok' } },
+    });
+
+    expect(current.sources[0]).toMatchObject({ name: 'href_calibrated_thunder', product: 'REFSCT' });
+    expect(legacy.sources[0].product).toBeUndefined();
+  });
+
   it('keeps venue-local outdoor risk breakdown and warning badges', () => {
     const game = normalizeGame({
       id: 'outdoor-game',

@@ -56,6 +56,7 @@ function normalizeSource(name: string, value: unknown): SourceHealth {
   const freshnessLimitMinutes = numeric(first(item, 'freshness_limit_minutes'));
   return {
     name: text(first(item, 'name', 'provider', 'source'), name),
+    product: text(first(item, 'product')) || undefined,
     status: text(first(item, 'status', 'state', 'health')),
     updatedAt: updatedAt || undefined,
     ageMinutes,

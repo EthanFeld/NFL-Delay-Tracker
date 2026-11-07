@@ -123,6 +123,7 @@ export interface Game {
 
 export interface SourceHealth {
   name: string;
+  product?: string;
   status?: string;
   updatedAt?: string;
   ageMinutes?: number;

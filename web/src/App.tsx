@@ -84,9 +84,11 @@ function freshnessTone(source?: SourceHealth, generatedAt?: string): 'good' | 'w
   return 'good';
 }
 
-function sourceLabel(name: string): string {
+function sourceLabel(source: SourceHealth): string {
+  const name = source.name.toLowerCase();
+  if (name === 'href_calibrated_thunder' && source.product === 'REFSCT') return 'SPC thunder model (REFSCT)';
   const labels: Record<string, string> = { mrms: 'Lightning observations', glm: 'Lightning observations', href: 'HREF model', href_calibrated_thunder: 'HREF thunder model', hrrr: 'HRRR model', nws_forecast: 'NWS forecast', nws_alerts: 'NWS warning feed', open_meteo_ifs_ensemble: 'ECMWF global ensemble', nfl: 'NFL schedule', nfl_schedule: 'NFL schedule', college: 'College schedule', cfbd: 'College schedule', sports_status: 'Live game status' };
-  return labels[name.toLowerCase()] || name.replaceAll('_', ' ');
+  return labels[name] || source.name.replaceAll('_', ' ');
 }
 
 function statusLabel(game: Game): string {
@@ -322,7 +324,7 @@ function SourceList({ sources, generatedAt }: { sources: SourceHealth[]; generat
   return <div className="source-list">
     {sources.map((source, index) => <div className="source-item" key={`${source.name}-${index}`}>
       <span className={`fresh-dot ${freshnessTone(source, generatedAt)}`} />
-      <span className="source-name">{sourceLabel(source.name)}</span>
+      <span className="source-name">{sourceLabel(source)}</span>
       <span className="source-time">{formatAge(source, generatedAt)}</span>
       {source.status && <span className={`source-status ${freshnessTone(source, generatedAt)}`}>{source.status}</span>}
     </div>)}
