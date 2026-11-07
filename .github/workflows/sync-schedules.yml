@@ -25,6 +25,17 @@ jobs:
         with:
           python-version: '3.13'
       - run: python -m pip install -e '.[glm]'
+      - name: Restore published forecast archive
+        shell: bash
+        run: |
+          live_data_ref="$(git ls-remote --heads origin refs/heads/live-data)"
+          if [[ -n "$live_data_ref" ]]; then
+            git fetch --no-tags origin refs/heads/live-data:refs/remotes/origin/live-data
+            archive_path="$(git ls-tree --name-only origin/live-data -- data/archive)"
+            if [[ -n "$archive_path" ]]; then
+              git archive origin/live-data data/archive | tar -xf -
+            fi
+          fi
       - run: python -m nfl_delay_tracker.cli sync-schedules --days 14
       - run: python -m nfl_delay_tracker.cli refresh-forecasts --horizon-hours 168 --simulations 20000
       - name: Publish JSON-only live-data branch

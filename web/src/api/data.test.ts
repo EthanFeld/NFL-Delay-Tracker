@@ -1,5 +1,53 @@
-import { describe, expect, it } from 'vitest';
-import { normalizeGame } from './data';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { loadAppData, normalizeGame } from './data';
+
+describe('published scoreboard refresh', () => {
+  const fetchMock = vi.fn<typeof fetch>();
+
+  beforeEach(() => {
+    fetchMock.mockReset();
+    vi.stubGlobal('fetch', fetchMock);
+    vi.stubGlobal('window', { location: { origin: 'https://tracker.test' } });
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('retries a newly published version if its game index fails', async () => {
+    fetchMock
+      .mockResolvedValueOnce(Response.json({ version: 'v2' }))
+      .mockResolvedValueOnce(new Response(null, { status: 503 }))
+      .mockResolvedValueOnce(Response.json({ version: 'v2' }))
+      .mockResolvedValueOnce(Response.json({ games: [{ id: 'new-game' }] }));
+
+    await expect(loadAppData('v1')).rejects.toThrow('data/games/index.json: 503');
+    const snapshot = await loadAppData('v1');
+
+    expect(snapshot?.version).toBe('v2');
+    expect(snapshot?.games.map((game) => game.id)).toEqual(['new-game']);
+    expect(fetchMock).toHaveBeenCalledTimes(4);
+  });
+
+  it('distinguishes an unchanged version from a new, empty scoreboard', async () => {
+    fetchMock
+      .mockResolvedValueOnce(Response.json({ version: 'v1' }))
+      .mockResolvedValueOnce(Response.json({ version: 'v2' }))
+      .mockResolvedValueOnce(Response.json({ games: [] }));
+
+    await expect(loadAppData('v1')).resolves.toBeUndefined();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    await expect(loadAppData('v1')).resolves.toMatchObject({ version: 'v2', games: [] });
+  });
+
+  it('rejects a malformed index instead of replacing the scoreboard with no games', async () => {
+    fetchMock
+      .mockResolvedValueOnce(Response.json({ version: 'v2' }))
+      .mockResolvedValueOnce(Response.json({ error: 'The index is being published' }));
+
+    await expect(loadAppData('v1')).rejects.toThrow('The published game index is missing a games list.');
+  });
+});
 
 describe('scoreboard game normalization', () => {
   it('keeps venue-local outdoor risk breakdown and warning badges', () => {

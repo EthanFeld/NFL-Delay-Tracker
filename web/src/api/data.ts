@@ -256,10 +256,9 @@ export function normalizeGame(input: unknown, manifestSources: SourceHealth[] = 
 }
 
 function unwrapGameIndex(payload: unknown): unknown[] {
-  if (Array.isArray(payload)) return payload;
-  const record = asRecord(payload);
-  const value = first(record, 'games', 'items', 'results', 'game_ids');
-  return Array.isArray(value) ? value : [];
+  const games = Array.isArray(payload) ? payload : first(asRecord(payload), 'games', 'items', 'results', 'game_ids');
+  if (!Array.isArray(games)) throw new Error('The published game index is missing a games list.');
+  return games;
 }
 
 async function getJson(path: string, signal?: AbortSignal, version?: string): Promise<unknown> {
@@ -274,48 +273,33 @@ async function getJson(path: string, signal?: AbortSignal, version?: string): Pr
   return response.json();
 }
 
-export async function loadAppData(previousVersion?: string, signal?: AbortSignal): Promise<AppData> {
+export async function loadAppData(previousVersion?: string, signal?: AbortSignal): Promise<AppData | undefined> {
   let manifest: AnyRecord = {};
-  let manifestError = '';
   try {
     manifest = asRecord(await getJson('data/manifest.json', signal));
   } catch (error) {
-    manifestError = error instanceof Error ? error.message : 'Manifest unavailable';
+    if (signal?.aborted) throw error;
   }
   const version = text(first(manifest, 'version', 'generated_at', 'updated_at', 'manifest_version')) || undefined;
-  const manifestSources = normalizeSources(first(manifest, 'sources', 'source_health', 'providers'));
-  const shouldReloadIndex = !previousVersion || !version || version !== previousVersion;
-  if (!shouldReloadIndex) {
-    return { games: [], sources: manifestSources, generatedAt: isoOrString(first(manifest, 'generated_at', 'updated_at')) || undefined, version, usingSample: false };
-  }
+  if (version && version === previousVersion) return undefined;
 
-  try {
-    const indexPayload = await getJson('data/games/index.json', signal, version);
-    const index = asRecord(indexPayload);
-    const gamesList = unwrapGameIndex(indexPayload);
-    const games = (await Promise.all(gamesList.map(async (item) => {
-      if (typeof item === 'string') return loadGameDetail(item, signal, version);
-      return normalizeGame(item, manifestSources);
-    }))).filter((game): game is Game => Boolean(game));
-    const sourceData = normalizeSources(first(index, 'sources', 'source_health'));
-    return {
-      games,
-      sources: sourceData.length ? sourceData : manifestSources,
-      generatedAt: isoOrString(first(index, 'generated_at', 'updated_at') ?? first(manifest, 'generated_at', 'updated_at')) || undefined,
-      version: text(first(index, 'version', 'manifest_version')) || version,
-      usingSample: games.length === 0,
-      lastError: games.length ? undefined : manifestError || 'The published index has no games yet.',
-    };
-  } catch (error) {
-    return {
-      games: [],
-      sources: manifestSources,
-      generatedAt: isoOrString(first(manifest, 'generated_at', 'updated_at')) || undefined,
-      version,
-      usingSample: false,
-      lastError: error instanceof Error ? error.message : manifestError || 'Live game data is not available yet.',
-    };
-  }
+  const manifestSources = normalizeSources(first(manifest, 'sources', 'source_health', 'providers'));
+  const indexPayload = await getJson('data/games/index.json', signal, version);
+  const index = asRecord(indexPayload);
+  const games = await Promise.all(unwrapGameIndex(indexPayload).map(async (item) => {
+    if (typeof item !== 'string') return normalizeGame(item, manifestSources);
+    const game = await loadGameDetail(item, signal, version);
+    if (!game) throw new Error(`Game data is unavailable for ${item}.`);
+    return game;
+  }));
+  const sourceData = normalizeSources(first(index, 'sources', 'source_health'));
+  return {
+    games,
+    sources: sourceData.length ? sourceData : manifestSources,
+    generatedAt: isoOrString(first(index, 'generated_at', 'updated_at') ?? first(manifest, 'generated_at', 'updated_at')) || undefined,
+    version: text(first(index, 'version', 'manifest_version')) || version,
+    usingSample: false,
+  };
 }
 
 export async function loadGameDetail(id: string, signal?: AbortSignal, version?: string): Promise<Game | undefined> {
