@@ -11,17 +11,26 @@ from nfl_delay_tracker.providers.http import ProviderError
 
 
 def test_sample_point_selects_latest_matching_cycle_and_returns_metadata(monkeypatch) -> None:
+    listing_requests: list[str] = []
     requests: list[str] = []
     listing = """
-    <a href="spc_post.t00z.hrefct_1hr.f024.grib2">f024</a>
-    <a href="spc_post.t12z.hrefct_1hr.f012.grib2.gz">f012</a>
+    <a href="spc_post.t00z.refsct_1hr.f024.grib2">f024</a>
+    <a href="spc_post.t12z.refsct_1hr.f012.grib2.gz">f012</a>
+    <a href="spc_post.t18z.refsct_4hr.f006.grib2">f006</a>
+    <a href="spc_post.t18z.hrefct_1hr.f006.grib2">f006</a>
     """
-    monkeypatch.setattr(href, "get_text", lambda url, timeout: listing)
 
-    expected_url = (
+    def list_files(url: str, *, timeout: int) -> str:
+        listing_requests.append(url)
+        return listing
+
+    monkeypatch.setattr(href, "get_text", list_files)
+
+    expected_directory = (
         "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/"
-        "spc_post.20260920/thunder/spc_post.t12z.hrefct_1hr.f012.grib2.gz"
+        "spc_post.20261107/refsct/"
     )
+    expected_url = f"{expected_directory}spc_post.t12z.refsct_1hr.f012.grib2.gz"
 
     def download(url: str, *, timeout: int) -> bytes:
         requests.append(url)
@@ -34,12 +43,12 @@ def test_sample_point_selects_latest_matching_cycle_and_returns_metadata(monkeyp
     values = {
         "shortName": "tstm",
         "units": "%",
-        "dataDate": 20260920,
+        "dataDate": 20261107,
         "dataTime": 1200,
         "stepUnits": 1,
         "startStep": 11,
         "endStep": 12,
-        "validityDate": 20260921,
+        "validityDate": 20261108,
         "validityTime": 0,
     }
     monkeypatch.setattr(href.eccodes, "codes_get", lambda handle, key: values[key])
@@ -66,18 +75,19 @@ def test_sample_point_selects_latest_matching_cycle_and_returns_metadata(monkeyp
     forecast = provider.sample_point(
         39.9,
         -75.16,
-        at=datetime(2026, 9, 20, 23, 30, tzinfo=UTC),
+        at=datetime(2026, 11, 7, 23, 30, tzinfo=UTC),
     )
 
     assert forecast.probability == pytest.approx(0.375)
-    assert forecast.issued_at == datetime(2026, 9, 20, 12, tzinfo=UTC)
-    assert forecast.valid_start == datetime(2026, 9, 20, 23, tzinfo=UTC)
-    assert forecast.valid_end == datetime(2026, 9, 21, 0, tzinfo=UTC)
+    assert forecast.issued_at == datetime(2026, 11, 7, 12, tzinfo=UTC)
+    assert forecast.valid_start == datetime(2026, 11, 7, 23, tzinfo=UTC)
+    assert forecast.valid_end == datetime(2026, 11, 8, 0, tzinfo=UTC)
     assert forecast.forecast_hour == 12
     assert forecast.grid_latitude == 39.93
     assert forecast.grid_longitude == pytest.approx(-75.16)
     assert forecast.grid_distance_km == pytest.approx(4.1)
     assert forecast.source_url == expected_url
+    assert listing_requests == [expected_directory]
     assert requests == [expected_url]
 
 
@@ -89,7 +99,7 @@ def test_sample_point_caches_download_for_second_coordinate(monkeypatch) -> None
 
 
 def test_sample_points_decodes_one_hour_field_once(monkeypatch) -> None:
-    listing = '<a href="spc_post.t12z.hrefct_1hr.f012.grib2">f012</a>'
+    listing = '<a href="spc_post.t12z.refsct_1hr.f012.grib2">f012</a>'
     monkeypatch.setattr(href, "get_text", lambda *_args, **_kwargs: listing)
     monkeypatch.setattr(href, "get_bytes", lambda *_args, **_kwargs: b"GRIB fixture")
     decode_count = 0
@@ -105,12 +115,12 @@ def test_sample_points_decodes_one_hour_field_once(monkeypatch) -> None:
     values = {
         "shortName": "tstm",
         "units": "%",
-        "dataDate": 20260920,
+        "dataDate": 20261107,
         "dataTime": 1200,
         "stepUnits": 1,
         "startStep": 11,
         "endStep": 12,
-        "validityDate": 20260921,
+        "validityDate": 20261108,
         "validityTime": 0,
     }
     monkeypatch.setattr(href.eccodes, "codes_get", lambda _handle, key: values[key])
@@ -130,7 +140,7 @@ def test_sample_points_decodes_one_hour_field_once(monkeypatch) -> None:
 
     samples, errors = provider.sample_points(
         {"venue-a": (39.9, -75.1), "venue-b": (40.0, -75.0), "outside": (0.0, 0.0)},
-        at=datetime(2026, 9, 20, 23, 30, tzinfo=UTC),
+        at=datetime(2026, 11, 7, 23, 30, tzinfo=UTC),
     )
 
     assert set(samples) == {"venue-a", "venue-b"}
@@ -147,16 +157,16 @@ def test_compressed_grib_is_bounded_and_validated() -> None:
 
 def test_candidate_selection_requires_available_covering_hour() -> None:
     provider = href.HrefCtProvider(lookback_days=0)
-    provider._listings[datetime(2026, 9, 20, tzinfo=UTC).date()] = (
-        '<a href="spc_post.t12z.hrefct_1hr.f011.grib2">f011</a>'
+    provider._listings[datetime(2026, 11, 7, tzinfo=UTC).date()] = (
+        '<a href="spc_post.t12z.refsct_1hr.f011.grib2">f011</a>'
     )
-    target = datetime(2026, 9, 20, 23, 30, tzinfo=UTC)
-    with pytest.raises(ProviderError, match="No HREF CT 1-hour field"):
+    target = datetime(2026, 11, 7, 23, 30, tzinfo=UTC)
+    with pytest.raises(ProviderError, match="No REFSCT 1-hour field"):
         provider._find_candidate(target)
 
 
 def test_missing_probability_and_out_of_domain_fail_closed(monkeypatch) -> None:
-    listing = '<a href="spc_post.t12z.hrefct_1hr.f012.grib2">f012</a>'
+    listing = '<a href="spc_post.t12z.refsct_1hr.f012.grib2">f012</a>'
     monkeypatch.setattr(href, "get_text", lambda url, timeout: listing)
     monkeypatch.setattr(href, "get_bytes", lambda url, timeout: b"GRIB fixture")
     fake_handle = SimpleNamespace()
@@ -165,12 +175,12 @@ def test_missing_probability_and_out_of_domain_fail_closed(monkeypatch) -> None:
     values = {
         "shortName": "tstm",
         "units": "%",
-        "dataDate": 20260920,
+        "dataDate": 20261107,
         "dataTime": 1200,
         "stepUnits": 1,
         "startStep": 11,
         "endStep": 12,
-        "validityDate": 20260921,
+        "validityDate": 20261108,
         "validityTime": 0,
     }
     monkeypatch.setattr(href.eccodes, "codes_get", lambda handle, key: values[key])
@@ -182,9 +192,9 @@ def test_missing_probability_and_out_of_domain_fail_closed(monkeypatch) -> None:
         ),
     )
     provider = href.HrefCtProvider()
-    with pytest.raises(ProviderError, match="outside HREF CT grid coverage"):
+    with pytest.raises(ProviderError, match="outside REFSCT grid coverage"):
         provider.sample_point(
             39.9,
             -75.16,
-            at=datetime(2026, 9, 20, 23, 30, tzinfo=UTC),
+            at=datetime(2026, 11, 7, 23, 30, tzinfo=UTC),
         )

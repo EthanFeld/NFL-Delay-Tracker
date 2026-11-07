@@ -84,9 +84,11 @@ function freshnessTone(source?: SourceHealth, generatedAt?: string): 'good' | 'w
   return 'good';
 }
 
-function sourceLabel(name: string): string {
+function sourceLabel(source: SourceHealth): string {
+  const name = source.name.toLowerCase();
+  if (name === 'href_calibrated_thunder' && source.product === 'REFSCT') return 'SPC thunder model (REFSCT)';
   const labels: Record<string, string> = { mrms: 'Lightning observations', glm: 'Lightning observations', href: 'HREF model', href_calibrated_thunder: 'HREF thunder model', hrrr: 'HRRR model', nws_forecast: 'NWS forecast', nws_alerts: 'NWS warning feed', open_meteo_ifs_ensemble: 'ECMWF global ensemble', nfl: 'NFL schedule', nfl_schedule: 'NFL schedule', college: 'College schedule', cfbd: 'College schedule', sports_status: 'Live game status' };
-  return labels[name.toLowerCase()] || name.replaceAll('_', ' ');
+  return labels[name] || source.name.replaceAll('_', ' ');
 }
 
 function statusLabel(game: Game): string {
@@ -322,7 +324,7 @@ function SourceList({ sources, generatedAt }: { sources: SourceHealth[]; generat
   return <div className="source-list">
     {sources.map((source, index) => <div className="source-item" key={`${source.name}-${index}`}>
       <span className={`fresh-dot ${freshnessTone(source, generatedAt)}`} />
-      <span className="source-name">{sourceLabel(source.name)}</span>
+      <span className="source-name">{sourceLabel(source)}</span>
       <span className="source-time">{formatAge(source, generatedAt)}</span>
       {source.status && <span className={`source-status ${freshnessTone(source, generatedAt)}`}>{source.status}</span>}
     </div>)}
@@ -536,20 +538,24 @@ function App() {
   const searchRef = useRef<HTMLInputElement>(null);
 
   const refresh = useCallback(async (initial = false) => {
-    if (requestRef.current && !initial) requestRef.current.abort();
+    requestRef.current?.abort();
     const controller = new AbortController();
     requestRef.current = controller;
     if (!initial) setRefreshing(true);
     try {
       const update = await loadAppData(initial ? undefined : versionRef.current, controller.signal);
-      if (update.version) versionRef.current = update.version;
-      if (update.games.length > 0 || initial) {
-        setData((old) => ({ ...old, ...update, games: update.games.length ? update.games : old.games }));
+      if (controller.signal.aborted) return;
+      if (update) {
+        versionRef.current = update.version;
+        setData(update);
       } else {
-        setData((old) => ({ ...old, ...update, games: old.games }));
+        setData((old) => old.lastError ? { ...old, lastError: undefined } : old);
       }
-    } catch {
-      // Keep the most recent snapshot visible when a refresh fails.
+    } catch (error) {
+      if (!controller.signal.aborted) {
+        const lastError = error instanceof Error ? error.message : 'Live game data is not available yet.';
+        setData((old) => ({ ...old, lastError }));
+      }
     } finally {
       if (!controller.signal.aborted) setRefreshing(false);
     }
@@ -650,10 +656,10 @@ function App() {
           <div className="hero-orbit hero-orbit-one" /><div className="hero-orbit hero-orbit-two" /><div className="hero-lightning"><CloudLightning size={82} strokeWidth={1.15} /></div>
         </section>
 
-        {data.lastError && <div className="demo-notice warning-demo"><AlertTriangle size={16} /><span><b>Live game data unavailable.</b> No example scores or forecasts are shown. {data.lastError}</span></div>}
+        {data.lastError && <div className="demo-notice warning-demo"><AlertTriangle size={16} /><span><b>{data.generatedAt || data.games.length ? 'Showing the last available scoreboard.' : 'Live game data unavailable.'}</b> {data.lastError}</span></div>}
 
         <div className="board-controls">
-          <div className="board-controls-title"><div><span className="section-kicker">SCOREBOARD</span><h2>Upcoming & live games</h2></div><div className="last-updated"><span className={`fresh-dot ${refreshing ? 'updating' : 'good'}`} />{refreshing ? 'Updating' : formatAge(undefined, data.generatedAt)}</div></div>
+          <div className="board-controls-title"><div><span className="section-kicker">SCOREBOARD</span><h2>Upcoming & live games</h2></div><div className="last-updated"><span className={`fresh-dot ${refreshing ? 'updating' : freshnessTone(undefined, data.generatedAt)}`} />{refreshing ? 'Updating' : formatAge(undefined, data.generatedAt)}</div></div>
           <div className="filter-row">
             <div className="segmented leagues" role="group" aria-label="Filter by league">
               {(['All', 'NFL', 'College'] as LeagueFilter[]).map((item) => <button key={item} className={league === item ? 'selected' : ''} onClick={() => setLeague(item)}>{item === 'College' ? 'College football' : item}</button>)}

@@ -70,7 +70,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     refresh_parser.add_argument("--horizon-hours", type=int, default=168)
     refresh_parser.add_argument("--simulations", type=int, default=20_000)
     refresh_parser.add_argument(
-        "--skip-href", action="store_true", help="Reuse cached HREF inputs without downloading"
+        "--skip-href", action="store_true", help="Reuse cached REFSCT inputs without downloading"
     )
     refresh_parser.add_argument(
         "--skip-hrrr", action="store_true", help="Reuse cached HRRR inputs without downloading"

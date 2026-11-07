@@ -379,7 +379,7 @@ def _blend_weather_hazards(
     href_weight: float = 1.0,
     nws_weight: float = 0.0,
 ) -> list[HazardPoint]:
-    """Blend MRMS nowcasts with HREF calibrated thunder and NWS forecast bins."""
+    """Blend MRMS nowcasts with REFSCT calibrated thunder and NWS forecast bins."""
     nws_by_offset = {point.offset_minutes: point.probability for point in nws_hazards}
     href_by_offset = {point.offset_minutes: point.probability for point in href_hazards}
     forecast_offsets = set(nws_by_offset) | set(href_by_offset)
@@ -434,7 +434,7 @@ def _blend_weather_hazards(
         if nowcast_probability is not None:
             point_sources.append("MRMS nowcast")
         if href_probability is not None:
-            point_sources.append("SPC HREF CT")
+            point_sources.append("SPC REFSCT")
         if offset in nws_by_offset and (href_probability is None or nws_weight > 0):
             point_sources.append("NWS regional thunder proxy")
         points.append(
@@ -571,7 +571,7 @@ def _href_rows_to_hazards(rows: list[dict[str, Any]], kickoff: datetime) -> list
             point = HazardPoint(
                 offset_minutes=offset,
                 probability=probability_per_five,
-                source="SPC HREF CT calibrated one-hour thunder probability",
+                source="SPC REFSCT calibrated one-hour thunder probability",
                 valid_at=kickoff + timedelta(minutes=offset),
             )
             previous = by_offset.get(offset)
@@ -609,7 +609,7 @@ def _prefetch_href_rows(
     now: datetime,
     limit: datetime,
 ) -> tuple[dict[str, list[dict[str, Any]]], dict[str, list[str]]]:
-    """Decode each hourly HREF field once, then sample all games' venues."""
+    """Decode each hourly REFSCT field once, then sample all games' venues."""
 
     venues_by_target: dict[datetime, dict[str, Venue]] = {}
     games_by_target_venue: dict[datetime, dict[str, list[str]]] = {}
@@ -659,13 +659,13 @@ def _prefetch_href_rows(
         for venue_id, game_ids in games_by_target_venue[target].items():
             sample = samples.get(venue_id)
             if sample is None:
-                error = point_errors.get(venue_id, "HREF CT returned no point sample")
+                error = point_errors.get(venue_id, "REFSCT returned no point sample")
                 for game_id in game_ids:
                     game_errors[game_id].append(error)
                 continue
             if now - sample.issued_at > timedelta(hours=18):
                 for game_id in game_ids:
-                    game_errors[game_id].append("HREF CT model initialization is over 18 hours old")
+                    game_errors[game_id].append("REFSCT model initialization is over 18 hours old")
                 continue
             row = _href_sample_row(sample)
             for game_id in game_ids:
@@ -682,6 +682,10 @@ def _cached_href_rows(game_record: dict[str, Any], *, now: datetime) -> list[dic
     valid_rows = []
     for row in rows:
         if not isinstance(row, dict):
+            continue
+        # The persisted key predates REFSCT. Use the URL to exclude retired HREFCT samples.
+        source_url = row.get("source_url")
+        if not isinstance(source_url, str) or "/refsct/" not in source_url:
             continue
         issued_at = _timestamp(row.get("issued_at"))
         valid_end = _timestamp(row.get("valid_end"))
@@ -1018,6 +1022,7 @@ def _compact_archived_features(features: Any) -> dict[str, Any]:
                     "grid_latitude",
                     "grid_longitude",
                     "grid_distance_km",
+                    "source_url",
                 )
             }
             for row in href_rows
@@ -1633,7 +1638,7 @@ def _unavailable_forecast(
     }.get(
         forecast_scope,
         [
-            "SPC HREF CT thunder probabilities",
+            "SPC REFSCT thunder probabilities",
             "NWS probability of thunder",
             "MRMS lightning observations",
         ],
@@ -1843,7 +1848,11 @@ def refresh_forecasts(
         "nws_alerts": {"status": "not_requested", "updated_at": None},
         "mrms_lightning": {"status": "not_requested", "updated_at": None},
         "mrms_storm_motion": {"status": "not_requested", "updated_at": None},
-        "href_calibrated_thunder": {"status": "unavailable", "updated_at": None},
+        "href_calibrated_thunder": {
+            "status": "unavailable",
+            "updated_at": None,
+            "product": "REFSCT",
+        },
         "open_meteo_ifs_ensemble": {"status": "not_requested", "updated_at": None},
         "hrrr": {"status": "not_requested", "updated_at": None},
         "glm": {
@@ -2515,7 +2524,7 @@ def refresh_forecasts(
                         note=(
                             "Weather probability inputs unavailable. "
                             f"NWS: {nws_error or 'no usable forecast bins'}. "
-                            f"HREF: {href_error_note}. "
+                            f"REFSCT: {href_error_note}. "
                             "MRMS grid has no usable venue-radius data."
                         ),
                     )
@@ -2597,9 +2606,9 @@ def refresh_forecasts(
                         (game.kickoff_utc - generated_at).total_seconds() / 60
                     )
                     if not href_rows and forecast_lead_minutes <= 48 * 60:
-                        missing_sources.insert(0, "SPC HREF CT calibrated thunder")
+                        missing_sources.insert(0, "SPC REFSCT calibrated thunder")
                     elif href_errors:
-                        missing_sources.insert(0, "SPC HREF CT hourly coverage gaps")
+                        missing_sources.insert(0, "SPC REFSCT hourly coverage gaps")
                     mrms_coverage = mrms_features.get("coverage", {}) if mrms_features else {}
                     needs_near_term_observations = forecast_lead_minutes <= 6 * 60
                     if needs_near_term_observations and not any(
@@ -2621,7 +2630,7 @@ def refresh_forecasts(
                                 source_name
                                 for source_name, present in (
                                     ("MRMS local lightning", bool(mrms_features)),
-                                    ("SPC HREF CT thunder", bool(href_rows)),
+                                    ("SPC REFSCT thunder", bool(href_rows)),
                                     ("NWS regional thunder proxy", bool(nws_hazards)),
                                     ("HRRR point context", bool(hrrr_context)),
                                     ("GOES GLM flash observations", bool(glm_context)),
@@ -2684,10 +2693,10 @@ def refresh_forecasts(
                     )
                     quality_message = (
                         "Low-confidence NWS 3–7 day regional thunder outlook. Local radar, venue "
-                        "lightning observations, and HREF coverage are unavailable at this lead; "
+                        "lightning observations, and REFSCT are unavailable at this lead; "
                         "the displayed delay-risk simulation is not calibrated to venue outcomes."
                         if long_range_outlook
-                        else "HREF/NWS thunder probabilities are regional proxies. Local MRMS "
+                        else "REFSCT/NWS thunder probabilities are regional proxies. Local MRMS "
                         "lightning grids are unavailable; displayed venue-delay odds are "
                         "experimental and uncalibrated."
                         if not local_nowcast_available
@@ -2705,7 +2714,7 @@ def refresh_forecasts(
                         status=(
                             "NWS week-ahead regional outlook"
                             if long_range_outlook
-                            else "experimental HREF/MRMS/NWS weather-delay model"
+                            else "experimental REFSCT/MRMS/NWS weather-delay model"
                         ),
                         message=quality_message,
                     )
@@ -3062,7 +3071,7 @@ def refresh_forecasts(
                 "venues_considered": considered,
                 "venue_coverage": href_counts,
                 "message": (
-                    "SPC HREF CT calibrated one-hour regional thunder probability; "
+                    "SPC REFSCT calibrated one-hour regional thunder probability; "
                     "grid probabilities do not represent venue policy outcomes."
                 ),
             }
@@ -3082,7 +3091,7 @@ def refresh_forecasts(
                 else None,
                 "freshness_limit_minutes": 1080,
                 "venues_with_cached_data": cached_count,
-                "message": "HREF downloads are skipped on the five-minute live refresh.",
+                "message": "REFSCT downloads are skipped on the five-minute live refresh.",
             }
         )
 
