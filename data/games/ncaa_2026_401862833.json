@@ -1,0 +1,2580 @@
+{
+  "generated_at": "2026-11-21T21:04:49.633439Z",
+  "model_version": "engineering-baseline-0.2.4",
+  "game": {
+    "game_id": "ncaa_2026_401862833",
+    "league": "NCAA",
+    "season": 2026,
+    "home_team": "Florida Atlantic Owls",
+    "away_team": "South Florida Bulls",
+    "venue_id": "venue_howard_schnellenberger_field_at_flagler_credit_union_stadium",
+    "venue_name": "Howard Schnellenberger Field at Flagler Credit Union Stadium",
+    "venue_city": "Boca Raton",
+    "neutral_site": false,
+    "kickoff_utc": "2026-11-21T19:30:00Z",
+    "status": "in_progress",
+    "status_source": "ESPN public scoreboard; unofficial",
+    "official_delay_active": false,
+    "model_delay_active": true,
+    "delay_started_at": "2026-11-21T21:02:00Z",
+    "official_resume_at": null,
+    "delay_source_note": null,
+    "home_score": 20,
+    "away_score": 0,
+    "period": 2,
+    "clock": "0:00"
+  },
+  "venue": {
+    "venue_id": "venue_howard_schnellenberger_field_at_flagler_credit_union_stadium",
+    "name": "Howard Schnellenberger Field at Flagler Credit Union Stadium",
+    "latitude": 26.3754536,
+    "longitude": -80.1016831,
+    "timezone": "America/New_York",
+    "roof_type": "outdoor",
+    "roof_weather_protection": false,
+    "policy_id": "venue_assumption_8mi_30min",
+    "league": "NCAA",
+    "leagues": [
+      "NCAA"
+    ],
+    "home_teams": [
+      "Florida Atlantic",
+      "Florida Atlantic Owls"
+    ],
+    "aliases": [
+      "FAU Stadium"
+    ],
+    "source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "coordinate_source_url": "https://github.com/gboeing/data-visualization/blob/main/ncaa-football-stadiums/data/stadiums-geocoded.csv",
+    "roof_source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "source_note": "Current stadium name and team assignment from the public FBS stadium list; coordinates from the geocoded NCAA stadium dataset. Older dataset names are retained as aliases where they differ. No venue-specific lightning procedure was verified.",
+    "source_checked_at": "2026-09-20",
+    "city": null,
+    "state": null,
+    "fbs_source_url": null
+  },
+  "policy": {
+    "policy_id": "venue_assumption_8mi_30min",
+    "trigger_radius_miles": 8.0,
+    "monitor_radii_miles": [
+      10.0,
+      15.0,
+      20.0
+    ],
+    "quiet_period_minutes": 30,
+    "warmup_exposure_minutes": 60,
+    "clearance_mode": "fixed_quiet_period",
+    "restart_overhead": {
+      "type": "distribution",
+      "minutes": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "weights": [
+        0.1,
+        0.4,
+        0.35,
+        0.15
+      ]
+    },
+    "verification": "venue_assumption",
+    "source_checked_at": "2026-09-20",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_NCAA_Division_I_FBS_football_stadiums",
+    "notes": "UNVERIFIED project baseline used only where no venue-specific public procedure was sourced: assume an 8-mile lightning trigger and 30-minute quiet period. This is not an official universal NFL or NCAA rule. NCAA safety guidance is venue-specific and is recorded separately; validate each venue procedure before operational use."
+  },
+  "weather": {
+    "venue_id": "venue_howard_schnellenberger_field_at_flagler_credit_union_stadium",
+    "fetched_at": "2026-11-21T12:00:00Z",
+    "source": "MRMS local lightning + SPC REFSCT thunder + NWS regional thunder proxy + HRRR point context + GOES GLM flash observations",
+    "hazards": [
+      {
+        "offset_minutes": 95,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:05:00Z"
+      },
+      {
+        "offset_minutes": 100,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:10:00Z"
+      },
+      {
+        "offset_minutes": 105,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:15:00Z"
+      },
+      {
+        "offset_minutes": 110,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:20:00Z"
+      },
+      {
+        "offset_minutes": 115,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:25:00Z"
+      },
+      {
+        "offset_minutes": 120,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:30:00Z"
+      },
+      {
+        "offset_minutes": 125,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:35:00Z"
+      },
+      {
+        "offset_minutes": 130,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:40:00Z"
+      },
+      {
+        "offset_minutes": 135,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:45:00Z"
+      },
+      {
+        "offset_minutes": 140,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:50:00Z"
+      },
+      {
+        "offset_minutes": 145,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:55:00Z"
+      },
+      {
+        "offset_minutes": 150,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:00:00Z"
+      },
+      {
+        "offset_minutes": 155,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:05:00Z"
+      },
+      {
+        "offset_minutes": 160,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:10:00Z"
+      },
+      {
+        "offset_minutes": 165,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:15:00Z"
+      },
+      {
+        "offset_minutes": 170,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:20:00Z"
+      },
+      {
+        "offset_minutes": 175,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:25:00Z"
+      },
+      {
+        "offset_minutes": 180,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:30:00Z"
+      },
+      {
+        "offset_minutes": 185,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:35:00Z"
+      },
+      {
+        "offset_minutes": 190,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:40:00Z"
+      },
+      {
+        "offset_minutes": 195,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:45:00Z"
+      },
+      {
+        "offset_minutes": 200,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:50:00Z"
+      },
+      {
+        "offset_minutes": 205,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:55:00Z"
+      },
+      {
+        "offset_minutes": 210,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:00:00Z"
+      },
+      {
+        "offset_minutes": 215,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:05:00Z"
+      },
+      {
+        "offset_minutes": 220,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:10:00Z"
+      },
+      {
+        "offset_minutes": 225,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:15:00Z"
+      },
+      {
+        "offset_minutes": 230,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:20:00Z"
+      },
+      {
+        "offset_minutes": 235,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:25:00Z"
+      },
+      {
+        "offset_minutes": 240,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:30:00Z"
+      },
+      {
+        "offset_minutes": 245,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:35:00Z"
+      },
+      {
+        "offset_minutes": 250,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:40:00Z"
+      },
+      {
+        "offset_minutes": 255,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:45:00Z"
+      },
+      {
+        "offset_minutes": 260,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:50:00Z"
+      },
+      {
+        "offset_minutes": 265,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:55:00Z"
+      },
+      {
+        "offset_minutes": 270,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:00:00Z"
+      },
+      {
+        "offset_minutes": 275,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:05:00Z"
+      },
+      {
+        "offset_minutes": 280,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:10:00Z"
+      },
+      {
+        "offset_minutes": 285,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:15:00Z"
+      },
+      {
+        "offset_minutes": 290,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:20:00Z"
+      },
+      {
+        "offset_minutes": 295,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:25:00Z"
+      },
+      {
+        "offset_minutes": 300,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:30:00Z"
+      },
+      {
+        "offset_minutes": 305,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:35:00Z"
+      },
+      {
+        "offset_minutes": 310,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:40:00Z"
+      },
+      {
+        "offset_minutes": 315,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:45:00Z"
+      },
+      {
+        "offset_minutes": 320,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:50:00Z"
+      },
+      {
+        "offset_minutes": 325,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:55:00Z"
+      },
+      {
+        "offset_minutes": 330,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:00:00Z"
+      },
+      {
+        "offset_minutes": 335,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:05:00Z"
+      },
+      {
+        "offset_minutes": 340,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:10:00Z"
+      },
+      {
+        "offset_minutes": 345,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:15:00Z"
+      },
+      {
+        "offset_minutes": 350,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:20:00Z"
+      },
+      {
+        "offset_minutes": 355,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:25:00Z"
+      },
+      {
+        "offset_minutes": 360,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:30:00Z"
+      },
+      {
+        "offset_minutes": 365,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:35:00Z"
+      },
+      {
+        "offset_minutes": 370,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:40:00Z"
+      },
+      {
+        "offset_minutes": 375,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:45:00Z"
+      },
+      {
+        "offset_minutes": 380,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:50:00Z"
+      },
+      {
+        "offset_minutes": 385,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:55:00Z"
+      },
+      {
+        "offset_minutes": 390,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:00:00Z"
+      },
+      {
+        "offset_minutes": 395,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:05:00Z"
+      },
+      {
+        "offset_minutes": 400,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:10:00Z"
+      },
+      {
+        "offset_minutes": 405,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:15:00Z"
+      },
+      {
+        "offset_minutes": 410,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:20:00Z"
+      },
+      {
+        "offset_minutes": 415,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:25:00Z"
+      },
+      {
+        "offset_minutes": 420,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:30:00Z"
+      },
+      {
+        "offset_minutes": 425,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:35:00Z"
+      },
+      {
+        "offset_minutes": 430,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:40:00Z"
+      },
+      {
+        "offset_minutes": 435,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:45:00Z"
+      },
+      {
+        "offset_minutes": 440,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:50:00Z"
+      },
+      {
+        "offset_minutes": 445,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:55:00Z"
+      },
+      {
+        "offset_minutes": 450,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:00:00Z"
+      },
+      {
+        "offset_minutes": 455,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:05:00Z"
+      },
+      {
+        "offset_minutes": 460,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:10:00Z"
+      },
+      {
+        "offset_minutes": 465,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:15:00Z"
+      },
+      {
+        "offset_minutes": 470,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:20:00Z"
+      },
+      {
+        "offset_minutes": 475,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:25:00Z"
+      },
+      {
+        "offset_minutes": 480,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:30:00Z"
+      },
+      {
+        "offset_minutes": 485,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:35:00Z"
+      },
+      {
+        "offset_minutes": 490,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:40:00Z"
+      },
+      {
+        "offset_minutes": 495,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:45:00Z"
+      },
+      {
+        "offset_minutes": 500,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:50:00Z"
+      },
+      {
+        "offset_minutes": 505,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:55:00Z"
+      },
+      {
+        "offset_minutes": 510,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:00:00Z"
+      },
+      {
+        "offset_minutes": 515,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:05:00Z"
+      },
+      {
+        "offset_minutes": 520,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:10:00Z"
+      },
+      {
+        "offset_minutes": 525,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:15:00Z"
+      },
+      {
+        "offset_minutes": 530,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:20:00Z"
+      },
+      {
+        "offset_minutes": 535,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:25:00Z"
+      },
+      {
+        "offset_minutes": 540,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:30:00Z"
+      },
+      {
+        "offset_minutes": 545,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:35:00Z"
+      },
+      {
+        "offset_minutes": 550,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:40:00Z"
+      },
+      {
+        "offset_minutes": 555,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:45:00Z"
+      },
+      {
+        "offset_minutes": 560,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:50:00Z"
+      },
+      {
+        "offset_minutes": 565,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:55:00Z"
+      },
+      {
+        "offset_minutes": 570,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:00:00Z"
+      },
+      {
+        "offset_minutes": 575,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:05:00Z"
+      },
+      {
+        "offset_minutes": 580,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:10:00Z"
+      },
+      {
+        "offset_minutes": 585,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:15:00Z"
+      },
+      {
+        "offset_minutes": 590,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:20:00Z"
+      },
+      {
+        "offset_minutes": 595,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:25:00Z"
+      },
+      {
+        "offset_minutes": 600,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:30:00Z"
+      },
+      {
+        "offset_minutes": 605,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:35:00Z"
+      },
+      {
+        "offset_minutes": 610,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:40:00Z"
+      },
+      {
+        "offset_minutes": 615,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:45:00Z"
+      },
+      {
+        "offset_minutes": 620,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:50:00Z"
+      },
+      {
+        "offset_minutes": 625,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:55:00Z"
+      }
+    ],
+    "venue_features": {
+      "probability_next_30min": null,
+      "probability_next_60min": null,
+      "cg_density_per_km2_min": {
+        "max": 0.9,
+        "mean": 0.9,
+        "p90": 0.9,
+        "fraction_positive": 1.0,
+        "cells": 1
+      },
+      "last_qualifying_event_at": "2026-11-21T21:02:00Z",
+      "coverage": {
+        "probability_next_30min": false,
+        "probability_next_60min": false,
+        "cg_density_1min": true
+      },
+      "has_venue_data": true,
+      "product_valid_at": {
+        "probability_next_30min": "2026-11-21T21:00:00Z",
+        "probability_next_60min": "2026-11-21T21:00:00Z",
+        "cg_density_1min": "2026-11-21T21:02:00Z"
+      },
+      "trigger_radius_miles": 8.0,
+      "probability_valid_at": "2026-11-21T21:00:00Z",
+      "density_valid_at": "2026-11-21T21:02:00Z",
+      "rings": {
+        "trigger": {
+          "probability_next_30min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          },
+          "cg_density_1min": {
+            "max": 0.9,
+            "mean": 0.9,
+            "p90": 0.9,
+            "fraction_positive": 1.0,
+            "cells": 1
+          }
+        },
+        "8-10_mi": {
+          "probability_next_30min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          },
+          "cg_density_1min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          }
+        },
+        "10-15_mi": {
+          "probability_next_30min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          },
+          "cg_density_1min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          }
+        },
+        "15-20_mi": {
+          "probability_next_30min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          },
+          "cg_density_1min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          }
+        },
+        "20-30_mi": {
+          "probability_next_30min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          },
+          "cg_density_1min": {
+            "max": null,
+            "mean": null,
+            "p90": null,
+            "fraction_positive": null,
+            "cells": 0
+          }
+        }
+      },
+      "storm_echoes": {
+        "valid_at": "2026-11-21T21:02:00Z",
+        "source_url": "https://mrms.ncep.noaa.gov/2D/MergedReflectivityQComposite/MRMS_MergedReflectivityQComposite.latest.grib2.gz",
+        "threshold_dbz": 35.0,
+        "coverage_cells": 3647,
+        "objects": [
+          {
+            "latitude": 26.299445264551778,
+            "longitude": -80.1100708699318,
+            "distance_miles": 2.3438746264952584,
+            "max_reflectivity_dbz": 61.2,
+            "cells": 144,
+            "effective_radius_miles": 4.199999999999999
+          },
+          {
+            "latitude": 26.46197051243212,
+            "longitude": -80.03833476087055,
+            "distance_miles": 4.914887468555026,
+            "max_reflectivity_dbz": 56.800000000000004,
+            "cells": 33,
+            "effective_radius_miles": 2.01059692628831
+          },
+          {
+            "latitude": 26.4065592586045,
+            "longitude": -80.25032609680414,
+            "distance_miles": 5.83582181956023,
+            "max_reflectivity_dbz": 54.2,
+            "cells": 77,
+            "effective_radius_miles": 3.0712375355872426
+          },
+          {
+            "latitude": 26.626429382190828,
+            "longitude": -80.1735728522442,
+            "distance_miles": 17.528222571623235,
+            "max_reflectivity_dbz": 39.300000000000004,
+            "cells": 7,
+            "effective_radius_miles": 0.9260129588726067
+          },
+          {
+            "latitude": 26.54000081323235,
+            "longitude": -79.81000143406197,
+            "distance_miles": 21.25286756269003,
+            "max_reflectivity_dbz": 38.300000000000004,
+            "cells": 2,
+            "effective_radius_miles": 0.4949747468305833
+          },
+          {
+            "latitude": 26.468334148613888,
+            "longitude": -79.47833477687294,
+            "distance_miles": 38.656676269087306,
+            "max_reflectivity_dbz": 38.300000000000004,
+            "cells": 3,
+            "effective_radius_miles": 0.606217782649107
+          },
+          {
+            "latitude": 26.949167468205204,
+            "longitude": -79.96083476308519,
+            "distance_miles": 39.571582020918385,
+            "max_reflectivity_dbz": 43.0,
+            "cells": 12,
+            "effective_radius_miles": 1.212435565298214
+          },
+          {
+            "latitude": 25.887054403321866,
+            "longitude": -79.46025144405627,
+            "distance_miles": 43.5256719557164,
+            "max_reflectivity_dbz": 69.0,
+            "cells": 560,
+            "effective_radius_miles": 8.282511696339462
+          },
+          {
+            "latitude": 26.39900081726207,
+            "longitude": -79.33100144774966,
+            "distance_miles": 47.47344795397429,
+            "max_reflectivity_dbz": 40.2,
+            "cells": 5,
+            "effective_radius_miles": 0.7826237921249264
+          },
+          {
+            "latitude": 26.07833415975993,
+            "longitude": -79.27166811611181,
+            "distance_miles": 55.0263825343193,
+            "max_reflectivity_dbz": 40.5,
+            "cells": 3,
+            "effective_radius_miles": 0.606217782649107
+          },
+          {
+            "latitude": 26.65730850218744,
+            "longitude": -80.95577063209032,
+            "distance_miles": 55.367261693160735,
+            "max_reflectivity_dbz": 42.300000000000004,
+            "cells": 13,
+            "effective_radius_miles": 1.2619429464123961
+          },
+          {
+            "latitude": 26.085000826236065,
+            "longitude": -79.24500145020716,
+            "distance_miles": 56.518984514531226,
+            "max_reflectivity_dbz": 37.2,
+            "cells": 3,
+            "effective_radius_miles": 0.606217782649107
+          }
+        ]
+      },
+      "sources": {
+        "probability_next_30min": "https://mrms.ncep.noaa.gov/2D/LightningProbabilityNext30min/MRMS_LightningProbabilityNext30min.latest.grib2.gz",
+        "probability_next_60min": "https://mrms.ncep.noaa.gov/2D/LightningProbabilityNext60min/MRMS_LightningProbabilityNext60min.latest.grib2.gz",
+        "cg_density_1min": "https://mrms.ncep.noaa.gov/2D/NLDN_CG_001min_AvgDensity/MRMS_NLDN_CG_001min_AvgDensity.latest.grib2.gz",
+        "storm_motion_reflectivity": "https://mrms.ncep.noaa.gov/2D/MergedReflectivityQComposite/MRMS_MergedReflectivityQComposite.latest.grib2.gz"
+      },
+      "storm_motion": {
+        "status": "no_history",
+        "track_id": "mrms:20261121T210200:3",
+        "observed_at": "2026-11-21T21:02:00+00:00",
+        "observation_age_minutes": 2.8272239833333335,
+        "bearing_degrees": null,
+        "speed_mph": null,
+        "radial_speed_toward_mph": null,
+        "radial_speed_uncertainty_mph": null,
+        "distance_to_policy_boundary_miles": 8.975445632614507,
+        "eta_minutes": null,
+        "eta_lower_minutes": null,
+        "eta_upper_minutes": null,
+        "max_reflectivity_dbz": 39.300000000000004,
+        "cells": 7,
+        "latitude": 26.626429382190828,
+        "longitude": -80.1735728522442,
+        "coverage_cells": 3647,
+        "source_url": "https://mrms.ncep.noaa.gov/2D/MergedReflectivityQComposite/MRMS_MergedReflectivityQComposite.latest.grib2.gz",
+        "threshold_dbz": 35.0,
+        "tracks": [
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261121T210200:3",
+            "observed_at": "2026-11-21T21:02:00+00:00",
+            "observation_age_minutes": 2.8272239833333335,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 8.975445632614507,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 39.300000000000004,
+            "cells": 7,
+            "latitude": 26.626429382190828,
+            "longitude": -80.1735728522442
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261121T210200:4",
+            "observed_at": "2026-11-21T21:02:00+00:00",
+            "observation_age_minutes": 2.8272239833333335,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 12.830789586204824,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 38.300000000000004,
+            "cells": 2,
+            "latitude": 26.54000081323235,
+            "longitude": -79.81000143406197
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261121T210200:5",
+            "observed_at": "2026-11-21T21:02:00+00:00",
+            "observation_age_minutes": 2.8272239833333335,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 30.494296612166497,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 38.300000000000004,
+            "cells": 3,
+            "latitude": 26.468334148613888,
+            "longitude": -79.47833477687294
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261121T210200:6",
+            "observed_at": "2026-11-21T21:02:00+00:00",
+            "observation_age_minutes": 2.8272239833333335,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 31.370229575840213,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 43.0,
+            "cells": 12,
+            "latitude": 26.949167468205204,
+            "longitude": -79.96083476308519
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261121T210200:7",
+            "observed_at": "2026-11-21T21:02:00+00:00",
+            "observation_age_minutes": 2.8272239833333335,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 35.888972057967514,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 69.0,
+            "cells": 560,
+            "latitude": 25.887054403321866,
+            "longitude": -79.46025144405627
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261121T210200:8",
+            "observed_at": "2026-11-21T21:02:00+00:00",
+            "observation_age_minutes": 2.8272239833333335,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 38.94610178901156,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 40.2,
+            "cells": 5,
+            "latitude": 26.39900081726207,
+            "longitude": -79.33100144774966
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261121T210200:9",
+            "observed_at": "2026-11-21T21:02:00+00:00",
+            "observation_age_minutes": 2.8272239833333335,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 46.78301405178209,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 40.5,
+            "cells": 3,
+            "latitude": 26.07833415975993,
+            "longitude": -79.27166811611181
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261121T210200:10",
+            "observed_at": "2026-11-21T21:02:00+00:00",
+            "observation_age_minutes": 2.8272239833333335,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 47.018698728499636,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 42.300000000000004,
+            "cells": 13,
+            "latitude": 26.65730850218744,
+            "longitude": -80.95577063209032
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261121T210200:11",
+            "observed_at": "2026-11-21T21:02:00+00:00",
+            "observation_age_minutes": 2.8272239833333335,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 48.15549309846609,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 37.2,
+            "cells": 3,
+            "latitude": 26.085000826236065,
+            "longitude": -79.24500145020716
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261121T210200:0",
+            "observed_at": "2026-11-21T21:02:00+00:00",
+            "observation_age_minutes": 2.8272239833333335,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 0.0,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 61.2,
+            "cells": 144,
+            "latitude": 26.299445264551778,
+            "longitude": -80.1100708699318
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261121T210200:1",
+            "observed_at": "2026-11-21T21:02:00+00:00",
+            "observation_age_minutes": 2.8272239833333335,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 0.0,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 56.800000000000004,
+            "cells": 33,
+            "latitude": 26.46197051243212,
+            "longitude": -80.03833476087055
+          },
+          {
+            "status": "no_history",
+            "track_id": "mrms:20261121T210200:2",
+            "observed_at": "2026-11-21T21:02:00+00:00",
+            "observation_age_minutes": 2.8272239833333335,
+            "bearing_degrees": null,
+            "speed_mph": null,
+            "radial_speed_toward_mph": null,
+            "radial_speed_uncertainty_mph": null,
+            "distance_to_policy_boundary_miles": 0.0,
+            "eta_minutes": null,
+            "eta_lower_minutes": null,
+            "eta_upper_minutes": null,
+            "max_reflectivity_dbz": 54.2,
+            "cells": 77,
+            "latitude": 26.4065592586045,
+            "longitude": -80.25032609680414
+          }
+        ],
+        "objects": [
+          {
+            "latitude": 26.299445264551778,
+            "longitude": -80.1100708699318,
+            "distance_miles": 2.3438746264952584,
+            "max_reflectivity_dbz": 61.2,
+            "cells": 144,
+            "effective_radius_miles": 4.199999999999999,
+            "track_id": "mrms:20261121T210200:0"
+          },
+          {
+            "latitude": 26.46197051243212,
+            "longitude": -80.03833476087055,
+            "distance_miles": 4.914887468555026,
+            "max_reflectivity_dbz": 56.800000000000004,
+            "cells": 33,
+            "effective_radius_miles": 2.01059692628831,
+            "track_id": "mrms:20261121T210200:1"
+          },
+          {
+            "latitude": 26.4065592586045,
+            "longitude": -80.25032609680414,
+            "distance_miles": 5.83582181956023,
+            "max_reflectivity_dbz": 54.2,
+            "cells": 77,
+            "effective_radius_miles": 3.0712375355872426,
+            "track_id": "mrms:20261121T210200:2"
+          },
+          {
+            "latitude": 26.626429382190828,
+            "longitude": -80.1735728522442,
+            "distance_miles": 17.528222571623235,
+            "max_reflectivity_dbz": 39.300000000000004,
+            "cells": 7,
+            "effective_radius_miles": 0.9260129588726067,
+            "track_id": "mrms:20261121T210200:3"
+          },
+          {
+            "latitude": 26.54000081323235,
+            "longitude": -79.81000143406197,
+            "distance_miles": 21.25286756269003,
+            "max_reflectivity_dbz": 38.300000000000004,
+            "cells": 2,
+            "effective_radius_miles": 0.4949747468305833,
+            "track_id": "mrms:20261121T210200:4"
+          },
+          {
+            "latitude": 26.468334148613888,
+            "longitude": -79.47833477687294,
+            "distance_miles": 38.656676269087306,
+            "max_reflectivity_dbz": 38.300000000000004,
+            "cells": 3,
+            "effective_radius_miles": 0.606217782649107,
+            "track_id": "mrms:20261121T210200:5"
+          },
+          {
+            "latitude": 26.949167468205204,
+            "longitude": -79.96083476308519,
+            "distance_miles": 39.571582020918385,
+            "max_reflectivity_dbz": 43.0,
+            "cells": 12,
+            "effective_radius_miles": 1.212435565298214,
+            "track_id": "mrms:20261121T210200:6"
+          },
+          {
+            "latitude": 25.887054403321866,
+            "longitude": -79.46025144405627,
+            "distance_miles": 43.5256719557164,
+            "max_reflectivity_dbz": 69.0,
+            "cells": 560,
+            "effective_radius_miles": 8.282511696339462,
+            "track_id": "mrms:20261121T210200:7"
+          },
+          {
+            "latitude": 26.39900081726207,
+            "longitude": -79.33100144774966,
+            "distance_miles": 47.47344795397429,
+            "max_reflectivity_dbz": 40.2,
+            "cells": 5,
+            "effective_radius_miles": 0.7826237921249264,
+            "track_id": "mrms:20261121T210200:8"
+          },
+          {
+            "latitude": 26.07833415975993,
+            "longitude": -79.27166811611181,
+            "distance_miles": 55.0263825343193,
+            "max_reflectivity_dbz": 40.5,
+            "cells": 3,
+            "effective_radius_miles": 0.606217782649107,
+            "track_id": "mrms:20261121T210200:9"
+          },
+          {
+            "latitude": 26.65730850218744,
+            "longitude": -80.95577063209032,
+            "distance_miles": 55.367261693160735,
+            "max_reflectivity_dbz": 42.300000000000004,
+            "cells": 13,
+            "effective_radius_miles": 1.2619429464123961,
+            "track_id": "mrms:20261121T210200:10"
+          },
+          {
+            "latitude": 26.085000826236065,
+            "longitude": -79.24500145020716,
+            "distance_miles": 56.518984514531226,
+            "max_reflectivity_dbz": 37.2,
+            "cells": 3,
+            "effective_radius_miles": 0.606217782649107,
+            "track_id": "mrms:20261121T210200:11"
+          }
+        ],
+        "track_history": {
+          "mrms:20261121T210200:0": [
+            {
+              "track_id": "mrms:20261121T210200:0",
+              "observed_at": "2026-11-21T21:02:00+00:00",
+              "latitude": 26.299445264551778,
+              "longitude": -80.1100708699318,
+              "effective_radius_miles": 4.199999999999999
+            }
+          ],
+          "mrms:20261121T210200:1": [
+            {
+              "track_id": "mrms:20261121T210200:1",
+              "observed_at": "2026-11-21T21:02:00+00:00",
+              "latitude": 26.46197051243212,
+              "longitude": -80.03833476087055,
+              "effective_radius_miles": 2.01059692628831
+            }
+          ],
+          "mrms:20261121T210200:2": [
+            {
+              "track_id": "mrms:20261121T210200:2",
+              "observed_at": "2026-11-21T21:02:00+00:00",
+              "latitude": 26.4065592586045,
+              "longitude": -80.25032609680414,
+              "effective_radius_miles": 3.0712375355872426
+            }
+          ],
+          "mrms:20261121T210200:3": [
+            {
+              "track_id": "mrms:20261121T210200:3",
+              "observed_at": "2026-11-21T21:02:00+00:00",
+              "latitude": 26.626429382190828,
+              "longitude": -80.1735728522442,
+              "effective_radius_miles": 0.9260129588726067
+            }
+          ],
+          "mrms:20261121T210200:4": [
+            {
+              "track_id": "mrms:20261121T210200:4",
+              "observed_at": "2026-11-21T21:02:00+00:00",
+              "latitude": 26.54000081323235,
+              "longitude": -79.81000143406197,
+              "effective_radius_miles": 0.4949747468305833
+            }
+          ],
+          "mrms:20261121T210200:5": [
+            {
+              "track_id": "mrms:20261121T210200:5",
+              "observed_at": "2026-11-21T21:02:00+00:00",
+              "latitude": 26.468334148613888,
+              "longitude": -79.47833477687294,
+              "effective_radius_miles": 0.606217782649107
+            }
+          ],
+          "mrms:20261121T210200:6": [
+            {
+              "track_id": "mrms:20261121T210200:6",
+              "observed_at": "2026-11-21T21:02:00+00:00",
+              "latitude": 26.949167468205204,
+              "longitude": -79.96083476308519,
+              "effective_radius_miles": 1.212435565298214
+            }
+          ],
+          "mrms:20261121T210200:7": [
+            {
+              "track_id": "mrms:20261121T210200:7",
+              "observed_at": "2026-11-21T21:02:00+00:00",
+              "latitude": 25.887054403321866,
+              "longitude": -79.46025144405627,
+              "effective_radius_miles": 8.282511696339462
+            }
+          ],
+          "mrms:20261121T210200:8": [
+            {
+              "track_id": "mrms:20261121T210200:8",
+              "observed_at": "2026-11-21T21:02:00+00:00",
+              "latitude": 26.39900081726207,
+              "longitude": -79.33100144774966,
+              "effective_radius_miles": 0.7826237921249264
+            }
+          ],
+          "mrms:20261121T210200:9": [
+            {
+              "track_id": "mrms:20261121T210200:9",
+              "observed_at": "2026-11-21T21:02:00+00:00",
+              "latitude": 26.07833415975993,
+              "longitude": -79.27166811611181,
+              "effective_radius_miles": 0.606217782649107
+            }
+          ],
+          "mrms:20261121T210200:10": [
+            {
+              "track_id": "mrms:20261121T210200:10",
+              "observed_at": "2026-11-21T21:02:00+00:00",
+              "latitude": 26.65730850218744,
+              "longitude": -80.95577063209032,
+              "effective_radius_miles": 1.2619429464123961
+            }
+          ],
+          "mrms:20261121T210200:11": [
+            {
+              "track_id": "mrms:20261121T210200:11",
+              "observed_at": "2026-11-21T21:02:00+00:00",
+              "latitude": 26.085000826236065,
+              "longitude": -79.24500145020716,
+              "effective_radius_miles": 0.606217782649107
+            }
+          ]
+        },
+        "model_adjustment": {
+          "applied": false,
+          "tracks_used": 0
+        }
+      },
+      "href_hourly": [
+        {
+          "probability": 0.32,
+          "issued_at": "2026-11-21T12:00:00+00:00",
+          "valid_start": "2026-11-21T21:00:00+00:00",
+          "valid_end": "2026-11-21T22:00:00+00:00",
+          "forecast_hour": 10,
+          "latitude": 26.3754536,
+          "longitude": -80.1016831,
+          "grid_latitude": 26.298802922113143,
+          "grid_longitude": -80.30149248725792,
+          "grid_distance_km": 21.65983141838956,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20261121/refsct/spc_post.t12z.refsct_1hr.f010.grib2"
+        },
+        {
+          "probability": 0.21,
+          "issued_at": "2026-11-21T12:00:00+00:00",
+          "valid_start": "2026-11-21T22:00:00+00:00",
+          "valid_end": "2026-11-21T23:00:00+00:00",
+          "forecast_hour": 11,
+          "latitude": 26.3754536,
+          "longitude": -80.1016831,
+          "grid_latitude": 26.298802922113143,
+          "grid_longitude": -80.30149248725792,
+          "grid_distance_km": 21.65983141838956,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20261121/refsct/spc_post.t12z.refsct_1hr.f011.grib2"
+        },
+        {
+          "probability": 0.15,
+          "issued_at": "2026-11-21T12:00:00+00:00",
+          "valid_start": "2026-11-21T23:00:00+00:00",
+          "valid_end": "2026-11-22T00:00:00+00:00",
+          "forecast_hour": 12,
+          "latitude": 26.3754536,
+          "longitude": -80.1016831,
+          "grid_latitude": 26.298802922113143,
+          "grid_longitude": -80.30149248725792,
+          "grid_distance_km": 21.65983141838956,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20261121/refsct/spc_post.t12z.refsct_1hr.f012.grib2"
+        },
+        {
+          "probability": 0.08,
+          "issued_at": "2026-11-21T12:00:00+00:00",
+          "valid_start": "2026-11-22T00:00:00+00:00",
+          "valid_end": "2026-11-22T01:00:00+00:00",
+          "forecast_hour": 13,
+          "latitude": 26.3754536,
+          "longitude": -80.1016831,
+          "grid_latitude": 26.298802922113143,
+          "grid_longitude": -80.30149248725792,
+          "grid_distance_km": 21.65983141838956,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20261121/refsct/spc_post.t12z.refsct_1hr.f013.grib2"
+        },
+        {
+          "probability": 0.05,
+          "issued_at": "2026-11-21T12:00:00+00:00",
+          "valid_start": "2026-11-22T01:00:00+00:00",
+          "valid_end": "2026-11-22T02:00:00+00:00",
+          "forecast_hour": 14,
+          "latitude": 26.3754536,
+          "longitude": -80.1016831,
+          "grid_latitude": 26.298802922113143,
+          "grid_longitude": -80.30149248725792,
+          "grid_distance_km": 21.65983141838956,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20261121/refsct/spc_post.t12z.refsct_1hr.f014.grib2"
+        },
+        {
+          "probability": 0.05,
+          "issued_at": "2026-11-21T12:00:00+00:00",
+          "valid_start": "2026-11-22T02:00:00+00:00",
+          "valid_end": "2026-11-22T03:00:00+00:00",
+          "forecast_hour": 15,
+          "latitude": 26.3754536,
+          "longitude": -80.1016831,
+          "grid_latitude": 26.298802922113143,
+          "grid_longitude": -80.30149248725792,
+          "grid_distance_km": 21.65983141838956,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20261121/refsct/spc_post.t12z.refsct_1hr.f015.grib2"
+        },
+        {
+          "probability": 0.06,
+          "issued_at": "2026-11-21T12:00:00+00:00",
+          "valid_start": "2026-11-22T03:00:00+00:00",
+          "valid_end": "2026-11-22T04:00:00+00:00",
+          "forecast_hour": 16,
+          "latitude": 26.3754536,
+          "longitude": -80.1016831,
+          "grid_latitude": 26.298802922113143,
+          "grid_longitude": -80.30149248725792,
+          "grid_distance_km": 21.65983141838956,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20261121/refsct/spc_post.t12z.refsct_1hr.f016.grib2"
+        },
+        {
+          "probability": 0.05,
+          "issued_at": "2026-11-21T12:00:00+00:00",
+          "valid_start": "2026-11-22T04:00:00+00:00",
+          "valid_end": "2026-11-22T05:00:00+00:00",
+          "forecast_hour": 17,
+          "latitude": 26.3754536,
+          "longitude": -80.1016831,
+          "grid_latitude": 26.298802922113143,
+          "grid_longitude": -80.30149248725792,
+          "grid_distance_km": 21.65983141838956,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20261121/refsct/spc_post.t12z.refsct_1hr.f017.grib2"
+        },
+        {
+          "probability": 0.04,
+          "issued_at": "2026-11-21T12:00:00+00:00",
+          "valid_start": "2026-11-22T05:00:00+00:00",
+          "valid_end": "2026-11-22T06:00:00+00:00",
+          "forecast_hour": 18,
+          "latitude": 26.3754536,
+          "longitude": -80.1016831,
+          "grid_latitude": 26.298802922113143,
+          "grid_longitude": -80.30149248725792,
+          "grid_distance_km": 21.65983141838956,
+          "source_url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/spc_post/prod/spc_post.20261121/refsct/spc_post.t12z.refsct_1hr.f018.grib2"
+        }
+      ],
+      "nws_alerts": {
+        "status": "ok",
+        "fetched_at": "2026-11-21T21:04:23.244235Z",
+        "freshness_seconds": 0,
+        "source_url": "https://api.weather.gov/alerts/active?event=Severe+Thunderstorm+Warning",
+        "has_active_warning": false,
+        "notes": [],
+        "alerts": []
+      },
+      "hrrr_point": {
+        "latitude": 26.3754536,
+        "longitude": -80.1016831,
+        "grid_latitude": 26.37372228137647,
+        "grid_longitude": -80.09997795725923,
+        "grid_distance_km": 0.25675122386499116,
+        "issued_at": "2026-11-21T18:00:00Z",
+        "valid_at": "2026-11-21T19:00:00Z",
+        "forecast_hour": 1,
+        "reflectivity_dbz": 25.25,
+        "precipitation_rate_kg_m2_s": 0.0,
+        "cape_j_kg": 2490.0,
+        "u_wind_10m_ms": -3.221944808959961,
+        "v_wind_10m_ms": 1.8483352661132812,
+        "wind_speed_10m_ms": 3.7144678768219404,
+        "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20261121/conus/hrrr.t18z.wrfsfcf01.grib2",
+        "field_source_urls": {
+          "reflectivity": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20261121/conus/hrrr.t18z.wrfsfcf01.grib2#bytes=0-432842",
+          "precipitation": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20261121/conus/hrrr.t18z.wrfsfcf01.grib2#bytes=61247875-61313426",
+          "cape": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20261121/conus/hrrr.t18z.wrfsfcf01.grib2#bytes=76291047-76767322",
+          "u_wind": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20261121/conus/hrrr.t18z.wrfsfcf01.grib2#bytes=52639873-55021487",
+          "v_wind": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20261121/conus/hrrr.t18z.wrfsfcf01.grib2#bytes=55021488-57403102"
+        }
+      },
+      "glm_observation": {
+        "satellite": "GOES-19",
+        "latitude": 26.3754536,
+        "longitude": -80.1016831,
+        "radius_miles": 8.0,
+        "flash_count": 0,
+        "duration_seconds": 20.0,
+        "flash_rate_per_minute": 0.0,
+        "flash_density_per_km2_min": 0.0,
+        "valid_start": "2026-11-21T21:03:40Z",
+        "valid_end": "2026-11-21T21:04:00Z",
+        "source_url": "https://noaa-goes19.s3.amazonaws.com/GLM-L2-LCFA/2026/325/21/OR_GLM-L2-LCFA_G19_s20263252103400_e20263252104000_c20263252104014.nc"
+      }
+    },
+    "missing_sources": [
+      "MRMS near-term probability grids"
+    ],
+    "notes": [
+      "MRMS probabilities are sampled conservatively within the configured radius; NLDN CG density is a one-minute public proxy, not the venue operational lightning network.",
+      "NWS thunder probability is a regional forecast proxy, not a calibrated venue-specific policy probability."
+    ]
+  },
+  "pregame": {
+    "delay_probability": 0.42065,
+    "kickoff_delay_probability": 0.0,
+    "in_game_delay_probability": 0.42065,
+    "multiple_delay_probability": 0.08125,
+    "expected_delay_minutes": 23.54775,
+    "hourly_delay_hazard": [
+      {
+        "offset_minutes": 95,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:05:00Z"
+      },
+      {
+        "offset_minutes": 100,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:10:00Z"
+      },
+      {
+        "offset_minutes": 105,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:15:00Z"
+      },
+      {
+        "offset_minutes": 110,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:20:00Z"
+      },
+      {
+        "offset_minutes": 115,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:25:00Z"
+      },
+      {
+        "offset_minutes": 120,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:30:00Z"
+      },
+      {
+        "offset_minutes": 125,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:35:00Z"
+      },
+      {
+        "offset_minutes": 130,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:40:00Z"
+      },
+      {
+        "offset_minutes": 135,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:45:00Z"
+      },
+      {
+        "offset_minutes": 140,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:50:00Z"
+      },
+      {
+        "offset_minutes": 145,
+        "probability": 0.0316275855942042,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T21:55:00Z"
+      },
+      {
+        "offset_minutes": 150,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:00:00Z"
+      },
+      {
+        "offset_minutes": 155,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:05:00Z"
+      },
+      {
+        "offset_minutes": 160,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:10:00Z"
+      },
+      {
+        "offset_minutes": 165,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:15:00Z"
+      },
+      {
+        "offset_minutes": 170,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:20:00Z"
+      },
+      {
+        "offset_minutes": 175,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:25:00Z"
+      },
+      {
+        "offset_minutes": 180,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:30:00Z"
+      },
+      {
+        "offset_minutes": 185,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:35:00Z"
+      },
+      {
+        "offset_minutes": 190,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:40:00Z"
+      },
+      {
+        "offset_minutes": 195,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:45:00Z"
+      },
+      {
+        "offset_minutes": 200,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:50:00Z"
+      },
+      {
+        "offset_minutes": 205,
+        "probability": 0.01945185082377021,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T22:55:00Z"
+      },
+      {
+        "offset_minutes": 210,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:00:00Z"
+      },
+      {
+        "offset_minutes": 215,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:05:00Z"
+      },
+      {
+        "offset_minutes": 220,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:10:00Z"
+      },
+      {
+        "offset_minutes": 225,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:15:00Z"
+      },
+      {
+        "offset_minutes": 230,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:20:00Z"
+      },
+      {
+        "offset_minutes": 235,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:25:00Z"
+      },
+      {
+        "offset_minutes": 240,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:30:00Z"
+      },
+      {
+        "offset_minutes": 245,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:35:00Z"
+      },
+      {
+        "offset_minutes": 250,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:40:00Z"
+      },
+      {
+        "offset_minutes": 255,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:45:00Z"
+      },
+      {
+        "offset_minutes": 260,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:50:00Z"
+      },
+      {
+        "offset_minutes": 265,
+        "probability": 0.013451947011868914,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-21T23:55:00Z"
+      },
+      {
+        "offset_minutes": 270,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:00:00Z"
+      },
+      {
+        "offset_minutes": 275,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:05:00Z"
+      },
+      {
+        "offset_minutes": 280,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:10:00Z"
+      },
+      {
+        "offset_minutes": 285,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:15:00Z"
+      },
+      {
+        "offset_minutes": 290,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:20:00Z"
+      },
+      {
+        "offset_minutes": 295,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:25:00Z"
+      },
+      {
+        "offset_minutes": 300,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:30:00Z"
+      },
+      {
+        "offset_minutes": 305,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:35:00Z"
+      },
+      {
+        "offset_minutes": 310,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:40:00Z"
+      },
+      {
+        "offset_minutes": 315,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:45:00Z"
+      },
+      {
+        "offset_minutes": 320,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:50:00Z"
+      },
+      {
+        "offset_minutes": 325,
+        "probability": 0.006924382628299419,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T00:55:00Z"
+      },
+      {
+        "offset_minutes": 330,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:00:00Z"
+      },
+      {
+        "offset_minutes": 335,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:05:00Z"
+      },
+      {
+        "offset_minutes": 340,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:10:00Z"
+      },
+      {
+        "offset_minutes": 345,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:15:00Z"
+      },
+      {
+        "offset_minutes": 350,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:20:00Z"
+      },
+      {
+        "offset_minutes": 355,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:25:00Z"
+      },
+      {
+        "offset_minutes": 360,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:30:00Z"
+      },
+      {
+        "offset_minutes": 365,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:35:00Z"
+      },
+      {
+        "offset_minutes": 370,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:40:00Z"
+      },
+      {
+        "offset_minutes": 375,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:45:00Z"
+      },
+      {
+        "offset_minutes": 380,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:50:00Z"
+      },
+      {
+        "offset_minutes": 385,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T01:55:00Z"
+      },
+      {
+        "offset_minutes": 390,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:00:00Z"
+      },
+      {
+        "offset_minutes": 395,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:05:00Z"
+      },
+      {
+        "offset_minutes": 400,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:10:00Z"
+      },
+      {
+        "offset_minutes": 405,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:15:00Z"
+      },
+      {
+        "offset_minutes": 410,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:20:00Z"
+      },
+      {
+        "offset_minutes": 415,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:25:00Z"
+      },
+      {
+        "offset_minutes": 420,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:30:00Z"
+      },
+      {
+        "offset_minutes": 425,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:35:00Z"
+      },
+      {
+        "offset_minutes": 430,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:40:00Z"
+      },
+      {
+        "offset_minutes": 435,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:45:00Z"
+      },
+      {
+        "offset_minutes": 440,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:50:00Z"
+      },
+      {
+        "offset_minutes": 445,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T02:55:00Z"
+      },
+      {
+        "offset_minutes": 450,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:00:00Z"
+      },
+      {
+        "offset_minutes": 455,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:05:00Z"
+      },
+      {
+        "offset_minutes": 460,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:10:00Z"
+      },
+      {
+        "offset_minutes": 465,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:15:00Z"
+      },
+      {
+        "offset_minutes": 470,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:20:00Z"
+      },
+      {
+        "offset_minutes": 475,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:25:00Z"
+      },
+      {
+        "offset_minutes": 480,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:30:00Z"
+      },
+      {
+        "offset_minutes": 485,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:35:00Z"
+      },
+      {
+        "offset_minutes": 490,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:40:00Z"
+      },
+      {
+        "offset_minutes": 495,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:45:00Z"
+      },
+      {
+        "offset_minutes": 500,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:50:00Z"
+      },
+      {
+        "offset_minutes": 505,
+        "probability": 0.005143012831822946,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T03:55:00Z"
+      },
+      {
+        "offset_minutes": 510,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:00:00Z"
+      },
+      {
+        "offset_minutes": 515,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:05:00Z"
+      },
+      {
+        "offset_minutes": 520,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:10:00Z"
+      },
+      {
+        "offset_minutes": 525,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:15:00Z"
+      },
+      {
+        "offset_minutes": 530,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:20:00Z"
+      },
+      {
+        "offset_minutes": 535,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:25:00Z"
+      },
+      {
+        "offset_minutes": 540,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:30:00Z"
+      },
+      {
+        "offset_minutes": 545,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:35:00Z"
+      },
+      {
+        "offset_minutes": 550,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:40:00Z"
+      },
+      {
+        "offset_minutes": 555,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:45:00Z"
+      },
+      {
+        "offset_minutes": 560,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:50:00Z"
+      },
+      {
+        "offset_minutes": 565,
+        "probability": 0.004265318777560645,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T04:55:00Z"
+      },
+      {
+        "offset_minutes": 570,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:00:00Z"
+      },
+      {
+        "offset_minutes": 575,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:05:00Z"
+      },
+      {
+        "offset_minutes": 580,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:10:00Z"
+      },
+      {
+        "offset_minutes": 585,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:15:00Z"
+      },
+      {
+        "offset_minutes": 590,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:20:00Z"
+      },
+      {
+        "offset_minutes": 595,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:25:00Z"
+      },
+      {
+        "offset_minutes": 600,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:30:00Z"
+      },
+      {
+        "offset_minutes": 605,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:35:00Z"
+      },
+      {
+        "offset_minutes": 610,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:40:00Z"
+      },
+      {
+        "offset_minutes": 615,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:45:00Z"
+      },
+      {
+        "offset_minutes": 620,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:50:00Z"
+      },
+      {
+        "offset_minutes": 625,
+        "probability": 0.003396053198917559,
+        "source": "SPC REFSCT",
+        "valid_at": "2026-11-22T05:55:00Z"
+      }
+    ],
+    "simulation_count": 20000
+  },
+  "delay": {
+    "active": true,
+    "officially_confirmed": false,
+    "model_delay_active": true,
+    "last_qualifying_event_at": "2026-11-21T21:02:00Z",
+    "earliest_weather_clear_at": "2026-11-21T21:32:00Z",
+    "weather_clear_cdf": [
+      {
+        "at": "2026-11-21T21:04:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:09:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:14:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:19:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:24:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:29:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:34:49.633439+00:00",
+        "probability": 0.75585
+      },
+      {
+        "at": "2026-11-21T21:39:49.633439+00:00",
+        "probability": 0.78005
+      },
+      {
+        "at": "2026-11-21T21:44:49.633439+00:00",
+        "probability": 0.80455
+      },
+      {
+        "at": "2026-11-21T21:49:49.633439+00:00",
+        "probability": 0.8296
+      },
+      {
+        "at": "2026-11-21T21:54:49.633439+00:00",
+        "probability": 0.8548
+      },
+      {
+        "at": "2026-11-21T21:59:49.633439+00:00",
+        "probability": 0.88155
+      },
+      {
+        "at": "2026-11-21T22:04:49.633439+00:00",
+        "probability": 0.9083
+      },
+      {
+        "at": "2026-11-21T22:09:49.633439+00:00",
+        "probability": 0.9339
+      },
+      {
+        "at": "2026-11-21T22:14:49.633439+00:00",
+        "probability": 0.95825
+      },
+      {
+        "at": "2026-11-21T22:19:49.633439+00:00",
+        "probability": 0.9748
+      },
+      {
+        "at": "2026-11-21T22:24:49.633439+00:00",
+        "probability": 0.98355
+      },
+      {
+        "at": "2026-11-21T22:29:49.633439+00:00",
+        "probability": 0.9867
+      },
+      {
+        "at": "2026-11-21T22:34:49.633439+00:00",
+        "probability": 0.98935
+      },
+      {
+        "at": "2026-11-21T22:39:49.633439+00:00",
+        "probability": 0.99185
+      },
+      {
+        "at": "2026-11-21T22:44:49.633439+00:00",
+        "probability": 0.99455
+      },
+      {
+        "at": "2026-11-21T22:49:49.633439+00:00",
+        "probability": 0.9964
+      },
+      {
+        "at": "2026-11-21T22:54:49.633439+00:00",
+        "probability": 0.9974
+      },
+      {
+        "at": "2026-11-21T22:59:49.633439+00:00",
+        "probability": 0.9986
+      },
+      {
+        "at": "2026-11-21T23:04:49.633439+00:00",
+        "probability": 0.9992
+      },
+      {
+        "at": "2026-11-21T23:09:49.633439+00:00",
+        "probability": 0.9995
+      },
+      {
+        "at": "2026-11-21T23:14:49.633439+00:00",
+        "probability": 0.99955
+      },
+      {
+        "at": "2026-11-21T23:19:49.633439+00:00",
+        "probability": 0.99975
+      },
+      {
+        "at": "2026-11-21T23:24:49.633439+00:00",
+        "probability": 0.99985
+      },
+      {
+        "at": "2026-11-21T23:29:49.633439+00:00",
+        "probability": 0.99985
+      },
+      {
+        "at": "2026-11-21T23:34:49.633439+00:00",
+        "probability": 0.9999
+      },
+      {
+        "at": "2026-11-21T23:39:49.633439+00:00",
+        "probability": 1.0
+      },
+      {
+        "at": "2026-11-21T23:44:49.633439+00:00",
+        "probability": 1.0
+      },
+      {
+        "at": "2026-11-21T23:49:49.633439+00:00",
+        "probability": 1.0
+      },
+      {
+        "at": "2026-11-21T23:54:49.633439+00:00",
+        "probability": 1.0
+      },
+      {
+        "at": "2026-11-21T23:59:49.633439+00:00",
+        "probability": 1.0
+      },
+      {
+        "at": "2026-11-22T00:04:49.633439+00:00",
+        "probability": 1.0
+      }
+    ],
+    "resume_cdf": [
+      {
+        "at": "2026-11-21T21:04:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:09:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:14:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:19:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:24:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:29:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:34:49.633439+00:00",
+        "probability": 0.0
+      },
+      {
+        "at": "2026-11-21T21:39:49.633439+00:00",
+        "probability": 0.08065
+      },
+      {
+        "at": "2026-11-21T21:44:49.633439+00:00",
+        "probability": 0.3906
+      },
+      {
+        "at": "2026-11-21T21:49:49.633439+00:00",
+        "probability": 0.66185
+      },
+      {
+        "at": "2026-11-21T21:54:49.633439+00:00",
+        "probability": 0.79265
+      },
+      {
+        "at": "2026-11-21T21:59:49.633439+00:00",
+        "probability": 0.81525
+      },
+      {
+        "at": "2026-11-21T22:04:49.633439+00:00",
+        "probability": 0.8411
+      },
+      {
+        "at": "2026-11-21T22:09:49.633439+00:00",
+        "probability": 0.86915
+      },
+      {
+        "at": "2026-11-21T22:14:49.633439+00:00",
+        "probability": 0.894
+      },
+      {
+        "at": "2026-11-21T22:19:49.633439+00:00",
+        "probability": 0.92015
+      },
+      {
+        "at": "2026-11-21T22:24:49.633439+00:00",
+        "probability": 0.94365
+      },
+      {
+        "at": "2026-11-21T22:29:49.633439+00:00",
+        "probability": 0.9634
+      },
+      {
+        "at": "2026-11-21T22:34:49.633439+00:00",
+        "probability": 0.9775
+      },
+      {
+        "at": "2026-11-21T22:39:49.633439+00:00",
+        "probability": 0.98405
+      },
+      {
+        "at": "2026-11-21T22:44:49.633439+00:00",
+        "probability": 0.9872
+      },
+      {
+        "at": "2026-11-21T22:49:49.633439+00:00",
+        "probability": 0.99035
+      },
+      {
+        "at": "2026-11-21T22:54:49.633439+00:00",
+        "probability": 0.9931
+      },
+      {
+        "at": "2026-11-21T22:59:49.633439+00:00",
+        "probability": 0.9955
+      },
+      {
+        "at": "2026-11-21T23:04:49.633439+00:00",
+        "probability": 0.99705
+      },
+      {
+        "at": "2026-11-21T23:09:49.633439+00:00",
+        "probability": 0.998
+      },
+      {
+        "at": "2026-11-21T23:14:49.633439+00:00",
+        "probability": 0.9987
+      },
+      {
+        "at": "2026-11-21T23:19:49.633439+00:00",
+        "probability": 0.99935
+      },
+      {
+        "at": "2026-11-21T23:24:49.633439+00:00",
+        "probability": 0.9994
+      },
+      {
+        "at": "2026-11-21T23:29:49.633439+00:00",
+        "probability": 0.9996
+      },
+      {
+        "at": "2026-11-21T23:34:49.633439+00:00",
+        "probability": 0.99985
+      },
+      {
+        "at": "2026-11-21T23:39:49.633439+00:00",
+        "probability": 0.99985
+      },
+      {
+        "at": "2026-11-21T23:44:49.633439+00:00",
+        "probability": 0.9999
+      },
+      {
+        "at": "2026-11-21T23:49:49.633439+00:00",
+        "probability": 1.0
+      },
+      {
+        "at": "2026-11-21T23:54:49.633439+00:00",
+        "probability": 1.0
+      },
+      {
+        "at": "2026-11-21T23:59:49.633439+00:00",
+        "probability": 1.0
+      },
+      {
+        "at": "2026-11-22T00:04:49.633439+00:00",
+        "probability": 1.0
+      }
+    ],
+    "resume_p50": "2026-11-21T21:46:49.633439Z",
+    "resume_p75": "2026-11-21T21:51:49.633439Z",
+    "resume_p90": "2026-11-21T22:19:49.633439Z",
+    "probability_additional_minutes": {
+      "15": 1.0,
+      "30": 1.0,
+      "45": 0.33815,
+      "60": 0.1589,
+      "90": 0.0225,
+      "120": 0.00295,
+      "150": 0.00015,
+      "180": 0.0
+    },
+    "holds": [],
+    "source": "MRMS observed qualifying lightning + conditional policy simulation",
+    "notes": [
+      "MRMS NLDN cloud-to-ground density gives a one-minute observation time, not an exact strike time; the venue may use another lightning network.",
+      "NWS/MRMS future hazards are experimental regional inputs, not a restart decision or an official venue all-clear."
+    ]
+  },
+  "quality": {
+    "weather_data_age_seconds": 32689,
+    "sports_data_age_seconds": 0,
+    "policy_verification": "venue_assumption",
+    "forecast_lead_minutes": -94,
+    "forecast_scope": "regional_proxy",
+    "missing_sources": [
+      "MRMS near-term probability grids"
+    ],
+    "degraded": true,
+    "status": "experimental MRMS conditional resume simulation",
+    "message": "Resume CDF conditions on public MRMS cloud-to-ground density. The venue's operational lightning feed may differ."
+  }
+}
