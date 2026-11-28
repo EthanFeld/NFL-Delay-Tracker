@@ -1,0 +1,113 @@
+{
+  "version": "20261128T121426Z",
+  "generated_at": "2026-11-28T12:14:26.206824Z",
+  "sources": {
+    "nfl_scoreboard": {
+      "status": "ok",
+      "updated_at": "2026-11-28T12:12:28.840311+00:00",
+      "message": "Public scoreboard; unofficial source"
+    },
+    "college_scoreboard": {
+      "status": "ok",
+      "updated_at": "2026-11-28T12:12:29.054667+00:00",
+      "message": "Public scoreboard; unofficial source"
+    },
+    "nfl_schedule": {
+      "status": "ok",
+      "updated_at": "2026-11-28T12:12:28.840311+00:00",
+      "message": "Public scoreboard; unofficial source"
+    },
+    "college_schedule": {
+      "status": "ok",
+      "updated_at": "2026-11-28T12:12:29.054667+00:00",
+      "message": "Public scoreboard; unofficial source"
+    },
+    "nws_forecast": {
+      "status": "ok",
+      "updated_at": "2026-11-28T06:26:35+00:00",
+      "age_seconds": 20846,
+      "age_minutes": 347.43333333333334,
+      "freshness_limit_minutes": 720,
+      "venues_considered": 33,
+      "venue_status": {
+        "ok": 33,
+        "degraded": 0,
+        "stale": 0,
+        "error": 0
+      },
+      "message": "NWS probabilityOfThunder regional proxy; not venue-radius observations. Venue results: 33 current, 0 empty, 0 stale, 0 errors."
+    },
+    "nws_alerts": {
+      "status": "ok",
+      "updated_at": "2026-11-28T12:12:29.959761+00:00",
+      "url": "https://api.weather.gov/alerts/active?event=Severe+Thunderstorm+Warning",
+      "venues_checked": 158,
+      "venue_alert_matches": 0,
+      "venues_with_active_warnings": 0,
+      "message": "Official NWS severe thunderstorm warning feed; polygons matched to venues"
+    },
+    "mrms_lightning": {
+      "status": "no_venue_data",
+      "updated_at": "2026-11-28T12:11:00+00:00",
+      "url": "https://mrms.ncep.noaa.gov/2D/LightningProbabilityNext30min/MRMS_LightningProbabilityNext30min.latest.grib2.gz",
+      "message": "Venue grids: 0 complete, 0 partial, 14 without coverage, 0 stale. MRMS is a regional public proxy, not the venue operational sensor.",
+      "venue_coverage": {
+        "covered": 0,
+        "partial": 0,
+        "no_coverage": 14,
+        "stale": 0
+      }
+    },
+    "mrms_storm_motion": {
+      "status": "not_requested",
+      "updated_at": "2026-11-28T12:12:30.205374+00:00",
+      "url": null,
+      "message": "Reflectivity tracking is sampled only during active games or holds."
+    },
+    "href_calibrated_thunder": {
+      "status": "cached",
+      "updated_at": "2026-11-28T06:00:00+00:00",
+      "product": "REFSCT",
+      "retrieved_at": "2026-11-28T12:12:29.959761+00:00",
+      "age_seconds": 22349,
+      "age_minutes": 372.48333333333335,
+      "freshness_limit_minutes": 1080,
+      "venues_with_cached_data": 31,
+      "message": "REFSCT downloads are skipped on the five-minute live refresh."
+    },
+    "open_meteo_ifs_ensemble": {
+      "status": "ok",
+      "updated_at": "2026-11-28T12:14:26.204147+00:00",
+      "retrieved_at": "2026-11-28T12:14:26.206721+00:00",
+      "age_seconds": 0,
+      "age_minutes": 0.0,
+      "freshness_limit_minutes": 360,
+      "venues_considered": 4,
+      "venues_with_data": 4,
+      "url": "https://ensemble-api.open-meteo.com/v1/ensemble?latitude=42.0909&longitude=-71.2643&models=ecmwf_ifs025_ensemble&hourly=weather_code&forecast_days=15&timezone=GMT",
+      "message": "Global ECMWF IFS ensemble weather-code conditions only; approximately 25 km grid; 3-hour steps through 144 hours, 6-hour steps afterward. This field cannot estimate thunderstorms, venue delay odds, or observed storm motion."
+    },
+    "hrrr": {
+      "status": "ok",
+      "updated_at": "2026-11-28T06:00:00+00:00",
+      "retrieved_at": "2026-11-28T12:14:26.206807+00:00",
+      "age_seconds": 22466,
+      "age_minutes": 374.43333333333334,
+      "freshness_limit_minutes": 720,
+      "games_considered": 33,
+      "games_with_data": 33,
+      "message": "HRRR nearest-grid reflectivity, rain rate, CAPE and wind; supporting context only."
+    },
+    "glm": {
+      "status": "ok",
+      "updated_at": "2026-11-28T12:12:00+00:00",
+      "retrieved_at": "2026-11-28T12:14:26.206821+00:00",
+      "age_seconds": 146,
+      "freshness_limit_minutes": 30,
+      "games_considered": 14,
+      "games_with_data": 14,
+      "message": "GOES GLM total-flash observations; satellite proxy, not a venue sensor."
+    }
+  },
+  "game_index_url": "games/index.json"
+}
